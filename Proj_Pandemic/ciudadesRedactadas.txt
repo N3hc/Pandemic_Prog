@@ -1,0 +1,212 @@
+
+La ciudad Puerto Rath está en las coordenadas (20,50) sus ciudades colindantes son: La ciudad Isla Danton está a 152 unidades
+La ciudad Minas de Sulfuro está a 380 unidades
+
+La ciudad Isla Kuix está en las coordenadas (120,100) sus ciudades colindantes son: La ciudad Puerto Rath está a 111 unidades
+La ciudad Isla Paxid está a 40 unidades
+La ciudad Isla Khan está a 41 unidades
+
+La ciudad Isla Danton está en las coordenadas (100,180) sus ciudades colindantes son: La ciudad Puerto Rath está a 152 unidades
+La ciudad Isla Paxid está a 44 unidades
+La ciudad Puerto Epheria está a 70 unidades
+
+La ciudad Isla Paxid está en las coordenadas (120,140) sus ciudades colindantes son: La ciudad Isla Kuix está a 40 unidades
+La ciudad Isla Danton está a 44 unidades
+La ciudad Isla Lisz está a 22 unidades
+
+La ciudad Isla Khan está en las coordenadas (130,60) sus ciudades colindantes son: La ciudad Isla Kuix está a 41 unidades
+La ciudad Isla Hiwua está a 100 unidades
+La ciudad Isla Lemma está a 64 unidades
+
+La ciudad Isla Hiwua está en las coordenadas (230,60) sus ciudades colindantes son: La ciudad Isla Khan está a 100 unidades
+La ciudad Isla Lemma está a 64 unidades
+La ciudad Cresta del Cuervo está a 36 unidades
+
+La ciudad Isla Lemma está en las coordenadas (180,100) sus ciudades colindantes son: La ciudad Isla Khan está a 64 unidades
+La ciudad Isla Hiwua está a 64 unidades
+La ciudad Isla Lisz está a 64 unidades
+La ciudad Isla Narvo está a 41 unidades
+La ciudad Cresta del Cuervo está a 70 unidades
+
+La ciudad Isla Lisz está en las coordenadas (140,150) sus ciudades colindantes son: La ciudad Isla Paxid está a 22 unidades
+La ciudad Isla Lemma está a 64 unidades
+La ciudad Puerto Epheria está a 104 unidades
+La ciudad Olvia está a 63 unidades
+
+La ciudad Isla Narvo está en las coordenadas (190,140) sus ciudades colindantes son: La ciudad Isla Lemma está a 41 unidades
+La ciudad Ojo de Odquilla está a 30 unidades
+La ciudad Olvia está a 76 unidades
+La ciudad Castillo Cron está a 72 unidades
+
+La ciudad Ojo de Odquilla está en las coordenadas (220,140) sus ciudades colindantes son: La ciudad Isla Narvo está a 30 unidades
+La ciudad Cresta del Cuervo está a 58 unidades
+La ciudad Castillo Cron está a 70 unidades
+
+La ciudad Cresta del Cuervo está en las coordenadas (250,90) sus ciudades colindantes son: La ciudad Isla Hiwua está a 36 unidades
+La ciudad Isla Lemma está a 70 unidades
+La ciudad Ojo de Odquilla está a 58 unidades
+La ciudad Rosevan está a 44 unidades
+
+La ciudad Rosevan está en las coordenadas (270,130) sus ciudades colindantes son: La ciudad Cresta del Cuervo está a 44 unidades
+La ciudad Kusha está a 107 unidades
+
+La ciudad Puerto Epheria está en las coordenadas (110,250) sus ciudades colindantes son: La ciudad Isla Danton está a 70 unidades
+La ciudad Isla Lisz está a 104 unidades
+La ciudad Finistella está a 53 unidades
+La ciudad Calpheon está a 44 unidades
+
+La ciudad Finistella está en las coordenadas (90,300) sus ciudades colindantes son: La ciudad Puerto Epheria está a 53 unidades
+La ciudad Calpheon está a 41 unidades
+La ciudad Trent está a 58 unidades
+La ciudad Arehaza está a 367 unidades
+
+La ciudad Calpheon está en las coordenadas (130,290) sus ciudades colindantes son: La ciudad Puerto Epheria está a 44 unidades
+La ciudad Finistella está a 41 unidades
+
+La ciudad Bosque Ceniza está en las coordenadas (130,380) sus ciudades colindantes son: La ciudad Finistella está a 89 unidades
+La ciudad Grana está a 53 unidades
+La ciudad Pila Ku está a 319 unidades
+
+La ciudad Grana está en las coordenadas (110,430) sus ciudades colindantes son: La ciudad Bosque Ceniza está a 53 unidades
+La ciudad Trent está a 80 unidades
+La ciudad Tunkuta está a 41 unidades
+
+La ciudad Trent está en las coordenadas (120,350) sus ciudades colindantes son: La ciudad Finistella está a 58 unidades
+La ciudad Grana está a 80 unidades
+La ciudad Tunkuta está a 76 unidades
+La ciudad Keplan está a 44 unidades
+
+La ciudad Tunkuta está en las coordenadas (150,420) sus ciudades colindantes son: La ciudad Grana está a 41 unidades
+La ciudad Trent está a 76 unidades
+La ciudad Duvencrue está a 50 unidades
+
+La ciudad Duvencrue está en las coordenadas (180,380) sus ciudades colindantes son: La ciudad Tunkuta está a 50 unidades
+La ciudad Odyllita está a 31 unidades
+La ciudad Cubil Escarlata está a 36 unidades
+La ciudad Keplan está a 53 unidades
+
+La ciudad Odyllita está en las coordenadas (190,410) sus ciudades colindantes son: La ciudad Duvencrue está a 31 unidades
+La ciudad Cubil Escarlata está a 60 unidades
+
+La ciudad Cubil Escarlata está en las coordenadas (200,350) sus ciudades colindantes son: La ciudad Duvencrue está a 36 unidades
+La ciudad Odyllita está a 60 unidades
+La ciudad Glish está a 36 unidades
+La ciudad Bosque Tungrad está a 44 unidades
+
+La ciudad Keplan está en las coordenadas (160,330) sus ciudades colindantes son: La ciudad Calpheon está a 50 unidades
+La ciudad Trent está a 44 unidades
+La ciudad Olvia está a 120 unidades
+La ciudad Glish está a 22 unidades
+
+La ciudad Florin está en las coordenadas (160,260) sus ciudades colindantes son: La ciudad Keplan está a 70 unidades
+La ciudad Olvia está a 50 unidades
+La ciudad Heidel está a 31 unidades
+
+La ciudad Olvia está en las coordenadas (160,210) sus ciudades colindantes son: La ciudad Isla Lisz está a 63 unidades
+La ciudad Isla Narvo está a 76 unidades
+La ciudad Florin está a 50 unidades
+La ciudad Velia está a 31 unidades
+
+La ciudad Velia está en las coordenadas (190,220) sus ciudades colindantes son: La ciudad Olvia está a 31 unidades
+La ciudad Castillo Cron está a 22 unidades
+
+La ciudad Castillo Cron está en las coordenadas (210,210) sus ciudades colindantes son: La ciudad Isla Narvo está a 72 unidades
+La ciudad Ojo de Odquilla está a 70 unidades
+La ciudad Velia está a 22 unidades
+La ciudad Kusha está a 28 unidades
+
+La ciudad Kusha está en las coordenadas (230,230) sus ciudades colindantes son: La ciudad Rosevan está a 107 unidades
+La ciudad Castillo Cron está a 28 unidades
+La ciudad Heidel está a 56 unidades
+La ciudad Tarif está a 40 unidades
+La ciudad Ruinas de Kadry está a 117 unidades
+
+La ciudad Heidel está en las coordenadas (190,270) sus ciudades colindantes son: La ciudad Florin está a 31 unidades
+La ciudad Kusha está a 56 unidades
+La ciudad Glish está a 50 unidades
+La ciudad Bosque Tungrad está a 50 unidades
+
+La ciudad Glish está en las coordenadas (180,320) sus ciudades colindantes son: La ciudad Cubil Escarlata está a 36 unidades
+La ciudad Keplan está a 22 unidades
+La ciudad Heidel está a 50 unidades
+
+La ciudad Bosque Tungrad está en las coordenadas (220,310) sus ciudades colindantes son: La ciudad Cubil Escarlata está a 44 unidades
+La ciudad Heidel está a 50 unidades
+La ciudad Tarif está a 41 unidades
+La ciudad Altinova está a 56 unidades
+La ciudad Asparkan está a 64 unidades
+
+La ciudad Tarif está en las coordenadas (230,270) sus ciudades colindantes son: La ciudad Kusha está a 40 unidades
+La ciudad Bosque Tungrad está a 41 unidades
+La ciudad Altinova está a 30 unidades
+
+La ciudad Altinova está en las coordenadas (260,270) sus ciudades colindantes son: La ciudad Tarif está a 30 unidades
+La ciudad Ruinas de Waragon está a 50 unidades
+La ciudad Ruinas de Kadry está a 70 unidades
+
+La ciudad Asparkan está en las coordenadas (260,260) sus ciudades colindantes son: La ciudad Bosque Tungrad está a 64 unidades
+La ciudad Ruinas de Waragon está a 58 unidades
+
+La ciudad Ruinas de Waragon está en las coordenadas (290,310) sus ciudades colindantes son: La ciudad Altinova está a 50 unidades
+La ciudad Asparkan está a 58 unidades
+La ciudad Templo Medialuna está a 50 unidades
+
+La ciudad Ruinas de Kadry está en las coordenadas (270,340) sus ciudades colindantes son: La ciudad Kusha está a 117 unidades
+La ciudad Altinova está a 70 unidades
+La ciudad Bazar GranArena está a 104 unidades
+
+La ciudad Bazar GranArena está en las coordenadas (300,240) sus ciudades colindantes son: La ciudad Ruinas de Kadry está a 104 unidades
+La ciudad Shakatu está a 60 unidades
+La ciudad Ibellab Oasis está a 40 unidades
+La ciudad Templo Medialuna está a 111 unidades
+
+La ciudad Shakatu está en las coordenadas (290,180) sus ciudades colindantes son: La ciudad Rosevan está a 53 unidades
+La ciudad Bazar GranArena está a 60 unidades
+La ciudad Valle Bambu está a 50 unidades
+La ciudad Ibellab Oasis está a 78 unidades
+
+La ciudad Valle Bambu está en las coordenadas (320,140) sus ciudades colindantes son: La ciudad Shakatu está a 50 unidades
+La ciudad Minas de Sulfuro está a 106 unidades
+La ciudad Valencia Ciudad está a 80 unidades
+
+La ciudad Minas de Sulfuro está en las coordenadas (400,70) sus ciudades colindantes son: La ciudad Puerto Rath está a 380 unidades
+La ciudad Valle Bambu está a 106 unidades
+La ciudad Valencia Ciudad está a 110 unidades
+La ciudad Arehaza está a 94 unidades
+
+La ciudad Ibellab Oasis está en las coordenadas (340,240) sus ciudades colindantes son: La ciudad Bazar GranArena está a 40 unidades
+La ciudad Shakatu está a 78 unidades
+La ciudad Valencia Ciudad está a 78 unidades
+La ciudad Valle de Titum está a 82 unidades
+
+La ciudad Valencia Ciudad está en las coordenadas (390,180) sus ciudades colindantes son: La ciudad Valle Bambu está a 80 unidades
+La ciudad Minas de Sulfuro está a 110 unidades
+La ciudad Ibellab Oasis está a 78 unidades
+La ciudad Arehaza está a 44 unidades
+La ciudad Cantusa está a 63 unidades
+
+La ciudad Arehaza está en las coordenadas (430,160) sus ciudades colindantes son: La ciudad Finistella está a 367 unidades
+La ciudad Minas de Sulfuro está a 94 unidades
+La ciudad Valencia Ciudad está a 44 unidades
+La ciudad Cantusa está a 82 unidades
+
+La ciudad Templo Medialuna está en las coordenadas (320,350) sus ciudades colindantes son: La ciudad Ruinas de Waragon está a 50 unidades
+La ciudad Bazar GranArena está a 111 unidades
+La ciudad Valle de Titum está a 50 unidades
+
+La ciudad Valle de Titum está en las coordenadas (360,320) sus ciudades colindantes son: La ciudad Ibellab Oasis está a 82 unidades
+La ciudad Templo Medialuna está a 50 unidades
+La ciudad Miuquu está a 41 unidades
+
+La ciudad Miuquu está en las coordenadas (400,330) sus ciudades colindantes son: La ciudad Valle de Titum está a 41 unidades
+La ciudad Cantusa está a 90 unidades
+La ciudad Pila Ku está a 67 unidades
+
+La ciudad Cantusa está en las coordenadas (410,240) sus ciudades colindantes son: La ciudad Valencia Ciudad está a 63 unidades
+La ciudad Arehaza está a 82 unidades
+La ciudad Miuquu está a 90 unidades
+La ciudad Pila Ku está a 36 unidades
+
+La ciudad Pila Ku está en las coordenadas (430,270) sus ciudades colindantes son: La ciudad Bosque Ceniza está a 319 unidades
+La ciudad Miuquu está a 67 unidades
+La ciudad Cantusa está a 36 unidades

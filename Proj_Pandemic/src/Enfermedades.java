@@ -60,7 +60,7 @@ public class Enfermedades {
 			DataInputStream leeFichero = new DataInputStream(new FileInputStream(Fit));
 			while( leeFichero != null) {//Se lee mientas el DataInputStream no sea NULL
 				
-				if(Fit.equals("D:\\APulido\\APulido\\CCP.bin")) {
+				if(Fit.equals("CCP.bin")) {
 					System.out.println(leeFichero.readUTF());
                     System.out.println(leeFichero.readInt());
                     System.out.println(leeFichero.readUTF());
