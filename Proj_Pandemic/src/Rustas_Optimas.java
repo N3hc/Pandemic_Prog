@@ -65,12 +65,12 @@ public class Rustas_Optimas {
         }
 
         // Imprimir la matriz
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + "|");
-            }
-            System.out.println();
-        }
+//        for (int i = 0; i < matriz.length; i++) {
+//            for (int j = 0; j < matriz[i].length; j++) {
+//                System.out.print(matriz[i][j] + "|");
+//            }
+//            System.out.println();
+//        }
         Dijkstra d = new Dijkstra();
         
         d.dijkstra(ciudades,matriz, cont_ciu_def);
