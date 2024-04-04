@@ -28,7 +28,7 @@ public class InformaciónSilco {
 		for (int i = 4; i < prueba.length; i++) {
 			infoCol.add(prueba[i]);	
 		}
-		texto = "Silco actua en " + ciudad + " con los numeros " + infoCity[0] + ", " + infoCity[1] + " y "
+		texto = "El Espiritu Oscuro esta tramando sus antimañas en " + ciudad + " con los numeros " + infoCity[0] + ", " + infoCity[1] + " y "
 	            + infoCity[2] + ", y cuyas ciudades colindantes son ";
 		for (int i = 0; i < infoCol.size(); i++) {
 			if (i != infoCol.size()-1 && i != 0) {
