@@ -34,13 +34,13 @@ public class Enfermedades {
 				while ((texto = br.readLine()) != null) {
 				    String[] Desglose = texto.split("[,;]");
 				    if (Desglose[1].equals("0")) {//Dependiendo del número extraído  suceden una de las siguiente grabaciones en el archivo
-				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" padece de Alfa");
+				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" esta siendo invadido por Piratas");
 				    }if (Desglose[1].equals("1")) {
-				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" padece de Beta");
+				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" esta siendo invadido por Manshaum");
 				    }if (Desglose[1].equals("2")) {
-				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" padece de Gama");
+				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" esta siendo invadido por Goblos");
 				    }if (Desglose[1].equals("3")) {
-				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" padece de Delta");
+				    	escribeFichero.writeUTF("La ciudad "+Desglose[0]+" esta siendo invadido por Bandidos");
 				    }
 				}
 			}
