@@ -11,7 +11,7 @@ public class personaje {
 	}
 	public static int reduccionCooldown() {
 		return cooldown;
-	}
+	} 
 	public String getNombre() {
 		return nombre;
 	}
