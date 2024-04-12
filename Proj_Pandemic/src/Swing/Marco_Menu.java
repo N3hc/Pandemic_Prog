@@ -30,7 +30,6 @@ public class Marco_Menu extends JFrame{
 	        
 	        // Establecer coordenadas
 	        setLocation(x, y);
-	        
 	        //AñadirLayout
 	        MenuLayout = new Panel_Menu_Principal();
 	        add(MenuLayout);
