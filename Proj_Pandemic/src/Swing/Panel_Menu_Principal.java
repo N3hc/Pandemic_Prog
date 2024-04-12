@@ -19,6 +19,14 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			add(Boton[i]);
 		}
 	
+	Boton[0].addActionListener(this);
+	Boton[1].addActionListener(this);
+	Boton[2].addActionListener(this);
+	Boton[3].addActionListener(this);
+	Boton[4].addActionListener(this);
+	Boton[5].addActionListener(this);
+	Boton[6].addActionListener(this);
+	
 	setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));  
 	setSize(20,20); 
 	setVisible(true);
@@ -27,7 +35,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		if (e.getSource()== boton1 ) {
+			
+		}
 	}
 
 	
