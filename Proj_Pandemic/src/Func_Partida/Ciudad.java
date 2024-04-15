@@ -1,5 +1,7 @@
 package Func_Partida;
 
+import java.util.Arrays;
+
 public class Ciudad {
 	private String nombre;
 	private int[] coordenadas;
@@ -7,14 +9,15 @@ public class Ciudad {
 	private int infeccion;
 	private String[] CiudadesColindantes;
 
-	public Ciudad(String nombre, int[] Coordenadas, String Enfermedad, int Infeccion, String[] CiudadesColindantes) {
-		setEnfermedad(nombre);
-		setCoordenadas(Coordenadas);
+	public Ciudad(String nombre, int[] Coordenadas, String Enfermedad, String[] CiudadesColindantes) {
 		setEnfermedad(Enfermedad);
-		setInfeccion(Infeccion);
+		setCoordenadas(Coordenadas);
+		setNombre(nombre);
+		setInfeccion(0);
 		setCiudadesColindantes(CiudadesColindantes);
 	}
 
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -56,18 +59,27 @@ public class Ciudad {
 	}
 	
 	public void aumentarInfección (int valor) {
-		if ((this.infeccion += valor) > 3) {
-		setInfeccion(3);
-		} else {
-			setInfeccion(this.infeccion += valor);
-		}
+		setInfeccion(this.infeccion+valor);
 	}
 	
 	public void disminuirInfeccion (int Valor) {
-		
+		setInfeccion(this.infeccion-Valor);
 	}
 	
-	public void propagarInfeccion () {
-		
+	public boolean propagarInfeccion () {		
+		if (this.infeccion > 3) {
+			setInfeccion(3);
+			return true;
+		} else {
+		return false;
+		}
+	}
+
+
+	@Override
+	public String toString() {
+		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", enfermedad="
+				+ enfermedad + ", infeccion=" + infeccion + ", CiudadesColindantes="
+				+ Arrays.toString(CiudadesColindantes) + "]";
 	}
 }

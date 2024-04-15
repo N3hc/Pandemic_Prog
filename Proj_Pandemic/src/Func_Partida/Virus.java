@@ -5,6 +5,12 @@ public class Virus {
 	private String Nombre;
 	private String Color;
 	
+	public Virus (String Identificador, String Nombre, String Color){
+		this.setIdentificador(Identificador);
+		this.setNombre(Nombre);
+		this.setColor(Color);
+	}
+	
 	public String getIdentificador() {
 		return Identificador;
 	}
@@ -22,5 +28,10 @@ public class Virus {
 	}
 	public void setColor(String color) {
 		Color = color;
+	}
+
+	@Override
+	public String toString() {
+		return "Virus [Identificador=" + Identificador + ", Nombre=" + Nombre + ", Color=" + Color + "]";
 	}
 }
