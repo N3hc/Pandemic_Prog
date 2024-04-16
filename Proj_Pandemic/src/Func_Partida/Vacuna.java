@@ -1,12 +1,18 @@
 package Func_Partida;
 
-public class Vacunas {
+public class Vacuna {
 	private String nombre;
 	private String color;
 	private float porcentaje;
 	
+	public Vacuna (String Nombre, String Color) {
+		this.setNombre(Nombre);
+		this.setColor(Color);
+		this.setPorcentaje(0);
+	}
+	
 	public void desarrollarVacuna ( float porcentage) {
-		
+		setPorcentaje(this.porcentaje+porcentaje);		
 	}
 
 	public String getNombre() {
@@ -30,7 +36,12 @@ public class Vacunas {
 	}
 
 	public void setPorcentaje(float porcentaje) {
-		this.porcentaje = porcentaje;
+		this.porcentaje += porcentaje;
+	}
+
+	@Override
+	public String toString() {
+		return "Vacuna [Color= " + nombre + ", Plaga= " + color + ", porcentaje= " + porcentaje + "]";
 	}
 
 }

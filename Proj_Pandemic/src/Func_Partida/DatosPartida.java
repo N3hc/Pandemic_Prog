@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DatosPartida {
 	private ArrayList<Ciudad> ciudades = new ArrayList<>();
 	private ArrayList<Virus> virus = new ArrayList<>();
-	private ArrayList<Vacunas> vacunas = new ArrayList<>();
+	private ArrayList<Vacuna> vacunas = new ArrayList<>();
 	private ArrayList<personaje> personajes = new ArrayList<>();
 	private int brotes;
 	private int rondas;
@@ -13,14 +13,27 @@ public class DatosPartida {
 	private int acciones;
 	
 	public void modificarCiudad(String nCiudad, int modificacion) {
+		for (Ciudad ciudad : this.ciudades) {
+			if (ciudad.getNombre().equals(nCiudad)) {
+				ciudad.aumentarInfección(modificacion);
+			}
+		}
 		
 	}
 	
 	public void modificarVacuna (String nVacuna, float modificacion) {
+		for(Vacuna vacuna : this.getVacunas()) {
+			if (vacuna.getNombre().equals(nVacuna)) {
+				vacuna.setPorcentaje(modificacion);
+			}
+		}
 		
 	}
 	
 	public void cargarDatos() {
+		this.setCiudades(control_de_datos.cargarCiudades());
+		this.setVacunas(control_de_datos.cargarVacunas());
+		this.setVirus(control_de_datos.cargarVirus());
 		
 	}
 	
@@ -36,10 +49,10 @@ public class DatosPartida {
 	public void setVirus(ArrayList<Virus> virus) {
 		this.virus = virus;
 	}
-	public ArrayList<Vacunas> getVacunas() {
+	public ArrayList<Vacuna> getVacunas() {
 		return vacunas;
 	}
-	public void setVacunas(ArrayList<Vacunas> vacunas) {
+	public void setVacunas(ArrayList<Vacuna> vacunas) {
 		this.vacunas = vacunas;
 	}
 	public int getBrotes() {
@@ -65,5 +78,13 @@ public class DatosPartida {
 	}
 	public void setAcciones(int acciones) {
 		this.acciones = acciones;
+	}
+
+	public ArrayList<personaje> getPersonajes() {
+		return personajes;
+	}
+
+	public void setPersonajes(ArrayList<personaje> personajes) {
+		this.personajes = personajes;
 	}
 }
