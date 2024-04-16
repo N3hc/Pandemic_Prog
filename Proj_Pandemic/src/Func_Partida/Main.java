@@ -7,7 +7,7 @@ public class Main {
 		datosPartida.cargarDatos();
 		
 		 System.out.println("Elementos de la lista:");
-	        for (Virus viruses : datosPartida.getVirus()) {
+	        for (Vacuna viruses : datosPartida.getVacunas()) {
 	            System.out.println(viruses.toString());
 	        }
 

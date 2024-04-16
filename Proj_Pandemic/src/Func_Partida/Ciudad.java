@@ -78,7 +78,7 @@ public class Ciudad {
 
 	@Override
 	public String toString() {
-		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", enfermedad="
+		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", Plaga="
 				+ enfermedad + ", infeccion=" + infeccion + ", CiudadesColindantes="
 				+ Arrays.toString(CiudadesColindantes) + "]";
 	}

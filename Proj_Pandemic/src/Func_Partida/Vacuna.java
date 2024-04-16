@@ -41,7 +41,7 @@ public class Vacuna {
 
 	@Override
 	public String toString() {
-		return "Vacuna [Color= " + nombre + ", Plaga= " + color + ", porcentaje= " + porcentaje + "]";
+		return "Vacuna [Color= " + nombre + ", Arma= " + color + ", porcentaje= " + porcentaje + "]";
 	}
 
 }

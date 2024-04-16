@@ -16,9 +16,8 @@ public class DatosPartida {
 		for (Ciudad ciudad : this.ciudades) {
 			if (ciudad.getNombre().equals(nCiudad)) {
 				ciudad.aumentarInfección(modificacion);
-			}
-		}
-		
+			}		
+	}
 	}
 	
 	public void modificarVacuna (String nVacuna, float modificacion) {
@@ -27,7 +26,6 @@ public class DatosPartida {
 				vacuna.setPorcentaje(modificacion);
 			}
 		}
-		
 	}
 	
 	public void cargarDatos() {
