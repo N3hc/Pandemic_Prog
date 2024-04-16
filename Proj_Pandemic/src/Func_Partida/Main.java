@@ -10,6 +10,14 @@ public class Main {
 	        for (Virus viruses : datosPartida.getVirus()) {
 	            System.out.println(viruses.toString());
 	        }
+	        System.out.println();
+	        for (Vacuna vacunas : datosPartida.getVacunas()) {
+	            System.out.println(vacunas.toString());
+	        }
+	        System.out.println();
+	        for (Ciudad ciudad : datosPartida.getCiudades()) {
+	            System.out.println(ciudad.toString());
+	        }
 
 	}
 

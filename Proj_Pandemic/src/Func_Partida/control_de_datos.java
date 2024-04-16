@@ -58,7 +58,7 @@ public class control_de_datos {
 	}
 	
 	public static ArrayList<Ciudad> cargarCiudades() {
-		        String Fit = "C:\\Users\\Alumnat\\Documents\\GitHub\\Pandemic_Prog\\Proj_Pandemic\\ciudades.txt";
+		        String Fit = "ciudades.txt";
 		        String s = "";
 		        ArrayList<Ciudad> ciudades =  new ArrayList<>();
 		        try {
@@ -108,7 +108,7 @@ public class control_de_datos {
 	}
 	public static ArrayList<Virus> cargarVirus() {
 		ArrayList<Virus>Viruses = new ArrayList<>();
-		String [] Idn_Nom_Col = {"0","Corazón de Vell","Azul","1","Dandelion","Verde","2","Kzarka","Rojo","3","Momias","Kutum"};
+		String [] Idn_Nom_Col = {"0","Corazón de Vell","Azul","1","Dandelion","Verde","2","Kzarka","Rojo","3","Momias","Negro"};
 		for (int i = 0; i < 12; i+=3) {
 			Virus virus= new Virus(Idn_Nom_Col[i], Idn_Nom_Col[i+1], Idn_Nom_Col[i+2]);
 			Viruses.add(virus);
