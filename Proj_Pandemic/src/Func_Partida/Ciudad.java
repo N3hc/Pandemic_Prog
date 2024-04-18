@@ -88,6 +88,7 @@ public class Ciudad {
 	public String toString() {
 		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", plaga="
 				+ plaga + ", infeccion=" + infeccion + ", CiudadesColindantes="
+
 				+ Arrays.toString(CiudadesColindantes) + "]";
 	}
 

@@ -22,7 +22,9 @@ public class DatosPartida {
 			if (ciudad.getNombre().equals(nCiudad)) {
 				ciudad.aumentarInfección(modificacion);
 			}		
-		}
+
+	}
+ main
 	}
 	
 	public void modificarVacuna (String nVacuna, float modificacion) {
