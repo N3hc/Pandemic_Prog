@@ -2,10 +2,22 @@ package Func_Partida;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class control_de_datos {
 	private String url;
@@ -55,6 +67,50 @@ public class control_de_datos {
 	}
 	public void setFicheroXML(String ficheroXML) {
 		this.ficheroXML = ficheroXML;
+	}
+	
+	public static String [] Leer_Xml () {
+		String filePath = "parametros.xml";
+		String [] val = new String [4];
+        try {
+            // Creo una instancia de DocumentBuilderFactory
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            // Creo un documentBuilder
+            DocumentBuilder builder = factory.newDocumentBuilder();
+
+            // Obtengo el documento, a partir del XML
+            Document documento = builder.parse(new File(filePath));
+
+            // Cojo todas las etiquetas coche del documento
+            NodeList lista = documento.getElementsByTagName("parametros");
+
+            // Recorro las etiquetas
+            for (int i = 0; i < lista.getLength(); i++) {
+                // Cojo el nodo actual
+                Node nodo = lista.item(i);
+                // Compruebo si el nodo es un elemento
+                if (nodo.getNodeType() == Node.ELEMENT_NODE) {
+                    // Lo transformo a Element
+                    Element e = (Element) nodo;
+                    // Obtengo sus hijos
+                    NodeList hijos = e.getChildNodes();
+                    // Recorro sus hijos
+                    for (int j = 0; j < hijos.getLength(); j++) {
+                        // Obtengo al hijo actual
+                        Node hijo = hijos.item(j);
+                        // Compruebo si es un nodo
+                        if (hijo.getNodeType() == Node.ELEMENT_NODE) {
+                            // Muestro el contenido
+                           val [i] = hijo.getTextContent();
+                        }
+                    }
+                    System.out.println("");
+                }
+            } }catch (ParserConfigurationException | SAXException | IOException e) {
+                System.out.println(e.getMessage());
+            }
+		return val;
+
 	}
 	
 	public static ArrayList<Ciudad> cargarCiudades() {
