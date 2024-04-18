@@ -32,6 +32,6 @@ public class Virus {
 
 	@Override
 	public String toString() {
-		return "Virus [Identificador=" + Identificador + ", Nombre=" + Nombre + ", Color=" + Color + "]";
+		return "Virus [Identificador=" + Identificador + ", Plaga=" + Nombre + ", Color=" + Color + "]";
 	}
 }
