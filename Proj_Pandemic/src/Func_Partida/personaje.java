@@ -30,4 +30,8 @@ public class personaje {
 	public void setPosActual(String posActual) {
 		this.posActual = posActual;
 	}
+	@Override
+	public String toString() {
+		return "personaje [nombre=" + nombre + ", posActual=" + posActual + ", rol=" + rol + "]";
+	}
 }
