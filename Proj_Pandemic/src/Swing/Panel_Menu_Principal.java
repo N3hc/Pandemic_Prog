@@ -90,7 +90,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
         }
     }
     public void mostrarPopupCargarPartida() {
-        String[] opcionesCarga = {"Fácil", "Normal", "Difícil"};
+        String[] opcionesCarga = {"Facil", "Normal", "Dificil"};
         String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:", 
                                             "Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesCarga, opcionesCarga[0]);
         if (dificultadSeleccionada != null) {

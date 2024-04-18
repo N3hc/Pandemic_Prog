@@ -12,23 +12,21 @@ public class DatosPartida {
 	private float pDesarrollo;
 	private int acciones;
 
-
-	public DatosPartida (int dificultad) {
+	public DatosPartida(int dificultad) {
 		this.cargarDatos();
-		this.setpDesarrollo((float)(Math.random()*5)*dificultad);
+		this.setpDesarrollo((float) (Math.random() * 5) * dificultad);
 	}
-	
+
 	public void modificarCiudad(String nCiudad, int modificacion) {
 		for (Ciudad ciudad : this.ciudades) {
 			if (ciudad.getNombre().equals(nCiudad)) {
 				ciudad.aumentarInfección(modificacion);
-			}		
+			}
+		}
+	}
 
-	}
-	}
-	
-	public void modificarVacuna (String nVacuna, float modificacion) {
-		for(Vacuna vacuna : this.getVacunas()) {
+	public void modificarVacuna(String nVacuna, float modificacion) {
+		for (Vacuna vacuna : this.getVacunas()) {
 			if (vacuna.getNombre().equals(nVacuna)) {
 				vacuna.setPorcentaje(modificacion);
 			}
@@ -36,23 +34,24 @@ public class DatosPartida {
 	}
 
 	public void cargarDatos() {
-    
+
 		this.setCiudades(control_de_datos.cargarCiudades());
 		this.setVacunas(control_de_datos.cargarVacunas());
 		this.setVirus(control_de_datos.cargarVirus());
 		this.setBrotes(0);
 		this.setRondas(0);
 		this.setAcciones(4);
-		
+
 	}
-	
+
 	public void aumentarBrote() {
 		for (Ciudad ciudad : this.ciudades) {
-			if(ciudad.propagarInfeccion()) {
+			if (ciudad.propagarInfeccion()) {
 				this.setBrotes(1);
 			}
 		}
 	}
+
 	public ArrayList<Ciudad> getCiudades() {
 		return ciudades;
 	}
@@ -68,9 +67,11 @@ public class DatosPartida {
 	public void setVirus(ArrayList<Virus> virus) {
 		this.virus = virus;
 	}
+
 	public ArrayList<Vacuna> getVacunas() {
 		return vacunas;
 	}
+
 	public void setVacunas(ArrayList<Vacuna> vacunas) {
 		this.vacunas = vacunas;
 	}

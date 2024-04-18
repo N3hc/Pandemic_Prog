@@ -7,7 +7,13 @@ public class personaje {
 	private static int cooldown;
 	
 	public static void pasiva(int rol) {
-		
+		if (rol == 1) {
+			
+		}else if (rol == 2) {
+			
+		}else if (rol == 3) {
+			
+		}
 	}
 	public static int reduccionCooldown() {
 		return cooldown;
