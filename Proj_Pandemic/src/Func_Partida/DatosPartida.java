@@ -46,7 +46,7 @@ public class DatosPartida {
 	public void aumentarBrote() {
 		for (Ciudad ciudad : this.ciudades) {
 			if(ciudad.propagarInfeccion()) {
-				this.setBrotes(1);
+				this.setBrotes(this.getBrotes()+1);
 			}
 		}
 	}
@@ -73,7 +73,7 @@ public class DatosPartida {
 		return brotes;
 	}
 	public void setBrotes(int brotes) {
-		this.brotes += brotes;
+		this.brotes = brotes;
 	}
 	public int getRondas() {
 		return rondas;
