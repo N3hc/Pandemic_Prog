@@ -67,7 +67,7 @@ public class Ciudad {
 		
 	}
 	
-	public void propagarInfeccion () {
-		
+	public boolean propagarInfeccion () {
+		return true;
 	}
 }
