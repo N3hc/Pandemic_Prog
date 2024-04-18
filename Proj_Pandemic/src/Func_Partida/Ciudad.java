@@ -65,7 +65,7 @@ public class Ciudad {
 	public void disminuirInfeccion (int Valor) {
 		setInfeccion(this.infeccion-Valor);
 	}
-	
+
 	public boolean propagarInfeccion () {		
 		if (this.infeccion > 3) {
 			setInfeccion(3);
