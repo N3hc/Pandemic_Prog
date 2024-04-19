@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -69,46 +70,51 @@ public class control_de_datos {
 		this.ficheroXML = ficheroXML;
 	}
 	
-	public static String [] Leer_Xml () {
+	public static String [] Leer_Xml (String dific) {
 		String filePath = "parametros.xml";
-		String [] val = new String [4];
+		String [] val = new String [5];
         try {
-            // Creo una instancia de DocumentBuilderFactory
+            // Cargar el archivo XML
+            File file = new File("parametros.xml");
+
+            // Crear un constructor de documentos
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            // Creo un documentBuilder
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            // Obtengo el documento, a partir del XML
-            Document documento = builder.parse(new File(filePath));
+            // Parsear el archivo XML
+            Document document = builder.parse(file);
 
-            // Cojo todas las etiquetas coche del documento
-            NodeList lista = documento.getElementsByTagName("parametros");
+            // Obtener la raíz del documento
+            Element root = document.getDocumentElement();
 
-            // Recorro las etiquetas
-            for (int i = 0; i < lista.getLength(); i++) {
-                // Cojo el nodo actual
-                Node nodo = lista.item(i);
-                // Compruebo si el nodo es un elemento
-                if (nodo.getNodeType() == Node.ELEMENT_NODE) {
-                    // Lo transformo a Element
-                    Element e = (Element) nodo;
-                    // Obtengo sus hijos
-                    NodeList hijos = e.getChildNodes();
-                    // Recorro sus hijos
-                    for (int j = 0; j < hijos.getLength(); j++) {
-                        // Obtengo al hijo actual
-                        Node hijo = hijos.item(j);
-                        // Compruebo si es un nodo
-                        if (hijo.getNodeType() == Node.ELEMENT_NODE) {
-                            // Muestro el contenido
-                           val [i] = hijo.getTextContent();
-                        }
-                    }
-                    System.out.println("");
+            // Obtener la dificultad deseada (en este caso, "Facil")
+            Element dificultad = (Element) root.getElementsByTagName(dific).item(0);
+
+            // Crear una lista para almacenar los valores de los atributos de la dificultad
+            List<String> valoresFacil = new ArrayList<>();
+
+            // Obtener todos los elementos hijos de la dificultad "Facil"
+            NodeList parametrosDificultad = dificultad.getChildNodes();
+
+            // Recorrer los elementos hijos de la dificultad "Facil" y obtener los valores
+            for (int j = 0; j < parametrosDificultad.getLength(); j++) {
+                if (parametrosDificultad.item(j) instanceof Element) {
+                    Element parametro = (Element) parametrosDificultad.item(j);
+
+                    // Obtener y almacenar el valor del atributo
+                    String valor = parametro.getTextContent();
+                    valoresFacil.add(valor);
                 }
-            } }catch (ParserConfigurationException | SAXException | IOException e) {
-                System.out.println(e.getMessage());
             }
+
+            // Imprimir los valores
+            for (String valor : valoresFacil) {
+                System.out.println(valor);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 		return val;
 
 	}
@@ -154,7 +160,7 @@ public class control_de_datos {
 				return ciudades;   
 		    }
 	public static ArrayList<Vacuna> cargarVacunas() {
-		String [] Enf_y_Col = {"Azul","Corazón de Vell","Verde","Dandelion","Rojo","Kzarka","Negro","Kutum"};
+		String [] Enf_y_Col = {"Azul","Corazon de Vell","Verde","Dandelion","Rojo","Kzarka","Negro","Kutum"};
 		ArrayList<Vacuna> Vacunas = new ArrayList<>();
 		for (int i = 0; i < 8; i+=2) {
 			Vacuna vacuna = new Vacuna(Enf_y_Col[i], Enf_y_Col[i+1]);

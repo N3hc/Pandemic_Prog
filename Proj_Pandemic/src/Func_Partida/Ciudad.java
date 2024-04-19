@@ -16,6 +16,7 @@ public class Ciudad {
 		setNombre(nombre);
 		setInfeccion(0);
 		setCiudadesColindantes(CiudadesColindantes);
+		setActivado(false);
 	}
 
 	
@@ -59,12 +60,8 @@ public class Ciudad {
 		CiudadesColindantes = ciudadesColindantes;
 	}
 	
-	public void aumentarInfección (int valor) {
+	public void modificarInfección (int valor) {
 		setInfeccion(this.infeccion+valor);
-	}
-	
-	public void disminuirInfeccion (int Valor) {
-		setInfeccion(this.infeccion-Valor);
 	}
 
 	public boolean propagarInfeccion () {		
@@ -88,7 +85,7 @@ public class Ciudad {
 	public String toString() {
 		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", Plaga="
 
-				+ enfermedad + ", infeccion=" + infeccion + ", CiudadesColindantes="
+				+ plaga + ", infeccion=" + infeccion + ", CiudadesColindantes="
 
 				+ Arrays.toString(CiudadesColindantes) + "]";
 	}

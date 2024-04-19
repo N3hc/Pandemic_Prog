@@ -4,11 +4,13 @@ public class Vacuna {
 	private String nombre;
 	private String color;
 	private float porcentaje;
+	private boolean estado;
 	
 	public Vacuna (String Nombre, String Color) {
 		this.setNombre(Nombre);
 		this.setColor(Color);
 		this.setPorcentaje(0);
+		this.setEstado(false);
 	}
 	
 	public void desarrollarVacuna ( float porcentage) {
@@ -42,6 +44,14 @@ public class Vacuna {
 	@Override
 	public String toString() {
 		return "Vacuna [Color= " + nombre + ", Arma= " + color + ", porcentaje= " + porcentaje + "]";
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 
 }
