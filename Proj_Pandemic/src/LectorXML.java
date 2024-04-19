@@ -1,86 +1,56 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LectorXML {
-
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String filePath = "parametros.xml";
         try {
-            // Creo una instancia de DocumentBuilderFactory
+            // Cargar el archivo XML
+            File file = new File("parametros.xml");
+
+            // Crear un constructor de documentos
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            // Creo un documentBuilder
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            // Obtengo el documento, a partir del XML
-            Document documento = builder.parse(new File(filePath));
+            // Parsear el archivo XML
+            Document document = builder.parse(file);
 
-            // Cojo todas las etiquetas coche del documento
-            NodeList lista = documento.getElementsByTagName("parametros");
+            // Obtener la raíz del documento
+            Element root = document.getDocumentElement();
 
-            // Recorro las etiquetas
-            for (int i = 0; i < lista.getLength(); i++) {
-                // Cojo el nodo actual
-                Node nodo = lista.item(i);
-                // Compruebo si el nodo es un elemento
-                if (nodo.getNodeType() == Node.ELEMENT_NODE) {
-                    // Lo transformo a Element
-                    Element e = (Element) nodo;
-                    // Obtengo sus hijos
-                    NodeList hijos = e.getChildNodes();
-                    // Recorro sus hijos
-                    for (int j = 0; j < hijos.getLength(); j++) {
-                        // Obtengo al hijo actual
-                        Node hijo = hijos.item(j);
-                        // Compruebo si es un nodo
-                        if (hijo.getNodeType() == Node.ELEMENT_NODE) {
-                            // Muestro el contenido
-                            System.out.println(hijo.getNodeName() + " Valor: " + hijo.getTextContent());
-                            System.out.println("¿Quieres cambiar el parámetro de este elemento? (si/no)");
-                            String opcion = sc.next().toLowerCase();
-                            if (opcion.equals("si")){
-                                System.out.println("¿Qué valor le quieres poner?");
-                                String valor = sc.next();
-                                // Cambiar el contenido según el nombre del elemento
-                                if (hijo.getNodeName().equals("numCiudadesInfectadasInicio") || hijo.getNodeName().equals("numCuidadesInfectadasRonda") ||
-                                        hijo.getNodeName().equals("numEnfermedadesActivasDerrota") || hijo.getNodeName().equals("numBrotesDerrota")) {
-                                    hijo.setTextContent(valor);
-                                }
-                            }
-                        }
-                    }
-                    System.out.println("");
+            // Obtener la dificultad deseada (en este caso, "Facil")
+            Element dificultad = (Element) root.getElementsByTagName("Facil").item(0);
+
+            // Crear una lista para almacenar los valores de los atributos de la dificultad
+            List<String> valoresFacil = new ArrayList<>();
+
+            // Obtener todos los elementos hijos de la dificultad "Facil"
+            NodeList parametrosDificultad = dificultad.getChildNodes();
+
+            // Recorrer los elementos hijos de la dificultad "Facil" y obtener los valores
+            for (int j = 0; j < parametrosDificultad.getLength(); j++) {
+                if (parametrosDificultad.item(j) instanceof Element) {
+                    Element parametro = (Element) parametrosDificultad.item(j);
+
+                    // Obtener y almacenar el valor del atributo
+                    String valor = parametro.getTextContent();
+                    valoresFacil.add(valor);
                 }
             }
 
-            // Escribir los cambios en el archivo XML
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(documento);
-            StreamResult result = new StreamResult(new File(filePath));
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.transform(source, result);
+            // Imprimir los valores
+            for (String valor : valoresFacil) {
+                System.out.println(valor);
+            }
 
-            System.out.println("Archivo XML modificado con éxito.");
-
-        } catch (ParserConfigurationException | SAXException | IOException | TransformerException ex) {
-            System.out.println(ex.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <parametros>
-            
+                
     
-    <numCiudadesInfectadasInicio>20</numCiudadesInfectadasInicio>
-            
+    <Facil>
+            	
+        <numCiudadesInfectadasInicio>7</numCiudadesInfectadasInicio>
+                  
     
-    <numCuidadesInfectadasRonda>20</numCuidadesInfectadasRonda>
-            
+    	
+        <numCuidadesInfectadasRonda>3</numCuidadesInfectadasRonda>
+                   
     
-    <numEnfermedadesActivasDerrota>20</numEnfermedadesActivasDerrota>
+    	
+        <numBrotesDerrota>10</numBrotesDerrota>
+        	
+        <aVacuna>25</aVacuna>
             
+    </Facil>
+            
+
     
-    <numBrotesDerrota>20</numBrotesDerrota>
-        
+    <Normal>
+            	
+        <numCiudadesInfectadasInicio>9</numCiudadesInfectadasInicio>
+                  
+    
+    	
+        <numCuidadesInfectadasRonda>5</numCuidadesInfectadasRonda>
+                   
+    
+    	
+        <numBrotesDerrota>8</numBrotesDerrota>
+        	
+        <aVacuna>12,5</aVacuna>
+            
+    </Normal>
+      
+
+    
+    <Dificil>
+            	
+        <numCiudadesInfectadasInicio>11</numCiudadesInfectadasInicio>
+                  
+    
+    	
+        <numCuidadesInfectadasRonda>6</numCuidadesInfectadasRonda>
+                   
+    
+    	
+        <numBrotesDerrota>6</numBrotesDerrota>
+        	
+        <aVacuna>8,34</aVacuna>
+            
+    </Dificil>
+      
 
 </parametros>

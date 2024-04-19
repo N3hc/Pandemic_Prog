@@ -5,9 +5,10 @@ import java.util.Arrays;
 public class Ciudad {
 	private String nombre;
 	private int[] coordenadas;
-	private String enfermedad;
+	private String plaga;
 	private int infeccion;
 	private String[] CiudadesColindantes;
+	private boolean activado ;
 
 	public Ciudad(String nombre, int[] Coordenadas, String Enfermedad, String[] CiudadesColindantes) {
 		setEnfermedad(Enfermedad);
@@ -35,11 +36,11 @@ public class Ciudad {
 	}
 
 	public String getEnfermedad() {
-		return enfermedad;
+		return plaga;
 	}
 
 	public void setEnfermedad(String enfermedad) {
-		this.enfermedad = enfermedad;
+		this.plaga = enfermedad;
 	}
 
 	public int getInfeccion() {
@@ -74,13 +75,22 @@ public class Ciudad {
 		return false;
 		}
 	}
+	
+	public boolean isActivado() {
+		return activado;
+	}
 
+	public void setActivado(boolean activado) {
+		this.activado = activado;
+	}
 
 	@Override
 	public String toString() {
 		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", Plaga="
 
 				+ enfermedad + ", infeccion=" + infeccion + ", CiudadesColindantes="
+
 				+ Arrays.toString(CiudadesColindantes) + "]";
 	}
+
 }

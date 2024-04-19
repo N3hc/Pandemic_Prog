@@ -36,7 +36,7 @@ public class Vacuna {
 	}
 
 	public void setPorcentaje(float porcentaje) {
-		this.porcentaje += porcentaje;
+		this.porcentaje = porcentaje;
 	}
 
 	@Override
