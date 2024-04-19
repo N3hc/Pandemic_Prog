@@ -4,14 +4,17 @@ public class personaje {
 	private String nombre;
 	private	String posActual;
 	private int rol;
-	private static int cooldown;
+	private int cooldown;
 	
 	public static void pasiva(int rol) {
-		
+		if (rol == 1) {
+			
+		}else if (rol == 2) {
+			
+		}else if (rol == 3) {
+			
+		}
 	}
-	public static int reduccionCooldown() {
-		return cooldown;
-	} 
 	public String getNombre() {
 		return nombre;
 	}

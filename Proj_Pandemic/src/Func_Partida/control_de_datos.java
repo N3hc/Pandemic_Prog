@@ -171,6 +171,7 @@ public class control_de_datos {
 		}
 		return Viruses;
 	}
+	
 	public static void cargarPartida() {
 		
 	}
