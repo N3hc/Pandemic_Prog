@@ -24,7 +24,7 @@ public class DatosPartida {
 			}		
 
 	}
- main
+
 	}
 	
 	public void modificarVacuna (String nVacuna, float modificacion) {
