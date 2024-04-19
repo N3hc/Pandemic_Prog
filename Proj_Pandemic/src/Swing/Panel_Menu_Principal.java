@@ -39,23 +39,21 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == Boton[0]) { // Opción de "Nueva Partida"
+		if (e.getSource() == Boton[0]) {
 			mostrarPopupDificultad();
 		    JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-		    partida.getContentPane().removeAll(); // Eliminamos todos los componentes existentes del contenido del marco
-		    partida.getContentPane().add(new Panel_Partida()); // Agregamos el panel de pantalla completa
-		    partida.revalidate(); // Volvemos a validar el contenido del marco
-		    partida.setExtendedState(JFrame.MAXIMIZED_BOTH); // Ponemos el marco en pantalla completa
-		    partida.setUndecorated(true); // Ocultamos la barra de título y los bordes del marco
+		    partida.getContentPane().removeAll(); 
+		    partida.getContentPane().add(new Panel_Partida());
+		    partida.revalidate();
+		    partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		}
 		if (e.getSource() == Boton[1]) {
 			mostrarPopupCargarPartida();
 		    JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-		    partida.getContentPane().removeAll(); // Eliminamos todos los componentes existentes del contenido del marco
-		    partida.getContentPane().add(new Panel_Partida()); // Agregamos el panel de pantalla completa
-		    partida.revalidate(); // Volvemos a validar el contenido del marco
-		    partida.setExtendedState(JFrame.MAXIMIZED_BOTH); // Ponemos el marco en pantalla completa
-		    partida.setUndecorated(true); // Ocultamos la barra de título y los bordes del marco
+		    partida.getContentPane().removeAll();
+		    partida.getContentPane().add(new Panel_Partida());
+		    partida.revalidate();
+		    partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			
 		}
 		if (e.getSource() == Boton[2]) {
