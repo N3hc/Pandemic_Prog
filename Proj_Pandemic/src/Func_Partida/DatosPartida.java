@@ -21,11 +21,8 @@ public class DatosPartida {
 		for (Ciudad ciudad : this.ciudades) {
 			if (ciudad.getNombre().equals(nCiudad)) {
 				ciudad.aumentarInfección(modificacion);
-			}		
-
-	}
-
-
+			}
+		}
 	}
 
 	public void modificarVacuna(String nVacuna, float modificacion) {
@@ -49,8 +46,8 @@ public class DatosPartida {
 
 	public void aumentarBrote() {
 		for (Ciudad ciudad : this.ciudades) {
-			if(ciudad.propagarInfeccion()) {
-				this.setBrotes(this.getBrotes()+1);
+			if (ciudad.propagarInfeccion()) {
+				this.setBrotes(this.getBrotes() + 1);
 			}
 		}
 	}
