@@ -66,7 +66,7 @@ public class Ciudad {
 	public void disminuirInfeccion (int Valor) {
 		setInfeccion(this.infeccion-Valor);
 	}
-	
+
 	public boolean propagarInfeccion () {		
 		if (this.infeccion > 3) {
 			setInfeccion(3);
@@ -86,8 +86,9 @@ public class Ciudad {
 
 	@Override
 	public String toString() {
-		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", plaga="
-				+ plaga + ", infeccion=" + infeccion + ", CiudadesColindantes="
+		return "Ciudad [nombre=" + nombre + ", coordenadas=" + Arrays.toString(coordenadas) + ", Plaga="
+
+				+ enfermedad + ", infeccion=" + infeccion + ", CiudadesColindantes="
 
 				+ Arrays.toString(CiudadesColindantes) + "]";
 	}
