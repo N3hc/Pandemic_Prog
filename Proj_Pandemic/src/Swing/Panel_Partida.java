@@ -18,7 +18,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	int cosa = 1;
 	JTextField txtProgresoInvasiones;
 	int[] arrayVacuna;
-	DatosPartida partida = new DatosPartida(1);
+	DatosPartida partida = new DatosPartida();
 	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
 			"Isla Lemma", "Isla Lisz", "Isla Narvo", "Ojo de Odquilla", "Cresta del Cuervo", "Rosevan",
 			"Puerto Epheria", "Finistella", "Calpheon", "Bosque Ceniza", "Grana", "Trent", "Tunkuta", "Duvencrue",
@@ -568,11 +568,14 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	private void panelCiudad(String nombre) {
+
+        
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		// Crear y mostrar el JDialog con las opciones
 		JDialog dialog = new JDialog(frame, "Título del Diálogo", true); // true para hacerlo modal
 		dialog.setLayout(null);
 		dialog.setSize(300, 300);
+		dialog.setLocation(690, 386);
 
 		JLabel lblCosa = new JLabel(nombre);
 		lblCosa.setFont(new Font("Tahoma", Font.PLAIN, 22));
