@@ -46,6 +46,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			partida.getContentPane().add(new Panel_Partida());
 			partida.revalidate();
 			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			
 		}
 		if (e.getSource() == Boton[1]) {
 			mostrarPopupCargarPartida();
