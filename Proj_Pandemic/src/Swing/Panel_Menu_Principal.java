@@ -10,10 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Func_Partida.control_de_partida;
+
 public class Panel_Menu_Principal extends JPanel implements ActionListener {
 
 	Button Boton[];
-
 	public Panel_Menu_Principal() {
 		Boton = new Button[7];
 		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Resumen de puntuaciones", "Autores",
@@ -41,11 +42,12 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == Boton[0]) {
 			mostrarPopupDificultad();
-			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-			partida.getContentPane().removeAll();
-			partida.getContentPane().add(new Panel_Partida());
-			partida.revalidate();
-			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			JFrame partidaInit = (JFrame) SwingUtilities.getWindowAncestor(this);
+			partidaInit.getContentPane().removeAll();
+			partidaInit.getContentPane().add(new Panel_Partida());
+			partidaInit.revalidate();
+			partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			
 		}
 		if (e.getSource() == Boton[1]) {
 			mostrarPopupCargarPartida();
