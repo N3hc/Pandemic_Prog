@@ -104,6 +104,7 @@ public class control_de_datos {
                     // Obtener y almacenar el valor del atributo
                     String valor = parametro.getTextContent();
                     valoresFacil.add(valor);
+                    val[j] = valor;
                 }
             }
 
