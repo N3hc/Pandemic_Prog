@@ -33,8 +33,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-//		cPartida.gestionarTurno(partida, 0);
 		partida.cargarDatos();
+		control_de_partida.gestionarTurno(partida, 0);
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
@@ -81,12 +81,25 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		dialog.setVisible(true);
 	}
 
+	public String Craftear() {
+		String[] opcionesCarga = { "Corazon de vell(Azul)", "Dandelion(Verde)", "Kzarka(Marron)", "Kutum(Negro)" };
+		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
+				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, opcionesCarga, opcionesCarga[0]);
+		if (armaSeleccionada != null) {
+			System.out.println("Arma seleccionada: " + armaSeleccionada);
+		}
+		return armaSeleccionada;
+		
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[0]) {
 			//campeones
 		}
 		if (e.getSource() == btnComponentes[1]) {
 			//Craftear
+			Craftear();
+		
 		}
 		if (e.getSource() == btnComponentes[2]) {
 			//Ajustes
