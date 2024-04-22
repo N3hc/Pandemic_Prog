@@ -6,14 +6,11 @@ public class personaje {
 	private int rol;
 	private int cooldown;
 	
-	public static void pasiva(int rol) {
-		if (rol == 1) {
-			
-		}else if (rol == 2) {
-			
-		}else if (rol == 3) {
-			
-		}
+	public personaje (String Nombre) {
+		this.setNombre(Nombre);
+		this.setPosActual("");
+		this.setRol((int) (Math.random()*3));
+		this.setCooldown(0);
 	}
 	public String getNombre() {
 		return nombre;
@@ -36,5 +33,11 @@ public class personaje {
 	@Override
 	public String toString() {
 		return "personaje [nombre=" + nombre + ", posActual=" + posActual + ", rol=" + rol + "]";
+	}
+	public int getCooldown() {
+		return cooldown;
+	}
+	public void setCooldown(int cooldown) {
+		this.cooldown = cooldown;
 	}
 }
