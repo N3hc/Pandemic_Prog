@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import Func_Partida.DatosPartida;
 import Func_Partida.Vacuna;
+import Func_Partida.control_de_partida;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JTextField txtProgresoInvasiones;
 	int cosa;
 	DatosPartida partida = new DatosPartida();
+	control_de_partida cPartida = new control_de_partida();
 	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
 			"Isla Lemma", "Isla Lisz", "Isla Narvo", "Ojo de Odquilla", "Cresta del Cuervo", "Rosevan",
 			"Puerto Epheria", "Finistella", "Calpheon", "Bosque Ceniza", "Grana", "Trent", "Tunkuta", "Duvencrue",
@@ -31,6 +33,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
+		cPartida.gestionarTurno(partida, 0);
 		partida.cargarDatos();
 		InitComponentes();
 		InitCiudadesBtn();
