@@ -19,7 +19,6 @@ public class Ciudad {
 		setActivado(false);
 	}
 
-	
 	public String getNombre() {
 		return nombre;
 	}

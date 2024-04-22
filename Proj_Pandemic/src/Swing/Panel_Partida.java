@@ -150,7 +150,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		lblCosa.setBounds(10, 10, 280, 46);
 		dialog.add(lblCosa);
 
-		JLabel nombreInvasor = new JLabel("Invasor: ");
+		JLabel nombreInvasor = new JLabel("Invasor: " );
 		nombreInvasor.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		nombreInvasor.setBounds(10, 64, 175, 46);
 		dialog.add(nombreInvasor);
