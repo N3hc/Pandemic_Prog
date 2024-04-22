@@ -30,6 +30,12 @@ public class DatosPartida {
 	}
 
 	public void cargarDatos() {
+		 String[] valoresDif = control_de_datos.Leer_Xml("Facil");
+		    float[] valoresFloat = new float[valoresDif.length];
+		    for (int i = 0; i < valoresDif.length; i++) {
+		        valoresFloat[i] = Float.parseFloat(valoresDif[i]);
+		    }
+		this.setDerCon(valoresFloat);
 		this.setCiudades(control_de_datos.cargarCiudades());
 		this.setVacunas(control_de_datos.cargarVacunas());
 		this.setVirus(control_de_datos.cargarVirus());
