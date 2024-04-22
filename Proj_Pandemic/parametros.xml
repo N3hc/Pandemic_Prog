@@ -15,7 +15,7 @@
         <numBrotesDerrota>10</numBrotesDerrota>
         	
         <aVacuna>25</aVacuna>
-	<infeccion> 2 </infeccion> 
+	<infeccion>1</infeccion> 
             
     </Facil>
             
@@ -34,7 +34,7 @@
         <numBrotesDerrota>8</numBrotesDerrota>
         	
         <aVacuna>12,5</aVacuna>
-        <infeccion> 1 </infeccion>    
+        <infeccion>2</infeccion>    
     </Normal>
       
 
@@ -52,7 +52,7 @@
         <numBrotesDerrota>6</numBrotesDerrota>
         	
         <aVacuna>8,34</aVacuna>
-        <infeccion> 3 </infeccion> 
+        <infeccion>3</infeccion> 
     </Dificil>
       
 
