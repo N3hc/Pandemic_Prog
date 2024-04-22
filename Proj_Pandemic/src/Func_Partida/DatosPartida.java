@@ -35,7 +35,7 @@ public class DatosPartida {
 		this.setVirus(control_de_datos.cargarVirus());
 		this.setPersonajes(control_de_datos.cargarPersonajes());
 		this.setBrotes(0);
-		this.setRondas(0);
+		this.setRondas(1);
 		this.setAcciones(4);
 	}
 
