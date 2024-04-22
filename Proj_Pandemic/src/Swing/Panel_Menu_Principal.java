@@ -100,8 +100,8 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		}
 	}
 
-	public void mostrarPopupDificultad() {
-		String[] opcionesDificultad = { "Fácil", "Normal", "Difícil" };
+	public String mostrarPopupDificultad() {
+		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
 		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
 				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
 				opcionesDificultad[0]);
@@ -113,6 +113,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			menu_principal.add(new Panel_Menu_Principal());
 			menu_principal.setVisible(true);
 		}
+		return dificultadSeleccionada;
 	}
 
 	public void mostrarPopupCargarPartida() {
