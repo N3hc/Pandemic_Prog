@@ -67,6 +67,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 					+ "Cada turno que pasas el tablero jugará contra ti y diferentes ciudades del mapa se verán afectados por las plagas que azotan al mundo\r\n"
 					+ "	-El número de ciudades infectadas por turno dependerá de tu criterio al iniciar el juego en el apartado parametros.\r\n"
 					+ "\r\n"
+					+ " -Los turnos se pasan automaticamente cuando hayas usado las 4 acciones. \r\n"
 					+ "Cada vez que una ciudad supera los tres brotes esta no sube más sus contadores sinó que exparce un contador a cada una de las ciudades lindantes\r\n"
 					+ "	-Efectivamente un brote puede implicar una cadena de infecciones en masa\r\n" + "\r\n"
 					+ "Las ciudades pueden tener en ellas diferentes héroes que te pueden ayudar en la partida:\r\n"

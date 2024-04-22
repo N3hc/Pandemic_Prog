@@ -748,28 +748,28 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnComponentes[2].addActionListener(this);
 
 		ProgressBar[0] = new JProgressBar();
-		ProgressBar[0].setValue(10);
+		ProgressBar[0].setValue(partida.getNivelVacuna("Corazon de Vell"));
 		ProgressBar[0].setForeground(Color.BLUE);
 		ProgressBar[0].setStringPainted(true);
 		ProgressBar[0].setBounds(10, 296, 239, 30);
 		add(ProgressBar[0]);
 
 		ProgressBar[1] = new JProgressBar();
-		ProgressBar[1].setValue(20);
+		ProgressBar[1].setValue(partida.getNivelVacuna("Dandelion"));
 		ProgressBar[1].setForeground(Color.GREEN);
 		ProgressBar[1].setStringPainted(true);
 		ProgressBar[1].setBounds(10, 336, 239, 30);
 		add(ProgressBar[1]);
 
 		ProgressBar[2] = new JProgressBar();
-		ProgressBar[2].setValue(30);
+		ProgressBar[2].setValue(partida.getNivelVacuna("Kzarka"));
 		ProgressBar[2].setForeground(new Color(128, 64, 64));
 		ProgressBar[2].setStringPainted(true);
 		ProgressBar[2].setBounds(10, 376, 239, 30);
 		add(ProgressBar[2]);
 
 		ProgressBar[3] = new JProgressBar();
-		ProgressBar[3].setValue(40);
+		ProgressBar[3].setValue(partida.getNivelVacuna("Kutum"));
 		ProgressBar[3].setForeground(new Color(0, 0, 0));
 		ProgressBar[3].setStringPainted(true);
 		ProgressBar[3].setBounds(10, 416, 239, 30);

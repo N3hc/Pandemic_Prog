@@ -57,6 +57,16 @@ public class DatosPartida {
 		return nivel;
 	}
 	
+	public int getNivelVacuna(String infeccion) {
+		int nivel = 0;
+		for (Vacuna vacuna : this.vacunas) {
+			if (vacuna.getNombre().equals(infeccion)) {
+				nivel = (int) vacuna.getPorcentaje();
+			}
+		}
+		return nivel;
+	}
+	
 	public ArrayList<Ciudad> getCiudades() {
 		return ciudades;
 	}
