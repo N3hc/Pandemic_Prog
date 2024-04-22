@@ -12,10 +12,10 @@ public class control_de_partida {
 	public static void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		datosPartida.setRondas(datosPartida.getRondas()+1);
 		Random random = new Random();
-		int [] ciudades_ya = new int [(int) datosPartida.getDerCon(1)];
+		int [] ciudades_ya = new int [(int) datosPartida.getDerCon(valor_momento)];
 		for (int i = 0; i < datosPartida.getDerCon(valor_momento); i++) {
 			int indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
-			for (int j = 0; j < datosPartida.getDerCon(1); j++ ) {
+			for (int j = 0; j < datosPartida.getDerCon(valor_momento); j++ ) {
 				while(ciudades_ya[j] == indiceAleatorio) {
 					indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
 				}

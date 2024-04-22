@@ -33,8 +33,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-//		cPartida.gestionarTurno(partida, 0);
 		partida.cargarDatos();
+		control_de_partida.gestionarTurno(partida, 0);
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
