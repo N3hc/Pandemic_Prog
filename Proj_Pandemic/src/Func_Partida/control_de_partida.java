@@ -53,7 +53,9 @@ public class control_de_partida {
 		}
 		return false;
 	}
-
+	public static void gestionarHeroes () {
+		
+	}
 	public static void gestionarCura(DatosPartida datosPartida) {
 		for(Vacuna vacuna : datosPartida.getVacunas()) {
 			if(vacuna.getPorcentaje()>= 100) {

@@ -119,6 +119,15 @@ public class control_de_datos {
 
 	}
 	
+	public static ArrayList<Personaje> cargarPersonajes(){
+		ArrayList<Personaje> personajes = new ArrayList<>();
+		for (int i = 0; i < 3; i++) {
+			Personaje personaje = new Personaje();
+			personajes.add(personaje);
+		}		
+		return personajes;
+	}
+	
 	public static ArrayList<Ciudad> cargarCiudades() {
 		        String Fit = "ciudades.txt";
 		        String s = "";
