@@ -33,7 +33,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		cPartida.gestionarTurno(partida, 0);
+//		cPartida.gestionarTurno(partida, 0);
 		partida.cargarDatos();
 		InitComponentes();
 		InitCiudadesBtn();
@@ -731,17 +731,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		add(fondoLabel);
 
-		JLabel lblHistorial = new JLabel("Historial");
-		lblHistorial.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblHistorial.setBounds(1262, 547, 260, 56);
-		add(lblHistorial);
-
 		setVisible(true);
 	}
 
 	private void InitComponentes() {
 		btnComponentes = new JButton[4];
-		Paneltxt = new JLabel[3];
+		Paneltxt = new JLabel[4];
 		ProgressBar = new JProgressBar[4];
 
 		btnComponentes[0] = new JButton("Campeones");
@@ -810,6 +805,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Paneltxt[2].setFont(new Font("Tahoma", Font.PLAIN, 28));
 		Paneltxt[2].setBounds(1290, 547, 260, 56);
 		add(Paneltxt[2]);
+		
+		Paneltxt[3] = new JLabel("Turno: " + partida.getRondas());
+		Paneltxt[3].setFont(new Font("Tahoma", Font.PLAIN, 28));
+		Paneltxt[3].setBounds(1316, 61, 260, 56);
+		add(Paneltxt[3]);
 
 		JTextArea txtrPrueba = new JTextArea();
 		txtrPrueba.setBackground(Color.DARK_GRAY);
@@ -819,5 +819,4 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		txtrPrueba.setBounds(1167, 613, 369, 162);
 		add(txtrPrueba);
 	}
-
 }
