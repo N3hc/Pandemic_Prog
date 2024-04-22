@@ -10,16 +10,14 @@ public class DatosPartida {
 	private int brotes;
 	private int rondas;
 	private int acciones;
-	private float [] DerCon;
+	private float[] DerCon;
 
 	public void modificarCiudad(String nCiudad, int modificacion) {
 		for (Ciudad ciudad : this.ciudades) {
 			if (ciudad.getNombre().equals(nCiudad)) {
 				ciudad.modificarInfección(modificacion);
-			}		
-
-	}
-
+			}
+		}
 	}
 
 	public void modificarVacuna(String nVacuna, float modificacion) {
@@ -39,7 +37,26 @@ public class DatosPartida {
 		this.setAcciones(4);
 	}
 
-
+	public String getVirusCiudad(String ciudadReq) {
+		String virus = "";
+		for (Ciudad ciudad : this.ciudades) {
+			if (ciudad.getNombre().equals(ciudadReq)) {
+				virus = ciudad.getEnfermedad();
+			}
+		}
+		return virus;
+	}
+	
+	public int getNivelInfeccionCiudad(String ciudadReq) {
+		int nivel = 0;
+		for (Ciudad ciudad : this.ciudades) {
+			if (ciudad.getNombre().equals(ciudadReq)) {
+				nivel = ciudad.getInfeccion();
+			}
+		}
+		return nivel;
+	}
+	
 	public ArrayList<Ciudad> getCiudades() {
 		return ciudades;
 	}
@@ -100,7 +117,7 @@ public class DatosPartida {
 		return DerCon[i];
 	}
 
-	public void setDerCon(float [] derCon) {
+	public void setDerCon(float[] derCon) {
 		DerCon = derCon;
 	}
 }

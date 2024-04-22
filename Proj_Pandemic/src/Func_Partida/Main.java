@@ -10,6 +10,8 @@ public class Main {
 	        for (Vacuna viruses : datosPartida.getVacunas()) {
 	            System.out.println(viruses.toString());
 	        }
+	        
+	        System.out.println(datosPartida.getVirusCiudad("Puerto Rath"));
 
 	}
 

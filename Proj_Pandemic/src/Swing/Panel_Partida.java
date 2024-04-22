@@ -7,16 +7,18 @@ import Func_Partida.Vacuna;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 
 public class Panel_Partida extends JPanel implements ActionListener {
 
 	JButton[] btnCiudad;
 	JButton[] btnComponentes;
+	JButton[] btnAccCiudades;
 	JLabel[] Paneltxt;
 	JProgressBar[] ProgressBar;
 	JTextField txtProgresoInvasiones;
-	int cosa = 1;
+	int cosa;
 	DatosPartida partida = new DatosPartida();
 	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
 			"Isla Lemma", "Isla Lisz", "Isla Narvo", "Ojo de Odquilla", "Cresta del Cuervo", "Rosevan",
@@ -29,6 +31,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
+		partida.cargarDatos();
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
@@ -36,111 +39,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 
-	private void InitFondo() {
-		setOpaque(true);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-		ImageIcon imagen = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\Worldmap_1550.png");
-
-		Image imgEscalada = imagen.getImage().getScaledInstance(screenSize.width, screenSize.height,
-				Image.SCALE_SMOOTH);
-		ImageIcon imagenEscalada = new ImageIcon(imgEscalada);
-
-		JLabel fondoLabel = new JLabel(imagenEscalada);
-		fondoLabel.setBounds(0, 10, screenSize.width, screenSize.height); // Posicionamos el fondoLabel para cubrir todo
-		setOpaque(true); // el panel.
-
-		add(fondoLabel);
-
-		JLabel lblHistorial = new JLabel("Historial");
-		lblHistorial.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblHistorial.setBounds(1262, 547, 260, 56);
-		add(lblHistorial);
-
-		setVisible(true);
-	}
-
-	private void InitComponentes() {
-		btnComponentes = new JButton[3];
-		Paneltxt = new JLabel[3];
-		ProgressBar = new JProgressBar[4];
-
-		btnComponentes[0] = new JButton("Campeones");
-		btnComponentes[0].setBounds(923, 691, 144, 56);
-		add(btnComponentes[0]);
-		btnComponentes[0].addActionListener(this);
-
-		btnComponentes[1] = new JButton("Craftear");
-		btnComponentes[1].setBounds(737, 691, 144, 56);
-		add(btnComponentes[1]);
-		btnComponentes[1].addActionListener(this);
-		btnComponentes[1].setToolTipText("sad");
-
-		btnComponentes[2] = new JButton("Ajustes");
-		btnComponentes[2].setBounds(1437, 31, 85, 74);
-		add(btnComponentes[2]);
-		btnComponentes[2].addActionListener(this);
-
-		ProgressBar[0] = new JProgressBar();
-		ProgressBar[0].setValue(10);
-		ProgressBar[0].setForeground(Color.BLUE);
-		ProgressBar[0].setStringPainted(true);
-		ProgressBar[0].setBounds(10, 296, 239, 30);
-		add(ProgressBar[0]);
-
-		ProgressBar[1] = new JProgressBar();
-		ProgressBar[1].setValue(20);
-		ProgressBar[1].setForeground(Color.GREEN);
-		ProgressBar[1].setStringPainted(true);
-		ProgressBar[1].setBounds(10, 336, 239, 30);
-		add(ProgressBar[1]);
-
-		ProgressBar[2] = new JProgressBar();
-		ProgressBar[2].setValue(30);
-		ProgressBar[2].setForeground(new Color(128, 64, 64));
-		ProgressBar[2].setStringPainted(true);
-		ProgressBar[2].setBounds(10, 376, 239, 30);
-		add(ProgressBar[2]);
-
-		ProgressBar[3] = new JProgressBar();
-		ProgressBar[3].setValue(40);
-		ProgressBar[3].setForeground(new Color(0, 0, 0));
-		ProgressBar[3].setStringPainted(true);
-		ProgressBar[3].setBounds(10, 416, 239, 30);
-		add(ProgressBar[3]);
-
-		Paneltxt[1] = new JLabel("Progreso Armas");
-		Paneltxt[1].setFont(new Font("Tahoma", Font.PLAIN, 19));
-		Paneltxt[1].setText("   Progreso Armas");
-		Paneltxt[1].setBounds(10, 250, 190, 46);
-		add(Paneltxt[1]);
-
-		Paneltxt[0] = new JLabel("Brotes");
-		Paneltxt[0].setFont(new Font("Tahoma", Font.PLAIN, 28));
-		Paneltxt[0].setBounds(804, 93, 308, 56);
-		Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
-		add(Paneltxt[0]);
-
-		Paneltxt[2] = new JLabel("Historial");
-		Paneltxt[2].setFont(new Font("Tahoma", Font.PLAIN, 28));
-		Paneltxt[2].setBounds(1290, 547, 260, 56);
-		add(Paneltxt[2]);
-
-		JTextArea txtrPrueba = new JTextArea();
-		txtrPrueba.setBackground(Color.DARK_GRAY);
-		txtrPrueba.setText("Prueba\r\n");
-		txtrPrueba.setFont(new Font("Courier New", Font.PLAIN, 12));
-		txtrPrueba.setForeground(Color.GREEN);
-		txtrPrueba.setBounds(1115, 613, 421, 162);
-		add(txtrPrueba);
-	}
-
 	private void panelCiudad(String nombre) {
-
+		btnAccCiudades = new JButton[2];
+		
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		// Crear y mostrar el JDialog con las opciones
-		JDialog dialog = new JDialog(frame, "Título del Diálogo", true); // true para hacerlo modal
+		JDialog dialog = new JDialog(frame, "Ciudad", true); // true para hacerlo modal
 		dialog.setLayout(null);
 		dialog.setSize(300, 300);
 		dialog.setLocation(690, 386);
@@ -150,34 +54,39 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		lblCosa.setBounds(10, 10, 280, 46);
 		dialog.add(lblCosa);
 
-		JLabel nombreInvasor = new JLabel("Invasor: " );
+		JLabel nombreInvasor = new JLabel("Invasor: " + partida.getVirusCiudad(nombre));
 		nombreInvasor.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		nombreInvasor.setBounds(10, 64, 175, 46);
 		dialog.add(nombreInvasor);
 
-		JLabel nivelConquista = new JLabel("Nivel Conquista: ");
+		JLabel nivelConquista = new JLabel("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
 		nivelConquista.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		nivelConquista.setBounds(10, 120, 175, 46);
 		dialog.add(nivelConquista);
 
-		JButton btnMatar = new JButton("Matar");
-		btnMatar.setBounds(10, 200, 120, 50);
-		dialog.add(btnMatar);
+		btnAccCiudades[0] = new JButton("Matar");
+		btnAccCiudades[0].setBounds(10, 200, 120, 50);
+		dialog.add(btnAccCiudades[0]);
 
-		JButton btnConquistar = new JButton("Conquistar");
-		btnConquistar.setBounds(140, 200, 120, 50);
-		dialog.add(btnConquistar);
+		btnAccCiudades[1] = new JButton("Conquistar");
+		btnAccCiudades[1].setBounds(140, 200, 120, 50);
+		dialog.add(btnAccCiudades[1]);
 
-		dialog.add(btnMatar);
-		dialog.add(btnConquistar);
+		dialog.add(btnAccCiudades[0]);
+		dialog.add(btnAccCiudades[1]);
 
 		dialog.setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[0]) {
-			Paneltxt[0].setText("Brotes Totales = " + cosa);
-			ProgressBar[0].setValue(cosa);
+			//campeones
+		}
+		if (e.getSource() == btnComponentes[1]) {
+			//Craftear
+		}
+		if (e.getSource() == btnComponentes[2]) {
+			//Ajustes
 		}
 		if (e.getSource() == btnCiudad[0]) {
 			String nCiudad = nombres[0];
@@ -791,6 +700,105 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnCiudad[45].addActionListener(this);
 		btnCiudad[46].addActionListener(this);
 		btnCiudad[47].addActionListener(this);
-
 	}
+	private void InitFondo() {
+		setOpaque(true);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+		ImageIcon imagen = new ImageIcon(
+				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\Worldmap_1550.png");
+
+		Image imgEscalada = imagen.getImage().getScaledInstance(screenSize.width, screenSize.height,
+				Image.SCALE_SMOOTH);
+		ImageIcon imagenEscalada = new ImageIcon(imgEscalada);
+
+		JLabel fondoLabel = new JLabel(imagenEscalada);
+		fondoLabel.setBounds(0, 10, screenSize.width, screenSize.height); // Posicionamos el fondoLabel para cubrir todo
+		setOpaque(true); // el panel.
+
+		add(fondoLabel);
+
+		JLabel lblHistorial = new JLabel("Historial");
+		lblHistorial.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		lblHistorial.setBounds(1262, 547, 260, 56);
+		add(lblHistorial);
+
+		setVisible(true);
+	}
+
+	private void InitComponentes() {
+		btnComponentes = new JButton[3];
+		Paneltxt = new JLabel[3];
+		ProgressBar = new JProgressBar[4];
+
+		btnComponentes[0] = new JButton("Campeones");
+		btnComponentes[0].setBounds(923, 691, 144, 56);
+		add(btnComponentes[0]);
+		btnComponentes[0].addActionListener(this);
+
+		btnComponentes[1] = new JButton("Craftear");
+		btnComponentes[1].setBounds(737, 691, 144, 56);
+		add(btnComponentes[1]);
+		btnComponentes[1].addActionListener(this);
+		btnComponentes[1].setToolTipText("cosa");
+
+		btnComponentes[2] = new JButton("Ajustes");
+		btnComponentes[2].setBounds(1437, 31, 85, 74);
+		add(btnComponentes[2]);
+		btnComponentes[2].addActionListener(this);
+
+		ProgressBar[0] = new JProgressBar();
+		ProgressBar[0].setValue(10);
+		ProgressBar[0].setForeground(Color.BLUE);
+		ProgressBar[0].setStringPainted(true);
+		ProgressBar[0].setBounds(10, 296, 239, 30);
+		add(ProgressBar[0]);
+
+		ProgressBar[1] = new JProgressBar();
+		ProgressBar[1].setValue(20);
+		ProgressBar[1].setForeground(Color.GREEN);
+		ProgressBar[1].setStringPainted(true);
+		ProgressBar[1].setBounds(10, 336, 239, 30);
+		add(ProgressBar[1]);
+
+		ProgressBar[2] = new JProgressBar();
+		ProgressBar[2].setValue(30);
+		ProgressBar[2].setForeground(new Color(128, 64, 64));
+		ProgressBar[2].setStringPainted(true);
+		ProgressBar[2].setBounds(10, 376, 239, 30);
+		add(ProgressBar[2]);
+
+		ProgressBar[3] = new JProgressBar();
+		ProgressBar[3].setValue(40);
+		ProgressBar[3].setForeground(new Color(0, 0, 0));
+		ProgressBar[3].setStringPainted(true);
+		ProgressBar[3].setBounds(10, 416, 239, 30);
+		add(ProgressBar[3]);
+
+		Paneltxt[1] = new JLabel("Progreso Armas");
+		Paneltxt[1].setFont(new Font("Tahoma", Font.PLAIN, 19));
+		Paneltxt[1].setText("   Progreso Armas");
+		Paneltxt[1].setBounds(10, 250, 190, 46);
+		add(Paneltxt[1]);
+
+		Paneltxt[0] = new JLabel("Brotes");
+		Paneltxt[0].setFont(new Font("Tahoma", Font.PLAIN, 28));
+		Paneltxt[0].setBounds(804, 93, 308, 56);
+		Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
+		add(Paneltxt[0]);
+
+		Paneltxt[2] = new JLabel("Historial");
+		Paneltxt[2].setFont(new Font("Tahoma", Font.PLAIN, 28));
+		Paneltxt[2].setBounds(1290, 547, 260, 56);
+		add(Paneltxt[2]);
+
+		JTextArea txtrPrueba = new JTextArea();
+		txtrPrueba.setBackground(Color.DARK_GRAY);
+		txtrPrueba.setText("Prueba\r\n");
+		txtrPrueba.setFont(new Font("Courier New", Font.PLAIN, 12));
+		txtrPrueba.setForeground(Color.GREEN);
+		txtrPrueba.setBounds(1115, 613, 421, 162);
+		add(txtrPrueba);
+	}
+
 }
