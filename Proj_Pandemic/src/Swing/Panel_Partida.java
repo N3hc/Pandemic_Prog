@@ -45,35 +45,35 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		// Crear y mostrar el JDialog con las opciones
 		JDialog dialog = new JDialog(frame, "Ciudad", true); // true para hacerlo modal
-		dialog.setLayout(null);
+		dialog.getContentPane().setLayout(null);
 		dialog.setSize(300, 300);
 		dialog.setLocation(690, 386);
 
 		JLabel lblCosa = new JLabel(nombre);
 		lblCosa.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCosa.setBounds(10, 10, 280, 46);
-		dialog.add(lblCosa);
+		dialog.getContentPane().add(lblCosa);
 
 		JLabel nombreInvasor = new JLabel("Invasor: " + partida.getVirusCiudad(nombre));
 		nombreInvasor.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		nombreInvasor.setBounds(10, 64, 175, 46);
-		dialog.add(nombreInvasor);
+		dialog.getContentPane().add(nombreInvasor);
 
 		JLabel nivelConquista = new JLabel("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
 		nivelConquista.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		nivelConquista.setBounds(10, 120, 175, 46);
-		dialog.add(nivelConquista);
+		dialog.getContentPane().add(nivelConquista);
 
 		btnAccCiudades[0] = new JButton("Matar");
 		btnAccCiudades[0].setBounds(10, 200, 120, 50);
-		dialog.add(btnAccCiudades[0]);
+		dialog.getContentPane().add(btnAccCiudades[0]);
 
 		btnAccCiudades[1] = new JButton("Conquistar");
 		btnAccCiudades[1].setBounds(140, 200, 120, 50);
-		dialog.add(btnAccCiudades[1]);
+		dialog.getContentPane().add(btnAccCiudades[1]);
 
-		dialog.add(btnAccCiudades[0]);
-		dialog.add(btnAccCiudades[1]);
+		dialog.getContentPane().add(btnAccCiudades[0]);
+		dialog.getContentPane().add(btnAccCiudades[1]);
 
 		dialog.setVisible(true);
 	}
@@ -294,6 +294,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\gateway_2.png");
 		ImageIcon icono3 = new ImageIcon(
 				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\gateway_3.png");
+		ImageIcon icono4 = new ImageIcon(
+				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\Ajustes.png");
 
 		// Escala el ImageIcon al tamaño del botón
 		Image imagenEscalada = icono.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
@@ -305,12 +307,18 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Image imagenEscalada3 = icono3.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
 				Image.SCALE_SMOOTH);
 
+
 		// Crea un nuevo ImageIcon con la imagen escalada
 		ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
 		ImageIcon iconoEscalado1 = new ImageIcon(imagenEscalada1);
 		ImageIcon iconoEscalado2 = new ImageIcon(imagenEscalada2);
 		ImageIcon iconoEscalado3 = new ImageIcon(imagenEscalada3);
 
+
+		
+		btnComponentes[2].setIcon(icono4);
+		btnComponentes[2].setText(null);
+		
 		btnCiudad[0].setIcon(iconoEscalado);
 		btnCiudad[0].setText(null);
 
@@ -458,6 +466,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	private void InitCiudadesBtn() {
+
 		btnCiudad = new JButton[48];
 
 		btnCiudad[0] = new JButton("PuertoRath");
@@ -701,6 +710,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnCiudad[46].addActionListener(this);
 		btnCiudad[47].addActionListener(this);
 	}
+
 	private void InitFondo() {
 		setOpaque(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -727,25 +737,31 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	private void InitComponentes() {
-		btnComponentes = new JButton[3];
+		btnComponentes = new JButton[4];
 		Paneltxt = new JLabel[3];
 		ProgressBar = new JProgressBar[4];
 
 		btnComponentes[0] = new JButton("Campeones");
-		btnComponentes[0].setBounds(923, 691, 144, 56);
+		btnComponentes[0].setBounds(823, 691, 144, 56);
 		add(btnComponentes[0]);
 		btnComponentes[0].addActionListener(this);
 
 		btnComponentes[1] = new JButton("Craftear");
-		btnComponentes[1].setBounds(737, 691, 144, 56);
+		btnComponentes[1].setBounds(637, 691, 144, 56);
 		add(btnComponentes[1]);
 		btnComponentes[1].addActionListener(this);
 		btnComponentes[1].setToolTipText("cosa");
 
 		btnComponentes[2] = new JButton("Ajustes");
-		btnComponentes[2].setBounds(1437, 31, 85, 74);
+		btnComponentes[2].setBounds(1463, 48, 48, 48);
 		add(btnComponentes[2]);
 		btnComponentes[2].addActionListener(this);
+		
+		btnComponentes[3] = new JButton("Siguiente Turno");
+		btnComponentes[3].setBounds(1009, 691, 144, 56);
+		add(btnComponentes[3]);
+		btnComponentes[3].addActionListener(this);
+		btnComponentes[3].setToolTipText("cosa");
 
 		ProgressBar[0] = new JProgressBar();
 		ProgressBar[0].setValue(partida.getNivelVacuna("Corazon de Vell"));
@@ -797,7 +813,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		txtrPrueba.setText("Prueba\r\n");
 		txtrPrueba.setFont(new Font("Courier New", Font.PLAIN, 12));
 		txtrPrueba.setForeground(Color.GREEN);
-		txtrPrueba.setBounds(1115, 613, 421, 162);
+		txtrPrueba.setBounds(1167, 613, 369, 162);
 		add(txtrPrueba);
 	}
 
