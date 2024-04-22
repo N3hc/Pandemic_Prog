@@ -1,19 +1,20 @@
 package Func_Partida;
 
-public class personaje {
+public class Personaje {
 	private String nombre;
 	private String posActual;
 	private int rol;
 	private int cooldown;
-		String[] nombres = { "Guerrero", "Exploradora", "Hechicera", "Berserker", "Domadora", "Musa", "Maehwa", "Valquiria",
+	String[] nombres = { "Guerrero", "Exploradora", "Hechicera", "Berserker", "Domadora", "Musa", "Maehwa", "Valquiria",
 			"Kunoichi", "Ninja", "Mago", "Maga", "Luchador", "Misticaa", "Lahn", "Montaraz", "Adalid Oscura", "Shai",
 			"Guardiana", "Hashashin", "Nova", "Sabio", "Corsaria", "Drakania", "Wusa", "Maegu", "Erudita" };
-	
-	public personaje (String Nombre) {
-		this.setNombre(Nombre);
+
+	public Personaje () {
+		this.setNombre(nombres[(int) (Math.random()*nombres.length)]);
 		this.setPosActual("");
 		this.setRol((int) (Math.random()*3));
 		this.setCooldown(0);
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -49,5 +50,4 @@ public class personaje {
 	public void setCooldown(int cooldown) {
 		this.cooldown = cooldown;
 	}
-}
 }

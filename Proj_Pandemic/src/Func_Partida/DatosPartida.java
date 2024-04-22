@@ -1,4 +1,4 @@
-package Func_Partida;
+	package Func_Partida;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ public class DatosPartida {
 	private ArrayList<Ciudad> ciudades = new ArrayList<>();
 	private ArrayList<Virus> virus = new ArrayList<>();
 	private ArrayList<Vacuna> vacunas = new ArrayList<>();
-	private ArrayList<personaje> personajes = new ArrayList<>();
+	private ArrayList<Personaje> personajes = new ArrayList<>();
 	private int brotes;
 	private int rondas;
 	private int acciones;
@@ -32,6 +32,7 @@ public class DatosPartida {
 		this.setCiudades(control_de_datos.cargarCiudades());
 		this.setVacunas(control_de_datos.cargarVacunas());
 		this.setVirus(control_de_datos.cargarVirus());
+		this.setPersonajes(control_de_datos.cargarPersonajes());
 		this.setBrotes(0);
 		this.setRondas(0);
 		this.setAcciones(4);
@@ -115,11 +116,11 @@ public class DatosPartida {
 		this.acciones = acciones;
 	}
 
-	public ArrayList<personaje> getPersonajes() {
+	public ArrayList<Personaje> getPersonajes() {
 		return personajes;
 	}
 
-	public void setPersonajes(ArrayList<personaje> personajes) {
+	public void setPersonajes(ArrayList<Personaje> personajes) {
 		this.personajes = personajes;
 	}
 
