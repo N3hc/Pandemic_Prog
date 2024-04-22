@@ -12,8 +12,15 @@ public class control_de_partida {
 	public static void gestionarTurno(DatosPartida datosPartida) {
 		datosPartida.setRondas(datosPartida.getRondas()+1);
 		Random random = new Random();
+		int [] ciudades_ya = new int [(int) datosPartida.getDerCon(1)];
 		for (int i = 0; i < datosPartida.getDerCon(1); i++) {
-	        int indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
+			int indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
+			for (int j = 0; j < datosPartida.getDerCon(1); j++ ) {
+				while(ciudades_ya[j] == indiceAleatorio) {
+					indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
+				}
+				ciudades_ya[i] = indiceAleatorio;
+			}
 	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
 			gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), (int) datosPartida.getDerCon(4));
 		}
@@ -46,9 +53,7 @@ public class control_de_partida {
 		}
 		return false;
 	}
-	public static void gestionarFrases() {
-		
-	}
+
 	public static void gestionarCura(DatosPartida datosPartida) {
 		for(Vacuna vacuna : datosPartida.getVacunas()) {
 			if(vacuna.getPorcentaje()>= 100) {
