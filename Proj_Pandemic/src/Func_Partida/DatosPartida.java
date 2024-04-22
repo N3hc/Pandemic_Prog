@@ -1,6 +1,7 @@
 	package Func_Partida;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DatosPartida {
 	private ArrayList<Ciudad> ciudades = new ArrayList<>();
@@ -130,5 +131,12 @@ public class DatosPartida {
 
 	public void setDerCon(float[] derCon) {
 		DerCon = derCon;
+	}
+
+	@Override
+	public String toString() {
+		return "DatosPartida [ciudades=" + ciudades + ", virus=" + virus + ", vacunas=" + vacunas + ", personajes="
+				+ personajes + ", brotes=" + brotes + ", rondas=" + rondas + ", acciones=" + acciones + ", DerCon="
+				+ Arrays.toString(DerCon) + "]";
 	}
 }
