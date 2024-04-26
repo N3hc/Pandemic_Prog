@@ -134,6 +134,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == btnComponentes[2]) {
 			// Ajustes
+			
 		}
 		
 		if (e.getSource() == btnComponentes[3]) {
@@ -334,7 +335,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			String nCiudad = nombres[47];
 			panelCiudad(nCiudad);
 		}
-
 	}
 
 	private void generarIcono() {

@@ -13,8 +13,8 @@ public class DatosPartida {
 	private int acciones;
 	private int[] DerCon;
 
-	public void cargarDatos() {
-		 String[] valoresDif = control_de_datos.Leer_Xml("Facil");
+	public void cargarDatos(String Dific) {
+		 String[] valoresDif = control_de_datos.Leer_Xml(Dific);
 		    int[] valoresInt = new int[valoresDif.length];
 		    for (int i = 0; i < valoresDif.length; i++) {
 		        valoresInt[i] = Integer.parseInt(valoresDif[i]);
