@@ -108,15 +108,13 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
-			cPartida.gestionarVacuna(partida, "Corazon de Vell");
-//			ProgressBar[0].setValue(partida.getNivelVacuna("Corazon de Vell"));
-//			ProgressBar[1].setValue(partida.getNivelVacuna("Dandelion"));
-//			ProgressBar[2].setValue(partida.getNivelVacuna("Kzarka"));
-//			ProgressBar[3].setValue(partida.getNivelVacuna("Kutum"));
-			ProgressBar[0].setValue(partida.getNivelVacuna("Azul"));
-			ProgressBar[1].setValue(partida.getNivelVacuna("Verde"));
-			ProgressBar[2].setValue(partida.getNivelVacuna("Rojo"));
-			ProgressBar[3].setValue(partida.getNivelVacuna("Negro"));
+			cPartida.gestionarVacuna(partida, Craftear());
+			int i =0;
+	        for (Vacuna viruses : partida.getVacunas()) {
+	        	ProgressBar[i].setValue(partida.getNivelVacuna(Vacunas[i]));
+	        	i++;
+	        }
+	        i = 0;
 
 		}
 		if (e.getSource() == btnComponentes[2]) {

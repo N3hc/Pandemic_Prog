@@ -28,10 +28,6 @@ public class control_de_partida {
 			gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), (int) datosPartida.getDerCon(4));
 		}
 	}
-	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
-		for(Vacuna vacuna : datosPartida.getVacunas()) {
-			if(vacuna.getColor().equals(nVacuna)) {
-		vacuna.setPorcentaje(vacuna.getPorcentaje()+datosPartida.getDerCon(3));
 
 	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
 		for (Vacuna vacuna : datosPartida.getVacunas()) {
