@@ -41,7 +41,7 @@ public class control_de_partida {
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int inf) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(nCiudad)) {
-				ciudad.modificarInfección(inf);
+				ciudad.modificarInfección(-inf);
 			}
 		}
 	}

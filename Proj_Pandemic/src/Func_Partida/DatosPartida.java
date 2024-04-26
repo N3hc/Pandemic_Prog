@@ -13,21 +13,13 @@ public class DatosPartida {
 	private int acciones;
 	private int[] DerCon;
 
-//	public void modificarCiudad(String nCiudad, int modificacion) {
-//		for (Ciudad ciudad : this.ciudades) {
-//			if (ciudad.getNombre().equals(nCiudad)) {
-//				ciudad.modificarInfección(modificacion);
-//			}
-//		}
-//	}
-
-	public void cargarDatos(String dific) {
-		 String[] valoresDif = control_de_datos.Leer_Xml(dific);
-		    int[] valoresFloat = new int[valoresDif.length];
+	public void cargarDatos() {
+		 String[] valoresDif = control_de_datos.Leer_Xml("Facil");
+		    int[] valoresInt = new int[valoresDif.length];
 		    for (int i = 0; i < valoresDif.length; i++) {
-		        valoresFloat[i] = (int) Float.parseFloat(valoresDif[i]);
+		        valoresInt[i] = Integer.parseInt(valoresDif[i]);
 		    }
-		this.setDerCon(valoresFloat);
+		this.setDerCon(valoresInt);
 		this.setCiudades(control_de_datos.cargarCiudades());
 		this.setVacunas(control_de_datos.cargarVacunas());
 		this.setVirus(control_de_datos.cargarVirus());

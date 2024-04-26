@@ -148,7 +148,7 @@ public class control_de_datos {
 		                if (Desglose [1].equals("0")) {
 		                	Desglose[1] = "Tritones";
 		                } else if (Desglose [1].equals("1")) {
-		                	Desglose [1] = "Antárboles";
+		                	Desglose [1] = "Antarboles";
 		                } else if (Desglose [1].equals("2")) {
 		                	Desglose [1] = "Goblos";
 		                } else if (Desglose [1].equals("3")) {
@@ -180,7 +180,7 @@ public class control_de_datos {
 	}
 	public static ArrayList<Virus> cargarVirus() {
 		ArrayList<Virus>Viruses = new ArrayList<>();
-		String [] Idn_Nom_Col = {"0","Tritones","Azul","1","Antárboles","Verde","2","Goblos","Rojo","3","Momias","Negro"};
+		String [] Idn_Nom_Col = {"0","Tritones","Azul","1","Antarboles","Verde","2","Goblos","Rojo","3","Momias","Negro"};
 		for (int i = 0; i < 12; i+=3) {
 			Virus virus= new Virus(Idn_Nom_Col[i], Idn_Nom_Col[i+1], Idn_Nom_Col[i+2]);
 			Viruses.add(virus);
