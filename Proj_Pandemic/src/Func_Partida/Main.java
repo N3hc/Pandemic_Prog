@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		DatosPartida datosPartida = new DatosPartida();
-		datosPartida.cargarDatos();
+		datosPartida.cargarDatos("Normal");
 		
 		control_de_partida cdp = new control_de_partida();
 		
