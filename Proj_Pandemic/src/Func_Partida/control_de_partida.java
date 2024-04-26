@@ -29,6 +29,7 @@ public class control_de_partida {
 		for(Vacuna vacuna : datosPartida.getVacunas()) {
 			if(vacuna.getColor().equals(nVacuna)) {
 		vacuna.setPorcentaje(datosPartida.getDerCon(3));
+
 			}
 		}
 	}

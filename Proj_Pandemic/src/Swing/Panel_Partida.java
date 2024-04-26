@@ -34,7 +34,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
 		partida.cargarDatos();
-		control_de_partida.gestionarTurno(partida, 0);
+		cPartida.gestionarTurno(partida, 0);
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
@@ -82,7 +82,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	public String Craftear() {
-		String[] opcionesCarga = { "Corazon de vell(Azul)", "Dandelion(Verde)", "Kzarka(Marron)", "Kutum(Negro)" };
+		String[] opcionesCarga = { "Corazon de vell", "Dandelion", "Kzarka", "Kutum" };
 		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
 				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, opcionesCarga, opcionesCarga[0]);
 		if (armaSeleccionada != null) {
@@ -98,8 +98,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == btnComponentes[1]) {
 			//Craftear
-			Craftear();
-		
+			cPartida.gestionarVacuna(partida, Craftear());
 		}
 		if (e.getSource() == btnComponentes[2]) {
 			//Ajustes
