@@ -19,9 +19,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JLabel[] Paneltxt;
 	JProgressBar[] ProgressBar;
 	JTextField txtProgresoInvasiones;
-
 	String[] Vacunas;
-
 	int cosa;
 	DatosPartida partida = new DatosPartida();
 	control_de_partida cPartida = new control_de_partida();
@@ -53,12 +51,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		if (dificultadSeleccionada != null) {
 			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
 		}
-//          else {
-//			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-//			menu_principal.remove(this);
-//			menu_principal.add(new Panel_Menu_Principal());
-//			menu_principal.setVisible(true);
-//		}
 		return dificultadSeleccionada;
 	}
 	
@@ -100,7 +92,14 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnAccCiudades[0] = new JButton("Matar");
 		btnAccCiudades[0].setBounds(10, 200, 120, 50);
 		dialog.getContentPane().add(btnAccCiudades[0]);
-
+		btnAccCiudades[0].addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        // Acción a realizar cuando se hace clic en el botón
+		        cPartida.gestionarInfeccion(partida, nombre, 1);
+		    }
+		});
+		
 		btnAccCiudades[1] = new JButton("Conquistar");
 		btnAccCiudades[1].setBounds(140, 200, 120, 50);
 		dialog.getContentPane().add(btnAccCiudades[1]);
@@ -132,11 +131,17 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	        	i++;
 	        }
 	        i = 0;
-
 		}
 		if (e.getSource() == btnComponentes[2]) {
 			// Ajustes
 		}
+		
+		if (e.getSource() == btnComponentes[3]) {
+			// siguiente turno
+			cPartida.gestionarTurno(partida, 1);
+			Paneltxt[3].setText("Turno: " + partida.getRondas());
+		}
+		
 		if (e.getSource() == btnCiudad[0]) {
 			String nCiudad = nombres[0];
 			panelCiudad(nCiudad);
@@ -791,7 +796,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnComponentes[1].setBounds(637, 691, 144, 56);
 		add(btnComponentes[1]);
 		btnComponentes[1].addActionListener(this);
-		btnComponentes[1].setToolTipText("cosa");
+
 
 		btnComponentes[2] = new JButton("Ajustes");
 		btnComponentes[2].setBounds(1463, 48, 48, 48);
@@ -802,7 +807,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnComponentes[3].setBounds(1009, 691, 144, 56);
 		add(btnComponentes[3]);
 		btnComponentes[3].addActionListener(this);
-		btnComponentes[3].setToolTipText("cosa");
 
 		ProgressBar[0] = new JProgressBar();
 		ProgressBar[0].setValue(partida.getNivelVacuna("Corazon de Vell"));
@@ -849,9 +853,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Paneltxt[2].setBounds(1290, 547, 260, 56);
 		add(Paneltxt[2]);
 
-		Paneltxt[3] = new JLabel("Turno: " + partida.getRondas());
+		Paneltxt[3] = new JLabel("Turno: ");
 		Paneltxt[3].setFont(new Font("Tahoma", Font.PLAIN, 28));
 		Paneltxt[3].setBounds(1316, 61, 260, 56);
+		Paneltxt[3].setText(("Turno: " + partida.getRondas()));
 		add(Paneltxt[3]);
 
 		JTextArea txtrPrueba = new JTextArea();

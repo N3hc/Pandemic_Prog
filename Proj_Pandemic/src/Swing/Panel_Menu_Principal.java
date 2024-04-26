@@ -48,10 +48,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			partidaInit.getContentPane().add(new Panel_Partida());
 			partidaInit.revalidate();
 			partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-			menu_principal.remove(this);
-			menu_principal.add(new Panel_Menu_Principal());
-			menu_principal.setVisible(true);
+
 
 		}
 		if (e.getSource() == Boton[1]) {
@@ -60,10 +57,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			partida.getContentPane().add(new Panel_Partida());
 			partida.revalidate();
 			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-			menu_principal.remove(this);
-			menu_principal.add(new Panel_Menu_Principal());
-			menu_principal.setVisible(true);
+
 
 		}
 		if (e.getSource() == Boton[2]) {
