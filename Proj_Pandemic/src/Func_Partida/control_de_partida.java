@@ -3,13 +3,13 @@ package Func_Partida;
 import java.util.Random;
 
 public class control_de_partida {
-	public static void iniciarPartida() {
+	public void iniciarPartida() {
 		
 	}
-	public static void iniciarPartidaGuardada(String id) {
+	public void iniciarPartidaGuardada(String id) {
 		
 	}
-	public static void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
+	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		datosPartida.setRondas(datosPartida.getRondas()+1);
 		Random random = new Random();
 		int [] ciudades_ya = new int [(int) datosPartida.getDerCon(valor_momento)];
@@ -25,14 +25,14 @@ public class control_de_partida {
 			gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), (int) datosPartida.getDerCon(4));
 		}
 	}
-	public static void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
+	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
 		for(Vacuna vacuna : datosPartida.getVacunas()) {
-			if(vacuna.getNombre().equals(nVacuna)) {
+			if(vacuna.getColor().equals(nVacuna)) {
 		datosPartida.modificarVacuna(nVacuna, datosPartida.getDerCon(3));
 			}
 		}
 	}
-	public static void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int inf) {
+	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int inf) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(nCiudad)) {
 				ciudad.modificarInfección(inf);
@@ -53,10 +53,10 @@ public class control_de_partida {
 		}
 		return false;
 	}
-	public static void gestionarHeroes () {
+	public void gestionarHeroes () {
 		
 	}
-	public static void gestionarCura(DatosPartida datosPartida) {
+	public void gestionarCura(DatosPartida datosPartida) {
 		for(Vacuna vacuna : datosPartida.getVacunas()) {
 			if(vacuna.getPorcentaje()>= 100) {
 				vacuna.setEstado(true);

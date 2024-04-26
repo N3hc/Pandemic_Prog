@@ -23,7 +23,7 @@ public class DatosPartida {
 
 	public void modificarVacuna(String nVacuna, float modificacion) {
 		for (Vacuna vacuna : this.getVacunas()) {
-			if (vacuna.getNombre().equals(nVacuna)) {
+			if (vacuna.getColor().equals(nVacuna)) {
 				vacuna.desarrollarVacuna(modificacion);
 			}
 		}
