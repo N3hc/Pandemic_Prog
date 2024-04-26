@@ -11,7 +11,6 @@ public class Main {
 	            System.out.println(viruses.toString());
 	        }
 	        
-	        System.out.println(datosPartida.toString());
 
 	}
 

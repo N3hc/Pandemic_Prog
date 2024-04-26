@@ -21,14 +21,6 @@ public class DatosPartida {
 		}
 	}
 
-	public void modificarVacuna(String nVacuna, float modificacion) {
-		for (Vacuna vacuna : this.getVacunas()) {
-			if (vacuna.getNombre().equals(nVacuna)) {
-				vacuna.desarrollarVacuna(modificacion);
-			}
-		}
-	}
-
 	public void cargarDatos() {
 		 String[] valoresDif = control_de_datos.Leer_Xml("Facil");
 		    float[] valoresFloat = new float[valoresDif.length];
