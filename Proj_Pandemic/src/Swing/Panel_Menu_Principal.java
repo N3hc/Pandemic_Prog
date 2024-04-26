@@ -10,11 +10,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Func_Partida.DatosPartida;
 import Func_Partida.control_de_partida;
 
 public class Panel_Menu_Principal extends JPanel implements ActionListener {
 
 	Button Boton[];
+
 	public Panel_Menu_Principal() {
 		Boton = new Button[7];
 		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Resumen de puntuaciones", "Autores",
@@ -41,21 +43,27 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == Boton[0]) {
-			mostrarPopupDificultad();
 			JFrame partidaInit = (JFrame) SwingUtilities.getWindowAncestor(this);
 			partidaInit.getContentPane().removeAll();
 			partidaInit.getContentPane().add(new Panel_Partida());
 			partidaInit.revalidate();
 			partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
-			
+			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
+			menu_principal.remove(this);
+			menu_principal.add(new Panel_Menu_Principal());
+			menu_principal.setVisible(true);
+
 		}
 		if (e.getSource() == Boton[1]) {
-			mostrarPopupCargarPartida();
 			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 			partida.getContentPane().removeAll();
 			partida.getContentPane().add(new Panel_Partida());
 			partida.revalidate();
 			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
+			menu_principal.remove(this);
+			menu_principal.add(new Panel_Menu_Principal());
+			menu_principal.setVisible(true);
 
 		}
 		if (e.getSource() == Boton[2]) {
@@ -68,8 +76,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 					+ "		* Corazón de Vell (Tritones)\r\n" + "\r\n" + "Partida:\r\n" + "\r\n"
 					+ "Cada turno que pasas el tablero jugará contra ti y diferentes ciudades del mapa se verán afectados por las plagas que azotan al mundo\r\n"
 					+ "	-El número de ciudades infectadas por turno dependerá de tu criterio al iniciar el juego en el apartado parametros.\r\n"
-					+ "\r\n"
-					+ " -Los turnos se pasan automaticamente cuando hayas usado las 4 acciones. \r\n"
+					+ "\r\n" + " -Los turnos se pasan automaticamente cuando hayas usado las 4 acciones. \r\n"
 					+ "Cada vez que una ciudad supera los tres brotes esta no sube más sus contadores sinó que exparce un contador a cada una de las ciudades lindantes\r\n"
 					+ "	-Efectivamente un brote puede implicar una cadena de infecciones en masa\r\n" + "\r\n"
 					+ "Las ciudades pueden tener en ellas diferentes héroes que te pueden ayudar en la partida:\r\n"
@@ -107,12 +114,13 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 				opcionesDificultad[0]);
 		if (dificultadSeleccionada != null) {
 			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-		} else {
-			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-			menu_principal.remove(this);
-			menu_principal.add(new Panel_Menu_Principal());
-			menu_principal.setVisible(true);
 		}
+//          else {
+//			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
+//			menu_principal.remove(this);
+//			menu_principal.add(new Panel_Menu_Principal());
+//			menu_principal.setVisible(true);
+//		}
 		return dificultadSeleccionada;
 	}
 
