@@ -36,7 +36,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		partida.cargarDatos();
+		partida.cargarDatos(mostrarPopupDificultad());
 		cPartida.gestionarTurno(partida, 0);
 		generarVariables();
 		InitComponentes();
@@ -45,6 +45,23 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		InitFondo();
 	}
 
+	private String mostrarPopupDificultad() {
+		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
+		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
+				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
+				opcionesDificultad[0]);
+		if (dificultadSeleccionada != null) {
+			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
+		}
+//          else {
+//			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
+//			menu_principal.remove(this);
+//			menu_principal.add(new Panel_Menu_Principal());
+//			menu_principal.setVisible(true);
+//		}
+		return dificultadSeleccionada;
+	}
+	
 	private void generarVariables() {
 		Vacunas = new String[4];
 		int i = 0;
