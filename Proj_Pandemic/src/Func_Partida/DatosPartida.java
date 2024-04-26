@@ -13,13 +13,13 @@ public class DatosPartida {
 	private int acciones;
 	private float[] DerCon;
 
-	public void modificarCiudad(String nCiudad, int modificacion) {
-		for (Ciudad ciudad : this.ciudades) {
-			if (ciudad.getNombre().equals(nCiudad)) {
-				ciudad.modificarInfección(modificacion);
-			}
-		}
-	}
+//	public void modificarCiudad(String nCiudad, int modificacion) {
+//		for (Ciudad ciudad : this.ciudades) {
+//			if (ciudad.getNombre().equals(nCiudad)) {
+//				ciudad.modificarInfección(modificacion);
+//			}
+//		}
+//	}
 
 	public void cargarDatos() {
 		 String[] valoresDif = control_de_datos.Leer_Xml("Facil");
@@ -60,7 +60,7 @@ public class DatosPartida {
 	public int getNivelVacuna(String infeccion) {
 		int nivel = 0;
 		for (Vacuna vacuna : this.vacunas) {
-			if (vacuna.getNombre().equals(infeccion)) {
+			if (vacuna.getColor().equals(infeccion)) {
 				nivel = (int) vacuna.getPorcentaje();
 			}
 		}

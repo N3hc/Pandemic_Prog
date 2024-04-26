@@ -11,6 +11,7 @@ public class control_de_partida {
 	}
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		datosPartida.setRondas(datosPartida.getRondas()+1);
+		datosPartida.setAcciones(4);
 		Random random = new Random();
 		int [] ciudades_ya = new int [(int) datosPartida.getDerCon(valor_momento)];
 		for (int i = 0; i < datosPartida.getDerCon(valor_momento); i++) {
@@ -28,7 +29,7 @@ public class control_de_partida {
 	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
 		for(Vacuna vacuna : datosPartida.getVacunas()) {
 			if(vacuna.getColor().equals(nVacuna)) {
-		vacuna.setPorcentaje(datosPartida.getDerCon(3));
+		vacuna.setPorcentaje(vacuna.getPorcentaje()+datosPartida.getDerCon(3));
 
 			}
 		}
