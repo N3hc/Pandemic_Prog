@@ -60,6 +60,7 @@ public class Ciudad {
 	}
 	
 	public void modificarInfección (int valor) {
+		System.out.println("La ciudad "+this.nombre+" ha sido purgada.");
 		setInfeccion(this.infeccion+valor);
 	}
 
