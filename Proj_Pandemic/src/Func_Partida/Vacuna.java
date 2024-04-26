@@ -1,14 +1,14 @@
 package Func_Partida;
 
 public class Vacuna {
-	private String nombre;
 	private String color;
+	private String arma;
 	private float porcentaje;
 	private boolean estado;
 	
-	public Vacuna (String Nombre, String Color) {
-		this.setNombre(Nombre);
-		this.setColor(Color);
+	public Vacuna (String Nombre, String arma) {
+		this.setColor(Nombre);
+		this.setArma(arma);
 		this.setPorcentaje(0);
 		this.setEstado(false);
 	}
@@ -17,19 +17,19 @@ public class Vacuna {
 		setPorcentaje(this.porcentaje+porcentaje);		
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public String getColor() {
 		return color;
 	}
 
-	public void setColor(String color) {
+	public void setColor(String nombre) {
+		this.color = nombre;
+	}
+
+	public String getArma() {
+		return arma;
+	}
+
+	public void setArma(String color) {
 		this.color = color;
 	}
 
@@ -43,7 +43,7 @@ public class Vacuna {
 
 	@Override
 	public String toString() {
-		return "Vacuna [Color= " + nombre + ", Arma= " + color + ", porcentaje= " + porcentaje + "]";
+		return "Vacuna [Color= " + color + ", Arma= " + arma + ", porcentaje= " + porcentaje + "]";
 	}
 
 	public boolean isEstado() {

@@ -11,7 +11,7 @@ public class DatosPartida {
 	private int brotes;
 	private int rondas;
 	private int acciones;
-	private float[] DerCon;
+	private int[] DerCon;
 
 //	public void modificarCiudad(String nCiudad, int modificacion) {
 //		for (Ciudad ciudad : this.ciudades) {
@@ -23,9 +23,9 @@ public class DatosPartida {
 
 	public void cargarDatos(String dific) {
 		 String[] valoresDif = control_de_datos.Leer_Xml(dific);
-		    float[] valoresFloat = new float[valoresDif.length];
+		    int[] valoresFloat = new int[valoresDif.length];
 		    for (int i = 0; i < valoresDif.length; i++) {
-		        valoresFloat[i] = Float.parseFloat(valoresDif[i]);
+		        valoresFloat[i] = (int) Float.parseFloat(valoresDif[i]);
 		    }
 		this.setDerCon(valoresFloat);
 		this.setCiudades(control_de_datos.cargarCiudades());
@@ -127,8 +127,8 @@ public class DatosPartida {
 		return DerCon[i];
 	}
 
-	public void setDerCon(float[] derCon) {
-		DerCon = derCon;
+	public void setDerCon(int[] valoresFloat) {
+		DerCon = valoresFloat;
 	}
 
 	@Override
