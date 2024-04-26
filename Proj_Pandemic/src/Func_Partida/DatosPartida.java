@@ -21,8 +21,8 @@ public class DatosPartida {
 //		}
 //	}
 
-	public void cargarDatos() {
-		 String[] valoresDif = control_de_datos.Leer_Xml("Facil");
+	public void cargarDatos(String dific) {
+		 String[] valoresDif = control_de_datos.Leer_Xml(dific);
 		    float[] valoresFloat = new float[valoresDif.length];
 		    for (int i = 0; i < valoresDif.length; i++) {
 		        valoresFloat[i] = Float.parseFloat(valoresDif[i]);
