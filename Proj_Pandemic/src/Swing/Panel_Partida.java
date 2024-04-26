@@ -19,6 +19,9 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JLabel[] Paneltxt;
 	JProgressBar[] ProgressBar;
 	JTextField txtProgresoInvasiones;
+
+	String[] Vacunas;
+
 	int cosa;
 	DatosPartida partida = new DatosPartida();
 	control_de_partida cPartida = new control_de_partida();
@@ -35,16 +38,26 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setBounds(0, 0, 1550, 775);
 		partida.cargarDatos();
 		cPartida.gestionarTurno(partida, 0);
+		generarVariables();
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
 		InitFondo();
 	}
 
+	private void generarVariables() {
+		Vacunas = new String[4];
+		int i = 0;
+		for (Vacuna vacuna : partida.getVacunas()) {
+			Vacunas[i] =  vacuna.getColor();
+			i++;
+		}
+
+	}
 
 	private void panelCiudad(String nombre) {
 		btnAccCiudades = new JButton[2];
-		
+
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		// Crear y mostrar el JDialog con las opciones
 		JDialog dialog = new JDialog(frame, "Ciudad", true); // true para hacerlo modal
@@ -75,33 +88,39 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnAccCiudades[1].setBounds(140, 200, 120, 50);
 		dialog.getContentPane().add(btnAccCiudades[1]);
 
-		dialog.getContentPane().add(btnAccCiudades[0]);
-		dialog.getContentPane().add(btnAccCiudades[1]);
-
 		dialog.setVisible(true);
 	}
 
 	public String Craftear() {
-		String[] opcionesCarga = { "Corazon de vell", "Dandelion", "Kzarka", "Kutum" };
 		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
-				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, opcionesCarga, opcionesCarga[0]);
+				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas,
+				Vacunas[0]);
 		if (armaSeleccionada != null) {
 			System.out.println("Arma seleccionada: " + armaSeleccionada);
 		}
 		return armaSeleccionada;
-		
+
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[0]) {
-			//campeones
+			// campeones
 		}
 		if (e.getSource() == btnComponentes[1]) {
-			//Craftear
-			cPartida.gestionarVacuna(partida, Craftear());
+			// Craftear
+			cPartida.gestionarVacuna(partida, "Corazon de Vell");
+//			ProgressBar[0].setValue(partida.getNivelVacuna("Corazon de Vell"));
+//			ProgressBar[1].setValue(partida.getNivelVacuna("Dandelion"));
+//			ProgressBar[2].setValue(partida.getNivelVacuna("Kzarka"));
+//			ProgressBar[3].setValue(partida.getNivelVacuna("Kutum"));
+			ProgressBar[0].setValue(partida.getNivelVacuna("Azul"));
+			ProgressBar[1].setValue(partida.getNivelVacuna("Verde"));
+			ProgressBar[2].setValue(partida.getNivelVacuna("Rojo"));
+			ProgressBar[3].setValue(partida.getNivelVacuna("Negro"));
+
 		}
 		if (e.getSource() == btnComponentes[2]) {
-			//Ajustes
+			// Ajustes
 		}
 		if (e.getSource() == btnCiudad[0]) {
 			String nCiudad = nombres[0];
@@ -297,7 +316,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 
 	}
-	
+
 	private void generarIcono() {
 
 		// Crea un ImageIcon con la imagen
@@ -322,18 +341,15 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Image imagenEscalada3 = icono3.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
 				Image.SCALE_SMOOTH);
 
-
 		// Crea un nuevo ImageIcon con la imagen escalada
 		ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
 		ImageIcon iconoEscalado1 = new ImageIcon(imagenEscalada1);
 		ImageIcon iconoEscalado2 = new ImageIcon(imagenEscalada2);
 		ImageIcon iconoEscalado3 = new ImageIcon(imagenEscalada3);
 
-
-		
 		btnComponentes[2].setIcon(icono4);
 		btnComponentes[2].setText(null);
-		
+
 		btnCiudad[0].setIcon(iconoEscalado);
 		btnCiudad[0].setText(null);
 
@@ -766,7 +782,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnComponentes[2].setBounds(1463, 48, 48, 48);
 		add(btnComponentes[2]);
 		btnComponentes[2].addActionListener(this);
-		
+
 		btnComponentes[3] = new JButton("Siguiente Turno");
 		btnComponentes[3].setBounds(1009, 691, 144, 56);
 		add(btnComponentes[3]);
@@ -817,7 +833,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Paneltxt[2].setFont(new Font("Tahoma", Font.PLAIN, 28));
 		Paneltxt[2].setBounds(1290, 547, 260, 56);
 		add(Paneltxt[2]);
-		
+
 		Paneltxt[3] = new JLabel("Turno: " + partida.getRondas());
 		Paneltxt[3].setFont(new Font("Tahoma", Font.PLAIN, 28));
 		Paneltxt[3].setBounds(1316, 61, 260, 56);

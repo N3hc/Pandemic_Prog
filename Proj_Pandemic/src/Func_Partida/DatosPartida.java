@@ -60,7 +60,7 @@ public class DatosPartida {
 	public int getNivelVacuna(String infeccion) {
 		int nivel = 0;
 		for (Vacuna vacuna : this.vacunas) {
-			if (vacuna.getNombre().equals(infeccion)) {
+			if (vacuna.getColor().equals(infeccion)) {
 				nivel = (int) vacuna.getPorcentaje();
 			}
 		}
