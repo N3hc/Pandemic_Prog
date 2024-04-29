@@ -141,17 +141,16 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 
 	private void InitCartel() {
 		setOpaque(true);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		ImageIcon imagen1 = new ImageIcon(
+		ImageIcon imagen = new ImageIcon(
 				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\logo.png");
 
-		Image imgEscalada1 = imagen1.getImage().getScaledInstance(590, 180,
+		Image imgEscalada = imagen.getImage().getScaledInstance(590, 180,
 				Image.SCALE_SMOOTH);
-		ImageIcon imagenEscalada1 = new ImageIcon(imgEscalada1);
+		ImageIcon imagenEscalada = new ImageIcon(imgEscalada);
 
-		JLabel fondoLabel1 = new JLabel(imagenEscalada1);
-		fondoLabel1.setBounds(473, 84, 590, 180);
-		add(fondoLabel1);
+		JLabel fondoLabel = new JLabel(imagenEscalada);
+		fondoLabel.setBounds(473, 84, 590, 180);
+		add(fondoLabel);
 	}
 
 	private void InitFondo() {
@@ -160,7 +159,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		ImageIcon imagen = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\Loding.png");
+				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\Loding.png");
 
 		Image imgEscalada = imagen.getImage().getScaledInstance(screenSize.width, screenSize.height,
 				Image.SCALE_SMOOTH);
