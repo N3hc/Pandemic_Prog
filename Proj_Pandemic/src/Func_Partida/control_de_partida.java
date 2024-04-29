@@ -28,6 +28,7 @@ public class control_de_partida {
 	        
 	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
 	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), datosPartida.getDerCon(4));
+	        System.out.println("Se ha infectado "+ciudadAleatoria.getNombre());
 	    }
         gestionarBrote(datosPartida);
         actualizarEstado(datosPartida);
