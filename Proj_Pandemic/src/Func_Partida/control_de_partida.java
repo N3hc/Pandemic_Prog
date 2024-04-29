@@ -11,7 +11,8 @@ public class control_de_partida {
 
 	}
 
-	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
+	public boolean gestionarTurno(DatosPartida datosPartida, int valor_momento) {
+		if (gestionarFinPartida(datosPartida)) {
 		gestionarCura(datosPartida);
 	    datosPartida.setRondas(datosPartida.getRondas() + 1);
 	    datosPartida.setAcciones(4);
@@ -32,6 +33,9 @@ public class control_de_partida {
 	    }
         gestionarBrote(datosPartida);
         actualizarEstado(datosPartida);
+        return true;
+		}
+		return false;
 	    
 	    
 	}
@@ -90,6 +94,14 @@ public class control_de_partida {
 			if (ciudad.propagarInfeccion() && !ciudad.isActivado()) {
 				ciudad.setActivado(true);
 				datosPartida.setBrotes(datosPartida.getBrotes() + 1);
+				for (Ciudad ciudad2 : datosPartida.getCiudades()) {
+					int i = 0;
+					if (ciudad2.getNombre().equals(ciudad.getCiudadesColindantes(i))) {
+						i++;
+						gestionarInfeccion(datosPartida, ciudad.getCiudadesColindantes(i), datosPartida.getDerCon(4));
+					}
+					
+				}
 			}
 		}
 	}
