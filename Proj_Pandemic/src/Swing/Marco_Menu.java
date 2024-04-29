@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 
 public class Marco_Menu extends JFrame{
 	
-	Panel_Version MenuLayout;
-//	Panel_Menu_Principal MenuLayout;
+//	Panel_Version MenuLayout;
+	Panel_Menu_Principal MenuLayout;
 	
 	Marco_Menu(){
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,8 +22,8 @@ public class Marco_Menu extends JFrame{
 	        setTitle("Menu De Opciones");
 	        
 	        //AñadirLayout
-	        MenuLayout = new Panel_Version();
-//	        MenuLayout = new Panel_Menu_Principal();
+//	        MenuLayout = new Panel_Version();
+	        MenuLayout = new Panel_Menu_Principal();
 	        add(MenuLayout);
 	        //Hacer visible el JFrame
 	        setVisible(true);
