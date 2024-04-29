@@ -41,11 +41,13 @@ public class control_de_partida {
 	}
 	
 	public void ciudadesCura (DatosPartida datosPartida, String Ciudad) {
+		boolean com;
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(Ciudad)) {
+				com = false;
 				for (Vacuna vacuna : datosPartida.getVacunas()) {
 					if (ciudad.getInfeccion()> 0) {
-					if((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul")) && vacuna.isEstado()) {
+					if((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
 						System.out.println("1");
 					} else {
