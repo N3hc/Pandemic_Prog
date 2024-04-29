@@ -67,7 +67,7 @@ public class control_de_partida {
 						ciudad.setInfeccion(-ciudad.getInfeccion());
 						System.out.println("cosa4");
 					} else {
-						ciudad.setInfeccion(-1);
+						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 					}
 				}
 			}
