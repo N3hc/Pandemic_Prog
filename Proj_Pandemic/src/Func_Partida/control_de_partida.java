@@ -73,7 +73,7 @@ public class control_de_partida {
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int f) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(nCiudad)) {
-				ciudad.setInfeccion(f);
+				ciudad.setInfeccion(ciudad.getInfeccion()+f);
 			}
 		}
 	}
