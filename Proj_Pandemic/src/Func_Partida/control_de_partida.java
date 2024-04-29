@@ -12,21 +12,31 @@ public class control_de_partida {
 	}
 
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
-		datosPartida.setRondas(datosPartida.getRondas()+1);
-		datosPartida.setAcciones(4);
-		Random random = new Random();
-		int[] ciudades_ya = new int[(int) datosPartida.getDerCon(valor_momento)];
-		for (int i = 0; i < datosPartida.getDerCon(valor_momento); i++) {
-			int indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
-			for (int j = 0; j < datosPartida.getDerCon(valor_momento); j++) {
-				while (ciudades_ya[j] == indiceAleatorio) {
-					indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
-				}
-				ciudades_ya[i] = indiceAleatorio;
-			}
-			Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
-			gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), (int) datosPartida.getDerCon(4));
-		}
+	    datosPartida.setRondas(datosPartida.getRondas() + 1);
+	    datosPartida.setAcciones(4);
+	    Random random = new Random();
+	    int[] ciudades_ya = new int[(int) datosPartida.getDerCon(valor_momento)];
+	    
+	    for (int i = 0; i < ciudades_ya.length; i++) {
+	        int indiceAleatorio;
+	        do {
+	            indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
+	        } while (esCiudadYaSeleccionada(ciudades_ya, indiceAleatorio, i));
+	        
+	        ciudades_ya[i] = indiceAleatorio;
+	        
+	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
+	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), (int) datosPartida.getDerCon(4));
+	    }
+	}
+	
+	private boolean esCiudadYaSeleccionada(int[] ciudades_ya, int indiceAleatorio, int indiceActual) {
+	    for (int j = 0; j < indiceActual; j++) {
+	        if (ciudades_ya[j] == indiceAleatorio) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 
 	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
@@ -41,7 +51,7 @@ public class control_de_partida {
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int inf) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(nCiudad)) {
-				ciudad.modificarInfección(-inf);
+				ciudad.setInfeccion(inf);
 			}
 		}
 	}

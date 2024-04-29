@@ -59,10 +59,6 @@ public class Ciudad {
 		CiudadesColindantes = ciudadesColindantes;
 	}
 	
-	public void modificarInfección (int valor) {
-		System.out.println("La ciudad "+this.nombre+" ha sido purgada.");
-		setInfeccion(this.infeccion+valor);
-	}
 
 	public boolean propagarInfeccion () {		
 		if (this.infeccion > 3) {
