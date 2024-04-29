@@ -71,7 +71,7 @@ public class control_de_partida {
 
 	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
 		for (Vacuna vacuna : datosPartida.getVacunas()) {
-			if (vacuna.getColor().equals(nVacuna)) {
+			if (vacuna.getArma().equals(nVacuna)) {
 				vacuna.setPorcentaje(vacuna.getPorcentaje()+datosPartida.getDerCon(3));
 			}
 		}

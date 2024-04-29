@@ -49,7 +49,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Vacunas = new String[4];
 		int i = 0;
 		for (Vacuna vacuna : partida.getVacunas()) {
-			Vacunas[i] = vacuna.getColor();
+			Vacunas[i] = vacuna.getArma();
 			i++;
 		}
 
