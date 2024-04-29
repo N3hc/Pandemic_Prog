@@ -69,7 +69,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		// Crear y mostrar el JDialog con las opciones
-		JDialog dialog = new JDialog(frame, "Ciudad", true); // true para hacerlo modal
+		JDialog dialog = new JDialog(frame, "Ciudad", false); // true para hacerlo modal
 		dialog.getContentPane().setLayout(null);
 		dialog.setSize(300, 300);
 		dialog.setLocation(690, 386);

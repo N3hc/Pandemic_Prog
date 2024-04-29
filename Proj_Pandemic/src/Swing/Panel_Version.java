@@ -97,7 +97,7 @@ public class Panel_Version extends JPanel implements ActionListener {
 	}
 	
     private void reproducirMusica() {
-    	String filePath = "C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\SoundTrack.mp3";
+    	String filePath = "C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\SoundTrack.wav";
         try {
             File file = new File(filePath);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
