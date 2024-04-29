@@ -12,6 +12,7 @@ public class control_de_partida {
 	}
 
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
+		
 	    datosPartida.setRondas(datosPartida.getRondas() + 1);
 	    datosPartida.setAcciones(4);
 	    Random random = new Random();
@@ -28,6 +29,9 @@ public class control_de_partida {
 	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
 	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), datosPartida.getDerCon(4));
 	    }
+        gestionarBrote(datosPartida);
+        actualizarEstado(datosPartida);
+	    
 	    
 	}
 	
@@ -41,12 +45,12 @@ public class control_de_partida {
 	}
 	
 	public void ciudadesCura(DatosPartida datosPartida, String Ciudad) {
+		datosPartida.setAcciones(datosPartida.getAcciones()-1);
 	    for (Ciudad ciudad : datosPartida.getCiudades()) {
 	        if (ciudad.getNombre().equals(Ciudad)) {
-	            boolean com = false; // Se reinicia para cada ciudad
+	            boolean com = false;
 	            for (Vacuna vacuna : datosPartida.getVacunas()) {
 	                if (ciudad.getInfeccion() > 0 && !com) {
-	                    // Verificar cada condición y ejecutar solo si no se ha ejecutado ya
 	                    if ((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul")) ||
 	                        (ciudad.getEnfermedad().equals("Antarboles") && vacuna.getColor().equals("Verde")) ||
 	                        (ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo")) ||
@@ -56,14 +60,9 @@ public class control_de_partida {
 	                        } else {
 	                            ciudad.setInfeccion(ciudad.getInfeccion() - 1);
 	                        }
-	                        com = true; // Marcar que se ha realizado una acción para esta ciudad
-	                        System.out.println("Se aplicó una cura.");
+	                        com = true;
 	                    }
 	                }
-	            }
-	            if (!com) {
-	                // Si no se ha realizado ninguna acción, disminuir la infección
-	                ciudad.setInfeccion(ciudad.getInfeccion() - 1);
 	            }
 	        }
 	    }
@@ -88,10 +87,16 @@ public class control_de_partida {
 
 	public void gestionarBrote(DatosPartida datosPartida) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
-			if (ciudad.propagarInfeccion() || !ciudad.isActivado()) {
+			if (ciudad.propagarInfeccion() && !ciudad.isActivado()) {
 				ciudad.setActivado(true);
 				datosPartida.setBrotes(datosPartida.getBrotes() + 1);
 			}
+		}
+	}
+	
+	public void actualizarEstado (DatosPartida datosPartida) {
+		for (Ciudad ciudad : datosPartida.getCiudades()) {
+			ciudad.setActivado(false);
 		}
 	}
 
