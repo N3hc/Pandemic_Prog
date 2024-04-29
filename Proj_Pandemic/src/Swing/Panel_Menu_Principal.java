@@ -155,9 +155,17 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 
 		add(fondoLabel);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(473, 84, 590, 180);
-		add(panel);
+
+		ImageIcon imagen1 = new ImageIcon(
+				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\logo.jpg");
+
+		Image imgEscalada1 = imagen1.getImage().getScaledInstance(screenSize.width, screenSize.height,
+				Image.SCALE_SMOOTH);
+		ImageIcon imagenEscalada1 = new ImageIcon(imgEscalada1);
+		
+		JLabel fondoLabel1 = new JLabel(imagenEscalada1);
+		fondoLabel1.setBounds(473, 84, 590, 180);
+		add(fondoLabel1);
 
 		setVisible(true);
 	}
