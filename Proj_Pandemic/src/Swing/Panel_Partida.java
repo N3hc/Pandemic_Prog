@@ -37,7 +37,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
 		partida.cargarDatos(mostrarPopupDificultad());
-		cPartida.gestionarTurno(partida, 0);
+		if(!cPartida.gestionarTurno(partida, 0)) {
+			JOptionPane.showMessageDialog(this,
+					"Autores:\n\nArduí Pulido Bosch arduipulido@gmail.com\nChenping Guo Chen chenpinguo3@gmail.com ",
+					"Autores", JOptionPane.INFORMATION_MESSAGE);
+		};
 		generarVariables();
 		InitComponentes();
 		InitCiudadesBtn();
