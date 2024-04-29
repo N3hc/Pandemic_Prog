@@ -41,6 +41,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(this,
 					"Has perdido",
 					"Perdiste", JOptionPane.INFORMATION_MESSAGE);
+			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
+			partida.getContentPane().removeAll();
 		};
 		generarVariables();
 		InitComponentes();
