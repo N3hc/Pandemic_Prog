@@ -789,11 +789,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		add(fondoLabel);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("Yu Gothic Light", Font.BOLD | Font.ITALIC, 22));
-		lblNewLabel.setBounds(775, 107, 178, 99);
-		add(lblNewLabel);
-
 		setVisible(true);
 	}
 
