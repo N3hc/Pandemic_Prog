@@ -24,40 +24,42 @@ import java.awt.Font;
 
 public class Panel_Version extends JPanel implements ActionListener {
 
-	Button Boton;
+	Button Boton[];
 
 	public Panel_Version() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
 		
+		Boton = new Button[7];
+		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Resumen de puntuaciones", "Autores",
+				"Versión", "Salir" };
+		for (int i = 0; i < 7; i++) {
+			Boton[i] = new Button(nombres[i]);
+			add(Boton[i]);
+		}
 
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(685, 295, 170, 50);
-		add(btnNewButton);
+		Boton[0].setBounds(685, 295, 170, 50);
+		add(Boton[0]);
 
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(685, 355, 170, 50);
-		add(btnNewButton_1);
+		Boton[1].setBounds(685, 355, 170, 50);
+		add(Boton[1]);
 
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(685, 415, 170, 50);
-		add(btnNewButton_2);
+		Boton[2].setBounds(685, 415, 170, 50);
+		add(Boton[2]);
 
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(685, 475, 170, 50);
-		add(btnNewButton_3);
+		
+		Boton[3].setBounds(685, 475, 170, 50);
+		add(Boton[3]);
 
-		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setBounds(685, 535, 170, 50);
-		add(btnNewButton_4);
 
-		JButton btnNewButton_5 = new JButton("New button");
-		btnNewButton_5.setBounds(685, 595, 170, 50);
-		add(btnNewButton_5);
+		Boton[4].setBounds(685, 535, 170, 50);
+		add(Boton[4]);
 
-		JButton btnNewButton_6 = new JButton("New button");
-		btnNewButton_6.setBounds(685, 655, 170, 50);
-		add(btnNewButton_6);
+		Boton[5].setBounds(685, 595, 170, 50);
+		add(Boton[5]);
+
+		Boton[6].setBounds(685, 655, 170, 50);
+		add(Boton[6]);
 
 		
 		InitFondo();
