@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		DatosPartida datosPartida = new DatosPartida();
-		datosPartida.cargarDatos("Normal	");
+		datosPartida.cargarDatos("Normal");
 		String [] ciudad1 = new String[11];
 		int i = 0;
 		
