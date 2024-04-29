@@ -26,8 +26,9 @@ public class control_de_partida {
 	        ciudades_ya[i] = indiceAleatorio;
 	        
 	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
-	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), (int) datosPartida.getDerCon(4));
+	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), datosPartida.getDerCon(4));
 	    }
+	    
 	}
 	
 	private boolean esCiudadYaSeleccionada(int[] ciudades_ya, int indiceAleatorio, int indiceActual) {
@@ -37,6 +38,36 @@ public class control_de_partida {
 	        }
 	    }
 	    return false;
+	}
+	
+	public void ciudadesCura (DatosPartida datosPartida, String Ciudad) {
+		for (Ciudad ciudad : datosPartida.getCiudades()) {
+			if (ciudad.getNombre().equals(Ciudad)) {
+				for (Vacuna vacuna : datosPartida.getVacunas()) {
+					if((ciudad.getEnfermedad().equals("Tritones") || vacuna.getColor().equals("Azul")) || vacuna.isEstado()) {
+						ciudad.setInfeccion(-ciudad.getInfeccion());
+					} else {
+						ciudad.setInfeccion(-1);
+					}
+					if((ciudad.getEnfermedad().equals("Antarboles") || vacuna.getColor().equals("Verde")) || vacuna.isEstado()) {
+						ciudad.setInfeccion(-ciudad.getInfeccion());
+					} else {
+						ciudad.setInfeccion(-1);
+					}
+					if((ciudad.getEnfermedad().equals("Goblos") || vacuna.getColor().equals("Rojo")) || vacuna.isEstado()) {
+						ciudad.setInfeccion(-ciudad.getInfeccion());
+					} else {
+						ciudad.setInfeccion(-1);
+					}
+					if((ciudad.getEnfermedad().equals("Momias") || vacuna.getColor().equals("Negro")) || vacuna.isEstado()) {
+						ciudad.setInfeccion(-ciudad.getInfeccion());
+					} else {
+						ciudad.setInfeccion(-1);
+					}
+				}
+			}
+		}
+		
 	}
 
 	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
