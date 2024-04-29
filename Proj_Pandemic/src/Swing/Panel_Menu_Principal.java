@@ -154,6 +154,10 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		setOpaque(true); // el panel.
 
 		add(fondoLabel);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(473, 84, 590, 180);
+		add(panel);
 
 		setVisible(true);
 	}
@@ -171,5 +175,4 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
 }
