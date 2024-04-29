@@ -170,13 +170,15 @@ public class control_de_datos {
 				return ciudades;   
 		    }
 	public static ArrayList<Vacuna> cargarVacunas() {
-		String [] Enf_y_Col = {"Azul","Corazon de Vell","Verde","Dandelion","Rojo","Kzarka","Negro","Kutum"};
-		ArrayList<Vacuna> Vacunas = new ArrayList<>();
-		for (int i = 0; i < 8; i+=2) {
-			Vacuna vacuna = new Vacuna(Enf_y_Col[i], Enf_y_Col[i+1]);
-			Vacunas.add(vacuna);
-		}
-		return Vacunas;	
+	    String[] Enf_y_Col = {"Azul", "Corazon de Vell", "Verde", "Dandelion", "Rojo", "Kzarka", "Negro", "Kutum"};
+	    ArrayList<Vacuna> Vacunas = new ArrayList<>();
+	    for (int i = 0; i < 8; i += 2) {
+	        Vacuna vacuna = new Vacuna(Enf_y_Col[i], Enf_y_Col[i + 1]);
+	        System.out.println(Enf_y_Col[i]);
+	        System.out.println(Enf_y_Col[i+1]);
+	        Vacunas.add(vacuna);
+	    }
+	    return Vacunas;
 	}
 	public static ArrayList<Virus> cargarVirus() {
 		ArrayList<Virus>Viruses = new ArrayList<>();
