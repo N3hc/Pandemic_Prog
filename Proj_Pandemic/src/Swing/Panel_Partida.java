@@ -351,15 +351,15 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		// Crea un ImageIcon con la imagen
 		ImageIcon icono = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\gateway_0.png");
+				"img/gateway_0.png");
 		ImageIcon icono1 = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\gateway_1.png");
+				"img/gateway_1.png");
 		ImageIcon icono2 = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\gateway_2.png");
+				"img/gateway_2.png");
 		ImageIcon icono3 = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\gateway_3.png");
+				"img/gateway_3.png");
 		ImageIcon icono4 = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\Ajustes.png");
+				"img/Ajustes.png");
 
 		// Escala el ImageIcon al tamaño del botón
 		Image imagenEscalada = icono.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
@@ -777,7 +777,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		ImageIcon imagen = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\Worldmap_1550.png");
+				"img/Worldmap_1920.png");
 
 		Image imgEscalada = imagen.getImage().getScaledInstance(screenSize.width, screenSize.height,
 				Image.SCALE_SMOOTH);

@@ -142,7 +142,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	private void InitCartel() {
 		setOpaque(true);
 		ImageIcon imagen = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\logo.png");
+				"img/logo.png");
 
 		Image imgEscalada = imagen.getImage().getScaledInstance(590, 180,
 				Image.SCALE_SMOOTH);
@@ -159,7 +159,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		ImageIcon imagen = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\Loding.png");
+				"img/Loding.png");
 
 		Image imgEscalada = imagen.getImage().getScaledInstance(screenSize.width, screenSize.height,
 				Image.SCALE_SMOOTH);
@@ -174,7 +174,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	}
 
 	private void reproducirMusica() {
-		String filePath = "C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\SoundTrack.wav";
+		String filePath = "img/SoundTrack.wav";
 		try {
 			File file = new File(filePath);
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
