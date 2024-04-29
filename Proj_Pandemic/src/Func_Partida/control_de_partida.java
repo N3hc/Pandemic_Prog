@@ -51,24 +51,25 @@ public class control_de_partida {
 					} else {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 					}
-					if((ciudad.getEnfermedad().equals("Antarboles") && vacuna.getColor().equals("Verde")) && vacuna.isEstado()) {
+					if((ciudad.getEnfermedad().equals("Antarboles") && vacuna.getColor().equals("Verde")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
-						System.out.println("2");
-					} else {
+						com = true;
+					} else if (!com) {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 					}
-					if((ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo")) && vacuna.isEstado()) {
+					if((ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
-						System.out.println("3");
-					} else {
+						com = true;
+					} else if(!com) {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
+						com = true;
 					}
-					if((ciudad.getEnfermedad().equals("Momias") && vacuna.getColor().equals("Negro")) && vacuna.isEstado()) {
+					if((ciudad.getEnfermedad().equals("Momias") && vacuna.getColor().equals("Negro")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
-						System.out.println("4");
-					} else {
+						com = true;
+					} else if(!com) {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
-						System.out.println("cosa");
+						com = true;
 					}
 					}
 				}
