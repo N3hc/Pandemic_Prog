@@ -12,7 +12,7 @@ public class control_de_partida {
 	}
 
 	public boolean gestionarTurno(DatosPartida datosPartida, int valor_momento) {
-		if (gestionarFinPartida(datosPartida)) {
+		if (!gestionarFinPartida(datosPartida)) {
 		gestionarCura(datosPartida);
 	    datosPartida.setRondas(datosPartida.getRondas() + 1);
 	    datosPartida.setAcciones(4);
@@ -84,6 +84,7 @@ public class control_de_partida {
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int f) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(nCiudad)) {
+				System.out.println("La ciudad "+ciudad.getNombre()+" se ha infectado.");
 				ciudad.setInfeccion(ciudad.getInfeccion()+f);
 			}
 		}
