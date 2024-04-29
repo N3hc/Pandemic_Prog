@@ -37,13 +37,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
 		partida.cargarDatos(mostrarPopupDificultad());
-		if(!cPartida.gestionarTurno(partida, 0)) {
-			JOptionPane.showMessageDialog(this,
-					"Has perdido",
-					"Perdiste", JOptionPane.INFORMATION_MESSAGE);
-			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-			partida.getContentPane().removeAll();
-		};
+		cPartida.gestionarTurno(partida, 0);
 		generarVariables();
 		InitComponentes();
 		InitCiudadesBtn();
@@ -114,18 +108,18 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		return armaSeleccionada;
 
 	}
-	
+
 	private void consola() {
 		int maxLines = 12; // Set the maximum number of lines you want to display
 		int lineCount = consola.getLineCount();
 		if (lineCount > maxLines) {
-		    try {
-		        int startOffset = consola.getLineStartOffset(0);
-		        int endOffset = consola.getLineEndOffset(lineCount - maxLines);
-		        consola.replaceRange("", startOffset, endOffset);
-		    } catch (Exception ex) {
-		        ex.printStackTrace();
-		    }
+			try {
+				int startOffset = consola.getLineStartOffset(0);
+				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
+				consola.replaceRange("", startOffset, endOffset);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 
@@ -154,9 +148,16 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
 			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
 			textoConsola = "Turno: " + partida.getRondas();
-			consola.append(textoConsola+ "\n");
+			consola.append(textoConsola + "\n");
 			consola();
-			
+			if(cPartida.gestionarFinPartida(partida)) {
+				JOptionPane.showMessageDialog(this,
+						"Has perdido",
+						"Perdiste", JOptionPane.INFORMATION_MESSAGE);
+				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
+				partida.getContentPane().removeAll();
+			};
+
 		}
 
 		if (e.getSource() == btnCiudad[0]) {
@@ -356,16 +357,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	private void generarIcono() {
 
 		// Crea un ImageIcon con la imagen
-		ImageIcon icono = new ImageIcon(
-				"img/gateway_0.png");
-		ImageIcon icono1 = new ImageIcon(
-				"img/gateway_1.png");
-		ImageIcon icono2 = new ImageIcon(
-				"img/gateway_2.png");
-		ImageIcon icono3 = new ImageIcon(
-				"img/gateway_3.png");
-		ImageIcon icono4 = new ImageIcon(
-				"img/Ajustes.png");
+		ImageIcon icono = new ImageIcon("img/gateway_0.png");
+		ImageIcon icono1 = new ImageIcon("img/gateway_1.png");
+		ImageIcon icono2 = new ImageIcon("img/gateway_2.png");
+		ImageIcon icono3 = new ImageIcon("img/gateway_3.png");
+		ImageIcon icono4 = new ImageIcon("img/Ajustes.png");
 
 		// Escala el ImageIcon al tamaño del botón
 		Image imagenEscalada = icono.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
@@ -782,8 +778,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setOpaque(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-		ImageIcon imagen = new ImageIcon(
-				"img/Worldmap_1920.png");
+		ImageIcon imagen = new ImageIcon("img/Worldmap_1920.png");
 
 		Image imgEscalada = imagen.getImage().getScaledInstance(screenSize.width, screenSize.height,
 				Image.SCALE_SMOOTH);
@@ -794,7 +789,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setOpaque(true); // el panel.
 
 		add(fondoLabel);
-		
+
 		setVisible(true);
 	}
 

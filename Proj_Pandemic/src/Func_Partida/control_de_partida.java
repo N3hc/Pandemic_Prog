@@ -11,8 +11,7 @@ public class control_de_partida {
 
 	}
 
-	public boolean gestionarTurno(DatosPartida datosPartida, int valor_momento) {
-		if (gestionarFinPartida(datosPartida)) {
+	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		gestionarCura(datosPartida);
 	    datosPartida.setRondas(datosPartida.getRondas() + 1);
 	    datosPartida.setAcciones(4);
@@ -32,12 +31,7 @@ public class control_de_partida {
 	        System.out.println("Se ha infectado "+ciudadAleatoria.getNombre());
 	    }
         gestionarBrote(datosPartida);
-        actualizarEstado(datosPartida);
-        return true;
-		}
-		return false;
-	    
-	    
+        actualizarEstado(datosPartida);    
 	}
 	
 	private boolean esCiudadYaSeleccionada(int[] ciudades_ya, int indiceAleatorio, int indiceActual) {
@@ -108,7 +102,7 @@ public class control_de_partida {
 	}
 
 	public boolean gestionarFinPartida(DatosPartida datosPartida) {
-		if (datosPartida.getBrotes() >= datosPartida.getDerCon(2)) {
+		if (datosPartida.getBrotes() > datosPartida.getDerCon(2) || datosPartida.getBrotes() == datosPartida.getDerCon(2)) {
 			return true;
 		}
 		return false;
