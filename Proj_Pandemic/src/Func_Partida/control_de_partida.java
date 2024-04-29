@@ -94,14 +94,9 @@ public class control_de_partida {
 			if (ciudad.propagarInfeccion() && !ciudad.isActivado()) {
 				ciudad.setActivado(true);
 				datosPartida.setBrotes(datosPartida.getBrotes() + 1);
-				for (Ciudad ciudad2 : datosPartida.getCiudades()) {
-					int i = 0;
-					if (ciudad2.getNombre().equals(ciudad.getCiudadesColindantes(i))) {
-						i++;
-						gestionarInfeccion(datosPartida, ciudad.getCiudadesColindantes(i), datosPartida.getDerCon(4));
-					}
-					
-				}
+				for (String ciudadColindante : ciudad.getCiudadesColindantes()) {
+	                gestionarInfeccion(datosPartida, ciudadColindante, datosPartida.getDerCon(4));
+	            }
 			}
 		}
 	}

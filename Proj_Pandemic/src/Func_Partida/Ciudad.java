@@ -51,8 +51,8 @@ public class Ciudad {
 		this.infeccion = infeccion;
 	}
 
-	public String getCiudadesColindantes(int i) {
-		return CiudadesColindantes[i];
+	public String[] getCiudadesColindantes() {
+		return CiudadesColindantes;
 	}
 
 	public void setCiudadesColindantes(String[] ciudadesColindantes) {
