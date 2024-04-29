@@ -9,6 +9,8 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,6 +20,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -27,9 +34,10 @@ public class Panel_Version extends JPanel implements ActionListener {
 	Button Boton[];
 
 	public Panel_Version() {
+		reproducirMusica();
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		
+
 		Boton = new Button[7];
 		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Resumen de puntuaciones", "Autores",
 				"Versión", "Salir" };
@@ -47,10 +55,8 @@ public class Panel_Version extends JPanel implements ActionListener {
 		Boton[2].setBounds(685, 415, 170, 50);
 		add(Boton[2]);
 
-		
 		Boton[3].setBounds(685, 475, 170, 50);
 		add(Boton[3]);
-
 
 		Boton[4].setBounds(685, 535, 170, 50);
 		add(Boton[4]);
@@ -61,7 +67,6 @@ public class Panel_Version extends JPanel implements ActionListener {
 		Boton[6].setBounds(685, 655, 170, 50);
 		add(Boton[6]);
 
-		
 		InitFondo();
 	}
 
@@ -70,7 +75,7 @@ public class Panel_Version extends JPanel implements ActionListener {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	private void InitFondo() {
 		setOpaque(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -90,4 +95,19 @@ public class Panel_Version extends JPanel implements ActionListener {
 
 		setVisible(true);
 	}
+	
+    private void reproducirMusica() {
+    	String filePath = "C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\SoundTrack.wav";
+        try {
+            File file = new File(filePath);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+	
 }
