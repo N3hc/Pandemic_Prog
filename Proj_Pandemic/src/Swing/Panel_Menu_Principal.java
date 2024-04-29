@@ -137,37 +137,6 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		add(Boton[6]);
 		Boton[6].addActionListener(this);
 	}
-	
-	public String mostrarPopupDificultad() {
-		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
-		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
-				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
-				opcionesDificultad[0]);
-		if (dificultadSeleccionada != null) {
-			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-		}
-//          else {
-//			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-//			menu_principal.remove(this);
-//			menu_principal.add(new Panel_Menu_Principal());
-//			menu_principal.setVisible(true);
-//		}
-		return dificultadSeleccionada;
-	}
-
-	public void mostrarPopupCargarPartida() {
-		String[] opcionesCarga = { "Facil", "Normal", "Dificil" };
-		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
-				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesCarga, opcionesCarga[0]);
-		if (dificultadSeleccionada != null) {
-			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-		} else {
-			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-			menu_principal.remove(this);
-			menu_principal.add(new Panel_Menu_Principal());
-			menu_principal.setVisible(true);
-		}
-	}
 
 	private void InitFondo() {
 		setOpaque(true);

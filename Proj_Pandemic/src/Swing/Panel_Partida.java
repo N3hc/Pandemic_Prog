@@ -43,22 +43,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		InitFondo();
 	}
 
-	private String mostrarPopupDificultad() {
-		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
-		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
-				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
-				opcionesDificultad[0]);
-		if (dificultadSeleccionada != null) {
-			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-		}
-		return dificultadSeleccionada;
-	}
-	
 	private void generarVariables() {
 		Vacunas = new String[4];
 		int i = 0;
 		for (Vacuna vacuna : partida.getVacunas()) {
-			Vacunas[i] =  vacuna.getColor();
+			Vacunas[i] = vacuna.getColor();
 			i++;
 		}
 
@@ -93,15 +82,15 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnAccCiudades[0].setBounds(10, 200, 120, 50);
 		dialog.getContentPane().add(btnAccCiudades[0]);
 		btnAccCiudades[0].addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		        // Acción a realizar cuando se hace clic en el botón
-		    	System.err.println(nombre);
-		        cPartida.ciudadesCura(partida,nombre);
-		        nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
-		    }
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Acción a realizar cuando se hace clic en el botón
+				System.err.println(nombre);
+				cPartida.ciudadesCura(partida, nombre);
+				nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
+			}
 		});
-		
+
 		btnAccCiudades[1] = new JButton("Conquistar");
 		btnAccCiudades[1].setBounds(140, 200, 120, 50);
 		dialog.getContentPane().add(btnAccCiudades[1]);
@@ -111,8 +100,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 	public String Craftear() {
 		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
-				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas,
-				Vacunas[0]);
+				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
 		if (armaSeleccionada != null) {
 			System.out.println("Arma seleccionada: " + armaSeleccionada);
 		}
@@ -127,24 +115,24 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
 			cPartida.gestionarVacuna(partida, Craftear());
-			int i =0;
-	        for (Vacuna viruses : partida.getVacunas()) {
-	        	ProgressBar[i].setValue(partida.getNivelVacuna(Vacunas[i]));
-	        	i++;
-	        }
-	        i = 0;
+			int i = 0;
+			for (Vacuna viruses : partida.getVacunas()) {
+				ProgressBar[i].setValue(partida.getNivelVacuna(Vacunas[i]));
+				i++;
+			}
+			i = 0;
 		}
 		if (e.getSource() == btnComponentes[2]) {
 			// Ajustes
-			
+
 		}
-		
+
 		if (e.getSource() == btnComponentes[3]) {
 			// siguiente turno
 			cPartida.gestionarTurno(partida, 1);
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
 		}
-		
+
 		if (e.getSource() == btnCiudad[0]) {
 			String nCiudad = nombres[0];
 			panelCiudad(nCiudad);
@@ -784,6 +772,17 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setVisible(true);
 	}
 
+	private String mostrarPopupDificultad() {
+		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
+		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
+				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
+				opcionesDificultad[0]);
+		if (dificultadSeleccionada != null) {
+			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
+		}
+		return dificultadSeleccionada;
+	}
+
 	private void InitComponentes() {
 		btnComponentes = new JButton[4];
 		Paneltxt = new JLabel[4];
@@ -798,7 +797,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnComponentes[1].setBounds(637, 691, 144, 56);
 		add(btnComponentes[1]);
 		btnComponentes[1].addActionListener(this);
-
 
 		btnComponentes[2] = new JButton("Ajustes");
 		btnComponentes[2].setBounds(1463, 48, 48, 48);
