@@ -28,8 +28,10 @@ public class control_de_partida {
 	        
 	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
 	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), datosPartida.getDerCon(4));
-	        gestionarBrote(datosPartida);
 	    }
+        gestionarBrote(datosPartida);
+        actualizarEstado(datosPartida);
+	    
 	    
 	}
 	
@@ -85,10 +87,16 @@ public class control_de_partida {
 
 	public void gestionarBrote(DatosPartida datosPartida) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
-			if (ciudad.propagarInfeccion() || !ciudad.isActivado()) {
+			if (ciudad.propagarInfeccion() && !ciudad.isActivado()) {
 				ciudad.setActivado(true);
 				datosPartida.setBrotes(datosPartida.getBrotes() + 1);
 			}
+		}
+	}
+	
+	public void actualizarEstado (DatosPartida datosPartida) {
+		for (Ciudad ciudad : datosPartida.getCiudades()) {
+			ciudad.setActivado(false);
 		}
 	}
 
