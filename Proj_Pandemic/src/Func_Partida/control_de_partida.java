@@ -44,25 +44,27 @@ public class control_de_partida {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(Ciudad)) {
 				for (Vacuna vacuna : datosPartida.getVacunas()) {
+					if (ciudad.getInfeccion()> 0) {
 					if((ciudad.getEnfermedad().equals("Tritones") || vacuna.getColor().equals("Azul")) || vacuna.isEstado()) {
 						ciudad.setInfeccion(-ciudad.getInfeccion());
 					} else {
-						ciudad.setInfeccion(-1);
+						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 					}
 					if((ciudad.getEnfermedad().equals("Antarboles") || vacuna.getColor().equals("Verde")) || vacuna.isEstado()) {
 						ciudad.setInfeccion(-ciudad.getInfeccion());
 					} else {
-						ciudad.setInfeccion(-1);
+						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 					}
 					if((ciudad.getEnfermedad().equals("Goblos") || vacuna.getColor().equals("Rojo")) || vacuna.isEstado()) {
 						ciudad.setInfeccion(-ciudad.getInfeccion());
 					} else {
-						ciudad.setInfeccion(-1);
+						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 					}
 					if((ciudad.getEnfermedad().equals("Momias") || vacuna.getColor().equals("Negro")) || vacuna.isEstado()) {
 						ciudad.setInfeccion(-ciudad.getInfeccion());
 					} else {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
+					}
 					}
 				}
 			}
