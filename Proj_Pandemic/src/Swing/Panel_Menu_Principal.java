@@ -30,64 +30,13 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	Button Boton[];
 
 	public Panel_Menu_Principal() {
-//		Boton = new Button[7];
-//		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Resumen de puntuaciones", "Autores",
-//				"Versión", "Salir" };
-//		for (int i = 0; i < 7; i++) {
-//			Boton[i] = new Button(nombres[i]);
-//			add(Boton[i]);
-//		}
-//
-//		Boton[0].addActionListener(this);
-//		Boton[1].addActionListener(this);
-//		Boton[2].addActionListener(this);
-//		Boton[3].addActionListener(this);
-//		Boton[4].addActionListener(this);
-//		Boton[5].addActionListener(this);
-//		Boton[6].addActionListener(this);
-//
-//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//		setSize(20, 20);
-//		setVisible(true);
 
 		reproducirMusica();
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-
-		Boton = new Button[7];
-		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Resumen de puntuaciones", "Autores",
-				"Versión", "Salir" };
-		for (int i = 0; i < 7; i++) {
-			Boton[i] = new Button(nombres[i]);
-			add(Boton[i]);
-		}
-
-		Boton[0].setBounds(685, 295, 170, 50);
-		add(Boton[0]);
-		Boton[0].addActionListener(this);
-
-		Boton[1].setBounds(685, 355, 170, 50);
-		add(Boton[1]);
-		Boton[1].addActionListener(this);
-		
-		Boton[2].setBounds(685, 415, 170, 50);
-		add(Boton[2]);
-		Boton[2].addActionListener(this);
-		
-		Boton[3].setBounds(685, 475, 170, 50);
-		add(Boton[3]);
-
-		Boton[4].setBounds(685, 535, 170, 50);
-		add(Boton[4]);
-
-		Boton[5].setBounds(685, 595, 170, 50);
-		add(Boton[5]);
-
-		Boton[6].setBounds(685, 655, 170, 50);
-		add(Boton[6]);
-
+		addButtons();
 		InitFondo();
-	
+
 	}
 
 	@Override
@@ -100,7 +49,6 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			partidaInit.revalidate();
 			partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-
 		}
 		if (e.getSource() == Boton[1]) {
 			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -108,7 +56,6 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			partida.getContentPane().add(new Panel_Partida());
 			partida.revalidate();
 			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
 
 		}
 		if (e.getSource() == Boton[2]) {
@@ -152,35 +99,43 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		}
 	}
 
-	public String mostrarPopupDificultad() {
-		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
-		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
-				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
-				opcionesDificultad[0]);
-		if (dificultadSeleccionada != null) {
-			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-		}
-//          else {
-//			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-//			menu_principal.remove(this);
-//			menu_principal.add(new Panel_Menu_Principal());
-//			menu_principal.setVisible(true);
-//		}
-		return dificultadSeleccionada;
-	}
+	public void addButtons() {
 
-	public void mostrarPopupCargarPartida() {
-		String[] opcionesCarga = { "Facil", "Normal", "Dificil" };
-		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
-				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesCarga, opcionesCarga[0]);
-		if (dificultadSeleccionada != null) {
-			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-		} else {
-			JFrame menu_principal = (JFrame) SwingUtilities.getWindowAncestor(this);
-			menu_principal.remove(this);
-			menu_principal.add(new Panel_Menu_Principal());
-			menu_principal.setVisible(true);
+		Boton = new Button[7];
+		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Resumen de puntuaciones", "Autores",
+				"Versión", "Salir" };
+		for (int i = 0; i < 7; i++) {
+			Boton[i] = new Button(nombres[i]);
+			add(Boton[i]);
 		}
+
+		Boton[0].setBounds(685, 295, 170, 50);
+		add(Boton[0]);
+		Boton[0].addActionListener(this);
+
+		Boton[1].setBounds(685, 355, 170, 50);
+		add(Boton[1]);
+		Boton[1].addActionListener(this);
+
+		Boton[2].setBounds(685, 415, 170, 50);
+		add(Boton[2]);
+		Boton[2].addActionListener(this);
+
+		Boton[3].setBounds(685, 475, 170, 50);
+		add(Boton[3]);
+		Boton[3].addActionListener(this);
+		
+		Boton[4].setBounds(685, 535, 170, 50);
+		add(Boton[4]);
+		Boton[4].addActionListener(this);
+		
+		Boton[5].setBounds(685, 595, 170, 50);
+		add(Boton[5]);
+		Boton[5].addActionListener(this);
+		
+		Boton[6].setBounds(685, 655, 170, 50);
+		add(Boton[6]);
+		Boton[6].addActionListener(this);
 	}
 
 	private void InitFondo() {
@@ -199,22 +154,25 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		setOpaque(true); // el panel.
 
 		add(fondoLabel);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(473, 84, 590, 180);
+		add(panel);
 
 		setVisible(true);
 	}
-	
-    private void reproducirMusica() {
-    	String filePath = "C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\SoundTrack.wav";
-        try {
-            File file = new File(filePath);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-            clip.start();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
-    }
-	
+
+	private void reproducirMusica() {
+		String filePath = "C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\SoundTrack.wav";
+		try {
+			File file = new File(filePath);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			clip.loop(Clip.LOOP_CONTINUOUSLY);
+			clip.start();
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		}
+	}
 }
