@@ -50,6 +50,7 @@ public class control_de_partida {
 					if((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
 						com = true;
+						System.out.println("1");
 					} else if (!com) {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 						com = true;
@@ -57,6 +58,7 @@ public class control_de_partida {
 					if((ciudad.getEnfermedad().equals("Antarboles") && vacuna.getColor().equals("Verde")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
 						com = true;
+						System.out.println("2");
 					} else if (!com) {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 						com = true;
@@ -64,6 +66,7 @@ public class control_de_partida {
 					if((ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
 						com = true;
+						System.out.println("3");
 					} else if(!com) {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 						com = true;
@@ -71,6 +74,7 @@ public class control_de_partida {
 					if((ciudad.getEnfermedad().equals("Momias") && vacuna.getColor().equals("Negro")) && vacuna.isEstado() && !com) {
 						ciudad.setInfeccion(0);
 						com = true;
+						System.out.println("4");
 					} else if(!com) {
 						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 						com = true;
