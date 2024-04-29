@@ -34,6 +34,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		reproducirMusica();
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
+		InitCartel();
 		addButtons();
 		InitFondo();
 
@@ -124,22 +125,38 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		Boton[3].setBounds(685, 475, 170, 50);
 		add(Boton[3]);
 		Boton[3].addActionListener(this);
-		
+
 		Boton[4].setBounds(685, 535, 170, 50);
 		add(Boton[4]);
 		Boton[4].addActionListener(this);
-		
+
 		Boton[5].setBounds(685, 595, 170, 50);
 		add(Boton[5]);
 		Boton[5].addActionListener(this);
-		
+
 		Boton[6].setBounds(685, 655, 170, 50);
 		add(Boton[6]);
 		Boton[6].addActionListener(this);
 	}
 
+	private void InitCartel() {
+		setOpaque(true);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		ImageIcon imagen1 = new ImageIcon(
+				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\logo.png");
+
+		Image imgEscalada1 = imagen1.getImage().getScaledInstance(590, 180,
+				Image.SCALE_SMOOTH);
+		ImageIcon imagenEscalada1 = new ImageIcon(imgEscalada1);
+
+		JLabel fondoLabel1 = new JLabel(imagenEscalada1);
+		fondoLabel1.setBounds(473, 84, 590, 180);
+		add(fondoLabel1);
+	}
+
 	private void InitFondo() {
 		setOpaque(true);
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		ImageIcon imagen = new ImageIcon(
@@ -152,20 +169,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		JLabel fondoLabel = new JLabel(imagenEscalada);
 		fondoLabel.setBounds(0, 10, screenSize.width, screenSize.height); // Posicionamos el fondoLabel para cubrir todo
 		setOpaque(true); // el panel.
-
 		add(fondoLabel);
-		
-
-		ImageIcon imagen1 = new ImageIcon(
-				"C:\\Users\\chenp\\Documents\\GitHub\\Pandemic_Prog\\Mapa_Pandemic\\logo.jpg");
-
-		Image imgEscalada1 = imagen1.getImage().getScaledInstance(screenSize.width, screenSize.height,
-				Image.SCALE_SMOOTH);
-		ImageIcon imagenEscalada1 = new ImageIcon(imgEscalada1);
-		
-		JLabel fondoLabel1 = new JLabel(imagenEscalada1);
-		fondoLabel1.setBounds(473, 84, 590, 180);
-		add(fondoLabel1);
 
 		setVisible(true);
 	}

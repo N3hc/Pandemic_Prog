@@ -131,6 +131,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			// siguiente turno
 			cPartida.gestionarTurno(partida, 1);
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
+			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
+			
 		}
 
 		if (e.getSource() == btnCiudad[0]) {
