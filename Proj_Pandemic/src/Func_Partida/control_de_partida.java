@@ -62,7 +62,7 @@ public class control_de_partida {
 					if((ciudad.getEnfermedad().equals("Momias") || vacuna.getColor().equals("Negro")) || vacuna.isEstado()) {
 						ciudad.setInfeccion(-ciudad.getInfeccion());
 					} else {
-						ciudad.setInfeccion(-1);
+						ciudad.setInfeccion(ciudad.getInfeccion()-1);
 					}
 				}
 			}
