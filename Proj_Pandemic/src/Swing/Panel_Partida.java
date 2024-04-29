@@ -96,7 +96,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        // Acción a realizar cuando se hace clic en el botón
-		        cPartida.gestionarInfeccion(partida, nombre, 1);
+		    	System.err.println(nombre);
+		        cPartida.gestionarInfeccion(partida,nombre, -partida.getDerCon(4));
 		    }
 		});
 		

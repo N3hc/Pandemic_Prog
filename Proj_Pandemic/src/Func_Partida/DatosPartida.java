@@ -115,7 +115,7 @@ public class DatosPartida {
 		this.personajes = personajes;
 	}
 
-	public float getDerCon(int i) {
+	public int getDerCon(int i) {
 		return DerCon[i];
 	}
 
