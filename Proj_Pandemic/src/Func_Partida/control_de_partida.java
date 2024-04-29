@@ -114,9 +114,9 @@ public class control_de_partida {
 
 	public boolean gestionarFinPartida(DatosPartida datosPartida) {
 		if (datosPartida.getBrotes() >= datosPartida.getDerCon(2)) {
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public void gestionarHeroes() {
