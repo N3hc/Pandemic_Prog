@@ -40,50 +40,33 @@ public class control_de_partida {
 	    return false;
 	}
 	
-	public void ciudadesCura (DatosPartida datosPartida, String Ciudad) {
-		boolean com;
-		for (Ciudad ciudad : datosPartida.getCiudades()) {
-			if (ciudad.getNombre().equals(Ciudad)) {
-				com = false;
-				for (Vacuna vacuna : datosPartida.getVacunas()) {
-					if (ciudad.getInfeccion()> 0) {
-					if((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul")) && vacuna.isEstado() && !com) {
-						ciudad.setInfeccion(0);
-						com = true;
-						System.out.println("1");
-					} else if (!com) {
-						ciudad.setInfeccion(ciudad.getInfeccion()-1);
-						com = true;
-					}
-					if((ciudad.getEnfermedad().equals("Antarboles") && vacuna.getColor().equals("Verde")) && vacuna.isEstado() && !com) {
-						ciudad.setInfeccion(0);
-						com = true;
-						System.out.println("2");
-					} else if (!com) {
-						ciudad.setInfeccion(ciudad.getInfeccion()-1);
-						com = true;
-					}
-					if((ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo")) && vacuna.isEstado() && !com) {
-						ciudad.setInfeccion(0);
-						com = true;
-						System.out.println("3");
-					} else if(!com) {
-						ciudad.setInfeccion(ciudad.getInfeccion()-1);
-						com = true;
-					}
-					if((ciudad.getEnfermedad().equals("Momias") && vacuna.getColor().equals("Negro")) && vacuna.isEstado() && !com) {
-						ciudad.setInfeccion(0);
-						com = true;
-						System.out.println("4");
-					} else if(!com) {
-						ciudad.setInfeccion(ciudad.getInfeccion()-1);
-						com = true;
-					}
-					}
-				}
-			}
-		}
-		
+	public void ciudadesCura(DatosPartida datosPartida, String Ciudad) {
+	    for (Ciudad ciudad : datosPartida.getCiudades()) {
+	        if (ciudad.getNombre().equals(Ciudad)) {
+	            boolean com = false; // Se reinicia para cada ciudad
+	            for (Vacuna vacuna : datosPartida.getVacunas()) {
+	                if (ciudad.getInfeccion() > 0 && !com) {
+	                    // Verificar cada condición y ejecutar solo si no se ha ejecutado ya
+	                    if ((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul")) ||
+	                        (ciudad.getEnfermedad().equals("Antarboles") && vacuna.getColor().equals("Verde")) ||
+	                        (ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo")) ||
+	                        (ciudad.getEnfermedad().equals("Momias") && vacuna.getColor().equals("Negro"))) {
+	                        if (vacuna.isEstado()) {
+	                            ciudad.setInfeccion(0);
+	                        } else {
+	                            ciudad.setInfeccion(ciudad.getInfeccion() - 1);
+	                        }
+	                        com = true; // Marcar que se ha realizado una acción para esta ciudad
+	                        System.out.println("Se aplicó una cura.");
+	                    }
+	                }
+	            }
+	            if (!com) {
+	                // Si no se ha realizado ninguna acción, disminuir la infección
+	                ciudad.setInfeccion(ciudad.getInfeccion() - 1);
+	            }
+	        }
+	    }
 	}
 
 	public void gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
