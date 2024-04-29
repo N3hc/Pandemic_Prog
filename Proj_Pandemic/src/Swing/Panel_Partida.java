@@ -97,7 +97,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		    public void actionPerformed(ActionEvent e) {
 		        // Acción a realizar cuando se hace clic en el botón
 		    	System.err.println(nombre);
-		        cPartida.gestionarInfeccion(partida,nombre, -partida.getDerCon(4));
+		        cPartida.ciudadesCura(partida,nombre);
+		        nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
 		    }
 		});
 		
