@@ -85,7 +85,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				System.err.println(nombre);
 				cPartida.ciudadesCura(partida, nombre);
 				nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
 			}
@@ -770,6 +769,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setOpaque(true); // el panel.
 
 		add(fondoLabel);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setFont(new Font("Yu Gothic Light", Font.BOLD | Font.ITALIC, 22));
+		lblNewLabel.setBounds(775, 107, 178, 99);
+		add(lblNewLabel);
 
 		setVisible(true);
 	}
