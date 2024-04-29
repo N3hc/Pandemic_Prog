@@ -45,10 +45,10 @@ public class control_de_partida {
 	        if (ciudad.getNombre().equals(Ciudad)) {
 	            for (Vacuna vacuna : datosPartida.getVacunas()) {
 	                if (ciudad.getInfeccion() > 0) {
-	                    boolean isTritonesOrAzul = ciudad.getEnfermedad().equals("Tritones") || vacuna.getColor().equals("Azul");
-	                    boolean isAntarbolesOrVerde = ciudad.getEnfermedad().equals("Antarboles") || vacuna.getColor().equals("Verde");
-	                    boolean isGoblosOrRojo = ciudad.getEnfermedad().equals("Goblos") || vacuna.getColor().equals("Rojo");
-	                    boolean isMomiasOrNegro = ciudad.getEnfermedad().equals("Momias") || vacuna.getColor().equals("Negro");
+	                    boolean isTritonesOrAzul = ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul");
+	                    boolean isAntarbolesOrVerde = ciudad.getEnfermedad().equals("Antarboles") && vacuna.getColor().equals("Verde");
+	                    boolean isGoblosOrRojo = ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo");
+	                    boolean isMomiasOrNegro = ciudad.getEnfermedad().equals("Momias") && vacuna.getColor().equals("Negro");
 	                    
 	                    if (isTritonesOrAzul || isAntarbolesOrVerde || isGoblosOrRojo || isMomiasOrNegro || vacuna.isEstado()) {
 	                        ciudad.setInfeccion(0);
