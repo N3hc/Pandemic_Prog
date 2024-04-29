@@ -6,9 +6,9 @@ public class Vacuna {
 	private float porcentaje;
 	private boolean estado;
 	
-	public Vacuna (String Nombre, String arma) {
-		this.setColor(Nombre);
-		this.setArma(arma);
+	public Vacuna (String Color, String Nombre) {
+		this.setColor(Color);
+		this.setArma(Nombre);
 		this.setPorcentaje(0);
 		this.setEstado(false);
 	}
@@ -30,7 +30,7 @@ public class Vacuna {
 	}
 
 	public void setArma(String color) {
-		this.color = color;
+		this.arma = color;
 	}
 
 	public float getPorcentaje() {
