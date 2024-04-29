@@ -12,7 +12,6 @@ import java.io.File;
 import java.awt.event.ActionEvent;
 
 public class Panel_Partida extends JPanel implements ActionListener {
-
 	JButton[] btnCiudad;
 	JButton[] btnComponentes;
 	JButton[] btnAccCiudades;
@@ -109,7 +108,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 	}
 
-	private void consola() {
+	private String PrintCon(String cosa) {
+		textoConsola = "Turno: " + cosa;
+		consola.append(textoConsola + "\n");
+		
 		int maxLines = 12; // Set the maximum number of lines you want to display
 		int lineCount = consola.getLineCount();
 		if (lineCount > maxLines) {
@@ -121,6 +123,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				ex.printStackTrace();
 			}
 		}
+		return textoConsola;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -147,9 +150,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			cPartida.gestionarTurno(partida, 1);
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
 			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
-			textoConsola = "Turno: " + partida.getRondas();
-			consola.append(textoConsola + "\n");
-			consola();
+
 			if(cPartida.gestionarFinPartida(partida)) {
 				JOptionPane.showMessageDialog(this,
 						"Has perdido",
