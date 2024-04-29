@@ -19,6 +19,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JLabel[] Paneltxt;
 	JProgressBar[] ProgressBar;
 	JTextField txtProgresoInvasiones;
+	JTextArea consola;
+	String textoConsola;
 	String[] Vacunas;
 	int cosa;
 	DatosPartida partida = new DatosPartida();
@@ -106,6 +108,20 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		return armaSeleccionada;
 
 	}
+	
+	private void consola() {
+		int maxLines = 12; // Set the maximum number of lines you want to display
+		int lineCount = consola.getLineCount();
+		if (lineCount > maxLines) {
+		    try {
+		        int startOffset = consola.getLineStartOffset(0);
+		        int endOffset = consola.getLineEndOffset(lineCount - maxLines);
+		        consola.replaceRange("", startOffset, endOffset);
+		    } catch (Exception ex) {
+		        ex.printStackTrace();
+		    }
+		}
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[0]) {
@@ -131,6 +147,9 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			cPartida.gestionarTurno(partida, 1);
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
 			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
+			textoConsola = "Turno: " + partida.getRondas();
+			consola.append(textoConsola+ "\n");
+			consola();
 			
 		}
 
@@ -770,11 +789,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		add(fondoLabel);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("Yu Gothic Light", Font.BOLD | Font.ITALIC, 22));
-		lblNewLabel.setBounds(775, 107, 178, 99);
-		add(lblNewLabel);
-
 		setVisible(true);
 	}
 
@@ -865,12 +879,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Paneltxt[3].setText(("Turno: " + partida.getRondas()));
 		add(Paneltxt[3]);
 
-		JTextArea txtrPrueba = new JTextArea();
-		txtrPrueba.setBackground(Color.DARK_GRAY);
-		txtrPrueba.setText("Prueba\r\n");
-		txtrPrueba.setFont(new Font("Courier New", Font.PLAIN, 12));
-		txtrPrueba.setForeground(Color.GREEN);
-		txtrPrueba.setBounds(1167, 613, 369, 162);
-		add(txtrPrueba);
+		consola = new JTextArea();
+		consola.setBackground(Color.DARK_GRAY);
+		consola.setText("Prueba\r\n");
+		consola.setFont(new Font("Courier New", Font.PLAIN, 12));
+		consola.setForeground(Color.GREEN);
+		consola.setBounds(1167, 613, 369, 162);
+		add(consola);
 	}
 }
