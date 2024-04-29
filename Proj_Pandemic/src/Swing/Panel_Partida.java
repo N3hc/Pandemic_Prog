@@ -37,7 +37,13 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
 		partida.cargarDatos(mostrarPopupDificultad());
-		cPartida.gestionarTurno(partida, 0);
+		if(!cPartida.gestionarTurno(partida, 0)) {
+			JOptionPane.showMessageDialog(this,
+					"Has perdido",
+					"Perdiste", JOptionPane.INFORMATION_MESSAGE);
+			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
+			partida.getContentPane().removeAll();
+		};
 		generarVariables();
 		InitComponentes();
 		InitCiudadesBtn();
