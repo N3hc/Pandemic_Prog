@@ -49,7 +49,15 @@ public class control_de_partida {
 	    return false;
 	}
 	
+	public void gestionarHeroes(DatosPartida datosPartida, String nPersonaje) {
+		for (Personaje personaje : datosPartida.getPersonajes()) {
+			
+		}
+		
+	}
+	
 	public boolean ciudadesCura(DatosPartida datosPartida, String Ciudad) {
+		String datos = null;
 		if (datosPartida.getAcciones() > 0) {
 			datosPartida.setAcciones(datosPartida.getAcciones() - 1);
 			for (Ciudad ciudad : datosPartida.getCiudades()) {
@@ -63,10 +71,14 @@ public class control_de_partida {
 									|| (ciudad.getEnfermedad().equals("Goblos") && vacuna.getColor().equals("Rojo"))
 									|| (ciudad.getEnfermedad().equals("Momias") && vacuna.getColor().equals("Negro"))) {
 								if (vacuna.isEstado()) {
-									ciudad.setInfeccion(0);
+								datos = "La ciudad "+ciudad.getNombre()+" ha sido purgada!";
+								ciudad.setInfeccion(0);
 								} else {
+									datos = "La ciudad "+ciudad.getNombre()+" ha recibido refuerzos!";
 									ciudad.setInfeccion(ciudad.getInfeccion() - 1);
 								}
+								
+								Panel_Partida.GuardarDatos(datos);
 								com = true;
 							}
 						}
@@ -75,18 +87,26 @@ public class control_de_partida {
 			}
 			return true;
 		}
+		datos = "Acciones insuficientes";
+		Panel_Partida.GuardarDatos(datos);
 		return false;
 	}
 
 	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
+		String datos = "";
 		if (datosPartida.getAcciones() == 4) {
+			datosPartida.setAcciones(0);
 			for (Vacuna vacuna : datosPartida.getVacunas()) {
 				if (vacuna.getArma().equals(nVacuna)) {
+					datos = "El arma "+vacuna.getArma()+" está siendo creada! Resiste.";
+					Panel_Partida.GuardarDatos(datos);
 					vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
 				}
 			}
 			return true;
 		}
+		datos = "Acciones insuficientes";
+		Panel_Partida.GuardarDatos(datos);
 		return false;
 	}
 
@@ -117,14 +137,10 @@ public class control_de_partida {
 	}
 
 	public boolean gestionarFinPartida(DatosPartida datosPartida) {
-		if (datosPartida.getBrotes() > datosPartida.getDerCon(2) || datosPartida.getBrotes() == datosPartida.getDerCon(2)) {
+		if (datosPartida.getBrotes() >= datosPartida.getDerCon(2)) {
 			return true;
 		}
 		return false;
-	}
-
-	public void gestionarHeroes() {
-
 	}
 
 	public void gestionarCura(DatosPartida datosPartida) {

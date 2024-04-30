@@ -37,13 +37,14 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		generarVariables();
+		
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
+		InitFondo();
 		partida.cargarDatos(mostrarPopupDificultad());
 		cPartida.gestionarTurno(partida, 0);
-		InitFondo();
+		generarVariables();
 	}
 
 	private void generarVariables() {
@@ -111,12 +112,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 	
 	public static void GuardarDatos(String datos) {
-		if (cosa == 0){
-		consola.append("Hola \n");
-		cosa++;
-		}else {
-			consola.append(datos + "\n");
-		}
+		consola.append(datos + "\n");
 		int maxLines = 12; // Set the maximum number of lines you want to display
 		int lineCount = consola.getLineCount();
 		if (lineCount > maxLines) {

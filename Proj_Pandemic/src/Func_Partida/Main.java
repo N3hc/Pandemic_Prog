@@ -10,19 +10,19 @@ public class Main {
 		String [] ciudad1 = new String[11];
 		int i = 0;
 		
-		control_de_partida cdp = new control_de_partida();
-		cdp.gestionarTurno(datosPartida, 0);
-		for (Ciudad ciudad : datosPartida.getCiudades()) {
-			if(ciudad.getInfeccion() > 0) {
-				System.out.println(ciudad.getNombre());
-				i++;
-				ciudad1[i] = ciudad.getNombre();
-			}
-		}
+//		control_de_partida cdp = new control_de_partida();
+//		cdp.gestionarTurno(datosPartida, 0);
+//		for (Ciudad ciudad : datosPartida.getCiudades()) {
+//			if(ciudad.getInfeccion() > 0) {
+//				System.out.println(ciudad.getNombre());
+//				i++;
+//				ciudad1[i] = ciudad.getNombre();
+//			}
+//		}
 		
 		
 		 System.out.println("Elementos de la lista:");
-	        for (Vacuna viruses : datosPartida.getVacunas()) {
+	        for (Personaje viruses : datosPartida.getPersonajes()) {
 	            System.out.println(viruses.toString());
 	        }
 	        
