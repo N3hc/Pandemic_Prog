@@ -9,6 +9,7 @@ import Func_Partida.control_de_partida;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Panel_Partida extends JPanel implements ActionListener {
@@ -22,6 +23,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	String textoConsola;
 	String[] Vacunas;
 	int cosa;
+	static ArrayList<String> listaTemporal = new ArrayList<>();
 	DatosPartida partida = new DatosPartida();
 	control_de_partida cPartida = new control_de_partida();
 	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
@@ -107,10 +109,14 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		return armaSeleccionada;
 
 	}
+	
+	public static void GuardarDatos(String datos) {
+		 listaTemporal.add(datos);
+		 System.out.println(datos);
+	}
 
-	private String PrintCon(String cosa) {
-		textoConsola = "Turno: " + cosa;
-		consola.append(textoConsola + "\n");
+	public String PrintCon() {
+		textoConsola = listaTemporal.get(listaTemporal.size() -1);
 		
 		int maxLines = 12; // Set the maximum number of lines you want to display
 		int lineCount = consola.getLineCount();
@@ -150,7 +156,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			cPartida.gestionarTurno(partida, 1);
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
 			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
-
+			consola.append(PrintCon() + "\n");
 			if(cPartida.gestionarFinPartida(partida)) {
 				JOptionPane.showMessageDialog(this,
 						"Has perdido",

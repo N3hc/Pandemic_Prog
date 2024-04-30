@@ -2,7 +2,11 @@ package Func_Partida;
 
 import java.util.Random;
 
+import Swing.Panel_Partida;
+
 public class control_de_partida {
+
+	
 	public void iniciarPartida() {
 
 	}
@@ -28,7 +32,9 @@ public class control_de_partida {
 	        
 	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
 	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), datosPartida.getDerCon(4));
-	        System.out.println("Se ha infectado "+ciudadAleatoria.getNombre());
+	        String datos = "Se ha infectado "+ciudadAleatoria.getNombre();
+	        Panel_Partida.GuardarDatos(datos);
+	        
 	    }
         gestionarBrote(datosPartida);
         actualizarEstado(datosPartida);    
@@ -78,7 +84,6 @@ public class control_de_partida {
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int f) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(nCiudad)) {
-				System.out.println("La ciudad "+ciudad.getNombre()+" se ha infectado.");
 				ciudad.setInfeccion(ciudad.getInfeccion()+f);
 			}
 		}
