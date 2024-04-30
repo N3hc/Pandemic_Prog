@@ -19,10 +19,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JLabel[] Paneltxt;
 	JProgressBar[] ProgressBar;
 	JTextField txtProgresoInvasiones;
-	JTextArea consola;
+	static JTextArea consola;
 	String textoConsola;
 	String[] Vacunas;
-	int cosa;
+	static int cosa = 0;
 	static ArrayList<String> listaTemporal = new ArrayList<>();
 	DatosPartida partida = new DatosPartida();
 	control_de_partida cPartida = new control_de_partida();
@@ -37,12 +37,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		partida.cargarDatos(mostrarPopupDificultad());
-		cPartida.gestionarTurno(partida, 0);
 		generarVariables();
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
+		partida.cargarDatos(mostrarPopupDificultad());
+		cPartida.gestionarTurno(partida, 0);
 		InitFondo();
 	}
 
@@ -111,13 +111,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 	
 	public static void GuardarDatos(String datos) {
-		 listaTemporal.add(datos);
-		 System.out.println(datos);
-	}
-
-	public String PrintCon() {
-		textoConsola = listaTemporal.get(listaTemporal.size() -1);
-		
+		if (cosa == 0){
+		consola.append("Hola \n");
+		cosa++;
+		}else {
+			consola.append(datos + "\n");
+		}
 		int maxLines = 12; // Set the maximum number of lines you want to display
 		int lineCount = consola.getLineCount();
 		if (lineCount > maxLines) {
@@ -129,8 +128,24 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				ex.printStackTrace();
 			}
 		}
-		return textoConsola;
 	}
+
+//	public String PrintCon() {
+//		textoConsola = listaTemporal.get(listaTemporal.size() -1);
+//		
+//		int maxLines = 12; // Set the maximum number of lines you want to display
+//		int lineCount = consola.getLineCount();
+//		if (lineCount > maxLines) {
+//			try {
+//				int startOffset = consola.getLineStartOffset(0);
+//				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
+//				consola.replaceRange("", startOffset, endOffset);
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//			}
+//		}
+//		return textoConsola;
+//	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[0]) {
@@ -156,7 +171,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			cPartida.gestionarTurno(partida, 1);
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
 			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
-			consola.append(PrintCon() + "\n");
+//			consola.append(PrintCon() + "\n");
 			if(cPartida.gestionarFinPartida(partida)) {
 				JOptionPane.showMessageDialog(this,
 						"Has perdido",
