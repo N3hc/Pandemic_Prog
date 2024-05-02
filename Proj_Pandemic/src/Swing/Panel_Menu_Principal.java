@@ -49,7 +49,6 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			partidaInit.getContentPane().add(new Panel_Partida());
 			partidaInit.revalidate();
 			partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
 		}
 		if (e.getSource() == Boton[1]) {
 			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
