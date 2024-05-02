@@ -32,7 +32,7 @@ public class control_de_partida {
 	        
 	        Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
 	        gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), datosPartida.getDerCon(4));
-	        String datos = "Se ha infectado "+ciudadAleatoria.getNombre();
+	        String datos = "Se ha infectado "+ciudadAleatoria.getNombre() + " " + ciudadAleatoria.getInfeccion();
 	        Panel_Partida.GuardarDatos(datos);
 	        
 	    }
@@ -93,6 +93,7 @@ public class control_de_partida {
 		return false;
 	}
 
+<<<<<<< Updated upstream
 	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna ) {
 		String datos = "";
 		if (nVacuna.isEmpty()) {
@@ -103,14 +104,34 @@ public class control_de_partida {
 					datos = "El arma "+vacuna.getArma()+" está siendo creada! \n Resiste!";
 					Panel_Partida.GuardarDatos(datos);
 					vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
+=======
+	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
+		try {
+		    // Código que podría lanzar un NullPointerException
+			String datos = "";
+			if (!nVacuna.equals(null)) {
+			if (datosPartida.getAcciones() == 4) {
+				datosPartida.setAcciones(0);
+				for (Vacuna vacuna : datosPartida.getVacunas()) {
+					if (vacuna.getArma().equals(nVacuna)) {
+						datos = "El arma "+vacuna.getArma()+" está siendo creada! \n Resiste!";
+						Panel_Partida.GuardarDatos(datos);
+						vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
+					}
+>>>>>>> Stashed changes
 				}
+				return true;
 			}
-			return true;
+			}
+			datos = "Acciones insuficientes";
+			Panel_Partida.GuardarDatos(datos);
+			return false;
+		} catch (NullPointerException e) {
+		    // Manejo de la excepción
+		    System.err.println("Se ha producido un NullPointerException");
 		}
-		}
-		datos = "Acciones insuficientes";
-		Panel_Partida.GuardarDatos(datos);
 		return false;
+		
 	}
 
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int f) {

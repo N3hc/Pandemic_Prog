@@ -109,7 +109,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			System.out.println("Arma seleccionada: " + armaSeleccionada);
 		}
 		return armaSeleccionada;
-
 	}
 	
 	public void popUpAcciones() {
