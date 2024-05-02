@@ -95,9 +95,16 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			}
 		});
 
-		btnAccCiudades[1] = new JButton("Conquistar");
+		btnAccCiudades[1] = new JButton("Ayudar");
 		btnAccCiudades[1].setBounds(140, 200, 120, 50);
 		dialog.getContentPane().add(btnAccCiudades[1]);
+		btnAccCiudades[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Acción a realizar cuando se hace clic en el botón
+				
+			}
+		});
 
 		dialog.setVisible(true);
 	}
