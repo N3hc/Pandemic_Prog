@@ -8,6 +8,8 @@ import Func_Partida.control_de_partida;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -19,9 +21,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JLabel[] Paneltxt;
 	JProgressBar[] ProgressBar;
 	JTextField txtProgresoInvasiones;
+	private static final int MAX_LINES = 12;
 	static JTextArea consola;
 	String textoConsola;
 	String[] Vacunas;
+	JScrollPane scrollPane = new JScrollPane(consola);
 	static int cosa = 0;
 	static ArrayList<String> listaTemporal = new ArrayList<>();
 	DatosPartida partida = new DatosPartida();
@@ -37,10 +41,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
+		consola();
 		InitFondo();
 		partida.cargarDatos(mostrarPopupDificultad());
 		cPartida.gestionarTurno(partida, 0);
@@ -91,6 +95,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				// Acción a realizar cuando se hace clic en el botón
 				cPartida.ciudadesCura(partida, nombre);
 				nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
+				popUpAcciones();
 			}
 		});
 
@@ -111,20 +116,64 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 	}
 	
-	public static void GuardarDatos(String datos) {
-		consola.append(datos + "\n");
-		int maxLines = 12; // Set the maximum number of lines you want to display
-		int lineCount = consola.getLineCount();
-		if (lineCount > maxLines) {
-			try {
-				int startOffset = consola.getLineStartOffset(0);
-				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
-				consola.replaceRange("", startOffset, endOffset);
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
+	public void popUpAcciones() {
+		JOptionPane.showMessageDialog(this,
+				"Te queda " + partida.getAcciones() + " restantes",
+				"Acciones Restantes", JOptionPane.INFORMATION_MESSAGE);
 	}
+	
+	
+	public void consola() {
+        scrollPane.addMouseWheelListener((MouseWheelListener) this);
+
+
+	}
+    
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        // Si se mueve la rueda hacia arriba, mueve la barra de desplazamiento hacia arriba
+        if (e.getWheelRotation() < 0) {
+            JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+            verticalScrollBar.setValue(verticalScrollBar.getValue() - verticalScrollBar.getUnitIncrement());
+        }
+        // Si se mueve la rueda hacia abajo, mueve la barra de desplazamiento hacia abajo
+        else {
+            JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+            verticalScrollBar.setValue(verticalScrollBar.getValue() + verticalScrollBar.getUnitIncrement());
+        }
+    }
+    
+    public static void GuardarDatos(String datos) {
+    	listaTemporal.add(datos);
+        if (listaTemporal.size() > MAX_LINES) {
+        	listaTemporal.remove(0);
+        }
+        actualizarConsola();
+    }
+	
+    public static void actualizarConsola() {
+        StringBuilder sb = new StringBuilder();
+        int startIndex = Math.max(0, listaTemporal.size() - MAX_LINES);
+        for (int i = startIndex; i < listaTemporal.size(); i++) {
+            sb.append(listaTemporal.get(i)).append("\n");
+        }
+        consola.setText(sb.toString());
+    }
+	
+	
+//	public static void GuardarDatos(String datos) {
+//		consola.append(datos + "\n");
+//		int maxLines = 12; // Set the maximum number of lines you want to display
+//		int lineCount = consola.getLineCount();
+//		if (lineCount > maxLines) {
+//			try {
+//				int startOffset = consola.getLineStartOffset(0);
+//				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
+//				consola.replaceRange("", startOffset, endOffset);
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//			}
+//		}
+//	}
 
 //	public String PrintCon() {
 //		textoConsola = listaTemporal.get(listaTemporal.size() -1);
@@ -149,13 +198,20 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
-			cPartida.gestionarVacuna(partida, Craftear());
-			int i = 0;
-			for (Vacuna viruses : partida.getVacunas()) {
-				ProgressBar[i].setValue(partida.getNivelVacuna(Vacunas[i]));
-				i++;
+			if(partida.getAcciones() != 4) {
+				JOptionPane.showMessageDialog(this,
+						"Esta accion requiere 4 acciones",
+						"Acciones insuficientes", JOptionPane.INFORMATION_MESSAGE);
+			}else {
+				cPartida.gestionarVacuna(partida, Craftear());
+				int i = 0;
+				for (Vacuna viruses : partida.getVacunas()) {
+					ProgressBar[i].setValue(partida.getNivelVacuna(Vacunas[i]));
+					i++;
+				}
+				i = 0;
 			}
-			i = 0;
+			popUpAcciones();
 		}
 		if (e.getSource() == btnComponentes[2]) {
 			// Ajustes
