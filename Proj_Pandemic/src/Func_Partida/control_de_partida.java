@@ -102,7 +102,7 @@ public class control_de_partida {
 			datosPartida.setAcciones(0);
 			for (Vacuna vacuna : datosPartida.getVacunas()) {
 				if (vacuna.getArma().equals(nVacuna)) {
-					datos = "El arma "+vacuna.getArma()+" está siendo creada! Resiste.";
+					datos = "El arma "+vacuna.getArma()+" está siendo creada! \n Resiste!";
 					Panel_Partida.GuardarDatos(datos);
 					vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
 				}
