@@ -85,6 +85,7 @@ public class control_de_partida {
 					}
 				} else {
 					datos = "La ciudad "+ciudad.getNombre()+" no está infectada.";
+					Panel_Partida.GuardarDatos(datos);
 					return false;
 				}
 			}
