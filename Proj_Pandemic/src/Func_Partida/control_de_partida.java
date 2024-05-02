@@ -51,22 +51,24 @@ public class control_de_partida {
 	public void gestionarHeroes(DatosPartida datosPartida, String nPersonaje, String elemento) {
 		try {
 			boolean comp = false;
-			for (Personaje personaje : datosPartida.getPersonajes()) {
-				if (personaje.getNombre().equals(nPersonaje) && personaje.getCooldown() == 0 && comp == false) {
-					comp = true;
-					if (personaje.getRol() == 0) {
-						for (Ciudad ciudad : datosPartida.getCiudades()) {
-							ciudadesCura(datosPartida, elemento);
-							if (ciudad.getNombre().equals(elemento)) {
-								for (String colindantes : ciudad.getCiudadesColindantes()) {
-									ciudadesCura(datosPartida, colindantes);
+			if (datosPartida.getAcciones() > 0) {
+				for (Personaje personaje : datosPartida.getPersonajes()) {
+					if (personaje.getNombre().equals(nPersonaje) && personaje.getCooldown() == 0 && comp == false) {
+						comp = true;
+						if (personaje.getRol() == 0) {
+							for (Ciudad ciudad : datosPartida.getCiudades()) {
+								ciudadesCura(datosPartida, elemento);
+								if (ciudad.getNombre().equals(elemento)) {
+									for (String colindantes : ciudad.getCiudadesColindantes()) {
+										ciudadesCura(datosPartida, colindantes);
+									}
 								}
 							}
-						}
-					} else {
-						for (Vacuna vacuna : datosPartida.getVacunas()) {
-							if (vacuna.getArma().equals(elemento)) {
-								vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+						} else {
+							for (Vacuna vacuna : datosPartida.getVacunas()) {
+								if (vacuna.getArma().equals(elemento)) {
+									vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+								}
 							}
 						}
 					}
