@@ -22,7 +22,7 @@ public class Main {
 		
 		
 		 System.out.println("Elementos de la lista:");
-	        for (Personaje viruses : datosPartida.getPersonajes()) {
+	        for (Vacuna viruses : datosPartida.getVacunas()) {
 	            System.out.println(viruses.toString());
 	        }
 	        
