@@ -59,9 +59,9 @@ public class control_de_partida {
 	public boolean ciudadesCura(DatosPartida datosPartida, String Ciudad) {
 		String datos = null;
 		if (datosPartida.getAcciones() > 0) {
-			datosPartida.setAcciones(datosPartida.getAcciones() - 1);
 			for (Ciudad ciudad : datosPartida.getCiudades()) {
-				if (ciudad.getNombre().equals(Ciudad)) {
+				if (ciudad.getNombre().equals(Ciudad) && ciudad.getInfeccion() > 0) {
+					datosPartida.setAcciones(datosPartida.getAcciones() - 1);
 					boolean com = false;
 					for (Vacuna vacuna : datosPartida.getVacunas()) {
 						if (ciudad.getInfeccion() > 0 && !com) {
@@ -83,6 +83,9 @@ public class control_de_partida {
 							}
 						}
 					}
+				} else {
+					datos = "La ciudad "+ciudad.getNombre()+" no está infectada.";
+					return false;
 				}
 			}
 			return true;
