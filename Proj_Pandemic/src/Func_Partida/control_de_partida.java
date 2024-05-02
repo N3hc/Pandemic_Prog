@@ -93,9 +93,9 @@ public class control_de_partida {
 		return false;
 	}
 
-	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
+	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna ) {
 		String datos = "";
-		if (!nVacuna.equals(null)) {
+		if (nVacuna.isEmpty()) {
 		if (datosPartida.getAcciones() == 4) {
 			datosPartida.setAcciones(0);
 			for (Vacuna vacuna : datosPartida.getVacunas()) {
