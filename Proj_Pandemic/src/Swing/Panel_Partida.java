@@ -8,7 +8,6 @@ import Func_Partida.control_de_partida;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -20,10 +19,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JProgressBar[] ProgressBar;
 	JTextField txtProgresoInvasiones;
 	static JTextArea consola;
-	String textoConsola;
 	String[] Vacunas;
-	static int cosa = 0;
-	static ArrayList<String> listaTemporal = new ArrayList<>();
 	DatosPartida partida = new DatosPartida();
 	control_de_partida cPartida = new control_de_partida();
 	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
@@ -61,7 +57,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		// Crear y mostrar el JDialog con las opciones
-		JDialog dialog = new JDialog(frame, "Ciudad", false); // true para hacerlo modal
+		JDialog dialog = new JDialog(frame, "Ciudad", true); // true para hacerlo modal
 		dialog.getContentPane().setLayout(null);
 		dialog.setSize(300, 300);
 		dialog.setLocation(690, 386);
@@ -91,7 +87,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				cPartida.ciudadesCura(partida, nombre);
 				actualizarDatos();
 				nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
-				partida.setAcciones((partida.getAcciones()) -1);
+				partida.setAcciones((partida.getAcciones()) - 1);
 				popUpAcciones();
 			}
 		});
@@ -122,7 +118,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Image image1 = originalIcon1.getImage();
 		Image newImage1 = image1.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
 		ImageIcon Guerrero = new ImageIcon(newImage1);
-		
+
 		ImageIcon originalIcon2 = new ImageIcon("img/supportCD.jpg"); // Ruta de tu imagen
 		Image image2 = originalIcon2.getImage();
 		Image newImage2 = image2.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
@@ -134,8 +130,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		ImageIcon guerreroCD = new ImageIcon(newImage3);
 
 		JDialog selector = new JDialog(frame,
-				"Support                                                                          Guerrero   ",
-				false); // true para hacerlo modal
+				"Support                                                                          Guerrero   ", true); // true
+																														// para
+																														// hacerlo
+																														// modal
 		selector.getContentPane().setLayout(null);
 		selector.setSize(600, 300);
 		selector.setLocationRelativeTo(null);
@@ -144,12 +142,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		guerrero.setBounds(300, 0, 300, 300);
 		guerrero.setContentAreaFilled(false);
 
-		if(cPartida.estadoPej(partida, 0)) {
-			guerrero.setIcon(Guerrero);	
-		}else {
+		if (cPartida.estadoPej(partida, 0)) {
+			guerrero.setIcon(Guerrero);
+		} else {
 			guerrero.setIcon(guerreroCD);
 		}
-		
+
 		guerrero.setText(null);
 		selector.getContentPane().add(guerrero);
 		guerrero.addActionListener(new ActionListener() {
@@ -167,13 +165,13 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton support = new JButton("Botón 2");
 		support.setBounds(0, 0, 300, 300);
 		support.setContentAreaFilled(false);
-		
-		if(cPartida.estadoPej(partida, 1)) {
-			support.setIcon(Support);	
-		}else {
+
+		if (cPartida.estadoPej(partida, 1)) {
+			support.setIcon(Support);
+		} else {
 			support.setIcon(supportCD);
 		}
-		
+
 		support.setText(null);
 		selector.getContentPane().add(support);
 		support.addActionListener(new ActionListener() {
@@ -181,13 +179,13 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
 				cPartida.gestionarHeroeSup(partida, nombre);
-				partida.setAcciones((partida.getAcciones()) -1);
+				partida.setAcciones((partida.getAcciones()) - 1);
 				actualizarDatos();
 				popUpAcciones();
 				selector.dispose();
 			}
 		});
-		
+
 		selector.setVisible(true);
 	}
 
@@ -220,7 +218,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 	}
 
-
 	public void actualizarDatos() {
 		Paneltxt[3].setText("Turno: " + partida.getRondas());
 		Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
@@ -231,7 +228,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		i = 0;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[0]) {
 			// campeones
@@ -261,7 +258,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 				partida.getContentPane().removeAll();
 			}
-			if(cPartida.ganarPartida(partida)) {
+			if (cPartida.ganarPartida(partida)) {
 				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!!", "Ganaste", JOptionPane.INFORMATION_MESSAGE);
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 				partida.getContentPane().removeAll();
