@@ -67,11 +67,11 @@ public class control_de_partida {
 			boolean comp = false;
 			if (datosPartida.getAcciones() > 0 && !elemento.equals(null)) {
 				for (Personaje personaje : datosPartida.getPersonajes()) {
-					if (personaje.getRol() == 0 && personaje.getCooldown() == 0 && comp == false) {
-						comp = true;
+					if (personaje.getCooldown() == 0 && comp == false) {
 						personaje.setCooldown(3);
-						if (personaje.getRol() == 0) {
 							for (Ciudad ciudad : datosPartida.getCiudades()) {
+								if (personaje.getRol() == 0 && ciudad.getNombre().equals(elemento)) {
+								comp = true;
 								ciudadesCura(datosPartida, elemento);
 								if (ciudad.getNombre().equals(elemento)) {
 									for (String colindantes : ciudad.getCiudadesColindantes()) {
@@ -79,13 +79,15 @@ public class control_de_partida {
 									}
 								}
 							}
-						} else if (!elemento.equals(null)) {
-							for (Vacuna vacuna : datosPartida.getVacunas()) {
-								if (vacuna.getArma().equals(elemento)) {
-									vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+								else if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
+									comp = true;
+									for (Vacuna vacuna : datosPartida.getVacunas()) {
+										if (vacuna.getArma().equals(ciudad.getEnfermedad())) {
+											vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+										}
+									}
 								}
-							}
-						}
+						} 
 					}
 				}
 			}
