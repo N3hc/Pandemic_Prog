@@ -25,6 +25,9 @@ public class Main {
 	        for (Vacuna viruses : datosPartida.getVacunas()) {
 	            System.out.println(viruses.toString());
 	        }
+	        for (Ciudad viruses : datosPartida.getCiudades()) {
+	            System.out.println(viruses.toString());
+	        }
 	        
 
 	}

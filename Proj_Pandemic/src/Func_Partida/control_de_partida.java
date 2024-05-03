@@ -85,7 +85,8 @@ public class control_de_partida {
 									for (String colindantes : ciudad.getCiudadesColindantes()) {
 										ciudadesCura(datosPartida, colindantes);
 									}
-							} else if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
+							} 
+							if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
 									if (vacuna.getArma().equals(ciudad.getEnfermedad())) {
