@@ -79,18 +79,17 @@ public class control_de_partida {
 					if (personaje.getCooldown() == 0 && comp == false) {
 						personaje.setCooldown(3);
 						for (Ciudad ciudad : datosPartida.getCiudades()) {
-							if (personaje.getRol() == 0 && ciudad.getNombre().equals(elemento)) {
+							if (personaje.getRol() == nPersonaje && ciudad.getNombre().equals(elemento)) {
 								comp = true;
 								ciudadesCura(datosPartida, elemento);
 									for (String colindantes : ciudad.getCiudadesColindantes()) {
 										ciudadesCura(datosPartida, colindantes);
 									}
-							} 
-							if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
+							} else if (personaje.getRol() == nPersonaje && ciudad.getNombre().equals(elemento)) {
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
 									if (vacuna.getArma().equals(ciudad.getEnfermedad())) {
-										System.out.println("fUNCIONO");
+										System.out.println();
 										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
 									}
 								}
