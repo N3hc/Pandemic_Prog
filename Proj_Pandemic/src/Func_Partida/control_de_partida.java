@@ -82,15 +82,14 @@ public class control_de_partida {
 							if (personaje.getRol() == 0 && ciudad.getNombre().equals(elemento)) {
 								comp = true;
 								ciudadesCura(datosPartida, elemento);
-								if (ciudad.getNombre().equals(elemento)) {
 									for (String colindantes : ciudad.getCiudadesColindantes()) {
 										ciudadesCura(datosPartida, colindantes);
 									}
-								}
 							} else if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
 									if (vacuna.getArma().equals(ciudad.getEnfermedad())) {
+										System.out.println("fUNCIONO");
 										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
 									}
 								}
@@ -122,7 +121,6 @@ public class control_de_partida {
 									datos = "La ciudad " + ciudad.getNombre() + " ha sido purgada!";
 									ciudad.setInfeccion(0);
 								} else {
-
 									datos = "La ciudad " + ciudad.getNombre() + " ha recibido refuerzos!";
 									ciudad.setInfeccion(ciudad.getInfeccion() - 1);
 								}
