@@ -122,7 +122,7 @@ public class control_de_partida {
 									datos = "La ciudad " + ciudad.getNombre() + " ha sido purgada!";
 									ciudad.setInfeccion(0);
 								} else {
-									datosPartida.setAcciones(datosPartida.getAcciones() - 1);
+
 									datos = "La ciudad " + ciudad.getNombre() + " ha recibido refuerzos!";
 									ciudad.setInfeccion(ciudad.getInfeccion() - 1);
 								}
