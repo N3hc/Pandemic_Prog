@@ -37,7 +37,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
@@ -135,7 +134,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		ImageIcon guerreroCD = new ImageIcon(newImage3);
 
 		JDialog selector = new JDialog(frame,
-				"                    Support                                                                          Guerrero   ",
+				"Support                                                                          Guerrero   ",
 				false); // true para hacerlo modal
 		selector.getContentPane().setLayout(null);
 		selector.setSize(600, 300);
@@ -221,22 +220,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 	}
 
-//	public String PrintCon() {
-//		textoConsola = listaTemporal.get(listaTemporal.size() -1);
-//		
-//		int maxLines = 12; // Set the maximum number of lines you want to display
-//		int lineCount = consola.getLineCount();
-//		if (lineCount > maxLines) {
-//			try {
-//				int startOffset = consola.getLineStartOffset(0);
-//				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
-//				consola.replaceRange("", startOffset, endOffset);
-//			} catch (Exception ex) {
-//				ex.printStackTrace();
-//			}
-//		}
-//		return textoConsola;
-//	}
 
 	public void actualizarDatos() {
 		Paneltxt[3].setText("Turno: " + partida.getRondas());
@@ -274,9 +257,13 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			// siguiente turno
 			cPartida.gestionarTurno(partida, 1);
 			actualizarDatos();
-//			consola.append(PrintCon() + "\n");
 			if (cPartida.gestionarFinPartida(partida)) {
 				JOptionPane.showMessageDialog(this, "Has perdido", "Perdiste", JOptionPane.INFORMATION_MESSAGE);
+				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
+				partida.getContentPane().removeAll();
+			}
+			if(cPartida.ganarPartida(partida)) {
+				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!!", "Ganaste", JOptionPane.INFORMATION_MESSAGE);
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 				partida.getContentPane().removeAll();
 			}
