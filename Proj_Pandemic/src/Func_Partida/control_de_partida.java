@@ -80,6 +80,7 @@ public class control_de_partida {
 						personaje.setCooldown(3);
 						for (Ciudad ciudad : datosPartida.getCiudades()) {
 							if (personaje.getRol() == 0 && ciudad.getNombre().equals(elemento)) {
+								System.out.println("guerrero");
 								comp = true;
 								ciudadesCura(datosPartida, elemento);
 									for (String colindantes : ciudad.getCiudadesColindantes()) {
