@@ -156,7 +156,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				actualizarDatos();
 				partida.setAcciones((partida.getAcciones()) -1);
 				popUpAcciones();
-				removeAll();
 			}
 		});
 
@@ -174,7 +173,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				actualizarDatos();
 				partida.setAcciones((partida.getAcciones()) -1);
 				popUpAcciones();
-				removeAll();
 			}
 		});
 		
