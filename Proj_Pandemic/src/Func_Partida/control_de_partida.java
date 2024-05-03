@@ -139,6 +139,7 @@ public class control_de_partida {
 				if (ciudad.getNombre().equals(Ciudad) && ciudad.getInfeccion() > 0) {
 					boolean com = false;
 					for (Vacuna vacuna : datosPartida.getVacunas()) {
+						datosPartida.setAcciones(0);
 						if (ciudad.getInfeccion() > 0 && !com) {
 							if ((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul"))
 									|| (ciudad.getEnfermedad().equals("Antarboles")
