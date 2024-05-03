@@ -101,12 +101,53 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnAccCiudades[1].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Acción a realizar cuando se hace clic en el botón
-				
+				PanelHeroes();
 			}
 		});
 
 		dialog.setVisible(true);
+	}
+	
+	public void PanelHeroes() {
+	    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+        ImageIcon originalIcon = new ImageIcon("img/support.jpg"); // Ruta de tu imagen
+        Image image = originalIcon.getImage();
+        Image newImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
+        ImageIcon scaledIcon = new ImageIcon(newImage);
+        
+        ImageIcon originalIcon1 = new ImageIcon("img/guerrero.jpg"); // Ruta de tu imagen
+        Image image1 = originalIcon1.getImage();
+        Image newImage1 = image1.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
+        ImageIcon scaledIcon1 = new ImageIcon(newImage1);
+	    
+	    
+	    JDialog selector = new JDialog(frame, "                    Support                                                                             Guerrero   ", false); // true para hacerlo modal
+	    selector.getContentPane().setLayout(null);
+	    selector.setSize(600, 300);
+	    selector.setLocationRelativeTo(null);
+
+	    JButton btnNewButton = new JButton("Botón 1");
+	    btnNewButton.setBounds(0, 0, 300, 300);
+	    btnNewButton.setContentAreaFilled(false);
+	    btnNewButton.setIcon(scaledIcon);
+	    btnNewButton.setText(null);
+	    selector.getContentPane().add(btnNewButton);
+	    btnNewButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Acción a realizar cuando se hace clic en el botón
+			}
+		});
+
+	    JButton btnNewButton_1 = new JButton("Botón 2");
+	    btnNewButton_1.setBounds(300, 0, 300, 300);
+	    btnNewButton_1.setContentAreaFilled(false);
+	    btnNewButton_1.setIcon(scaledIcon1);
+	    btnNewButton_1.setText(null);
+	    selector.getContentPane().add(btnNewButton_1);	
+
+	    selector.setVisible(true);
 	}
 
 	public String Craftear() {
