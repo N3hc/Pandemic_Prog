@@ -90,7 +90,9 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
 				cPartida.ciudadesCura(partida, nombre);
+				actualizarDatos();
 				nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
+				partida.setAcciones((partida.getAcciones()) -1);
 				popUpAcciones();
 			}
 		});
@@ -102,6 +104,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PanelHeroes(nombre);
+				nivelConquista.setText("Nivel Conquista: " + partida.getNivelInfeccionCiudad(nombre));
 			}
 		});
 
@@ -109,7 +112,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	public void PanelHeroes(String nombre) {
-		System.out.println(nombre);
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
 		ImageIcon originalIcon = new ImageIcon("img/support.jpg"); // Ruta de tu imagen
@@ -142,6 +144,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton btnNewButton = new JButton("Botón 1");
 		btnNewButton.setBounds(0, 0, 300, 300);
 		btnNewButton.setContentAreaFilled(false);
+		
 		btnNewButton.setIcon(scaledIcon);
 		btnNewButton.setText(null);
 		selector.getContentPane().add(btnNewButton);
@@ -149,7 +152,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				
+				cPartida.gestionarHeroes(partida, 0, nombre);
+				actualizarDatos();
+				partida.setAcciones((partida.getAcciones()) -1);
+				popUpAcciones();
+				removeAll();
 			}
 		});
 
@@ -163,7 +170,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				
+				cPartida.gestionarHeroes(partida, 1, nombre);
+				actualizarDatos();
+				partida.setAcciones((partida.getAcciones()) -1);
+				popUpAcciones();
+				removeAll();
 			}
 		});
 		
@@ -216,6 +227,17 @@ public class Panel_Partida extends JPanel implements ActionListener {
 //		return textoConsola;
 //	}
 
+	public void actualizarDatos() {
+		Paneltxt[3].setText("Turno: " + partida.getRondas());
+		Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
+		int i = 0;
+		for (Vacuna viruses : partida.getVacunas()) {
+			ProgressBar[i].setValue(partida.getNivelVacuna(Vacunas[i]));
+			i++;
+		}
+		i = 0;
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[0]) {
 			// campeones
@@ -227,12 +249,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 						JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				cPartida.gestionarVacuna(partida, Craftear());
-				int i = 0;
-				for (Vacuna viruses : partida.getVacunas()) {
-					ProgressBar[i].setValue(partida.getNivelVacuna(Vacunas[i]));
-					i++;
-				}
-				i = 0;
+				actualizarDatos();
+				partida.setAcciones((partida.getAcciones()) -4);
 			}
 			popUpAcciones();
 		}
@@ -244,8 +262,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		if (e.getSource() == btnComponentes[3]) {
 			// siguiente turno
 			cPartida.gestionarTurno(partida, 1);
-			Paneltxt[3].setText("Turno: " + partida.getRondas());
-			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
+			actualizarDatos();
 //			consola.append(PrintCon() + "\n");
 			if (cPartida.gestionarFinPartida(partida)) {
 				JOptionPane.showMessageDialog(this, "Has perdido", "Perdiste", JOptionPane.INFORMATION_MESSAGE);
