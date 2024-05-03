@@ -77,9 +77,9 @@ public class control_de_partida {
 			if (datosPartida.getAcciones() > 0 && !elemento.equals(null)) {
 				for (Personaje personaje : datosPartida.getPersonajes()) {
 					if (personaje.getCooldown() == 0 && comp == false) {
-						personaje.setCooldown(3);
 						for (Ciudad ciudad : datosPartida.getCiudades()) {
 							if (personaje.getRol() == 0 && ciudad.getNombre().equals(elemento)) {
+								personaje.setCooldown(3);
 								comp = true;
 								ciudadesCura(datosPartida, elemento);
 									for (String colindantes : ciudad.getCiudadesColindantes()) {
@@ -102,24 +102,12 @@ public class control_de_partida {
 			if (datosPartida.getAcciones() > 0 && !elemento.equals(null)) {
 				for (Personaje personaje : datosPartida.getPersonajes()) {
 					if (personaje.getCooldown() == 0 && comp == false) {
-						personaje.setCooldown(3);
 						for (Ciudad ciudad : datosPartida.getCiudades()) {
 							  if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
+									personaje.setCooldown(5);
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
-									if (ciudad.getEnfermedad().equals("Tritones") && vacuna.getArma().equals("Corazon de Vell")) {
-										System.out.println("Tritones");
-										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
-									} else if (ciudad.getEnfermedad().equals("Antarboles") && vacuna.getArma().equals("Dandelion")) {
-										System.out.println("ANTARBOLES");
-										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
-									} else if (ciudad.getEnfermedad().equals("Goblos") && vacuna.getArma().equals("Kzarka")) {
-										System.out.println("GOBLOS");
-										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
-									} else {
-										System.out.println("MOMIAS");
-										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
-									}
+									vacuna.setPorcentaje(vacuna.getPorcentaje()+5);
 								}
 							}
 						}
