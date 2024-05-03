@@ -127,7 +127,6 @@ public class control_de_partida {
 				if (ciudad.getNombre().equals(Ciudad) && ciudad.getInfeccion() > 0) {
 					boolean com = false;
 					for (Vacuna vacuna : datosPartida.getVacunas()) {
-						datosPartida.setAcciones(0);
 						if (ciudad.getInfeccion() > 0 && !com) {
 							if ((ciudad.getEnfermedad().equals("Tritones") && vacuna.getColor().equals("Azul"))
 									|| (ciudad.getEnfermedad().equals("Antarboles")
@@ -161,6 +160,7 @@ public class control_de_partida {
 			String datos = "";
 			if (!nVacuna.equals(null)) {
 				if (datosPartida.getAcciones() == 4) {
+					datosPartida.setAcciones(0);
 					for (Vacuna vacuna : datosPartida.getVacunas()) {
 						if (vacuna.getArma().equals(nVacuna)) {
 							datos = "El arma " + vacuna.getArma() + " está siendo creada! \n Resiste!";
