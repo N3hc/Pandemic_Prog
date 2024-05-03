@@ -117,20 +117,20 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		ImageIcon originalIcon = new ImageIcon("img/support.jpg"); // Ruta de tu imagen
 		Image image = originalIcon.getImage();
 		Image newImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
-		ImageIcon scaledIcon = new ImageIcon(newImage);
+		ImageIcon Support = new ImageIcon(newImage);
 
 		ImageIcon originalIcon1 = new ImageIcon("img/guerrero.jpg"); // Ruta de tu imagen
 		Image image1 = originalIcon1.getImage();
 		Image newImage1 = image1.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
-		ImageIcon scaledIcon1 = new ImageIcon(newImage1);
+		ImageIcon Guerrero = new ImageIcon(newImage1);
 		
-		ImageIcon originalIcon2 = new ImageIcon("img/support.jpg"); // Ruta de tu imagen
+		ImageIcon originalIcon2 = new ImageIcon("img/supportCD.jpg"); // Ruta de tu imagen
 		Image image2 = originalIcon2.getImage();
 		Image newImage2 = image2.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
 		ImageIcon supportCD = new ImageIcon(newImage2);
 
-		ImageIcon originalIcon3 = new ImageIcon("img/guerrero.jpg"); // Ruta de tu imagen
-		Image image3 = originalIcon1.getImage();
+		ImageIcon originalIcon3 = new ImageIcon("img/guerreroCD.jpg"); // Ruta de tu imagen
+		Image image3 = originalIcon3.getImage();
 		Image newImage3 = image3.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
 		ImageIcon guerreroCD = new ImageIcon(newImage3);
 
@@ -141,14 +141,19 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		selector.setSize(600, 300);
 		selector.setLocationRelativeTo(null);
 
-		JButton btnNewButton = new JButton("Botón 1");
-		btnNewButton.setBounds(0, 0, 300, 300);
-		btnNewButton.setContentAreaFilled(false);
+		JButton guerrero = new JButton("Botón 1");
+		guerrero.setBounds(300, 0, 300, 300);
+		guerrero.setContentAreaFilled(false);
+
+		if(cPartida.estadoPej(partida, 0)) {
+			guerrero.setIcon(Guerrero);	
+		}else {
+			guerrero.setIcon(guerreroCD);
+		}
 		
-		btnNewButton.setIcon(scaledIcon);
-		btnNewButton.setText(null);
-		selector.getContentPane().add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
+		guerrero.setText(null);
+		selector.getContentPane().add(guerrero);
+		guerrero.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
@@ -156,23 +161,31 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				actualizarDatos();
 				partida.setAcciones((partida.getAcciones()) -1);
 				popUpAcciones();
+				selector.dispose();
 			}
 		});
 
-		JButton btnNewButton_1 = new JButton("Botón 2");
-		btnNewButton_1.setBounds(300, 0, 300, 300);
-		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.setIcon(scaledIcon1);
-		btnNewButton_1.setText(null);
-		selector.getContentPane().add(btnNewButton_1);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton support = new JButton("Botón 2");
+		support.setBounds(0, 0, 300, 300);
+		support.setContentAreaFilled(false);
+		
+		if(cPartida.estadoPej(partida, 1)) {
+			support.setIcon(Support);	
+		}else {
+			support.setIcon(supportCD);
+		}
+		
+		support.setText(null);
+		selector.getContentPane().add(support);
+		support.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
 				cPartida.gestionarHeroes(partida, 1, nombre);
-				actualizarDatos();
 				partida.setAcciones((partida.getAcciones()) -1);
+				actualizarDatos();
 				popUpAcciones();
+				selector.dispose();
 			}
 		});
 		
