@@ -5,9 +5,8 @@ public class Personaje {
 	private int rol;
 	private int cooldown;
 
-	public Personaje () {
-		this.setPosActual("");
-		this.setRol((int) (Math.random()*3));
+	public Personaje (int i) {
+		this.setRol(i);
 		this.setCooldown(0);
 	}
 
@@ -17,14 +16,6 @@ public class Personaje {
 
 	public void setRol(int rol) {
 		this.rol = rol;
-	}
-
-	public String getPosActual() {
-		return posActual;
-	}
-
-	public void setPosActual(String posActual) {
-		this.posActual = posActual;
 	}
 
 	@Override
