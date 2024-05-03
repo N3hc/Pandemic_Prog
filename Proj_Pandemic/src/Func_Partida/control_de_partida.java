@@ -146,7 +146,6 @@ public class control_de_partida {
 			String datos = "";
 			if (!nVacuna.equals(null)) {
 				if (datosPartida.getAcciones() == 4) {
-					datosPartida.setAcciones(0);
 					for (Vacuna vacuna : datosPartida.getVacunas()) {
 						if (vacuna.getArma().equals(nVacuna)) {
 							datos = "El arma " + vacuna.getArma() + " está siendo creada! \n Resiste!";
