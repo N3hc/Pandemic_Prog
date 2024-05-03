@@ -157,7 +157,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
 				cPartida.gestionarHeroesAtc(partida, nombre);
-				partida.setAcciones((partida.getAcciones()) -1);
+				partida.setAcciones(partida.getAcciones() - 1);
 				actualizarDatos();
 				popUpAcciones();
 				selector.dispose();
