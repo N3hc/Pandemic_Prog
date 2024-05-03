@@ -73,7 +73,6 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 					+ "	-Efectivamente un brote puede implicar una cadena de infecciones en masa\r\n" + "\r\n"
 					+ "Las ciudades pueden tener en ellas diferentes héroes que te pueden ayudar en la partida:\r\n"
 					+ "	-Guerreros, estos conquistaran una ciudad y  matara plagas en cada una de las ciudades lindantes de la ciudad principal.\r\n"
-					+ "	-Tanques, estos se asignan a una ciudad y evitan que un brote en la ciudad en la que esta o en las que la lindan surta efecto\r\n"
 					+ "	-Soportes, estos son héroes que una vez conseguidos te ayudarán en la obtención de las armas, dándote un porcentage plano en cada farméo\r\n"
 					+ "		* Los Héroes entran en recarga durante unos turnos luego de ser usados (Parámetro variable)\r\n"
 					+ "\r\n"
