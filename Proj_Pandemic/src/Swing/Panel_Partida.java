@@ -37,7 +37,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		
+
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
@@ -101,53 +101,73 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnAccCiudades[1].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PanelHeroes();
+				PanelHeroes(nombre);
 			}
 		});
 
 		dialog.setVisible(true);
 	}
-	
-	public void PanelHeroes() {
-	    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-        ImageIcon originalIcon = new ImageIcon("img/support.jpg"); // Ruta de tu imagen
-        Image image = originalIcon.getImage();
-        Image newImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
-        ImageIcon scaledIcon = new ImageIcon(newImage);
-        
-        ImageIcon originalIcon1 = new ImageIcon("img/guerrero.jpg"); // Ruta de tu imagen
-        Image image1 = originalIcon1.getImage();
-        Image newImage1 = image1.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
-        ImageIcon scaledIcon1 = new ImageIcon(newImage1);
-	    
-	    
-	    JDialog selector = new JDialog(frame, "                    Support                                                                             Guerrero   ", false); // true para hacerlo modal
-	    selector.getContentPane().setLayout(null);
-	    selector.setSize(600, 300);
-	    selector.setLocationRelativeTo(null);
+	public void PanelHeroes(String nombre) {
+		System.out.println(nombre);
+		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-	    JButton btnNewButton = new JButton("Botón 1");
-	    btnNewButton.setBounds(0, 0, 300, 300);
-	    btnNewButton.setContentAreaFilled(false);
-	    btnNewButton.setIcon(scaledIcon);
-	    btnNewButton.setText(null);
-	    selector.getContentPane().add(btnNewButton);
-	    btnNewButton.addActionListener(new ActionListener() {
+		ImageIcon originalIcon = new ImageIcon("img/support.jpg"); // Ruta de tu imagen
+		Image image = originalIcon.getImage();
+		Image newImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
+		ImageIcon scaledIcon = new ImageIcon(newImage);
+
+		ImageIcon originalIcon1 = new ImageIcon("img/guerrero.jpg"); // Ruta de tu imagen
+		Image image1 = originalIcon1.getImage();
+		Image newImage1 = image1.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
+		ImageIcon scaledIcon1 = new ImageIcon(newImage1);
+		
+		ImageIcon originalIcon2 = new ImageIcon("img/support.jpg"); // Ruta de tu imagen
+		Image image2 = originalIcon2.getImage();
+		Image newImage2 = image2.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
+		ImageIcon supportCD = new ImageIcon(newImage2);
+
+		ImageIcon originalIcon3 = new ImageIcon("img/guerrero.jpg"); // Ruta de tu imagen
+		Image image3 = originalIcon1.getImage();
+		Image newImage3 = image3.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Ajusta al tamaño deseado
+		ImageIcon guerreroCD = new ImageIcon(newImage3);
+
+		JDialog selector = new JDialog(frame,
+				"                    Support                                                                          Guerrero   ",
+				false); // true para hacerlo modal
+		selector.getContentPane().setLayout(null);
+		selector.setSize(600, 300);
+		selector.setLocationRelativeTo(null);
+
+		JButton btnNewButton = new JButton("Botón 1");
+		btnNewButton.setBounds(0, 0, 300, 300);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setIcon(scaledIcon);
+		btnNewButton.setText(null);
+		selector.getContentPane().add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
+				
 			}
 		});
 
-	    JButton btnNewButton_1 = new JButton("Botón 2");
-	    btnNewButton_1.setBounds(300, 0, 300, 300);
-	    btnNewButton_1.setContentAreaFilled(false);
-	    btnNewButton_1.setIcon(scaledIcon1);
-	    btnNewButton_1.setText(null);
-	    selector.getContentPane().add(btnNewButton_1);	
-
-	    selector.setVisible(true);
+		JButton btnNewButton_1 = new JButton("Botón 2");
+		btnNewButton_1.setBounds(300, 0, 300, 300);
+		btnNewButton_1.setContentAreaFilled(false);
+		btnNewButton_1.setIcon(scaledIcon1);
+		btnNewButton_1.setText(null);
+		selector.getContentPane().add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Acción a realizar cuando se hace clic en el botón
+				
+			}
+		});
+		
+		selector.setVisible(true);
 	}
 
 	public String Craftear() {
@@ -158,13 +178,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		return armaSeleccionada;
 	}
-	
+
 	public void popUpAcciones() {
-		JOptionPane.showMessageDialog(this,
-				"Te queda " + partida.getAcciones() + " restantes",
-				"Acciones Restantes", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes", "Acciones Restantes",
+				JOptionPane.INFORMATION_MESSAGE);
 	}
-	
+
 	public static void GuardarDatos(String datos) {
 		consola.append(datos + "\n");
 		int maxLines = 12; // Set the maximum number of lines you want to display
@@ -203,11 +222,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
-			if(partida.getAcciones() != 4) {
-				JOptionPane.showMessageDialog(this,
-						"Esta accion requiere 4 acciones",
-						"Acciones insuficientes", JOptionPane.INFORMATION_MESSAGE);
-			}else {
+			if (partida.getAcciones() != 4) {
+				JOptionPane.showMessageDialog(this, "Esta accion requiere 4 acciones", "Acciones insuficientes",
+						JOptionPane.INFORMATION_MESSAGE);
+			} else {
 				cPartida.gestionarVacuna(partida, Craftear());
 				int i = 0;
 				for (Vacuna viruses : partida.getVacunas()) {
@@ -229,13 +247,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			Paneltxt[3].setText("Turno: " + partida.getRondas());
 			Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
 //			consola.append(PrintCon() + "\n");
-			if(cPartida.gestionarFinPartida(partida)) {
-				JOptionPane.showMessageDialog(this,
-						"Has perdido",
-						"Perdiste", JOptionPane.INFORMATION_MESSAGE);
+			if (cPartida.gestionarFinPartida(partida)) {
+				JOptionPane.showMessageDialog(this, "Has perdido", "Perdiste", JOptionPane.INFORMATION_MESSAGE);
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 				partida.getContentPane().removeAll();
-			};
+			}
+			;
 
 		}
 
