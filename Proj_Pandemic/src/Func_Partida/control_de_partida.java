@@ -71,7 +71,7 @@ public class control_de_partida {
 		return false;
 	}
 
-	public void gestionarHeroes(DatosPartida datosPartida, int nPersonaje, String elemento) {
+	public void gestionarHeroesAtc(DatosPartida datosPartida, String elemento) {
 		try {
 			boolean comp = false;
 			if (datosPartida.getAcciones() > 0 && !elemento.equals(null)) {
@@ -79,17 +79,45 @@ public class control_de_partida {
 					if (personaje.getCooldown() == 0 && comp == false) {
 						personaje.setCooldown(3);
 						for (Ciudad ciudad : datosPartida.getCiudades()) {
-							if (personaje.getRol() == nPersonaje && ciudad.getNombre().equals(elemento)) {
+							if (personaje.getRol() == 0 && ciudad.getNombre().equals(elemento)) {
 								comp = true;
 								ciudadesCura(datosPartida, elemento);
 									for (String colindantes : ciudad.getCiudadesColindantes()) {
 										ciudadesCura(datosPartida, colindantes);
 									}
-							} else if (personaje.getRol() == nPersonaje && ciudad.getNombre().equals(elemento)) {
+							}
+						}
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+			// Manejo de la excepción
+			System.out.println("Se ha producido un NullPointerException");
+		}
+	}
+	
+	public void gestionarHeroeSup(DatosPartida datosPartida, String elemento) {
+		try {
+			boolean comp = false;
+			if (datosPartida.getAcciones() > 0 && !elemento.equals(null)) {
+				for (Personaje personaje : datosPartida.getPersonajes()) {
+					if (personaje.getCooldown() == 0 && comp == false) {
+						personaje.setCooldown(3);
+						for (Ciudad ciudad : datosPartida.getCiudades()) {
+							  if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
-									if (vacuna.getArma().equals(ciudad.getEnfermedad())) {
-										System.out.println();
+									if (ciudad.getEnfermedad().equals("Tritones") && vacuna.getArma().equals("Corazon de Vell")) {
+										System.out.println("Tritones");
+										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+									} else if (ciudad.getEnfermedad().equals("Antarboles") && vacuna.getArma().equals("Dandelion")) {
+										System.out.println("ANTARBOLES");
+										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+									} else if (ciudad.getEnfermedad().equals("Goblos") && vacuna.getArma().equals("Kzarka")) {
+										System.out.println("GOBLOS");
+										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+									} else {
+										System.out.println("MOMIAS");
 										vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
 									}
 								}
