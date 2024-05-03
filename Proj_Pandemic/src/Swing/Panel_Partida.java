@@ -17,9 +17,9 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JButton[] btnAccCiudades;
 	JLabel[] Paneltxt;
 	JProgressBar[] ProgressBar;
+	String[] Vacunas;
 	JTextField txtProgresoInvasiones;
 	static JTextArea consola;
-	String[] Vacunas;
 	DatosPartida partida = new DatosPartida();
 	control_de_partida cPartida = new control_de_partida();
 	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
@@ -37,6 +37,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		InitCiudadesBtn();
 		generarIcono();
 		InitFondo();
+		Paneltxt[3].setText("Turno: 1");
 		partida.cargarDatos(mostrarPopupDificultad());
 		cPartida.gestionarTurno(partida, 0);
 		generarVariables();
@@ -916,13 +917,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Paneltxt = new JLabel[4];
 		ProgressBar = new JProgressBar[4];
 
-		btnComponentes[0] = new JButton("Campeones");
-		btnComponentes[0].setBounds(823, 691, 144, 56);
-		add(btnComponentes[0]);
-		btnComponentes[0].addActionListener(this);
-
 		btnComponentes[1] = new JButton("Craftear");
-		btnComponentes[1].setBounds(637, 691, 144, 56);
+		btnComponentes[1].setBounds(823, 691, 144, 56);
 		add(btnComponentes[1]);
 		btnComponentes[1].addActionListener(this);
 
@@ -989,7 +985,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		consola = new JTextArea();
 		consola.setBackground(Color.DARK_GRAY);
-		consola.setText("Prueba\r\n");
+		consola.setText("Bienvenidos al juego\r\n");
 		consola.setFont(new Font("Courier New", Font.PLAIN, 12));
 		consola.setForeground(Color.GREEN);
 		consola.setBounds(1167, 613, 369, 162);
