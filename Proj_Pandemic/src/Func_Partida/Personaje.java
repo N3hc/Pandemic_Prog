@@ -1,7 +1,6 @@
 package Func_Partida;
 
 public class Personaje {
-	private String posActual;
 	private int rol;
 	private int cooldown;
 
@@ -20,7 +19,7 @@ public class Personaje {
 
 	@Override
 	public String toString() {
-		return "personaje [posActual=" + posActual + ", rol=" + rol + "]";
+		return "personaje [ rol=" + rol + " cooldown = "+cooldown+" ]";
 	}
 	public int getCooldown() {
 		return cooldown;
