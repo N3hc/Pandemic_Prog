@@ -80,6 +80,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		btnAccCiudades[0] = new JButton("Matar");
 		btnAccCiudades[0].setBounds(10, 200, 120, 50);
+		btnAccCiudades[0].setToolTipText("Matar elimina a uno la infeccion de la ciudad seleccionada y consume 1 accion");
 		dialog.getContentPane().add(btnAccCiudades[0]);
 		btnAccCiudades[0].addActionListener(new ActionListener() {
 			@Override
@@ -95,6 +96,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		btnAccCiudades[1] = new JButton("Ayudar");
 		btnAccCiudades[1].setBounds(140, 200, 120, 50);
+		btnAccCiudades[1].setToolTipText("Ayudar pide ayuda a nuestros dos heroes, nos ayudan con sus funciones especiales");
 		dialog.getContentPane().add(btnAccCiudades[1]);
 		btnAccCiudades[1].addActionListener(new ActionListener() {
 			@Override
@@ -142,6 +144,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton guerrero = new JButton("Botón 1");
 		guerrero.setBounds(300, 0, 300, 300);
 		guerrero.setContentAreaFilled(false);
+		guerrero.setToolTipText("El guerrero ayuda a eliminar la infeccion en 1 en la ciudad seleccionada y sus colindantes, tiene un cooldown de 3 turnos y consume una accion en su uso");
 
 		if (cPartida.estadoPej(partida, 0)) {
 			guerrero.setIcon(Guerrero);
@@ -166,6 +169,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton support = new JButton("Botón 2");
 		support.setBounds(0, 0, 300, 300);
 		support.setContentAreaFilled(false);
+		support.setToolTipText("El support ayuda a augmentar un 5% el progresso de cada arma, tiene un cooldown de 5 turnos y consume una accion en su uso");
 
 		if (cPartida.estadoPej(partida, 1)) {
 			support.setIcon(Support);
@@ -201,10 +205,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		
 		JButton guardar = new JButton("Guardar Partida");
 		guardar.setBounds(0, 0, 150, 60);
+		guardar.setToolTipText("Guardar Partida dentro de la base de datos con el usuario en la cual entraste al juego");
 		dialog.getContentPane().add(guardar);
 		
 		JButton salir = new JButton("Salir del juego");
 		salir.setBounds(0, 60, 150, 60);
+		salir.setToolTipText("Salir del juego");
 		dialog.getContentPane().add(salir);
 		
 		dialog.setVisible(true);
@@ -481,7 +487,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	private void generarIcono() {
-
 		// Crea un ImageIcon con la imagen
 		ImageIcon icono = new ImageIcon("img/gateway_0.png");
 		ImageIcon icono1 = new ImageIcon("img/gateway_1.png");
@@ -850,54 +855,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnCiudad[47].setBounds(1289, 453, 35, 35);
 		add(btnCiudad[47]);
 
-		btnCiudad[0].addActionListener(this);
-		btnCiudad[1].addActionListener(this);
-		btnCiudad[2].addActionListener(this);
-		btnCiudad[3].addActionListener(this);
-		btnCiudad[4].addActionListener(this);
-		btnCiudad[5].addActionListener(this);
-		btnCiudad[6].addActionListener(this);
-		btnCiudad[7].addActionListener(this);
-		btnCiudad[8].addActionListener(this);
-		btnCiudad[9].addActionListener(this);
-		btnCiudad[10].addActionListener(this);
-		btnCiudad[11].addActionListener(this);
-		btnCiudad[12].addActionListener(this);
-		btnCiudad[13].addActionListener(this);
-		btnCiudad[14].addActionListener(this);
-		btnCiudad[15].addActionListener(this);
-		btnCiudad[16].addActionListener(this);
-		btnCiudad[17].addActionListener(this);
-		btnCiudad[18].addActionListener(this);
-		btnCiudad[19].addActionListener(this);
-		btnCiudad[20].addActionListener(this);
-		btnCiudad[21].addActionListener(this);
-		btnCiudad[22].addActionListener(this);
-		btnCiudad[23].addActionListener(this);
-		btnCiudad[24].addActionListener(this);
-		btnCiudad[25].addActionListener(this);
-		btnCiudad[26].addActionListener(this);
-		btnCiudad[27].addActionListener(this);
-		btnCiudad[28].addActionListener(this);
-		btnCiudad[29].addActionListener(this);
-		btnCiudad[30].addActionListener(this);
-		btnCiudad[31].addActionListener(this);
-		btnCiudad[32].addActionListener(this);
-		btnCiudad[33].addActionListener(this);
-		btnCiudad[34].addActionListener(this);
-		btnCiudad[35].addActionListener(this);
-		btnCiudad[36].addActionListener(this);
-		btnCiudad[37].addActionListener(this);
-		btnCiudad[38].addActionListener(this);
-		btnCiudad[39].addActionListener(this);
-		btnCiudad[40].addActionListener(this);
-		btnCiudad[41].addActionListener(this);
-		btnCiudad[42].addActionListener(this);
-		btnCiudad[43].addActionListener(this);
-		btnCiudad[44].addActionListener(this);
-		btnCiudad[45].addActionListener(this);
-		btnCiudad[46].addActionListener(this);
-		btnCiudad[47].addActionListener(this);
+		for (int i = 0; i < 47; i++) {
+		    btnCiudad[i].addActionListener(this);
+		}
+	
 	}
 
 	private void InitFondo() {
@@ -937,16 +898,19 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		btnComponentes[1] = new JButton("Craftear");
 		btnComponentes[1].setBounds(823, 691, 144, 56);
+		btnComponentes[1].setToolTipText("Crafetar nos ayuda a augmentar el progresso del arma, consume 4 acciones");
 		add(btnComponentes[1]);
 		btnComponentes[1].addActionListener(this);
 
 		btnComponentes[2] = new JButton("Ajustes");
 		btnComponentes[2].setBounds(1463, 48, 48, 48);
+		btnComponentes[2].setToolTipText("Nos muestra un panel para guardar la partido o/i salir del juego");
 		add(btnComponentes[2]);
 		btnComponentes[2].addActionListener(this);
 
 		btnComponentes[3] = new JButton("Siguiente Turno");
 		btnComponentes[3].setBounds(1009, 691, 144, 56);
+		btnComponentes[3].setToolTipText("Saltamos el turno actual y passamos en la siguiente, se descubren nuevas infeccioens y se nos renuevan las acciones");
 		add(btnComponentes[3]);
 		btnComponentes[3].addActionListener(this);
 
