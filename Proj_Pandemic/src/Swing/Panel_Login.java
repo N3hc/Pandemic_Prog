@@ -79,22 +79,22 @@ public class Panel_Login extends JPanel implements ActionListener{
 
 		passwordField = new JPasswordField();
 		passwordField.setBounds(132, 128, 285, 40);
-		add(passwordField);
+		dialog.getContentPane().add(passwordField);
 		
 		textField = new JTextField();
 		textField.setBounds(132, 60, 285, 40);
-		add(textField);
+		dialog.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("USER:");
 		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 20));
 		lblNewLabel.setBounds(64, 61, 112, 40);
-		add(lblNewLabel);
+		dialog.getContentPane().add(lblNewLabel);
 		
 		JLabel lblPassword = new JLabel("PASSWORD:");
 		lblPassword.setFont(new Font("Sylfaen", Font.PLAIN, 20));
 		lblPassword.setBounds(10, 129, 127, 40);
-		add(lblPassword);
+		dialog.getContentPane().add(lblPassword);
 		
 		dialog.setVisible(true);
 	
