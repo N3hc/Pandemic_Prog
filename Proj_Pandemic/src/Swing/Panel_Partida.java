@@ -276,17 +276,18 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		if (e.getSource() == btnComponentes[3]) {
 			// siguiente turno
-			cPartida.gestionarTurno(partida, 1);
-			actualizarDatos();
-			if (cPartida.gestionarFinPartida(partida)) {
-				JOptionPane.showMessageDialog(this, "Has perdido", "Perdiste", JOptionPane.INFORMATION_MESSAGE);
-				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-				partida.getContentPane().removeAll();
-			}
 			if (cPartida.ganarPartida(partida)) {
 				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!!", "Ganaste", JOptionPane.INFORMATION_MESSAGE);
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 				partida.getContentPane().removeAll();
+			}else{
+				cPartida.gestionarTurno(partida, 1);
+				actualizarDatos();
+				if (cPartida.gestionarFinPartida(partida)) {
+					JOptionPane.showMessageDialog(this, "Has perdido", "Perdiste", JOptionPane.INFORMATION_MESSAGE);
+					JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
+					partida.getContentPane().removeAll();
+				}
 			}
 			;
 
