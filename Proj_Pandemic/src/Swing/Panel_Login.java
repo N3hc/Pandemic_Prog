@@ -85,7 +85,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == Boton) {
+		if (e.getSource() == Boton[0]) {
 			String user = textField.getText();
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
