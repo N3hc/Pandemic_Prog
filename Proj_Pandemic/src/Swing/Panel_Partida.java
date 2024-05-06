@@ -190,6 +190,27 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		selector.setVisible(true);
 	}
 
+	public void panelAjustes() {
+
+		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+		// Crear y mostrar el JDialog con las opciones
+		JDialog dialog = new JDialog(frame, "Ajustes", true); // true para hacerlo modal
+		dialog.getContentPane().setLayout(null);
+		dialog.setSize(164, 157);
+		dialog.setLocationRelativeTo(null);
+		
+		JButton guardar = new JButton("Guardar Partida");
+		guardar.setBounds(0, 0, 150, 60);
+		dialog.getContentPane().add(guardar);
+		
+		JButton salir = new JButton("Salir del juego");
+		salir.setBounds(0, 60, 150, 60);
+		dialog.getContentPane().add(salir);
+		
+		dialog.setVisible(true);
+	
+	}
+	
 	public String Craftear() {
 		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
 				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
@@ -231,9 +252,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnComponentes[0]) {
-			// campeones
-		}
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
 			if (partida.getAcciones() != 4) {
@@ -247,7 +265,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == btnComponentes[2]) {
 			// Ajustes
-
+			panelAjustes();
 		}
 
 		if (e.getSource() == btnComponentes[3]) {
