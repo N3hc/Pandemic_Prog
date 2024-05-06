@@ -107,18 +107,16 @@ public class Panel_Login extends JPanel implements ActionListener{
 //		}
 	}
 	
-//	public boolean compr (String NICKNAME, String PASSWORD) {
-//		String [] Select = new String [10];
-//		Connection con = bbdd.conectarBaseDatos();
-//		String a = "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'";
-//		System.out.println(a);
-//		String[] listaElementosSeleccionados = { "COUNT(*)" };
-//		Select = bbdd.select(con, "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'", listaElementosSeleccionados);
-//		System.out.println(Select[0]);
-//		if (Select[0].equals("1")) {
-//		    return true;
-//		} else {
-//		    return false;
-//		}
-//	}
+	public boolean compr (String NICKNAME, String PASSWORD) {
+		String [] Select = new String [10];
+		Connection con = bbdd.conectarBaseDatos();
+		String[] listaElementosSeleccionados = { "COUNT(*)" };
+		Select = bbdd.select(con, "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'", listaElementosSeleccionados);
+		if (Select[0].equals("1")) {
+		    return true;
+		} else {
+		    return false;
+		}
+	}
+
 }
