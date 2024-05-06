@@ -160,12 +160,16 @@ public class control_de_partida {
 			String datos = "";
 			if (!nVacuna.equals(null)) {
 				if (datosPartida.getAcciones() == 4) {
-					datosPartida.setAcciones(0);
 					for (Vacuna vacuna : datosPartida.getVacunas()) {
-						if (vacuna.getArma().equals(nVacuna)) {
+						if (vacuna.getArma().equals(nVacuna) && !vacuna.isEstado()) {
+							datosPartida.setAcciones(0);
 							datos = "El arma " + vacuna.getArma() + " está siendo creada! \n Resiste!";
 							Panel_Partida.GuardarDatos(datos);
 							vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
+						} else {
+							datos = "El arma " + vacuna.getArma() + " Ya está creada! \n Úsala!";
+							Panel_Partida.GuardarDatos(datos);
+							return false;
 						}
 					}
 					return true;
