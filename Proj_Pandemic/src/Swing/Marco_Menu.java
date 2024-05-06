@@ -15,7 +15,7 @@ public class Marco_Menu extends JFrame{
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        
 	        // Obtener tamaño de la pantalla
-	        setSize(450, 350); // Tamaño del JFrame
+	        setSize(525, 325); // Tamaño del JFrame
 	        setTitle("Menu De Opciones");
 	        setLocationRelativeTo(null);
 	        
