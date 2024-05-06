@@ -74,9 +74,27 @@ public class Panel_Login extends JPanel implements ActionListener{
 		// Crear y mostrar el JDialog con las opciones
 		JDialog dialog = new JDialog(frame, "Sign Up", true); // true para hacerlo modal
 		dialog.getContentPane().setLayout(null);
-		dialog.setSize(300, 300);
+		dialog.setSize(525, 325);
 		dialog.setLocationRelativeTo(null);
 
+		passwordField = new JPasswordField();
+		passwordField.setBounds(132, 128, 285, 40);
+		add(passwordField);
+		
+		textField = new JTextField();
+		textField.setBounds(132, 60, 285, 40);
+		add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("USER:");
+		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 20));
+		lblNewLabel.setBounds(64, 61, 112, 40);
+		add(lblNewLabel);
+		
+		JLabel lblPassword = new JLabel("PASSWORD:");
+		lblPassword.setFont(new Font("Sylfaen", Font.PLAIN, 20));
+		lblPassword.setBounds(10, 129, 127, 40);
+		add(lblPassword);
 		
 		dialog.setVisible(true);
 	
@@ -101,8 +119,9 @@ public class Panel_Login extends JPanel implements ActionListener{
 				MenuPrincipal.getContentPane().add(new Panel_Login());
 				MenuPrincipal.revalidate();
 	        }
-	        
-
+		}
+		if (e.getSource() == Boton[1]) {
+			panelNuevaSession();
 		}
 	}
 	
