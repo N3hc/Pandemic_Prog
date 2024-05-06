@@ -55,7 +55,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 		lblPassword.setBounds(10, 129, 127, 40);
 		add(lblPassword);
 		
-		Boton[0] = new JButton("Acceptar");
+		Boton[0] = new JButton("Iniciar Session");
 		Boton[0].setBounds(269, 216, 210, 50);
 		add(Boton[0]);
 		Boton[0].addActionListener(this);
@@ -85,26 +85,25 @@ public class Panel_Login extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-//		if (e.getSource() == Boton) {
-//			String user = textField.getText();
-//	        char[] passwordChars = passwordField.getPassword();
-//	        String password = new String(passwordChars);
-//	        if (compr(user,password)) {
-//				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
-//				MenuPrincipal.getContentPane().removeAll();
-//				MenuPrincipal.getContentPane().add(new Panel_Menu_Principal());
-//				MenuPrincipal.revalidate();
-//				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//	        } else {
-//				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
-//				MenuPrincipal.getContentPane().removeAll();
-//				MenuPrincipal.getContentPane().add(new Panel_Login());
-//				MenuPrincipal.revalidate();
-////				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//	        }
-//	        
-//
-//		}
+		if (e.getSource() == Boton) {
+			String user = textField.getText();
+	        char[] passwordChars = passwordField.getPassword();
+	        String password = new String(passwordChars);
+	        if (compr(user,password)) {
+				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
+				MenuPrincipal.getContentPane().removeAll();
+				MenuPrincipal.getContentPane().add(new Panel_Menu_Principal());
+				MenuPrincipal.revalidate();
+				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	        } else {
+				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
+				MenuPrincipal.getContentPane().removeAll();
+				MenuPrincipal.getContentPane().add(new Panel_Login());
+				MenuPrincipal.revalidate();
+	        }
+	        
+
+		}
 	}
 	
 	public boolean compr (String NICKNAME, String PASSWORD) {
