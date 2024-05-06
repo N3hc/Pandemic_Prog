@@ -2,6 +2,7 @@ package Swing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -9,6 +10,9 @@ import javax.swing.border.LineBorder;
 import java.awt.Button;
 import java.awt.Color;
 import javax.swing.border.TitledBorder;
+
+import Func_Partida.bbdd;
+
 import javax.swing.JTextArea;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -23,6 +27,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	
 	private JPasswordField passwordField;
 	private JTextField textField;
+	
 	JButton Boton;
 
 	Panel_Login(){
@@ -59,11 +64,39 @@ public class Panel_Login extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == Boton) {
-			JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
-			MenuPrincipal.getContentPane().removeAll();
-			MenuPrincipal.getContentPane().add(new Panel_Menu_Principal());
-			MenuPrincipal.revalidate();
-			MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			String user = textField.getText();
+	        char[] passwordChars = passwordField.getPassword();
+	        String password = new String(passwordChars);
+	        if (compr(user,password)) {
+				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
+				MenuPrincipal.getContentPane().removeAll();
+				MenuPrincipal.getContentPane().add(new Panel_Menu_Principal());
+				MenuPrincipal.revalidate();
+				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	        } else {
+				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
+				MenuPrincipal.getContentPane().removeAll();
+				MenuPrincipal.getContentPane().add(new Panel_Login());
+				MenuPrincipal.revalidate();
+//				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	        }
+	        
+
+		}
+	}
+	
+	public boolean compr (String NICKNAME, String PASSWORD) {
+		String [] Select = new String [10];
+		Connection con = bbdd.conectarBaseDatos();
+		String a = "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'";
+		System.out.println(a);
+		String[] listaElementosSeleccionados = { "COUNT(*)" };
+		Select = bbdd.select(con, "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'", listaElementosSeleccionados);
+		System.out.println(Select[0]);
+		if (Select[0].equals("1")) {
+		    return true;
+		} else {
+		    return false;
 		}
 	}
 }

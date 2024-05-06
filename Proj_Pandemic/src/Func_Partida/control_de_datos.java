@@ -110,7 +110,6 @@ public class control_de_datos {
             // Imprimir los valores
             for (int i = 0; i < valoresFacil.size(); i++) {
                 val[i] = valoresFacil.get(i);
-            	System.out.println(val[i]);
             }
 
         } catch (Exception e) {
@@ -174,8 +173,6 @@ public class control_de_datos {
 	    ArrayList<Vacuna> Vacunas = new ArrayList<>();
 	    for (int i = 0; i < 8; i += 2) {
 	        Vacuna vacuna = new Vacuna(Enf_y_Col[i], Enf_y_Col[i + 1]);
-	        System.out.println(Enf_y_Col[i]);
-	        System.out.println(Enf_y_Col[i+1]);
 	        Vacunas.add(vacuna);
 	    }
 	    return Vacunas;
