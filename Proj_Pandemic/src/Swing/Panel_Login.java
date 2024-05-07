@@ -20,6 +20,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -111,6 +113,8 @@ public class Panel_Login extends JPanel implements ActionListener{
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
 	        if (compr(user,password)) {
+	    		JOptionPane.showMessageDialog(this, "Has Iniciado Session Correctamente", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);
 				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
 				MenuPrincipal.getContentPane().removeAll();
 				MenuPrincipal.getContentPane().add(new Panel_Menu_Principal());
@@ -118,11 +122,13 @@ public class Panel_Login extends JPanel implements ActionListener{
 				MenuPrincipal.getContentPane().repaint();
 				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	        } else {
-//				JFrame PanelLogin = (JFrame) SwingUtilities.getWindowAncestor(this);
-//				PanelLogin.getContentPane().removeAll();
-//				PanelLogin.getContentPane().add(new Panel_Login());
-//				PanelLogin.getContentPane().validate();
-//				PanelLogin.getContentPane().repaint();
+	    		JOptionPane.showMessageDialog(this, "Usuario i/o contraseña INCORRECTA", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);
+				JFrame PanelLogin = (JFrame) SwingUtilities.getWindowAncestor(this);
+				PanelLogin.getContentPane().removeAll();
+				PanelLogin.getContentPane().add(new Panel_Login());
+				PanelLogin.getContentPane().validate();
+				PanelLogin.getContentPane().repaint();
 	        }
 		}
 		if (e.getSource() == Boton[1]) {
