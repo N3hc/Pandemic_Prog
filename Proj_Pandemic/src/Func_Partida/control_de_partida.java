@@ -204,7 +204,9 @@ public class control_de_partida {
 
 	public void actualizarEstado(DatosPartida datosPartida) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
+			if (ciudad.isActivado()) {
 			ciudad.setActivado(false);
+			}
 		}
 		for (Personaje personaje : datosPartida.getPersonajes()) {
 			if (personaje.getCooldown() > 0) {
@@ -222,7 +224,7 @@ public class control_de_partida {
 
 	public void gestionarCura(DatosPartida datosPartida) {
 		for (Vacuna vacuna : datosPartida.getVacunas()) {
-			if (vacuna.getPorcentaje() >= 100) {
+			if (vacuna.getPorcentaje() >= 100 && !vacuna.isEstado()) {
 				vacuna.setEstado(true);
 			}
 		}
