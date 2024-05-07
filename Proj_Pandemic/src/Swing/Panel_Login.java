@@ -32,7 +32,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	JButton[] Boton;
 
 	Panel_Login(){
-		Boton = new JButton[2];
+		Boton = new JButton[3];
 		setBorder(new TitledBorder(null, "Login", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(null);
 		
@@ -45,12 +45,12 @@ public class Panel_Login extends JPanel implements ActionListener{
 		add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("USER:");
+		JLabel lblNewLabel = new JLabel("Usuario:");
 		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 20));
-		lblNewLabel.setBounds(64, 61, 112, 40);
+		lblNewLabel.setBounds(10, 61, 112, 40);
 		add(lblNewLabel);
 		
-		JLabel lblPassword = new JLabel("PASSWORD:");
+		JLabel lblPassword = new JLabel("Contraseña:");
 		lblPassword.setFont(new Font("Sylfaen", Font.PLAIN, 20));
 		lblPassword.setBounds(10, 129, 127, 40);
 		add(lblPassword);
@@ -65,40 +65,43 @@ public class Panel_Login extends JPanel implements ActionListener{
 		add(Boton[1]);
 		Boton[1].addActionListener(this);
 		
-		
+		setVisible(true);
 	}
 	
-	public void panelNuevaSession() {
-
-		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-		// Crear y mostrar el JDialog con las opciones
-		JDialog dialog = new JDialog(frame, "Sign Up", true); // true para hacerlo modal
-		dialog.getContentPane().setLayout(null);
-		dialog.setSize(525, 325);
-		dialog.setLocationRelativeTo(null);
-
-		passwordField = new JPasswordField();
-		passwordField.setBounds(132, 128, 285, 40);
-		dialog.getContentPane().add(passwordField);
-		
-		textField = new JTextField();
-		textField.setBounds(132, 60, 285, 40);
-		dialog.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("USER:");
-		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 20));
-		lblNewLabel.setBounds(64, 61, 112, 40);
-		dialog.getContentPane().add(lblNewLabel);
-		
-		JLabel lblPassword = new JLabel("PASSWORD:");
-		lblPassword.setFont(new Font("Sylfaen", Font.PLAIN, 20));
-		lblPassword.setBounds(10, 129, 127, 40);
-		dialog.getContentPane().add(lblPassword);
-		
-		dialog.setVisible(true);
-	
-	}
+//	public void panelNuevaSession() {
+//		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+//		// Crear y mostrar el JDialog con las opciones
+//		JDialog dialog = new JDialog(frame, "Sign Up", true); // true para hacerlo modal
+//		dialog.getContentPane().setLayout(null);
+//		dialog.setSize(525, 325);
+//		dialog.setLocationRelativeTo(null);
+//
+//		passwordField = new JPasswordField();
+//		passwordField.setBounds(132, 128, 285, 40);
+//		dialog.getContentPane().add(passwordField);
+//		
+//		textField = new JTextField();
+//		textField.setBounds(132, 60, 285, 40);
+//		dialog.getContentPane().add(textField);
+//		textField.setColumns(10);
+//		
+//		JLabel lblNewLabel = new JLabel("Nuevo Usuario:");
+//		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 15));
+//		lblNewLabel.setBounds(10, 61, 112, 40);
+//		dialog.getContentPane().add(lblNewLabel);
+//		
+//		JLabel lblPassword = new JLabel("Contraseña:");
+//		lblPassword.setFont(new Font("Sylfaen", Font.PLAIN, 20));
+//		lblPassword.setBounds(10, 129, 127, 40);
+//		dialog.getContentPane().add(lblPassword);
+//		
+//		Boton[2] = new JButton("Crear Cuenta");
+//		Boton[2].setBounds(132, 216, 210, 50);
+//		dialog.getContentPane().add(Boton[2]);
+//		Boton[2].addActionListener(this);
+//		
+//		dialog.setVisible(true);
+//	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -111,18 +114,21 @@ public class Panel_Login extends JPanel implements ActionListener{
 				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
 				MenuPrincipal.getContentPane().removeAll();
 				MenuPrincipal.getContentPane().add(new Panel_Menu_Principal());
-				MenuPrincipal.revalidate();
+				MenuPrincipal.getContentPane().validate();
+				MenuPrincipal.getContentPane().repaint();
 				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	        } else {
-				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
-				MenuPrincipal.getContentPane().removeAll();
-				MenuPrincipal.getContentPane().add(new Panel_Login());
-				MenuPrincipal.revalidate();
+//				JFrame PanelLogin = (JFrame) SwingUtilities.getWindowAncestor(this);
+//				PanelLogin.getContentPane().removeAll();
+//				PanelLogin.getContentPane().add(new Panel_Login());
+//				PanelLogin.getContentPane().validate();
+//				PanelLogin.getContentPane().repaint();
 	        }
 		}
 		if (e.getSource() == Boton[1]) {
-			panelNuevaSession();
+
 		}
+
 	}
 	
 	public boolean compr (String NICKNAME, String PASSWORD) {
