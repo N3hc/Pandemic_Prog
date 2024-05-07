@@ -20,6 +20,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -110,7 +112,9 @@ public class Panel_Login extends JPanel implements ActionListener{
 			String user = textField.getText();
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
-	        if (compr(user,password)) {
+	        if (IniciarSession(user,password)) {
+	    		JOptionPane.showMessageDialog(this, "Has Iniciado Session CORRECTAMENTE", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);
 				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
 				MenuPrincipal.getContentPane().removeAll();
 				MenuPrincipal.getContentPane().add(new Panel_Menu_Principal());
@@ -118,20 +122,31 @@ public class Panel_Login extends JPanel implements ActionListener{
 				MenuPrincipal.getContentPane().repaint();
 				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	        } else {
-//				JFrame PanelLogin = (JFrame) SwingUtilities.getWindowAncestor(this);
-//				PanelLogin.getContentPane().removeAll();
-//				PanelLogin.getContentPane().add(new Panel_Login());
-//				PanelLogin.getContentPane().validate();
-//				PanelLogin.getContentPane().repaint();
+	    		JOptionPane.showMessageDialog(this, "Usuario i/o contraseña INCORRECTA", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);
+				JFrame PanelLogin = (JFrame) SwingUtilities.getWindowAncestor(this);
+				PanelLogin.getContentPane().removeAll();
+				PanelLogin.getContentPane().add(new Panel_Login());
+				PanelLogin.getContentPane().validate();
+				PanelLogin.getContentPane().repaint();
 	        }
 		}
 		if (e.getSource() == Boton[1]) {
-
+			String user = textField.getText();
+	        char[] passwordChars = passwordField.getPassword();
+	        String password = new String(passwordChars);
+			if(CrearCuenta(user,password)) {
+	    		JOptionPane.showMessageDialog(this, "Se ha creado cuenta CORRECTAMENTE", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);
+			}else {
+	    		JOptionPane.showMessageDialog(this, "Usuario ya existente", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);	
+			}
 		}
 
 	}
 	
-	public boolean compr (String NICKNAME, String PASSWORD) {
+	public boolean IniciarSession (String NICKNAME, String PASSWORD) {
 		String [] Select = new String [10];
 		Connection con = bbdd.conectarBaseDatos();
 		String[] listaElementosSeleccionados = { "COUNT(*)" };
@@ -140,6 +155,18 @@ public class Panel_Login extends JPanel implements ActionListener{
 		    return true;
 		} else {
 		    return false;
+		}
+	}
+	
+	public boolean CrearCuenta(String NICKNAME, String PASSWORD){
+		String [] Select = new String [10];
+		Connection con = bbdd.conectarBaseDatos();
+		String[] listaElementosSeleccionados = { "COUNT(*)" };
+		Select = bbdd.select(con, "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'", listaElementosSeleccionados);
+		if (Select[0].equals("1")) {
+		    return false;
+		} else {
+		    return true;
 		}
 	}
 
