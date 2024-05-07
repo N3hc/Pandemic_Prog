@@ -112,8 +112,8 @@ public class Panel_Login extends JPanel implements ActionListener{
 			String user = textField.getText();
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
-	        if (compr(user,password)) {
-	    		JOptionPane.showMessageDialog(this, "Has Iniciado Session Correctamente", "Login",
+	        if (IniciarSession(user,password)) {
+	    		JOptionPane.showMessageDialog(this, "Has Iniciado Session CORRECTAMENTE", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);
 				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
 				MenuPrincipal.getContentPane().removeAll();
@@ -132,12 +132,21 @@ public class Panel_Login extends JPanel implements ActionListener{
 	        }
 		}
 		if (e.getSource() == Boton[1]) {
-
+			String user = textField.getText();
+	        char[] passwordChars = passwordField.getPassword();
+	        String password = new String(passwordChars);
+			if(CrearCuenta(user,password)) {
+	    		JOptionPane.showMessageDialog(this, "Se ha creado cuenta CORRECTAMENTE", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);
+			}else {
+	    		JOptionPane.showMessageDialog(this, "Usuario ya existente", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);	
+			}
 		}
 
 	}
 	
-	public boolean compr (String NICKNAME, String PASSWORD) {
+	public boolean IniciarSession (String NICKNAME, String PASSWORD) {
 		String [] Select = new String [10];
 		Connection con = bbdd.conectarBaseDatos();
 		String[] listaElementosSeleccionados = { "COUNT(*)" };
@@ -146,6 +155,18 @@ public class Panel_Login extends JPanel implements ActionListener{
 		    return true;
 		} else {
 		    return false;
+		}
+	}
+	
+	public boolean CrearCuenta(String NICKNAME, String PASSWORD){
+		String [] Select = new String [10];
+		Connection con = bbdd.conectarBaseDatos();
+		String[] listaElementosSeleccionados = { "COUNT(*)" };
+		Select = bbdd.select(con, "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'", listaElementosSeleccionados);
+		if (Select[0].equals("1")) {
+		    return false;
+		} else {
+		    return true;
 		}
 	}
 
