@@ -5,7 +5,13 @@ import java.util.Random;
 import Swing.Panel_Partida;
 
 public class control_de_partida {
-
+	int contadorInfeccions = 0;
+	int contadorPartida = 0;
+	int contadorBrotes = 0;
+	int contadorTurnos = 0;
+	int contadorInvestigacions = 0;
+	int contadorMatar = 0;
+	
 	public void iniciarPartida() {
 
 	}
@@ -14,6 +20,17 @@ public class control_de_partida {
 
 	}
 
+	public int calcularPuntuajeFinal(){
+		int total = 0;
+		total = contadorInfeccions*2;
+		total = total + contadorPartida*1000;
+		total = total + contadorBrotes*10;
+		total = total + contadorTurnos*5;
+		total = total + contadorInvestigacions*20;
+		total = total + contadorMatar*10;
+		return total;
+	};
+	
 	public boolean ganarPartida(DatosPartida datosPartida) {
 		int i = 0;
 		for (Vacuna vacuna : datosPartida.getVacunas()) {
@@ -21,6 +38,7 @@ public class control_de_partida {
 				i++;
 			}
 			if (i == 4) {
+				contadorPartida++;
 				return true;
 			}
 		}
@@ -39,6 +57,7 @@ public class control_de_partida {
 	}
 
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
+		contadorTurnos++;
 		actualizarEstado(datosPartida);
 		gestionarCura(datosPartida);
 		datosPartida.setRondas(datosPartida.getRondas() + 1);
@@ -123,6 +142,7 @@ public class control_de_partida {
 	}
 
 	public boolean ciudadesCura(DatosPartida datosPartida, String Ciudad) {
+		contadorMatar++;
 		String datos = null;
 		if (datosPartida.getAcciones() > 0) {
 			for (Ciudad ciudad : datosPartida.getCiudades()) {
@@ -158,6 +178,7 @@ public class control_de_partida {
 	}
 
 	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
+		contadorInvestigacions++;
 		try {
 			String datos = "";
 			if (!nVacuna.equals(null)) {
@@ -187,6 +208,7 @@ public class control_de_partida {
 	}
 
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int f) {
+		contadorInfeccions++;
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.getNombre().equals(nCiudad)) {
 				ciudad.setInfeccion(ciudad.getInfeccion() + f);
@@ -195,6 +217,7 @@ public class control_de_partida {
 	}
 
 	public void gestionarBrote(DatosPartida datosPartida) {
+		contadorBrotes++;
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.propagarInfeccion() && !ciudad.isActivado()) {
 				ciudad.setActivado(true);
