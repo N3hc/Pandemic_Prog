@@ -28,6 +28,7 @@ public class control_de_partida {
 		total = total + contadorTurnos*5;
 		total = total + contadorInvestigacions*20;
 		total = total + contadorMatar*10;
+		
 		return total;
 	};
 	
@@ -137,7 +138,6 @@ public class control_de_partida {
 		} catch (NullPointerException e) {
 			// Manejo de la excepción
 			System.out.println("Se ha producido un NullPointerException");
-			System.out.println("AS");
 		}
 	}
 
