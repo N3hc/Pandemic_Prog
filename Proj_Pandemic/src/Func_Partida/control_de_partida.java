@@ -60,7 +60,6 @@ public class control_de_partida {
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		contadorTurnos++;
 		actualizarEstado(datosPartida);
-		gestionarCura(datosPartida);
 		datosPartida.setRondas(datosPartida.getRondas() + 1);
 		datosPartida.setAcciones(4);
 		Random random = new Random();
