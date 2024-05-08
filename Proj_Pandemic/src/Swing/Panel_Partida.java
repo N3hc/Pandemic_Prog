@@ -158,8 +158,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
+				if(cPartida.estadoPej(partida, 0)) {
+					partida.setAcciones(partida.getAcciones() - 1);
+				}
 				cPartida.gestionarHeroesAtc(partida, nombre);
-				partida.setAcciones(partida.getAcciones() - 1);
 				actualizarDatos();
 				popUpAcciones();
 				selector.dispose();
@@ -184,7 +186,9 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
 				cPartida.gestionarHeroeSup(partida, nombre);
-				partida.setAcciones((partida.getAcciones()) - 1);
+				if(cPartida.estadoPej(partida, 1)) {
+					partida.setAcciones(partida.getAcciones() - 1);
+				}
 				actualizarDatos();
 				popUpAcciones();
 				selector.dispose();
@@ -276,6 +280,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		if (e.getSource() == btnComponentes[3]) {
 			// siguiente turno
+			cPartida.actualizarEstado(partida);
 			if (cPartida.ganarPartida(partida)) {
 				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!!", "Ganaste", JOptionPane.INFORMATION_MESSAGE);
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);

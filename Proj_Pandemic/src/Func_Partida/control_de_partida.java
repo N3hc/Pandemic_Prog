@@ -107,7 +107,7 @@ public class control_de_partida {
 								personaje.setCooldown(5);
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
-									vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
+									vacuna.setPorcentaje(vacuna.getPorcentaje() + 100);
 								}
 							}
 						}

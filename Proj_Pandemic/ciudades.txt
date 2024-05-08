@@ -9,7 +9,7 @@ Isla Lisz;0;140,150;Isla Paxid,Puerto Epheria,Olvia,Isla Lemma;
 Isla Narvo;0;190,140;Isla Lemma,Ojo de Odquilla,Olvia,Castillo Cron;
 Ojo de Odquilla;0;220,140;Isla Narvo,Castillo Cron,Cresta del Cuervo;
 Cresta del Cuervo;0;250,90;Isla Hiwua,Isla Lemma,Ojo de Odquilla,Rosevan;
-Rosevan;0;270,130;Cresta del Cuervo,Kusha,Shakutu;
+Rosevan;0;270,130;Cresta del Cuervo,Kusha,Shakatu;
 Puerto Epheria;1;110,250;Isla Danton,Isla Lisz,Finistella,Calpheon;
 Finistella;1;90,300;Puerto Epheria,Calpheon,Trent,Arehaza;
 Calpheon;1;130,290;Puerto Epheria,Finistella, Keplan;
