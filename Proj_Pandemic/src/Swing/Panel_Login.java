@@ -138,6 +138,11 @@ public class Panel_Login extends JPanel implements ActionListener{
 			if(CrearCuenta(user,password)) {
 	    		JOptionPane.showMessageDialog(this, "Se ha creado cuenta CORRECTAMENTE", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);
+	    		Connection con = bbdd.conectarBaseDatos();
+	    		bbdd.insert(con, "INSERT INTO JUGADOR (\"NICKNAME\", \"PASSWORD\")\n" + "VALUES ('" + user+"',"+
+	    				"'"+ password + "')");
+
+	    		
 			}else {
 	    		JOptionPane.showMessageDialog(this, "Usuario ya existente", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);	
