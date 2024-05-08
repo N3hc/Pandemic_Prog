@@ -20,10 +20,11 @@ public class control_de_partida {
 			if (vacuna.isEstado()) {
 				i++;
 			}
+			if (i == 4) {
+				return true;
+			}
 		}
-		if (i == 4) {
-			return true;
-		}
+
 		return false;
 
 	}
