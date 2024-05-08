@@ -185,10 +185,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				cPartida.gestionarHeroeSup(partida, nombre);
 				if(cPartida.estadoPej(partida, 1)) {
 					partida.setAcciones(partida.getAcciones() - 1);
 				}
+				cPartida.gestionarHeroeSup(partida, nombre);
 				actualizarDatos();
 				popUpAcciones();
 				selector.dispose();
@@ -280,16 +280,18 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		if (e.getSource() == btnComponentes[3]) {
 			// siguiente turno
-			cPartida.actualizarEstado(partida);
+			cPartida.gestionarCura(partida);
 			if (cPartida.ganarPartida(partida)) {
-				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!!", "Ganaste", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!\n" +
+						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Ganaste", JOptionPane.INFORMATION_MESSAGE);
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 				partida.getContentPane().removeAll();
 			}else{
 				cPartida.gestionarTurno(partida, 1);
 				actualizarDatos();
 				if (cPartida.gestionarFinPartida(partida)) {
-					JOptionPane.showMessageDialog(this, "Has perdido", "Perdiste", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(this, "Has perdidon\n"
+							+ 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Perdiste", JOptionPane.INFORMATION_MESSAGE);
 					JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 					partida.getContentPane().removeAll();
 				}
