@@ -117,6 +117,7 @@ public class control_de_partida {
 		} catch (NullPointerException e) {
 			// Manejo de la excepción
 			System.out.println("Se ha producido un NullPointerException");
+			System.out.println("AS");
 		}
 	}
 
