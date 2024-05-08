@@ -158,10 +158,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				if(cPartida.estadoPej(partida, 0)) {
+				if(cPartida.estadoPej(partida, 0) && partida.getAcciones() > 0) {
+					cPartida.gestionarHeroesAtc(partida, nombre);
 					partida.setAcciones(partida.getAcciones() - 1);
 				}
-				cPartida.gestionarHeroesAtc(partida, nombre);
 				actualizarDatos();
 				popUpAcciones();
 				selector.dispose();
@@ -185,10 +185,10 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				if(cPartida.estadoPej(partida, 1)) {
+				if(cPartida.estadoPej(partida, 1) && partida.getAcciones() > 0) {
+					cPartida.gestionarHeroeSup(partida, nombre);
 					partida.setAcciones(partida.getAcciones() - 1);
 				}
-				cPartida.gestionarHeroeSup(partida, nombre);
 				actualizarDatos();
 				popUpAcciones();
 				selector.dispose();
