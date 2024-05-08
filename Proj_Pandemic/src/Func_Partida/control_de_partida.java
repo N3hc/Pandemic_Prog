@@ -82,9 +82,9 @@ public class control_de_partida {
 								personaje.setCooldown(3);
 								comp = true;
 								ciudadesCura(datosPartida, elemento);
-									for (String colindantes : ciudad.getCiudadesColindantes()) {
-										ciudadesCura(datosPartida, colindantes);
-									}
+								for (String colindantes : ciudad.getCiudadesColindantes()) {
+									ciudadesCura(datosPartida, colindantes);
+								}
 							}
 						}
 					}
@@ -95,7 +95,7 @@ public class control_de_partida {
 			System.out.println("Se ha producido un NullPointerException");
 		}
 	}
-	
+
 	public void gestionarHeroeSup(DatosPartida datosPartida, String elemento) {
 		try {
 			boolean comp = false;
@@ -103,11 +103,11 @@ public class control_de_partida {
 				for (Personaje personaje : datosPartida.getPersonajes()) {
 					if (personaje.getCooldown() == 0 && comp == false) {
 						for (Ciudad ciudad : datosPartida.getCiudades()) {
-							  if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
-									personaje.setCooldown(5);
+							if (personaje.getRol() == 1 && ciudad.getNombre().equals(elemento)) {
+								personaje.setCooldown(5);
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
-									vacuna.setPorcentaje(vacuna.getPorcentaje()+5);
+									vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
 								}
 							}
 						}
@@ -161,15 +161,17 @@ public class control_de_partida {
 			if (!nVacuna.equals(null)) {
 				if (datosPartida.getAcciones() == 4) {
 					for (Vacuna vacuna : datosPartida.getVacunas()) {
-						if (vacuna.getArma().equals(nVacuna) && !vacuna.isEstado()) {
-							datosPartida.setAcciones(0);
-							datos = "El arma " + vacuna.getArma() + " está siendo creada! \n Resiste!";
-							Panel_Partida.GuardarDatos(datos);
-							vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
-						} else {
-							datos = "El arma " + vacuna.getArma() + " Ya está creada! \n Úsala!";
-							Panel_Partida.GuardarDatos(datos);
-							return false;
+						if (vacuna.getArma().equals(nVacuna)) {
+							if (!vacuna.isEstado()) {
+								datosPartida.setAcciones(0);
+								datos = "El arma " + vacuna.getArma() + " está siendo creada! \n Resiste!";
+								Panel_Partida.GuardarDatos(datos);
+								vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
+							} else {
+								datos = "El arma " + vacuna.getArma() + " Ya está creada! \n Úsala!";
+								Panel_Partida.GuardarDatos(datos);
+								return false;
+							}
 						}
 					}
 					return true;
@@ -205,7 +207,7 @@ public class control_de_partida {
 	public void actualizarEstado(DatosPartida datosPartida) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.isActivado()) {
-			ciudad.setActivado(false);
+				ciudad.setActivado(false);
 			}
 		}
 		for (Personaje personaje : datosPartida.getPersonajes()) {
