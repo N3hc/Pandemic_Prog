@@ -33,9 +33,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		Image iconImage = new ImageIcon("img/Logo_inicial.jpeg").getImage();
-		setIconImage(Toolkit.getDefaultToolkit().getImage("img/Logo_inicial.jpeg"));
-		
 		InitComponentes();
 		InitCiudadesBtn();
 		generarIcono();
