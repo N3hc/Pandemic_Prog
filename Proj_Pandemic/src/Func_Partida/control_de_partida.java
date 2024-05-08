@@ -20,10 +20,11 @@ public class control_de_partida {
 			if (vacuna.isEstado()) {
 				i++;
 			}
+			if (i == 4) {
+				return true;
+			}
 		}
-		if (i == 4) {
-			return true;
-		}
+
 		return false;
 
 	}
@@ -38,6 +39,7 @@ public class control_de_partida {
 	}
 
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
+		actualizarEstado(datosPartida);
 		gestionarCura(datosPartida);
 		datosPartida.setRondas(datosPartida.getRondas() + 1);
 		datosPartida.setAcciones(4);
@@ -59,7 +61,6 @@ public class control_de_partida {
 
 		}
 		gestionarBrote(datosPartida);
-		actualizarEstado(datosPartida);
 	}
 
 	private boolean esCiudadYaSeleccionada(int[] ciudades_ya, int indiceAleatorio, int indiceActual) {
