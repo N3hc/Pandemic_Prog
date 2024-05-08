@@ -40,7 +40,6 @@ public class control_de_partida {
 
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		actualizarEstado(datosPartida);
-		gestionarCura(datosPartida);
 		datosPartida.setRondas(datosPartida.getRondas() + 1);
 		datosPartida.setAcciones(4);
 		Random random = new Random();
@@ -108,7 +107,7 @@ public class control_de_partida {
 								personaje.setCooldown(5);
 								comp = true;
 								for (Vacuna vacuna : datosPartida.getVacunas()) {
-									vacuna.setPorcentaje(vacuna.getPorcentaje() + 100);
+									vacuna.setPorcentaje(vacuna.getPorcentaje() + 5);
 								}
 							}
 						}
