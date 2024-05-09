@@ -100,7 +100,7 @@ public class bbdd {
      * @param listaElementosSeleccionados Array de Strings con los nombres de las columnas seleccionadas.
      * @return Array de Strings con los resultados de la consulta donde cada posición es el contenido de la columna correspondiente
      */
-	public static String [] select(Connection con, String sql, String[] listaElementosSeleccionados) {
+	public static String[] select(Connection con, String sql, String[] listaElementosSeleccionados) {
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
@@ -147,7 +147,6 @@ public class bbdd {
 						for (int i = 0; i < listaElementosSeleccionados.length; i++) {
 							System.out.println(listaElementosSeleccionados[i] + 
 									": " + rs.getString(listaElementosSeleccionados[i]));
-							System.out.println("      -            ");
 						}
 					}
 				} else {
