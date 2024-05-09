@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,24 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class control_de_datos {
-	private String url;
+import Swing.Panel_Login;
+
 	
-	private String user;
+public class control_de_datos {
+	
+	static String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
+			"Isla Lemma", "Isla Lisz", "Isla Narvo", "Ojo de Odquilla", "Cresta del Cuervo", "Rosevan",
+			"Puerto Epheria", "Finistella", "Calpheon", "Bosque Ceniza", "Grana", "Trent", "Tunkuta", "Duvencrue",
+			"Odyllita", "Cubil Escarlata", "Keplan", "Florin", "Olvia", "Velia", "Castillo Cron", "Kusha", "Heidel",
+			"Glish", "Bosque Tungrad", "Tarif", "Altinova", "Asparkan", "Ruinas de Waragon", "Ruinas de Kadry",
+			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
+			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
+	static String[] vacunas = {"Corazon de vell",""};
+	static Panel_Login user = new Panel_Login();
+	static control_de_partida cPartida = new control_de_partida();
+	static DatosPartida partida = new DatosPartida();
+	
+	private String url;
 	
 	private String password;
 	
@@ -39,12 +54,7 @@ public class control_de_datos {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -191,7 +201,18 @@ public class control_de_datos {
 		
 	}
 	public static void guardarPartida() {
-		
+		String textoFinal =  "";
+		String textoVacuna = "";
+		for (int i = 0; i < nombres.length; i++) {
+			textoFinal= textoFinal+ ",Ciudad('"+nombres[i]+"',"+partida.getNivelInfeccionCiudad(nombres[i])+")";
+			textoVacuna = textoVacuna+ "Vacuna('"+"";
+		}
+		System.out.println(textoFinal);
+		Connection con = bbdd.conectarBaseDatos();
+		bbdd.insert(con, "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos)"
+				+ "VALUES ("+user.getUser()+"'"+cPartida.calcularPuntuajeFinal()+",DatosPartida(CiudadTabla("+ textoFinal+"),VacunaTabla(");
+
+	
 	}
 	public static void cargarRecord() {
 		

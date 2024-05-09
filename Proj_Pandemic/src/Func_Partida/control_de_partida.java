@@ -11,6 +11,7 @@ public class control_de_partida {
 	int contadorTurnos = 0;
 	int contadorInvestigacions = 0;
 	int contadorMatar = 0;
+	int total =0;
 	
 	public void iniciarPartida() {
 
@@ -21,7 +22,6 @@ public class control_de_partida {
 	}
 
 	public int calcularPuntuajeFinal(){
-		int total = 0;
 		total = contadorInfeccions*2;
 		total = total + contadorPartida*1000;
 		total = total + contadorBrotes*10;

@@ -30,10 +30,19 @@ public class Panel_Login extends JPanel implements ActionListener{
 	
 	private JPasswordField passwordField;
 	private JTextField textField;
+	private String user;
 	
 	JButton[] Boton;
+	
+	public String getUser() {
+		return user;
+	}
 
-	Panel_Login(){
+	public void setUser(String nombre) {
+		this.user = nombre;
+	}
+	
+	public Panel_Login(){
 		Boton = new JButton[3];
 		setBorder(new TitledBorder(null, "Login", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(null);
@@ -70,49 +79,15 @@ public class Panel_Login extends JPanel implements ActionListener{
 		setVisible(true);
 	}
 	
-//	public void panelNuevaSession() {
-//		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-//		// Crear y mostrar el JDialog con las opciones
-//		JDialog dialog = new JDialog(frame, "Sign Up", true); // true para hacerlo modal
-//		dialog.getContentPane().setLayout(null);
-//		dialog.setSize(525, 325);
-//		dialog.setLocationRelativeTo(null);
-//
-//		passwordField = new JPasswordField();
-//		passwordField.setBounds(132, 128, 285, 40);
-//		dialog.getContentPane().add(passwordField);
-//		
-//		textField = new JTextField();
-//		textField.setBounds(132, 60, 285, 40);
-//		dialog.getContentPane().add(textField);
-//		textField.setColumns(10);
-//		
-//		JLabel lblNewLabel = new JLabel("Nuevo Usuario:");
-//		lblNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 15));
-//		lblNewLabel.setBounds(10, 61, 112, 40);
-//		dialog.getContentPane().add(lblNewLabel);
-//		
-//		JLabel lblPassword = new JLabel("Contraseña:");
-//		lblPassword.setFont(new Font("Sylfaen", Font.PLAIN, 20));
-//		lblPassword.setBounds(10, 129, 127, 40);
-//		dialog.getContentPane().add(lblPassword);
-//		
-//		Boton[2] = new JButton("Crear Cuenta");
-//		Boton[2].setBounds(132, 216, 210, 50);
-//		dialog.getContentPane().add(Boton[2]);
-//		Boton[2].addActionListener(this);
-//		
-//		dialog.setVisible(true);
-//	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == Boton[0]) {
-			String user = textField.getText();
+			setUser(textField.getText());
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
-	        if (IniciarSession(user,password)) {
+	        if (IniciarSession(getUser(),password)) {
 	    		JOptionPane.showMessageDialog(this, "Has Iniciado Session CORRECTAMENTE", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);
 				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -132,7 +107,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	        }
 		}
 		if (e.getSource() == Boton[1]) {
-			String user = textField.getText();
+			user = textField.getText();
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
 			if(CrearCuenta(user,password)) {
@@ -141,8 +116,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	    		Connection con = bbdd.conectarBaseDatos();
 	    		bbdd.insert(con, "INSERT INTO JUGADOR (\"NICKNAME\", \"PASSWORD\")\n" + "VALUES ('" + user+"',"+
 	    				"'"+ password + "')");
-
-	    		
+	    	
 			}else {
 	    		JOptionPane.showMessageDialog(this, "Usuario ya existente", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);	
