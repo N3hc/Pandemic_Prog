@@ -123,7 +123,8 @@ public class control_de_datos {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("Error");
         }
 		return val;
 

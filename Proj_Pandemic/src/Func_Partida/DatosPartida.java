@@ -13,7 +13,8 @@ public class DatosPartida {
 	private int acciones;
 	private int[] DerCon;
 
-	public void cargarDatos(String dific) {
+	public void cargarDatos(String dific) {		
+		try {
 		 String[] valoresDif = control_de_datos.Leer_Xml(dific);
 		    int[] valoresInt = new int[valoresDif.length];
 		    for (int i = 0; i < valoresDif.length; i++) {
@@ -27,6 +28,10 @@ public class DatosPartida {
 		this.setBrotes(0);
 		this.setRondas(0);
 		this.setAcciones(4);
+	} catch (NullPointerException e) {
+		// Manejo de la excepción
+		System.out.println("Se ha producido un NullPointerException");
+	}
 	}
 
 	public String getVirusCiudad(String ciudadReq) {

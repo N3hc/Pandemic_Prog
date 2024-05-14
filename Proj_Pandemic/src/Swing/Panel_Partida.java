@@ -485,137 +485,48 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 	}
 
-	private void diferenciarInfeccion() {
-		
-		// Crea un ImageIcon con la imagen
+	private void diferenciarInfeccion() {// Crea un ImageIcon con la imagen
 		ImageIcon icono = new ImageIcon("img/gateway_0.png");
 		ImageIcon icono1 = new ImageIcon("img/gateway_1.png");
 		ImageIcon icono2 = new ImageIcon("img/gateway_2.png");
 		ImageIcon icono3 = new ImageIcon("img/gateway_3.png");
 
 		for (int i = 0; i < btnCiudad.length; i++) {
-			if (i < 11) {
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
-					// Escala el ImageIcon al tamaño del botón
-					Image imagenEscalada = icono.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-							Image.SCALE_SMOOTH);
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
-					Image imagenEscalada = icono.getImage().getScaledInstance(30,30,
-							Image.SCALE_SMOOTH);
+		    int nivelInfeccion = partida.getNivelInfeccionCiudad(nombres[i]);
+		    ImageIcon iconoActual;
+		    
+		    if (i < 11) {
+		        iconoActual = icono;
+		    } else if (i < 23) {
+		        iconoActual = icono1;
+		    } else if (i < 35) {
+		        iconoActual = icono2;
+		    } else if (i < 47) {
+		        iconoActual = icono3;
+		    } else {
+		        continue; // Si el índice es mayor o igual a 47, no hacer nada
+		    }
 
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
-					Image imagenEscalada = icono.getImage().getScaledInstance(25,25,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
-					Image imagenEscalada = icono.getImage().getScaledInstance(20,20,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-			}
-			if (i < 23) {
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
-					// Escala el ImageIcon al tamaño del botón
-					Image imagenEscalada = icono1.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-							Image.SCALE_SMOOTH);
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
-					Image imagenEscalada = icono1.getImage().getScaledInstance(30,30,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
-					Image imagenEscalada = icono1.getImage().getScaledInstance(25,25,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
-					Image imagenEscalada = icono1.getImage().getScaledInstance(20,20,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-			}
-			if (i < 35) {
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
-					// Escala el ImageIcon al tamaño del botón
-					Image imagenEscalada = icono2.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-							Image.SCALE_SMOOTH);
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
-					Image imagenEscalada = icono2.getImage().getScaledInstance(30,30,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
-					Image imagenEscalada = icono2.getImage().getScaledInstance(25,25,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
-					Image imagenEscalada = icono2.getImage().getScaledInstance(20,20,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-			}
-			if (i < 47) {
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
-					// Escala el ImageIcon al tamaño del botón
-					Image imagenEscalada = icono3.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-							Image.SCALE_SMOOTH);
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
-					Image imagenEscalada = icono3.getImage().getScaledInstance(30,30,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
-					Image imagenEscalada = icono3.getImage().getScaledInstance(25,25,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
-					Image imagenEscalada = icono3.getImage().getScaledInstance(20,20,
-							Image.SCALE_SMOOTH);
-
-					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-					btnCiudad[i].setIcon(iconoEscalado);
-				}
-			}
+		    if (nivelInfeccion == 0) {
+		        // Escala el ImageIcon al tamaño del botón
+		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(), Image.SCALE_SMOOTH);
+		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+		        btnCiudad[i].setIcon(iconoEscalado);
+		    } else if (nivelInfeccion == 1) {
+		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+		        btnCiudad[i].setIcon(iconoEscalado);
+		    } else if (nivelInfeccion == 2) {
+		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+		        btnCiudad[i].setIcon(iconoEscalado);
+		    } else if (nivelInfeccion >= 3) {
+		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+		        btnCiudad[i].setIcon(iconoEscalado);
+		    }
 		}
-	}
+}
 	
 	private void generarIcono() {
 		// Crea un ImageIcon con la imagen
