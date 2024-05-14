@@ -43,16 +43,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		generarVariables();
 	}
 
-	private void generarVariables() {
-		Vacunas = new String[4];
-		int i = 0;
-		for (Vacuna vacuna : partida.getVacunas()) {
-			Vacunas[i] = vacuna.getArma();
-			i++;
-		}
-
-	}
-
 	private void panelCiudad(String nombre) {
 		btnAccCiudades = new JButton[2];
 
@@ -251,6 +241,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	public void actualizarDatos() {
+		diferenciarInfeccion();
 		Paneltxt[3].setText("Turno: " + partida.getRondas());
 		Paneltxt[0].setText("Brotes Totales = " + partida.getBrotes());
 		int i = 0;
@@ -494,6 +485,138 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		}
 	}
 
+	private void diferenciarInfeccion() {
+		
+		// Crea un ImageIcon con la imagen
+		ImageIcon icono = new ImageIcon("img/gateway_0.png");
+		ImageIcon icono1 = new ImageIcon("img/gateway_1.png");
+		ImageIcon icono2 = new ImageIcon("img/gateway_2.png");
+		ImageIcon icono3 = new ImageIcon("img/gateway_3.png");
+
+		for (int i = 0; i < btnCiudad.length; i++) {
+			if (i < 11) {
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
+					// Escala el ImageIcon al tamaño del botón
+					Image imagenEscalada = icono.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
+							Image.SCALE_SMOOTH);
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
+					Image imagenEscalada = icono.getImage().getScaledInstance(30,30,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
+					Image imagenEscalada = icono.getImage().getScaledInstance(25,25,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
+					Image imagenEscalada = icono.getImage().getScaledInstance(20,20,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+			}
+			if (i < 23) {
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
+					// Escala el ImageIcon al tamaño del botón
+					Image imagenEscalada = icono1.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
+							Image.SCALE_SMOOTH);
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
+					Image imagenEscalada = icono1.getImage().getScaledInstance(30,30,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
+					Image imagenEscalada = icono1.getImage().getScaledInstance(25,25,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
+					Image imagenEscalada = icono1.getImage().getScaledInstance(20,20,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+			}
+			if (i < 35) {
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
+					// Escala el ImageIcon al tamaño del botón
+					Image imagenEscalada = icono2.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
+							Image.SCALE_SMOOTH);
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
+					Image imagenEscalada = icono2.getImage().getScaledInstance(30,30,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
+					Image imagenEscalada = icono2.getImage().getScaledInstance(25,25,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
+					Image imagenEscalada = icono2.getImage().getScaledInstance(20,20,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+			}
+			if (i < 47) {
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 0){
+					// Escala el ImageIcon al tamaño del botón
+					Image imagenEscalada = icono3.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
+							Image.SCALE_SMOOTH);
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 1){
+					Image imagenEscalada = icono3.getImage().getScaledInstance(30,30,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) == 2){
+					Image imagenEscalada = icono3.getImage().getScaledInstance(25,25,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+				if (partida.getNivelInfeccionCiudad(nombres[i]) > 3){
+					Image imagenEscalada = icono3.getImage().getScaledInstance(20,20,
+							Image.SCALE_SMOOTH);
+
+					ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+					btnCiudad[i].setIcon(iconoEscalado);
+				}
+			}
+		}
+	}
+	
 	private void generarIcono() {
 		// Crea un ImageIcon con la imagen
 		ImageIcon icono = new ImageIcon("img/gateway_0.png");
@@ -980,5 +1103,15 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		consola.setForeground(Color.GREEN);
 		consola.setBounds(1167, 613, 369, 162);
 		add(consola);
+	}
+	
+	private void generarVariables() {
+		Vacunas = new String[4];
+		int i = 0;
+		for (Vacuna vacuna : partida.getVacunas()) {
+			Vacunas[i] = vacuna.getArma();
+			i++;
+		}
+
 	}
 }
