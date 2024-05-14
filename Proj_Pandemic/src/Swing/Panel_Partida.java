@@ -208,6 +208,15 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton guardar = new JButton("Guardar Partida");
 		guardar.setBounds(0, 0, 150, 60);
 		guardar.setToolTipText("Guardar Partida dentro de la base de datos con el usuario en la cual entraste al juego");
+		guardar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Acción a realizar cuando se hace clic en el botón
+				
+				volverMenuPrincipal();
+				dialog.dispose();
+			}
+		});
 		dialog.getContentPane().add(guardar);
 		
 		JButton salir = new JButton("Salir del juego");
