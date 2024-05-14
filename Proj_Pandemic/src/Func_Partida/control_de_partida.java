@@ -24,33 +24,9 @@ public class control_de_partida {
 	}
 
 	public void guardarPartida(DatosPartida datosPartida) {
-		String textoFinal = "";
-		String textoVacuna = "";
-		String textoPersonaje = "";
-		int i = 0;
-		for (Ciudad ciudad : datosPartida.getCiudades()) {
-			if (i == 47) {
-				textoFinal = textoFinal + "Ciudad('" + ciudad.getNombre() + "'," + ciudad.getInfeccion() + ")";
-				i = 0;
-			} else {
-				textoFinal = textoFinal + "Ciudad('" + ciudad.getNombre() + "'," + ciudad.getInfeccion() + "),";
-				i++;
-			}
-		}
-		for (Vacuna vacuna : datosPartida.getVacunas()) {
-			if (i == 3) {
-				textoVacuna += "Vacuna('" + vacuna.getArma() + "'," + vacuna.getPorcentaje() + ")";
-				i = 0;
-			} else {
-				textoVacuna += "Vacuna('" + vacuna.getArma() + "'," + vacuna.getPorcentaje() + "),";
-				i++;
-			}
-		}
-		System.out.println(textoFinal);
-		System.out.println(textoVacuna);
 		Panel_Login pl = new Panel_Login();
 		Connection con = bbdd.conectarBaseDatos();
-		String a = "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos)" + "VALUES ('Ardui',"
+		String a = "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos)" + "VALUES ('"+Panel_Login.getUser()+"',"
 				+ calcularPuntuajeFinal() + ", DatosPartida(CiudadTabla(Ciudad('"
 				+ datosPartida.getCiudades().get(0).getNombre() + "',"
 				+ datosPartida.getCiudades().get(0).getInfeccion() + "),Ciudad('"

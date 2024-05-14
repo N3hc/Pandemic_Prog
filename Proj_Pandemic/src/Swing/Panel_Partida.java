@@ -212,7 +212,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				
+				cPartida.guardarPartida(partida);
 				volverMenuPrincipal();
 				dialog.dispose();
 			}

@@ -30,16 +30,16 @@ public class Panel_Login extends JPanel implements ActionListener{
 	
 	private JPasswordField passwordField;
 	private JTextField textField;
-	private String user;
+	private static String user;
 	
 	JButton[] Boton;
 	
-	public String getUser() {
+	public static String getUser() {
 		return user;
 	}
 
 	public void setUser(String nombre) {
-		this.user = nombre;
+		user = nombre;
 	}
 	
 	public Panel_Login(){
@@ -85,6 +85,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		if (e.getSource() == Boton[0]) {
 			setUser(textField.getText());
+			System.out.println(getUser());
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
 	        if (IniciarSession(getUser(),password)) {
