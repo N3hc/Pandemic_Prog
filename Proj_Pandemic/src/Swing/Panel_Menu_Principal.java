@@ -204,8 +204,8 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
                 {"1", "Player1", "10000"},
                 {"2", "Player2", "9500"},
                 {"3", "Player3", "9000"},
-                {"4", "Player4", "8500"},
-                {"5", "Player5", "8000"}
+                {" ", " ", " "},
+                {" ", " ", " "}
         };
 	    rankingModel = new DefaultTableModel(data, columnNames);
 
