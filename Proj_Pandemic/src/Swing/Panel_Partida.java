@@ -35,11 +35,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setBounds(0, 0, 1550, 775);
 		InitComponentes();
 		InitCiudadesBtn();
-		generarIcono();
 		InitFondo();
 		Paneltxt[3].setText("Turno: 1");
 		partida.cargarDatos(Panel_Menu_Principal.getDiff());
 		cPartida.gestionarTurno(partida, 0);
+		generarIcono();
 		generarVariables();
 	}
 
@@ -98,7 +98,15 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		dialog.setVisible(true);
 	}
-
+	
+	public void volverMenuPrincipal() {
+		JFrame partidaInit = (JFrame) SwingUtilities.getWindowAncestor(this);
+		partidaInit.getContentPane().removeAll();
+		partidaInit.getContentPane().add(new Panel_Menu_Principal());
+		partidaInit.revalidate();
+		partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	}
+	
 	public void PanelHeroes(String nombre) {
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
@@ -205,6 +213,14 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton salir = new JButton("Salir del juego");
 		salir.setBounds(0, 60, 150, 60);
 		salir.setToolTipText("Salir del juego");
+		salir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Acción a realizar cuando se hace clic en el botón
+				volverMenuPrincipal();
+				dialog.dispose();
+			}
+		});
 		dialog.getContentPane().add(salir);
 		
 		dialog.setVisible(true);
@@ -227,17 +243,17 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 	public static void GuardarDatos(String datos) {
 		consola.append(datos + "\n");
-		int maxLines = 12; // Set the maximum number of lines you want to display
-		int lineCount = consola.getLineCount();
-		if (lineCount > maxLines) {
-			try {
-				int startOffset = consola.getLineStartOffset(0);
-				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
-				consola.replaceRange("", startOffset, endOffset);
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
+//		int maxLines = 12; // Set the maximum number of lines you want to display
+//		int lineCount = consola.getLineCount();
+//		if (lineCount > maxLines) {
+//			try {
+//				int startOffset = consola.getLineStartOffset(0);
+//				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
+//				consola.replaceRange("", startOffset, endOffset);
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//			}
+//		}
 	}
 
 	public void actualizarDatos() {
@@ -275,213 +291,25 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			if (cPartida.ganarPartida(partida)) {
 				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!\n" +
 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Ganaste", JOptionPane.INFORMATION_MESSAGE);
-				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-				partida.getContentPane().removeAll();
+				volverMenuPrincipal();
 			}else{
 				cPartida.gestionarTurno(partida, 1);
 				actualizarDatos();
 				if (cPartida.gestionarFinPartida(partida)) {
 					JOptionPane.showMessageDialog(this, "Has perdidon\n"
 							+ 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Perdiste", JOptionPane.INFORMATION_MESSAGE);
-					JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-					partida.getContentPane().removeAll();
+					volverMenuPrincipal();
 				}
 			}
 			;
 
 		}
 
-		if (e.getSource() == btnCiudad[0]) {
-			String nCiudad = nombres[0];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[1]) {
-			String nCiudad = nombres[1];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[2]) {
-			String nCiudad = nombres[2];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[3]) {
-			String nCiudad = nombres[3];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[4]) {
-			String nCiudad = nombres[4];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[5]) {
-			String nCiudad = nombres[5];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[6]) {
-			String nCiudad = nombres[6];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[7]) {
-			String nCiudad = nombres[7];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[8]) {
-			String nCiudad = nombres[8];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[9]) {
-			String nCiudad = nombres[9];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[10]) {
-			String nCiudad = nombres[10];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[11]) {
-			String nCiudad = nombres[11];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[12]) {
-			String nCiudad = nombres[12];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[13]) {
-			String nCiudad = nombres[13];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[14]) {
-			String nCiudad = nombres[14];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[15]) {
-			String nCiudad = nombres[15];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[16]) {
-			String nCiudad = nombres[16];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[17]) {
-			String nCiudad = nombres[17];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[18]) {
-			String nCiudad = nombres[18];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[19]) {
-			String nCiudad = nombres[19];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[20]) {
-			String nCiudad = nombres[20];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[21]) {
-			String nCiudad = nombres[21];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[22]) {
-			String nCiudad = nombres[22];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[23]) {
-			String nCiudad = nombres[23];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[24]) {
-			String nCiudad = nombres[24];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[25]) {
-			String nCiudad = nombres[25];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[26]) {
-			String nCiudad = nombres[26];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[27]) {
-			String nCiudad = nombres[27];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[28]) {
-			String nCiudad = nombres[28];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[29]) {
-			String nCiudad = nombres[29];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[30]) {
-			String nCiudad = nombres[30];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[31]) {
-			String nCiudad = nombres[31];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[32]) {
-			String nCiudad = nombres[32];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[33]) {
-			String nCiudad = nombres[33];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[34]) {
-			String nCiudad = nombres[34];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[35]) {
-			String nCiudad = nombres[35];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[36]) {
-			String nCiudad = nombres[36];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[37]) {
-			String nCiudad = nombres[37];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[38]) {
-			String nCiudad = nombres[38];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[39]) {
-			String nCiudad = nombres[39];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[40]) {
-			String nCiudad = nombres[40];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[41]) {
-			String nCiudad = nombres[41];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[42]) {
-			String nCiudad = nombres[42];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[43]) {
-			String nCiudad = nombres[43];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[44]) {
-			String nCiudad = nombres[44];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[45]) {
-			String nCiudad = nombres[45];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[46]) {
-			String nCiudad = nombres[46];
-			panelCiudad(nCiudad);
-		}
-		if (e.getSource() == btnCiudad[47]) {
-			String nCiudad = nombres[47];
-			panelCiudad(nCiudad);
+		for (int i = 0; i < nombres.length; i++) {
+			if (e.getSource() == btnCiudad[i]) {
+				String nCiudad = nombres[i];
+				panelCiudad(nCiudad);
+			}
 		}
 	}
 
@@ -495,13 +323,13 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		    int nivelInfeccion = partida.getNivelInfeccionCiudad(nombres[i]);
 		    ImageIcon iconoActual;
 		    
-		    if (i < 11) {
+		    if (i < 12) {
 		        iconoActual = icono;
-		    } else if (i < 23) {
+		    } else if (i < 24) {
 		        iconoActual = icono1;
-		    } else if (i < 35) {
+		    } else if (i < 36) {
 		        iconoActual = icono2;
-		    } else if (i < 47) {
+		    } else if (i < 48) {
 		        iconoActual = icono3;
 		    } else {
 		        continue; // Si el índice es mayor o igual a 47, no hacer nada
@@ -509,7 +337,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		    if (nivelInfeccion == 0) {
 		        // Escala el ImageIcon al tamaño del botón
-		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(), Image.SCALE_SMOOTH);
+		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(15,15, Image.SCALE_SMOOTH);
 		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
 		        btnCiudad[i].setIcon(iconoEscalado);
 		    } else if (nivelInfeccion == 1) {
@@ -529,175 +357,61 @@ public class Panel_Partida extends JPanel implements ActionListener {
 }
 	
 	private void generarIcono() {
-		// Crea un ImageIcon con la imagen
-		ImageIcon icono = new ImageIcon("img/gateway_0.png");
-		ImageIcon icono1 = new ImageIcon("img/gateway_1.png");
-		ImageIcon icono2 = new ImageIcon("img/gateway_2.png");
-		ImageIcon icono3 = new ImageIcon("img/gateway_3.png");
+		diferenciarInfeccion();
 		ImageIcon icono4 = new ImageIcon("img/Ajustes.png");
 
-		// Escala el ImageIcon al tamaño del botón
-		Image imagenEscalada = icono.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-				Image.SCALE_SMOOTH);
-		Image imagenEscalada1 = icono1.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-				Image.SCALE_SMOOTH);
-		Image imagenEscalada2 = icono2.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-				Image.SCALE_SMOOTH);
-		Image imagenEscalada3 = icono3.getImage().getScaledInstance(btnCiudad[0].getWidth(), btnCiudad[0].getHeight(),
-				Image.SCALE_SMOOTH);
-
-		// Crea un nuevo ImageIcon con la imagen escalada
-		ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-		ImageIcon iconoEscalado1 = new ImageIcon(imagenEscalada1);
-		ImageIcon iconoEscalado2 = new ImageIcon(imagenEscalada2);
-		ImageIcon iconoEscalado3 = new ImageIcon(imagenEscalada3);
 
 		btnComponentes[2].setIcon(icono4);
 		btnComponentes[2].setText(null);
-
-		btnCiudad[0].setIcon(iconoEscalado);
 		btnCiudad[0].setText(null);
-
-		btnCiudad[1].setIcon(iconoEscalado);
 		btnCiudad[1].setText(null);
-
-		btnCiudad[2].setIcon(iconoEscalado);
 		btnCiudad[2].setText(null);
-
-		btnCiudad[3].setIcon(iconoEscalado);
 		btnCiudad[3].setText(null);
-
-		btnCiudad[4].setIcon(iconoEscalado);
 		btnCiudad[4].setText(null);
-
-		btnCiudad[5].setIcon(iconoEscalado);
 		btnCiudad[5].setText(null);
-
-		btnCiudad[6].setIcon(iconoEscalado);
 		btnCiudad[6].setText(null);
-
-		btnCiudad[7].setIcon(iconoEscalado);
 		btnCiudad[7].setText(null);
-
-		btnCiudad[8].setIcon(iconoEscalado);
 		btnCiudad[8].setText(null);
-
-		btnCiudad[9].setIcon(iconoEscalado);
 		btnCiudad[9].setText(null);
-
-		btnCiudad[10].setIcon(iconoEscalado);
 		btnCiudad[10].setText(null);
-
-		btnCiudad[11].setIcon(iconoEscalado);
 		btnCiudad[11].setText(null);
-
-		btnCiudad[12].setIcon(iconoEscalado1);
 		btnCiudad[12].setText(null);
-
-		btnCiudad[13].setIcon(iconoEscalado1);
 		btnCiudad[13].setText(null);
-
-		btnCiudad[14].setIcon(iconoEscalado1);
 		btnCiudad[14].setText(null);
-
-		btnCiudad[15].setIcon(iconoEscalado1);
 		btnCiudad[15].setText(null);
-
-		btnCiudad[16].setIcon(iconoEscalado1);
 		btnCiudad[16].setText(null);
-
-		btnCiudad[17].setIcon(iconoEscalado1);
 		btnCiudad[17].setText(null);
-
-		btnCiudad[18].setIcon(iconoEscalado1);
 		btnCiudad[18].setText(null);
-
-		btnCiudad[19].setIcon(iconoEscalado1);
 		btnCiudad[19].setText(null);
-
-		btnCiudad[20].setIcon(iconoEscalado1);
 		btnCiudad[20].setText(null);
-
-		btnCiudad[21].setIcon(iconoEscalado1);
 		btnCiudad[21].setText(null);
-
-		btnCiudad[22].setIcon(iconoEscalado1);
 		btnCiudad[22].setText(null);
-
-		btnCiudad[23].setIcon(iconoEscalado1);
 		btnCiudad[23].setText(null);
-
-		btnCiudad[24].setIcon(iconoEscalado2);
 		btnCiudad[24].setText(null);
-
-		btnCiudad[25].setIcon(iconoEscalado2);
 		btnCiudad[25].setText(null);
-
-		btnCiudad[26].setIcon(iconoEscalado2);
 		btnCiudad[26].setText(null);
-
-		btnCiudad[27].setIcon(iconoEscalado2);
 		btnCiudad[27].setText(null);
-
-		btnCiudad[28].setIcon(iconoEscalado2);
 		btnCiudad[28].setText(null);
-
-		btnCiudad[29].setIcon(iconoEscalado2);
 		btnCiudad[29].setText(null);
-
-		btnCiudad[30].setIcon(iconoEscalado2);
 		btnCiudad[30].setText(null);
-
-		btnCiudad[31].setIcon(iconoEscalado2);
 		btnCiudad[31].setText(null);
-
-		btnCiudad[32].setIcon(iconoEscalado2);
 		btnCiudad[32].setText(null);
-
-		btnCiudad[33].setIcon(iconoEscalado2);
 		btnCiudad[33].setText(null);
-
-		btnCiudad[34].setIcon(iconoEscalado2);
 		btnCiudad[34].setText(null);
-
-		btnCiudad[35].setIcon(iconoEscalado2);
 		btnCiudad[35].setText(null);
-
-		btnCiudad[36].setIcon(iconoEscalado3);
 		btnCiudad[36].setText(null);
-
-		btnCiudad[37].setIcon(iconoEscalado3);
 		btnCiudad[37].setText(null);
-
-		btnCiudad[38].setIcon(iconoEscalado3);
 		btnCiudad[38].setText(null);
-
-		btnCiudad[39].setIcon(iconoEscalado3);
 		btnCiudad[39].setText(null);
-
-		btnCiudad[40].setIcon(iconoEscalado3);
 		btnCiudad[40].setText(null);
-
-		btnCiudad[41].setIcon(iconoEscalado3);
 		btnCiudad[41].setText(null);
-
-		btnCiudad[42].setIcon(iconoEscalado3);
 		btnCiudad[42].setText(null);
-
-		btnCiudad[43].setIcon(iconoEscalado3);
 		btnCiudad[43].setText(null);
-
-		btnCiudad[44].setIcon(iconoEscalado3);
 		btnCiudad[44].setText(null);
-
-		btnCiudad[45].setIcon(iconoEscalado3);
 		btnCiudad[45].setText(null);
-
-		btnCiudad[46].setIcon(iconoEscalado3);
 		btnCiudad[46].setText(null);
-
-		btnCiudad[47].setIcon(iconoEscalado3);
 		btnCiudad[47].setText(null);
+
 
 	}
 
@@ -938,7 +652,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Paneltxt = new JLabel[4];
 		ProgressBar = new JProgressBar[4];
 
-		btnComponentes[1] = new JButton("Craftear");
+		btnComponentes[1] = new JButton("Investigar");
 		btnComponentes[1].setBounds(823, 691, 144, 56);
 		btnComponentes[1].setToolTipText("Crafetar nos ayuda a augmentar el progresso del arma, consume 4 acciones");
 		add(btnComponentes[1]);
@@ -1008,12 +722,17 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		add(Paneltxt[3]);
 
 		consola = new JTextArea();
-		consola.setBackground(Color.DARK_GRAY);
-		consola.setText("Bienvenidos al juego\r\n");
-		consola.setFont(new Font("Courier New", Font.PLAIN, 12));
-		consola.setForeground(Color.GREEN);
-		consola.setBounds(1167, 613, 369, 162);
-		add(consola);
+        consola.setBackground(Color.DARK_GRAY);
+        consola.setText("Bienvenidos al juego\r\n");
+        consola.setFont(new Font("Courier New", Font.PLAIN, 12));
+        consola.setForeground(Color.GREEN);
+        JScrollPane scrollPane = new JScrollPane(consola);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setBounds(1167, 613, 369, 162);
+        
+//		consola.setBounds(1167, 613, 369, 162);
+		add(scrollPane);
 	}
 	
 	private void generarVariables() {

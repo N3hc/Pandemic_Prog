@@ -96,8 +96,16 @@ public class Panel_Login extends JPanel implements ActionListener{
 				MenuPrincipal.getContentPane().validate();
 				MenuPrincipal.getContentPane().repaint();
 				MenuPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-	        } else {
-	    		JOptionPane.showMessageDialog(this, "Usuario i/o contraseña INCORRECTA", "Login",
+	        } else if(comprobarCuenta(getUser())) {
+	    		JOptionPane.showMessageDialog(this, "Contraseña INCORRECTA", "Login",
+	    				JOptionPane.INFORMATION_MESSAGE);
+				JFrame PanelLogin = (JFrame) SwingUtilities.getWindowAncestor(this);
+				PanelLogin.getContentPane().removeAll();
+				PanelLogin.getContentPane().add(new Panel_Login());
+				PanelLogin.getContentPane().validate();
+				PanelLogin.getContentPane().repaint();
+	        }else {
+	    		JOptionPane.showMessageDialog(this, "Usuario inexistente", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);
 				JFrame PanelLogin = (JFrame) SwingUtilities.getWindowAncestor(this);
 				PanelLogin.getContentPane().removeAll();
@@ -130,6 +138,18 @@ public class Panel_Login extends JPanel implements ActionListener{
 		Connection con = bbdd.conectarBaseDatos();
 		String[] listaElementosSeleccionados = { "COUNT(*)" };
 		Select = bbdd.select(con, "SELECT COUNT(*) FROM JUGADOR WHERE NICKNAME = '"+ NICKNAME +"' and PASSWORD = '"+PASSWORD+"'", listaElementosSeleccionados);
+		if (Select[0].equals("1")) {
+		    return true;
+		} else {
+		    return false;
+		}
+	}
+	
+	public boolean comprobarCuenta (String NICKNAME) {
+		String [] Select = new String [10];
+		Connection con = bbdd.conectarBaseDatos();
+		String[] listaElementosSeleccionados = { "COUNT(*)" };
+		Select = bbdd.select(con, "SELECT COUNT(*) FROM jugador WHERE NICKNAME = '" + NICKNAME +"'", listaElementosSeleccionados);
 		if (Select[0].equals("1")) {
 		    return true;
 		} else {
