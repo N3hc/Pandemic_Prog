@@ -3,7 +3,7 @@ package Func_Partida;
 public class Vacuna {
 	private String color;
 	private String arma;
-	private float porcentaje;
+	private int porcentaje;
 	private boolean estado;
 	
 	public Vacuna (String Color, String Nombre) {
@@ -33,11 +33,11 @@ public class Vacuna {
 		this.arma = color;
 	}
 
-	public float getPorcentaje() {
+	public int getPorcentaje() {
 		return porcentaje;
 	}
 
-	public void setPorcentaje(float porcentaje) {
+	public void setPorcentaje(int porcentaje) {
 		this.porcentaje = porcentaje;
 	}
 

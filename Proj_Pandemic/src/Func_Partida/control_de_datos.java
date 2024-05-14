@@ -198,29 +198,4 @@ public class control_de_datos {
 		return Viruses;
 	}
 	
-	public static void cargarPartida() {
-		
-	}
-	public static void guardarPartida() {
-		String textoFinal =  "";
-		String textoVacuna = "";
-		for (int i = 0; i < nombres.length; i++) {
-			textoFinal= textoFinal+ "Ciudad('"+nombres[i]+"',"+partida.getNivelInfeccionCiudad(nombres[i])+"),";
-		}
-		for (int i = 0; i < vacunas.length; i++) {
-			textoVacuna = textoVacuna+ "Vacuna('"+partida.getNivelVacuna(vacunas[i])+",'"+vacunas[i]+"'),";
-		}
-		System.out.println(textoFinal);
-		Connection con = bbdd.conectarBaseDatos();
-		bbdd.insert(con, "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos)"
-				+ "VALUES ("+user.getUser()+"'"+cPartida.calcularPuntuajeFinal()+",DatosPartida(CiudadTabla("+ textoFinal+"),VacunaTabla("+textoVacuna+"),PersonajeTabla(Personaje(4),Personaje(4)),"+partida.getBrotes()+","+partida.getRondas()+","+partida.getAcciones()+", SYS.ODCINUMBERLIST(1,2,3,4)));");
-
-	
-	}
-	public static void cargarRecord() {
-		
-	}
-	public static void guardarRecord() {
-		
-	}
 }

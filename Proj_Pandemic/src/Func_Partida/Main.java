@@ -13,8 +13,10 @@ public class Main {
 //				+ password + ")");
 //		
 //		System.out.println("si");
-		control_de_datos c = new control_de_datos();
-	        control_de_datos.guardarPartida();
+		control_de_partida c = new control_de_partida();
+	    DatosPartida datosPartida = new DatosPartida();
+	    datosPartida.cargarDatos("Facil");
+	    c.guardarPartida(datosPartida);
 		
 
 	}
