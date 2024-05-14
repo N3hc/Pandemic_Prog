@@ -38,7 +38,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		generarIcono();
 		InitFondo();
 		Paneltxt[3].setText("Turno: 1");
-		partida.cargarDatos(mostrarPopupDificultad());
+		partida.cargarDatos(Panel_Menu_Principal.getDiff());
 		cPartida.gestionarTurno(partida, 0);
 		generarVariables();
 	}
@@ -922,16 +922,16 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		setVisible(true);
 	}
 
-	private String mostrarPopupDificultad() {
-		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
-		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
-				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
-				opcionesDificultad[0]);
-		if (dificultadSeleccionada != null) {
-			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-		}
-		return dificultadSeleccionada;
-	}
+//	private String mostrarPopupDificultad() {
+//		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
+//		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
+//				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
+//				opcionesDificultad[0]);
+//		if (dificultadSeleccionada != null) {
+//			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
+//		}
+//		return dificultadSeleccionada;
+//	}
 
 	private void InitComponentes() {
 		btnComponentes = new JButton[4];
