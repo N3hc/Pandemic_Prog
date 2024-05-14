@@ -16,7 +16,8 @@ public class Main {
 		control_de_partida c = new control_de_partida();
 	    DatosPartida datosPartida = new DatosPartida();
 	    datosPartida.cargarDatos("Facil");
-	    c.guardarPartida(datosPartida);
+//	    c.guardarPartida(datosPartida);
+	    c.iniciarPartidaGuardada("hola");
 		
 
 	}

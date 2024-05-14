@@ -14,13 +14,43 @@ public class control_de_partida {
 	int contadorInvestigacions = 0;
 	int contadorMatar = 0;
 	int total = 0;
-
+	DatosPartida partida = new DatosPartida();
+	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
+			"Isla Lemma", "Isla Lisz", "Isla Narvo", "Ojo de Odquilla", "Cresta del Cuervo", "Rosevan",
+			"Puerto Epheria", "Finistella", "Calpheon", "Bosque Ceniza", "Grana", "Trent", "Tunkuta", "Duvencrue",
+			"Odyllita", "Cubil Escarlata", "Keplan", "Florin", "Olvia", "Velia", "Castillo Cron", "Kusha", "Heidel",
+			"Glish", "Bosque Tungrad", "Tarif", "Altinova", "Asparkan", "Ruinas de Waragon", "Ruinas de Kadry",
+			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
+			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
+	String[] vacunas = {"Corazon de Vell","Dandelion","Kzarka","Kutum"};
 	public void iniciarPartida() {
 
 	}
 
 	public void iniciarPartidaGuardada(String id) {
-
+		Connection con = bbdd.conectarBaseDatos();
+		for (int i = 0; i < nombres.length; i++) {
+			String[] listaElementosSeleccionados = { "Infeccion" };
+			String[] Select = bbdd.select(con, "SELECT c.Infeccion FROM DATOSPARTIDATABLA d,TABLE(d.datos.Ciudades) c where c.nombre = '"+nombres[i]+"' and d.id = 14", listaElementosSeleccionados);
+			System.out.println(nombres[i]+ " = " + Select[0]);
+		}
+		
+		for (int i = 0; i < vacunas.length; i++) {
+			String[] listaElementosSeleccionados = { "Porcentaje" };
+			String[] Select = bbdd.select(con, "SELECT v.Porcentaje FROM DATOSPARTIDATABLA d,TABLE(d.datos.Vacunas) v where v.nombre = '"+vacunas[i]+"' and d.id = 14", listaElementosSeleccionados);
+			System.out.println(vacunas[i]+ " = " + Select[0]);
+		};
+		String[] listaElementosSeleccionados = { "datos.Rondas" };
+		String[] Select = bbdd.select(con, "SELECT d.datos.Rondas FROM DatosPartidaTabla d WHERE d.jugador = 'a' and d.id = 14", listaElementosSeleccionados);
+		System.out.println("Ronda = " + Select[0]);
+		
+		String[] listaElementosSeleccionados2 = { "datos.Brotes" };
+		String[] Select2 = bbdd.select(con, "SELECT d.datos.Brotes FROM DatosPartidaTabla d WHERE d.jugador = 'a' and d.id = 14", listaElementosSeleccionados2);
+		System.out.println("Brotes = " + Select2[0]);
+		
+		String[] listaElementosSeleccionados3 = { "datos.Acciones" };
+		String[] Select3 = bbdd.select(con, "SELECT d.datos.Acciones FROM DatosPartidaTabla d WHERE d.jugador = 'a' and d.id = 14", listaElementosSeleccionados3);
+		System.out.println("Acciones = " + Select3[0]);
 	}
 
 	public void guardarPartida(DatosPartida datosPartida) {
