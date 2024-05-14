@@ -33,7 +33,7 @@ public class control_de_datos {
 			"Glish", "Bosque Tungrad", "Tarif", "Altinova", "Asparkan", "Ruinas de Waragon", "Ruinas de Kadry",
 			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
 			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
-	static String[] vacunas = {"Corazon de vell",""};
+	static String[] vacunas = {"Corazon de vell","Dandelion","Kzarka","Kutum"};
 	static Panel_Login user = new Panel_Login();
 	static control_de_partida cPartida = new control_de_partida();
 	static DatosPartida partida = new DatosPartida();
@@ -204,13 +204,15 @@ public class control_de_datos {
 		String textoFinal =  "";
 		String textoVacuna = "";
 		for (int i = 0; i < nombres.length; i++) {
-			textoFinal= textoFinal+ ",Ciudad('"+nombres[i]+"',"+partida.getNivelInfeccionCiudad(nombres[i])+")";
-			textoVacuna = textoVacuna+ "Vacuna('"+"";
+			textoFinal= textoFinal+ "Ciudad('"+nombres[i]+"',"+partida.getNivelInfeccionCiudad(nombres[i])+"),";
+		}
+		for (int i = 0; i < vacunas.length; i++) {
+			textoVacuna = textoVacuna+ "Vacuna('"+partida.getNivelVacuna(vacunas[i])+",'"+vacunas[i]+"'),";
 		}
 		System.out.println(textoFinal);
 		Connection con = bbdd.conectarBaseDatos();
 		bbdd.insert(con, "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos)"
-				+ "VALUES ("+user.getUser()+"'"+cPartida.calcularPuntuajeFinal()+",DatosPartida(CiudadTabla("+ textoFinal+"),VacunaTabla(");
+				+ "VALUES ("+user.getUser()+"'"+cPartida.calcularPuntuajeFinal()+",DatosPartida(CiudadTabla("+ textoFinal+"),VacunaTabla("+textoVacuna+"),PersonajeTabla(Personaje(4),Personaje(4)),"+partida.getBrotes()+","+partida.getRondas()+","+partida.getAcciones()+", SYS.ODCINUMBERLIST(1,2,3,4)));");
 
 	
 	}
