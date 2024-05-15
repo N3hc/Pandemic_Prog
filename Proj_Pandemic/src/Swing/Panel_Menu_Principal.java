@@ -66,11 +66,15 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		if (e.getSource() == Boton[0]) {
 			showDifficultyButtons();
 		} else if (e.getSource() == Boton[1]) {
-			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-			partida.getContentPane().removeAll();
-			partida.getContentPane().add(new Panel_Partida_Cargada());
-			partida.revalidate();
-			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			if (!Panel_Login.ComprobarPartida(Panel_Login.getUser())) {
+				JOptionPane.showMessageDialog(this, "No puedes iniciar una partida guardada sin guardar una ", "Error", JOptionPane.INFORMATION_MESSAGE);
+			}else {
+				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
+				partida.getContentPane().removeAll();
+				partida.getContentPane().add(new Panel_Partida_Cargada());
+				partida.revalidate();
+				partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			}
 		} else if (e.getSource() == Boton[2]) {
 			JOptionPane.showMessageDialog(this, "Jugador:\r\n" + "\r\n" + "Un jugador tiene 4 acciones.\r\n"
 					+ "El Jugador en su turno puede usar sus acciones de dos maneras.\r\n"
@@ -221,7 +225,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		
 		Connection con = bbdd.conectarBaseDatos();
 		String[] listaElementosSeleccionados = { "COUNT(*)" };
-		String[] Select = bbdd.select(con, "SELECT count(*) FROM datospartidatabla GROUP BY Jugador", listaElementosSeleccionados);
+		String[] Select = bbdd.select(con, "Select count(*) from (Select Jugador, MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador) ORDER BY puntuacion DESC", listaElementosSeleccionados);
 		System.out.println(Select[0]);
 		int num = Integer.parseInt(Select[0]);
 		String[] listaElementosSeleccionados1 = { "Jugador" };
@@ -255,6 +259,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			String[] Select2 = bbdd.select(con, "SELECT puntuacion FROM (SELECT puntuacion FROM (SELECT MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador)ORDER BY puntuacion DESC) WHERE ROWNUM <= 5", listaElementosSeleccionados2);
 			data[4][1] = Select1[0];
 			data[4][2] = Select2[0];
+			System.out.println("1");
 		}
 
 

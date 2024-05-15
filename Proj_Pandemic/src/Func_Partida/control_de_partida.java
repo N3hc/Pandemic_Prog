@@ -65,7 +65,8 @@ public class control_de_partida {
 		datosPartida.cargarDiffPartidaGuardada(Select4[0]);
 		System.out.println(Select4[0]);
 	}
-
+	
+	
 	/**
 	 * Se guardan todos los parametros de la partida en una base de datos mediante
 	 * la clase bbdd
@@ -186,7 +187,7 @@ public class control_de_partida {
 			String datos = "Se ha infectado " + ciudadAleatoria.getNombre() + " " + ciudadAleatoria.getInfeccion();
 			if(Panel_Partida.getIniciada() == 1) {
 				Panel_Partida.GuardarDatos(datos);	
-			}else {
+			}else {	
 				Panel_Partida_Cargada.GuardarDatos(datos);	
 			}
 
