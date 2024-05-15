@@ -19,7 +19,7 @@ public class Main {
 		pl.setUser("Ardui");
 		control_de_partida c = new control_de_partida();
 	    DatosPartida datosPartida = new DatosPartida();
-	    datosPartida.cargarDatos("Facil");
+	    datosPartida.cargarDatos();
 //	    c.guardarPartida(datosPartida);
 	    c.iniciarPartidaGuardada(datosPartida);
 	    System.out.println(datosPartida.toString());

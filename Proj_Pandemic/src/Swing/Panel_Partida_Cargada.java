@@ -38,6 +38,7 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		InitComponentes();
 		InitCiudadesBtn();
 		InitFondo();
+		partida.cargarDatos();
 		cPartida.iniciarPartidaGuardada(partida);
 		cPartida.gestionarTurno(partida, 1);
 		generarIcono();

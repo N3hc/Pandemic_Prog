@@ -15,7 +15,6 @@ public class control_de_partida {
 	int contadorInvestigacions = 0;
 	int contadorMatar = 0;
 	int total = 0;
-	DatosPartida partida = new DatosPartida();
 	/**
 	 * Función para cargar todas y cada unas de las informaciones guardadas en la base de datos sobre una partida guardada
 	 * @param datosPartida Información de la partida
