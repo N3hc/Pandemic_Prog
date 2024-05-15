@@ -38,6 +38,15 @@ public class DatosPartida {
 			System.out.println("Se ha producido un NullPointerException");
 		}
 	}
+	
+	public void cargarDiffPartidaGuardada(String dific) {
+		String[] valoresDif = control_de_datos.Leer_Xml(dific);
+		int[] valoresInt = new int[valoresDif.length];
+		for (int i = 0; i < valoresDif.length; i++) {
+			valoresInt[i] = Integer.parseInt(valoresDif[i]);
+		}
+		this.setDerCon(valoresInt);
+	}
 /**
  * Se obtiene el nonbre de la enfermedad de una ciudad
  * @param ciudadReq la ciudad

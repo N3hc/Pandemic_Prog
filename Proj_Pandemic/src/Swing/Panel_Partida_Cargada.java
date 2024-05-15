@@ -29,7 +29,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 			"Glish", "Bosque Tungrad", "Tarif", "Altinova", "Asparkan", "Ruinas de Waragon", "Ruinas de Kadry",
 			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
 			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
-
+	/**
+	 * Funcion principal iniciar la pantalla del juego
+	 */
 	public Panel_Partida_Cargada() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
@@ -41,7 +43,10 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		generarIcono();
 		generarVariables();
 	}
-
+	/**
+	 * Funcion para generar el panel de informacion de la ciudad necesaria
+	 * @param nombre
+	 */
 	private void panelCiudad(String nombre) {
 		btnAccCiudades = new JButton[2];
 
@@ -97,7 +102,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 
 		dialog.setVisible(true);
 	}
-	
+	/**
+	 * Funcion para voler al panel del menu principal
+	 */
 	public void volverMenuPrincipal() {
 		JFrame partidaInit = (JFrame) SwingUtilities.getWindowAncestor(this);
 		partidaInit.getContentPane().removeAll();
@@ -105,7 +112,10 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		partidaInit.revalidate();
 		partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
-	
+	/**
+	 * Funcion para llamar el panel de los heroes cuando sea necesario
+	 * @param nombre
+	 */
 	public void PanelHeroes(String nombre) {
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
@@ -194,7 +204,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 
 		selector.setVisible(true);
 	}
-
+	/**
+	 * Funcion para llamar el panel de ajustes
+	 */
 	public void panelAjustes() {
 
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -234,7 +246,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		dialog.setVisible(true);
 	
 	}
-	
+	/**
+	 * Funcion para mostrar una lista de elecciones
+	 */
 	public String Craftear() {
 		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
 				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
@@ -243,27 +257,23 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		}
 		return armaSeleccionada;
 	}
-
+	/**
+	 * Funcion para mostrar las acciones restantes
+	 */
 	public void popUpAcciones() {
 		JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes", "Acciones Restantes",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
-
+	/**
+	 * funcion para imprimir por la consola el texto necesario
+	 * @param datos
+	 */
 	public static void GuardarDatos(String datos) {
 		consola.append(datos + "\n");
-//		int maxLines = 12; // Set the maximum number of lines you want to display
-//		int lineCount = consola.getLineCount();
-//		if (lineCount > maxLines) {
-//			try {
-//				int startOffset = consola.getLineStartOffset(0);
-//				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
-//				consola.replaceRange("", startOffset, endOffset);
-//			} catch (Exception ex) {
-//				ex.printStackTrace();
-//			}
-//		}
 	}
-
+	/**
+	 * Funcion para actualizar los parametros necesarios
+	 */
 	public void actualizarDatos() {
 		diferenciarInfeccion();
 		Paneltxt[3].setText("Turno: " + partida.getRondas());
@@ -275,7 +285,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		}
 		i = 0;
 	}
-
+	/**
+	 * Action listener con las acciones correspondientes al momento de apretar el boton
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
@@ -320,7 +332,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 			}
 		}
 	}
-
+	/**
+	 * Funcion para cambiar el tamaño de las imagenes correspondientemente segun su nivel de infeccion
+	 */
 	private void diferenciarInfeccion() {// Crea un ImageIcon con la imagen
 		ImageIcon icono = new ImageIcon("img/gateway_0.png");
 		ImageIcon icono1 = new ImageIcon("img/gateway_1.png");
@@ -363,7 +377,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		    }
 		}
 }
-	
+	/**
+	 * Funcion para iniciar los iconos de los botones de las ciudades y ajustes
+	 */
 	private void generarIcono() {
 		diferenciarInfeccion();
 		ImageIcon icono4 = new ImageIcon("img/Ajustes.png");
@@ -422,7 +438,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 
 
 	}
-
+	/**
+	 * Funcion para iniciar los botones en las cuales veremos la ciudades
+	 */
 	private void InitCiudadesBtn() {
 
 		btnCiudad = new JButton[48];
@@ -624,7 +642,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		}
 	
 	}
-
+	/**
+	 * Funcion para iniciar el fondo de la partida
+	 */
 	private void InitFondo() {
 		setOpaque(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -644,17 +664,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		setVisible(true);
 	}
 
-//	private String mostrarPopupDificultad() {
-//		String[] opcionesDificultad = { "Facil", "Normal", "Dificil" };
-//		String dificultadSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la dificultad:",
-//				"Selección de Dificultad", JOptionPane.QUESTION_MESSAGE, null, opcionesDificultad,
-//				opcionesDificultad[0]);
-//		if (dificultadSeleccionada != null) {
-//			System.out.println("Dificultad seleccionada: " + dificultadSeleccionada);
-//		}
-//		return dificultadSeleccionada;
-//	}
-
+	/**
+	 * Funcion para iniciar los componentes donde veremos todos los parametros del juego
+	 */
 	private void InitComponentes() {
 		btnComponentes = new JButton[4];
 		Paneltxt = new JLabel[4];
@@ -739,10 +751,11 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setBounds(1167, 613, 369, 162);
         
-//		consola.setBounds(1167, 613, 369, 162);
 		add(scrollPane);
 	}
-	
+	/**
+	 * Funcion para conseguir los nombres de las vacunas
+	 */
 	private void generarVariables() {
 		Vacunas = new String[4];
 		int i = 0;

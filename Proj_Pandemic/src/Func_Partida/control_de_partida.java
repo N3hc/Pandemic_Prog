@@ -21,12 +21,6 @@ public class control_de_partida {
 	 * @param datosPartida Información de la partida
 	 */
 	
-	public void FuncionPrueba() {
-		Connection con = bbdd.conectarBaseDatos();
-		String[] listaElementosSeleccionados = { "DerCon" };
-		String[] Select = bbdd.select(con, "SELECT d.Datos.DerCon AS DerCon FROM DatosPartidaTabla d where d.id = 12", listaElementosSeleccionados);
-		System.out.println(Select[0]);
-	}
 	public void iniciarPartidaGuardada(DatosPartida datosPartida) {
 		Connection con = bbdd.conectarBaseDatos();
 		Panel_Login pl = new Panel_Login();
@@ -66,6 +60,10 @@ public class control_de_partida {
 				listaElementosSeleccionados3);
 		datosPartida.setAcciones(Integer.parseInt(Select2[0]));
 		
+		String[] listaElementosSeleccionados4 = { "Datos.Dificultad" };
+		String[] Select4 = bbdd.select(con, "SELECT d.Datos.Dificultad FROM DatosPartidaTabla d where d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')", listaElementosSeleccionados4);
+		datosPartida.cargarDiffPartidaGuardada(Select4[0]);
+		System.out.println(Select4[0]);
 	}
 
 	/**
@@ -173,13 +171,12 @@ public class control_de_partida {
 		actualizarEstado(datosPartida);
 		datosPartida.setRondas(datosPartida.getRondas() + 1);
 		datosPartida.setAcciones(4);
-		Random random = new Random();
 		int[] ciudades_ya = new int[(int) datosPartida.getDerCon(valor_momento)];
 
 		for (int i = 0; i < ciudades_ya.length; i++) {
 			int indiceAleatorio;
 			do {
-				indiceAleatorio = random.nextInt(datosPartida.getCiudades().size());
+				indiceAleatorio = (int) (Math.random()*48);
 			} while (esCiudadYaSeleccionada(ciudades_ya, indiceAleatorio, i));
 
 			ciudades_ya[i] = indiceAleatorio;
