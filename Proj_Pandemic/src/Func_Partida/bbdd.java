@@ -14,11 +14,9 @@ public class bbdd {
 
 
     /**
-     * Intenta establecer una conexión a la base de datos Oracle. NO HACE FALTA QUE ENTENDAIS COMO FUNCIONA,
-     * SE HACE TODO DE MANERA AUTOMÁTICA.
+     * Intenta establecer una conexión a la base de datos Oracle. NO HACE FALTA QUE ENTENDAIS COMO FUNCIONA,.
      *
      * @return Objeto Connection si la conexión es exitosa, null en caso contrario. LA VARIABLE QUE DEVUELVE
-     * LA TENEIS QUE GUARDAR PARA LAS DEMÁS FUNCIONES
      */
 	public static Connection conectarBaseDatos() {
 		Connection con = null;
@@ -92,8 +90,6 @@ public class bbdd {
 	
     /**
      * Realiza una consulta en la base de datos y devuelve los resultados como un array de Strings.
-     * ADVERTENCIA, SOLO PODEIS BUSCAR RESULTADOS DE UNA SOLA FILA, SI SE ENCUENTRA MÁS DE UNA FILA
-     * PUEDE DAR RESULTADOS EXTRAÑOS.
      *
      * @param con                         Objeto Connection que representa la conexión a la base de datos.
      * @param sql                         Sentencia SQL de consulta.
@@ -131,7 +127,6 @@ public class bbdd {
 	
     /**
      * Imprime los resultados de una consulta SELECT en la base de datos.
-     * EN ESTE CASO SI PODEIS IMPRIMIR MÁS DE UNA FILA.
      *
      * @param con                         Objeto Connection que representa la conexión a la base de datos.
      * @param sql                         Sentencia SQL de consulta.
