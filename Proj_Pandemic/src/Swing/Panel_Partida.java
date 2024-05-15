@@ -81,7 +81,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		btnAccCiudades[0] = new JButton("Matar");
 		btnAccCiudades[0].setBounds(10, 200, 120, 50);
-		btnAccCiudades[0].setToolTipText("Matar elimina a uno la infeccion de la ciudad seleccionada y consume 1 accion");
+		btnAccCiudades[0].setToolTipText("Matar baja en uno la infeccion de la ciudad seleccionada y consume 1 accion");
 		dialog.getContentPane().add(btnAccCiudades[0]);
 		btnAccCiudades[0].addActionListener(new ActionListener() {
 			@Override
@@ -153,7 +153,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton guerrero = new JButton("Botón 1");
 		guerrero.setBounds(300, 0, 300, 300);
 		guerrero.setContentAreaFilled(false);
-		guerrero.setToolTipText("El guerrero ayuda a eliminar la infeccion en 1 en la ciudad seleccionada y sus colindantes, tiene un cooldown de 3 turnos y consume una accion en su uso");
+		guerrero.setToolTipText("El guerrero ayuda a eliminar la infección en 1 en la ciudad seleccionada y sus colindantes, tiene un cooldown de 3 turnos y consume una acción cuando se usa");
 
 		if (cPartida.estadoPej(partida, 0)) {
 			guerrero.setIcon(Guerrero);
@@ -180,7 +180,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton support = new JButton("Botón 2");
 		support.setBounds(0, 0, 300, 300);
 		support.setContentAreaFilled(false);
-		support.setToolTipText("El support ayuda a augmentar un 5% el progresso de cada arma, tiene un cooldown de 5 turnos y consume una accion en su uso");
+		support.setToolTipText("El support ayuda a aumentar un 5% el progresso de cada arma, tiene un cooldown de 5 turnos y consume una acción cuando se usa");
 
 		if (cPartida.estadoPej(partida, 1)) {
 			support.setIcon(Support);
@@ -218,7 +218,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		
 		JButton guardar = new JButton("Guardar Partida");
 		guardar.setBounds(0, 0, 150, 60);
-		guardar.setToolTipText("Guardar Partida dentro de la base de datos con el usuario en la cual entraste al juego");
+		guardar.setToolTipText("Guardar Partida dentro de la base de datos con el usuario con el cual entraste al juego");
 		guardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -248,8 +248,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 	
 	public String Craftear() {
-		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
-				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
+		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione el arma que quiera investigar:",
+				"Seleccione el arma que quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
 		if (armaSeleccionada != null) {
 			System.out.println("Arma seleccionada: " + armaSeleccionada);
 		}
@@ -285,7 +285,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
 			if (partida.getAcciones() != 4) {
-				JOptionPane.showMessageDialog(this, "Esta accion requiere 4 acciones", "Acciones insuficientes",
+				JOptionPane.showMessageDialog(this, "Esta acción requiere 4 acciones", "Acciones insuficientes",
 						JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				cPartida.gestionarVacuna(partida, Craftear());
@@ -310,7 +310,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				actualizarDatos();
 				if (cPartida.gestionarFinPartida(partida)) {
 					JOptionPane.showMessageDialog(this, "Has perdidon\n"
-							+ 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Perdiste", JOptionPane.INFORMATION_MESSAGE);
+							+ 						"Tu puntuación total ha sido " + cPartida.calcularPuntuajeFinal(), "Perdiste", JOptionPane.INFORMATION_MESSAGE);
 					volverMenuPrincipal();
 				}
 			}
@@ -667,19 +667,19 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		btnComponentes[1] = new JButton("Investigar");
 		btnComponentes[1].setBounds(823, 691, 144, 56);
-		btnComponentes[1].setToolTipText("Crafetar nos ayuda a augmentar el progresso del arma, consume 4 acciones");
+		btnComponentes[1].setToolTipText("Crafetar nos ayuda a aumentar el progresso del arma, consume 4 acciones");
 		add(btnComponentes[1]);
 		btnComponentes[1].addActionListener(this);
 
 		btnComponentes[2] = new JButton("Ajustes");
 		btnComponentes[2].setBounds(1463, 48, 48, 48);
-		btnComponentes[2].setToolTipText("Nos muestra un panel para guardar la partido o/i salir del juego");
+		btnComponentes[2].setToolTipText("Nos muestra un panel para guardar la partido i/o salir del juego");
 		add(btnComponentes[2]);
 		btnComponentes[2].addActionListener(this);
 
 		btnComponentes[3] = new JButton("Siguiente Turno");
 		btnComponentes[3].setBounds(1009, 691, 144, 56);
-		btnComponentes[3].setToolTipText("Saltamos el turno actual y passamos en la siguiente, se descubren nuevas infeccioens y se nos renuevan las acciones");
+		btnComponentes[3].setToolTipText("Saltamos el turno actual y passamos al siguiente, se descubren nuevas infeccioens y se nos renuevan las acciones");
 		add(btnComponentes[3]);
 		btnComponentes[3].addActionListener(this);
 

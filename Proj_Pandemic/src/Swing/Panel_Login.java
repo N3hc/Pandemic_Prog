@@ -102,7 +102,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
 	        if (IniciarSession(getUser(),password)) {
-	    		JOptionPane.showMessageDialog(this, "Has Iniciado Session CORRECTAMENTE", "Login",
+	    		JOptionPane.showMessageDialog(this, "Has Iniciado Sesión CORRECTAMENTE", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);
 				JFrame MenuPrincipal = (JFrame) SwingUtilities.getWindowAncestor(this);
 				MenuPrincipal.getContentPane().removeAll();
@@ -133,7 +133,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	        char[] passwordChars = passwordField.getPassword();
 	        String password = new String(passwordChars);
 			if(CrearCuenta(user,password)) {
-	    		JOptionPane.showMessageDialog(this, "Se ha creado cuenta CORRECTAMENTE", "Login",
+	    		JOptionPane.showMessageDialog(this, "Se ha creado la cuenta CORRECTAMENTE", "Login",
 	    				JOptionPane.INFORMATION_MESSAGE);
 	    		Connection con = bbdd.conectarBaseDatos();
 	    		bbdd.insert(con, "INSERT INTO JUGADOR (\"NICKNAME\", \"PASSWORD\")\n" + "VALUES ('" + user+"',"+
