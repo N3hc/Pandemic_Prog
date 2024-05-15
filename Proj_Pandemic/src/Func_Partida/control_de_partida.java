@@ -64,7 +64,8 @@ public class control_de_partida {
 		datosPartida.cargarDiffPartidaGuardada(Select4[0]);
 		System.out.println(Select4[0]);
 	}
-
+	
+	
 	/**
 	 * Se guardan todos los parametros de la partida en una base de datos mediante
 	 * la clase bbdd

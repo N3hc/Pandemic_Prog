@@ -252,18 +252,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	public static void GuardarDatos(String datos) {
+		try {
 		consola.append(datos + "\n");
-//		int maxLines = 12; // Set the maximum number of lines you want to display
-//		int lineCount = consola.getLineCount();
-//		if (lineCount > maxLines) {
-//			try {
-//				int startOffset = consola.getLineStartOffset(0);
-//				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
-//				consola.replaceRange("", startOffset, endOffset);
-//			} catch (Exception ex) {
-//				ex.printStackTrace();
-//			}
-//		}
+		}catch (NullPointerException e) {
+			System.out.println("NullPointer");
+		}
 	}
 
 	public void actualizarDatos() {
@@ -302,6 +295,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!\n" +
 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Ganaste", JOptionPane.INFORMATION_MESSAGE);
 				volverMenuPrincipal();
+				cPartida.guardarPartida(partida);
 			}else{
 				cPartida.gestionarTurno(partida, 1);
 				actualizarDatos();
@@ -309,6 +303,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 					JOptionPane.showMessageDialog(this, "Has perdidon\n"
 							+ 						"Tu puntuación total ha sido " + cPartida.calcularPuntuajeFinal(), "Perdiste", JOptionPane.INFORMATION_MESSAGE);
 					volverMenuPrincipal();
+					cPartida.guardarPartida(partida);
 				}
 			}
 			;
