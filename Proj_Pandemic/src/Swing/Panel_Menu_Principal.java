@@ -45,7 +45,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	DefaultTableModel rankingModel; // Modelo de la tabla para el ranking
 	JTable rankingTable; // Tabla para mostrar el ranking
 	DatosPartida partida = new DatosPartida();
-
+	/**
+	 * Constructor para llamar las funciones pertinenetes del panel
+	 */
 	public Panel_Menu_Principal() {
 		reproducirMusica();
 		setLayout(null);
@@ -57,6 +59,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	}
 
 	@Override
+	/**
+	 * Action listener con las acciones correspondientes al momento de apretar el boton
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Boton[0]) {
 			showDifficultyButtons();
@@ -103,7 +108,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			System.exit(0);
 		}
 	}
-
+	/**
+	 * Funcion para añadir los botones en el panel principal
+	 */
 	public void addButtons() {
 		Boton = new Button[7];
 		String[] nombres = { "Nueva Partida", "Cargar Partida", "Información", "Ranking", "Autores", "Versión",
@@ -141,7 +148,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		add(Boton[6]);
 		Boton[6].addActionListener(this);
 	}
-
+	/**
+	 * Funcion para elegir la dificultad deseada
+	 */
 	private void showDifficultyButtons() {
 		// Eliminar los botones actuales
 		removeAll();
@@ -189,7 +198,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		InitCartel();
 		InitFondo();
 	}
-
+	/**
+	 * Funcion para imprimir y selecionar los usuarios del ranking
+	 */
 	private void ranking() {
 	    JFrame frame = new JFrame("Ranking");
 	    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -270,7 +281,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	}
 
 
-
+	/**
+	 * Funcion para iniciar la partida o llamar al panel de la partida
+	 */
 	private void iniciarPartidaConDificultad() {
 		// Implementar la lógica para iniciar la partida con la dificultad seleccionada
 //        System.out.println("Iniciando partida con dificultad: " + dificultad);
@@ -281,7 +294,10 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        partida.cargarDatos(dificultad);
 	}
-
+	
+	/**
+	 * Funcion para iniciar el fondo del panel
+	 */
 	private void InitCartel() {
 		setOpaque(true);
 		ImageIcon imagen = new ImageIcon("img/logo.png");
@@ -293,7 +309,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		fondoLabel.setBounds(473, 84, 590, 180);
 		add(fondoLabel);
 	}
-
+	/**
+	 * Funcion para Iniciar el logo del fondo del panel
+	 */
 	private void InitFondo() {
 		setOpaque(true);
 
@@ -312,7 +330,9 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 
 		setVisible(true);
 	}
-
+	/**
+	 * Funcion para reproducir la musica del juego en bucle
+	 */
 	private void reproducirMusica() {
 		String filePath = "img/SoundTrack.wav";
 		try {
@@ -326,11 +346,17 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Getter
+	 * @return
+	 */
 	public static String getDiff() {
 		return diff;
 	}
-
+	/**
+	 * Setter
+	 * @param diff
+	 */
 	public void setDiff(String diff) {
 		this.diff = diff;
 	}

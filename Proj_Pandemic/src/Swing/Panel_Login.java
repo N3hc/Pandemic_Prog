@@ -34,15 +34,23 @@ public class Panel_Login extends JPanel implements ActionListener{
 	
 	JButton[] Boton;
 	//Getter y Setter
+	
+	/**
+	 * Getters
+	 * @return
+	 */
 	public static String getUser() {
 		return user;
 	}
-
+	/**
+	 * Setters
+	 * @return
+	 */
 	public void setUser(String nombre) {
 		user = nombre;
 	}
 	/**
-	 * Cajas de texto y elementos del panel de Login en Swing
+	 * Panel de texto con los objetros pertinentes
 	 */
 	public Panel_Login(){
 		Boton = new JButton[3];
@@ -83,6 +91,9 @@ public class Panel_Login extends JPanel implements ActionListener{
 	
 	
 	@Override
+	/**
+	 * Action listener con las acciones correspondientes al momento de apretar el boton
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == Boton[0]) {
@@ -135,7 +146,12 @@ public class Panel_Login extends JPanel implements ActionListener{
 		}
 
 	}
-	
+	/**
+	 * Funcion de iniciar session en la cual mira si ese usuario con esa contraseña existe
+	 * @param NICKNAME
+	 * @param PASSWORD
+	 * @return
+	 */
 	public boolean IniciarSession (String NICKNAME, String PASSWORD) {
 		String [] Select = new String [10];
 		Connection con = bbdd.conectarBaseDatos();
@@ -147,7 +163,11 @@ public class Panel_Login extends JPanel implements ActionListener{
 		    return false;
 		}
 	}
-	
+	/**
+	 * Funcion para comprobar si la cuenta existe
+	 * @param NICKNAME
+	 * @return
+	 */
 	public boolean comprobarCuenta (String NICKNAME) {
 		String [] Select = new String [10];
 		Connection con = bbdd.conectarBaseDatos();
@@ -159,7 +179,12 @@ public class Panel_Login extends JPanel implements ActionListener{
 		    return false;
 		}
 	}
-	
+	/**
+	 * Funcion para crear una cuenta inexistente en la base de datos
+	 * @param NICKNAME
+	 * @param PASSWORD
+	 * @return
+	 */
 	public boolean CrearCuenta(String NICKNAME, String PASSWORD){
 		String [] Select = new String [10];
 		Connection con = bbdd.conectarBaseDatos();

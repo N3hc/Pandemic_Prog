@@ -10,7 +10,9 @@ public class Marco_Menu extends JFrame{
 	
 //	Panel_Menu_Principal MenuLayout;
 	Panel_Login MenuLayout;
-	
+	/**
+	 * Constructor que muestra el marco del menu
+	 */
 	Marco_Menu(){
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        

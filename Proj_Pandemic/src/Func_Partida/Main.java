@@ -20,12 +20,8 @@ public class Main {
 		control_de_partida c = new control_de_partida();
 	    DatosPartida datosPartida = new DatosPartida();
 	    datosPartida.cargarDatos("Facil");
-<<<<<<< Updated upstream
 	    c.guardarPartida(datosPartida);
-=======
-	    c.FuncionPrueba();
 //	    c.guardarPartida(datosPartida);
->>>>>>> Stashed changes
 //	    c.iniciarPartidaGuardada(datosPartida);
 //	    System.out.println(datosPartida.toString());
 		

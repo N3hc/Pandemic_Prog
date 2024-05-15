@@ -21,12 +21,6 @@ public class control_de_partida {
 	 * @param datosPartida Información de la partida
 	 */
 	
-	public void FuncionPrueba() {
-		Connection con = bbdd.conectarBaseDatos();
-		String[] listaElementosSeleccionados = { "DerCon" };
-		String[] Select = bbdd.select(con, "SELECT d.Datos.DerCon AS DerCon FROM DatosPartidaTabla d where d.id = 12", listaElementosSeleccionados);
-		System.out.println(Select[0]);
-	}
 	public void iniciarPartidaGuardada(DatosPartida datosPartida) {
 		Connection con = bbdd.conectarBaseDatos();
 		Panel_Login pl = new Panel_Login();
@@ -66,6 +60,10 @@ public class control_de_partida {
 				listaElementosSeleccionados3);
 		datosPartida.setAcciones(Integer.parseInt(Select2[0]));
 		
+		String[] listaElementosSeleccionados4 = { "Datos.Dificultad" };
+		String[] Select4 = bbdd.select(con, "SELECT d.Datos.Dificultad FROM DatosPartidaTabla d where d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')", listaElementosSeleccionados4);
+		datosPartida.cargarDiffPartidaGuardada(Select4[0]);
+		System.out.println(Select4[0]);
 	}
 
 	/**
