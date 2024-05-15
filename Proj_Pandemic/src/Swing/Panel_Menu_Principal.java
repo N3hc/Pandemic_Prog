@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -34,6 +35,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 import Func_Partida.DatosPartida;
+import Func_Partida.bbdd;
 import Func_Partida.control_de_partida;
 
 public class Panel_Menu_Principal extends JPanel implements ActionListener {
@@ -61,7 +63,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		} else if (e.getSource() == Boton[1]) {
 			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 			partida.getContentPane().removeAll();
-			partida.getContentPane().add(new Panel_Partida());
+			partida.getContentPane().add(new Panel_Partida_Cargada());
 			partida.revalidate();
 			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		} else if (e.getSource() == Boton[2]) {
@@ -199,16 +201,55 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 
 	    // Crear el modelo de la tabla
 	    String[] columnNames = {"Ranking", "Jugador", "Puntuación"};
-//	    Object[][] data = obtenerDatosRanking(); // Debes implementar este método
         Object[][] data = {
-                {"1", "Player1", "10000"},
-                {"2", "Player2", "9500"},
-                {"3", "Player3", "9000"},
-                {" ", " ", " "},
-                {" ", " ", " "}
+                {"1", " ", " "},
+                {"2", " ", " "},
+                {"3", " ", " "},
+                {"4", " ", " "},
+                {"5", " ", " "}
         };
-	    rankingModel = new DefaultTableModel(data, columnNames);
+		
+		Connection con = bbdd.conectarBaseDatos();
+		String[] listaElementosSeleccionados = { "COUNT(*)" };
+		String[] Select = bbdd.select(con, "SELECT count(*) FROM datospartidatabla GROUP BY Jugador", listaElementosSeleccionados);
+		System.out.println(Select[0]);
+		int num = Integer.parseInt(Select[0]);
+		String[] listaElementosSeleccionados1 = { "Jugador" };
+		String[] listaElementosSeleccionados2 = {"Puntuacion"};
+		if (num >= 1) {
+			String[] Select1 = bbdd.select(con, "SELECT Jugador FROM (Select Jugador from (Select Jugador, MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador) ORDER BY puntuacion DESC)Where ROWNUM <= 1", listaElementosSeleccionados1);
+			String[] Select2 = bbdd.select(con, "SELECT puntuacion FROM (SELECT puntuacion FROM (SELECT MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador)ORDER BY puntuacion DESC) WHERE ROWNUM <= 1", listaElementosSeleccionados2);
+			data[0][1] = Select1[0];
+			data[0][2] = Select2[0];
+		}
+		if (num >= 2) {
+			String[] Select1 = bbdd.select(con, "SELECT Jugador FROM (Select Jugador from (Select Jugador, MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador) ORDER BY puntuacion DESC)Where ROWNUM <= 2", listaElementosSeleccionados1);
+			String[] Select2 = bbdd.select(con, "SELECT puntuacion FROM (SELECT puntuacion FROM (SELECT MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador)ORDER BY puntuacion DESC) WHERE ROWNUM <= 2", listaElementosSeleccionados2);
+			data[1][1] = Select1[0];
+			data[1][2] = Select2[0];			
+		}
+		if (num >= 3) {
+			String[] Select1 = bbdd.select(con, "SELECT Jugador FROM (Select Jugador from (Select Jugador, MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador) ORDER BY puntuacion DESC)Where ROWNUM <= 3", listaElementosSeleccionados1);
+			String[] Select2 = bbdd.select(con, "SELECT puntuacion FROM (SELECT puntuacion FROM (SELECT MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador)ORDER BY puntuacion DESC) WHERE ROWNUM <= 3", listaElementosSeleccionados2);
+			data[2][1] = Select1[0];
+			data[2][2] = Select2[0];	
+		}
+		if (num >= 4) {
+			String[] Select1 = bbdd.select(con, "SELECT Jugador FROM (Select Jugador from (Select Jugador, MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador) ORDER BY puntuacion DESC)Where ROWNUM <= 4", listaElementosSeleccionados1);
+			String[] Select2 = bbdd.select(con, "SELECT puntuacion FROM (SELECT puntuacion FROM (SELECT MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador)ORDER BY puntuacion DESC) WHERE ROWNUM <= 4", listaElementosSeleccionados2);
+			data[3][1] = Select1[0];
+			data[3][2] = Select2[0];
+		}
+		if (num >= 5) {
+			String[] Select1 = bbdd.select(con, "SELECT Jugador FROM (Select Jugador from (Select Jugador, MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador) ORDER BY puntuacion DESC)Where ROWNUM <= 5", listaElementosSeleccionados1);
+			String[] Select2 = bbdd.select(con, "SELECT puntuacion FROM (SELECT puntuacion FROM (SELECT MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador)ORDER BY puntuacion DESC) WHERE ROWNUM <= 5", listaElementosSeleccionados2);
+			data[4][1] = Select1[0];
+			data[4][2] = Select2[0];
+		}
 
+
+	    rankingModel = new DefaultTableModel(data, columnNames);
+	    
 	    // Crear la tabla con el modelo
 	    rankingTable = new JTable(rankingModel);
 	    rankingTable.setFillsViewportHeight(true);

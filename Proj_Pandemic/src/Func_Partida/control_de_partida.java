@@ -20,6 +20,13 @@ public class control_de_partida {
 	 * Función para cargar todas y cada unas de las informaciones guardadas en la base de datos sobre una partida guardada
 	 * @param datosPartida Información de la partida
 	 */
+	
+	public void FuncionPrueba() {
+		Connection con = bbdd.conectarBaseDatos();
+		String[] listaElementosSeleccionados = { "DerCon" };
+		String[] Select = bbdd.select(con, "SELECT d.Datos.DerCon AS DerCon FROM DatosPartidaTabla d where d.id = 12", listaElementosSeleccionados);
+		System.out.println(Select[0]);
+	}
 	public void iniciarPartidaGuardada(DatosPartida datosPartida) {
 		Connection con = bbdd.conectarBaseDatos();
 		Panel_Login pl = new Panel_Login();
