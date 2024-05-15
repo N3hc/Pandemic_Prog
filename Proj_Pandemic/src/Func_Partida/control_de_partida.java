@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.Random;
 
 import Swing.Panel_Login;
+import Swing.Panel_Menu_Principal;
 import Swing.Panel_Partida;
 
 public class control_de_partida {
@@ -57,6 +58,7 @@ public class control_de_partida {
 				"SELECT d.datos.Acciones FROM DatosPartidaTabla d WHERE d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')",
 				listaElementosSeleccionados3);
 		datosPartida.setAcciones(Integer.parseInt(Select2[0]));
+		
 	}
 
 	/**
@@ -92,8 +94,7 @@ public class control_de_partida {
 		String b = "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos) Values ('" + pl.getUser() + "',"
 				+ calcularPuntuajeFinal() + "," + " DatosPartida(CiudadTabla(" + ciudad1 + "),VacunaTabla(" + vacuna1
 				+ ")," + datosPartida.getBrotes() + "," + datosPartida.getRondas() + "," + datosPartida.getAcciones()
-				+ ", SYS.ODCINUMBERLIST(" + datosPartida.getDerCon(0) + "," + datosPartida.getDerCon(1) + ","
-				+ datosPartida.getDerCon(2) + "," + datosPartida.getDerCon(3) + "," + datosPartida.getDerCon(4) + ")))";
+				+ ", '"+Panel_Menu_Principal.getDiff()+"'))";
 		bbdd.insert(con, b);
 	}
 
