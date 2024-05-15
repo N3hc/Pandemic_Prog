@@ -187,7 +187,7 @@ public class control_de_partida {
 			String datos = "Se ha infectado " + ciudadAleatoria.getNombre() + " " + ciudadAleatoria.getInfeccion();
 			if(Panel_Partida.getIniciada() == 1) {
 				Panel_Partida.GuardarDatos(datos);	
-			}else {
+			}else {	
 				Panel_Partida_Cargada.GuardarDatos(datos);	
 			}
 

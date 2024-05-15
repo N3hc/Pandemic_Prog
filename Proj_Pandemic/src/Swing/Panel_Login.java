@@ -195,6 +195,18 @@ public class Panel_Login extends JPanel implements ActionListener{
 		} else {
 		    return true;
 		}
+	};
+	
+	public static boolean ComprobarPartida(String NICKNAME) {
+		String [] Select = new String [10];
+		Connection con = bbdd.conectarBaseDatos();
+		String[] listaElementosSeleccionados = { "COUNT(*)" };
+		Select = bbdd.select(con, "SELECT COUNT(*) FROM DatosPartidaTabla WHERE jugador = '"+ NICKNAME +"'", listaElementosSeleccionados);
+		if (Select[0].equals("1")) {
+		    return false;
+		} else {
+		    return true;
+		}
 	}
 
 }

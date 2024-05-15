@@ -66,11 +66,15 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		if (e.getSource() == Boton[0]) {
 			showDifficultyButtons();
 		} else if (e.getSource() == Boton[1]) {
-			JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
-			partida.getContentPane().removeAll();
-			partida.getContentPane().add(new Panel_Partida_Cargada());
-			partida.revalidate();
-			partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			if (!Panel_Login.ComprobarPartida(Panel_Login.getUser())) {
+				JOptionPane.showMessageDialog(this, "No puedes iniciar una partida guardada sin guardar una ", "Error", JOptionPane.INFORMATION_MESSAGE);
+			}else {
+				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
+				partida.getContentPane().removeAll();
+				partida.getContentPane().add(new Panel_Partida_Cargada());
+				partida.revalidate();
+				partida.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			}
 		} else if (e.getSource() == Boton[2]) {
 			JOptionPane.showMessageDialog(this, "Jugador:\r\n" + "\r\n" + "Un jugador tiene 4 acciones.\r\n"
 					+ "El Jugador en su turno puede usar sus acciones de dos maneras.\r\n"
