@@ -15,81 +15,92 @@ public class control_de_partida {
 	int contadorMatar = 0;
 	int total = 0;
 	DatosPartida partida = new DatosPartida();
-	String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
-			"Isla Lemma", "Isla Lisz", "Isla Narvo", "Ojo de Odquilla", "Cresta del Cuervo", "Rosevan",
-			"Puerto Epheria", "Finistella", "Calpheon", "Bosque Ceniza", "Grana", "Trent", "Tunkuta", "Duvencrue",
-			"Odyllita", "Cubil Escarlata", "Keplan", "Florin", "Olvia", "Velia", "Castillo Cron", "Kusha", "Heidel",
-			"Glish", "Bosque Tungrad", "Tarif", "Altinova", "Asparkan", "Ruinas de Waragon", "Ruinas de Kadry",
-			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
-			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
-	String[] vacunas = {"Corazon de Vell","Dandelion","Kzarka","Kutum"};
-
-	public void iniciarPartidaGuardada(String id) {
-		Connection con = bbdd.conectarBaseDatos();
-		for (int i = 0; i < nombres.length; i++) {
-			String[] listaElementosSeleccionados = { "Infeccion" };
-			String[] Select = bbdd.select(con, "SELECT c.Infeccion FROM DATOSPARTIDATABLA d,TABLE(d.datos.Ciudades) c where c.nombre = '"+nombres[i]+"' and d.id = 14", listaElementosSeleccionados);
-			System.out.println(nombres[i]+ " = " + Select[0]);
-		}
-		
-		for (int i = 0; i < vacunas.length; i++) {
-			String[] listaElementosSeleccionados = { "Porcentaje" };
-			String[] Select = bbdd.select(con, "SELECT v.Porcentaje FROM DATOSPARTIDATABLA d,TABLE(d.datos.Vacunas) v where v.nombre = '"+vacunas[i]+"' and d.id = 14", listaElementosSeleccionados);
-			System.out.println(vacunas[i]+ " = " + Select[0]);
-		};
-		String[] listaElementosSeleccionados = { "datos.Rondas" };
-		String[] Select = bbdd.select(con, "SELECT d.datos.Rondas FROM DatosPartidaTabla d WHERE d.jugador = 'a' and d.id = 14", listaElementosSeleccionados);
-		System.out.println("Ronda = " + Select[0]);
-		
-		String[] listaElementosSeleccionados2 = { "datos.Brotes" };
-		String[] Select2 = bbdd.select(con, "SELECT d.datos.Brotes FROM DatosPartidaTabla d WHERE d.jugador = 'a' and d.id = 14", listaElementosSeleccionados2);
-		System.out.println("Brotes = " + Select2[0]);
-		
-		String[] listaElementosSeleccionados3 = { "datos.Acciones" };
-		String[] Select3 = bbdd.select(con, "SELECT d.datos.Acciones FROM DatosPartidaTabla d WHERE d.jugador = 'a' and d.id = 14", listaElementosSeleccionados3);
-		System.out.println("Acciones = " + Select3[0]);
-	}
 	/**
-	 * Se guardan todos los parametros de la partida en una base de datos mediante la clase bbdd
-	 * @param datosPartida Se le pasa los datos del juego 
+	 * Función para cargar todas y cada unas de las informaciones guardadas en la base de datos sobre una partida guardada
+	 * @param datosPartida Información de la partida
+	 */
+	public void iniciarPartidaGuardada(DatosPartida datosPartida) {
+		Connection con = bbdd.conectarBaseDatos();
+		Panel_Login pl = new Panel_Login();
+		for (int i = 0; i < datosPartida.getCiudades().size(); i++) {
+			String[] listaElementosSeleccionados = { "Infeccion" };
+			String[] Select = bbdd.select(con,
+					"SELECT c.Infeccion FROM DATOSPARTIDATABLA d,TABLE(d.datos.Ciudades) c where c.nombre = '"
+							+ datosPartida.getCiudades().get(i).getNombre()+ "' and d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')",
+					listaElementosSeleccionados);
+		datosPartida.getCiudades().get(i).setInfeccion(Integer.parseInt(Select[0]));
+		}
+
+		for (int i = 0; i < datosPartida.getVacunas().size(); i++) {
+			String[] listaElementosSeleccionados = { "Porcentaje" };
+			String[] Select = bbdd.select(con,
+					"SELECT v.Porcentaje FROM DATOSPARTIDATABLA d,TABLE(d.datos.Vacunas) v where v.nombre = '"
+							+ datosPartida.getVacunas().get(i).getArma() + "' and d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')",
+					listaElementosSeleccionados);
+			datosPartida.getVacunas().get(i).setPorcentaje(Integer.parseInt(Select[0]));
+		}
+		;
+		String[] listaElementosSeleccionados = { "datos.Rondas" };
+		String[] Select = bbdd.select(con,
+				"SELECT d.datos.Rondas FROM DatosPartidaTabla d WHERE d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')",
+				listaElementosSeleccionados);
+		datosPartida.setRondas(Integer.parseInt(Select[0]));
+
+		String[] listaElementosSeleccionados2 = { "datos.Brotes" };
+		String[] Select2 = bbdd.select(con,
+				"SELECT d.datos.Brotes FROM DatosPartidaTabla d WHERE d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')",
+				listaElementosSeleccionados2);
+		datosPartida.setBrotes(Integer.parseInt(Select2[0]));
+
+		String[] listaElementosSeleccionados3 = { "datos.Acciones" };
+		Select2 = bbdd.select(con,
+				"SELECT d.datos.Acciones FROM DatosPartidaTabla d WHERE d.id = (Select MAX(id) FROM DATOSPARTIDATABLA where jugador = '"+pl.getUser()+"')",
+				listaElementosSeleccionados3);
+		datosPartida.setAcciones(Integer.parseInt(Select2[0]));
+	}
+
+	/**
+	 * Se guardan todos los parametros de la partida en una base de datos mediante
+	 * la clase bbdd
+	 * 
+	 * @param datosPartida Se le pasa los datos del juego
 	 */
 	public void guardarPartida(DatosPartida datosPartida) {
 		int i = 0;
 		String ciudad1 = "";
 		String vacuna1 = "";
-		for (Ciudad ciudad : datosPartida.getCiudades() ) {
+		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (i == 47) {
-				ciudad1 += "Ciudad('"+ciudad.getNombre()+"',"+ciudad.getInfeccion()+")";
+				ciudad1 += "Ciudad('" + ciudad.getNombre() + "'," + ciudad.getInfeccion() + ")";
 				i = 0;
 			} else {
-				ciudad1 += "Ciudad('"+ciudad.getNombre()+"',"+ciudad.getInfeccion()+"),";
+				ciudad1 += "Ciudad('" + ciudad.getNombre() + "'," + ciudad.getInfeccion() + "),";
 				i++;
 			}
 		}
-		
-		for (Vacuna vacuna :datosPartida.getVacunas()) {
-			if (i == 3 ) {
-				vacuna1 += "Vacuna('"+vacuna.getArma()+"',"+vacuna.getPorcentaje()+")";
+
+		for (Vacuna vacuna : datosPartida.getVacunas()) {
+			if (i == 3) {
+				vacuna1 += "Vacuna('" + vacuna.getArma() + "'," + vacuna.getPorcentaje() + ")";
 			} else {
-				vacuna1 += "Vacuna('"+vacuna.getArma()+"',"+vacuna.getPorcentaje()+"),";
+				vacuna1 += "Vacuna('" + vacuna.getArma() + "'," + vacuna.getPorcentaje() + "),";
 				i++;
 			}
 		}
-		System.out.println("INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos) Values ('Ardui',"+calcularPuntuajeFinal()+","
-				+ " DatosPartida(CiudadTabla("+ciudad1+","+vacuna1+")))");
 		Panel_Login pl = new Panel_Login();
 		Connection con = bbdd.conectarBaseDatos();
-		String b = "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos) Values ('"+pl.getUser()+"',"+calcularPuntuajeFinal()+","
-				+ " DatosPartida(CiudadTabla("+ciudad1+"),VacunaTabla("+vacuna1+")," + datosPartida.getBrotes() + "," + datosPartida.getRondas() + "," + datosPartida.getAcciones()
+		String b = "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos) Values ('" + pl.getUser() + "',"
+				+ calcularPuntuajeFinal() + "," + " DatosPartida(CiudadTabla(" + ciudad1 + "),VacunaTabla(" + vacuna1
+				+ ")," + datosPartida.getBrotes() + "," + datosPartida.getRondas() + "," + datosPartida.getAcciones()
 				+ ", SYS.ODCINUMBERLIST(" + datosPartida.getDerCon(0) + "," + datosPartida.getDerCon(1) + ","
-				+ datosPartida.getDerCon(2) + "," + datosPartida.getDerCon(3) + "," + datosPartida.getDerCon(4)
-				+ ")))";
-		System.out.println(ciudad1);
-		System.out.println(vacuna1);
+				+ datosPartida.getDerCon(2) + "," + datosPartida.getDerCon(3) + "," + datosPartida.getDerCon(4) + ")))";
 		bbdd.insert(con, b);
 	}
+
 	/**
-	 * Se devuelve el total de la suma de las diferentes variables de puntuación de la partida
+	 * Se devuelve el total de la suma de las diferentes variables de puntuación de
+	 * la partida
+	 * 
 	 * @return
 	 */
 	public int calcularPuntuajeFinal() {
@@ -102,8 +113,11 @@ public class control_de_partida {
 
 		return total;
 	};
+
 	/**
-	 * Se comprueba la condición de victoria que es que todas las vacunas tengan su estado en true
+	 * Se comprueba la condición de victoria que es que todas las vacunas tengan su
+	 * estado en true
+	 * 
 	 * @param datosPartida
 	 * @return Devuelve un true/false para saber si se gana o no
 	 */
@@ -122,10 +136,12 @@ public class control_de_partida {
 		return false;
 
 	}
+
 	/**
 	 * Se comprueba que le personaje tenga su cooldown en 0
+	 * 
 	 * @param datosPartida la información de la partida
-	 * @param i i es el identifdicador del personaje
+	 * @param i            i es el identifdicador del personaje
 	 * @return Devuelve true/false
 	 */
 	public boolean estadoPej(DatosPartida datosPartida, int i) {
@@ -136,10 +152,13 @@ public class control_de_partida {
 		}
 		return false;
 	}
+
 	/**
 	 * Los diferentes procesos de paso de turno se ejecutan
-	 * @param datosPartida informació nde la partida
-	 * @param valor_momento valor por el cual se decide si es una cantidad u otra de ciudades infectadas
+	 * 
+	 * @param datosPartida  informació nde la partida
+	 * @param valor_momento valor por el cual se decide si es una cantidad u otra de
+	 *                      ciudades infectadas
 	 */
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		contadorTurnos++;
@@ -165,11 +184,13 @@ public class control_de_partida {
 		}
 		gestionarBrote(datosPartida);
 	}
+
 	/**
 	 * Se comprueba si ya se ha elegido para no repetir
-	 * @param ciudades_ya la arra yde las posiciones ya elegidas
+	 * 
+	 * @param ciudades_ya     la arra yde las posiciones ya elegidas
 	 * @param indiceAleatorio número aleatorio a comprobar
-	 * @param indiceActual Posición del array que se comprueba
+	 * @param indiceActual    Posición del array que se comprueba
 	 * @return Devuelve true false
 	 */
 	private boolean esCiudadYaSeleccionada(int[] ciudades_ya, int indiceAleatorio, int indiceActual) {
@@ -180,10 +201,12 @@ public class control_de_partida {
 		}
 		return false;
 	}
+
 	/**
 	 * Los procesos de acciónm que se ejecutan al elegir un heroe de ataque
+	 * 
 	 * @param datosPartida daTOS de la partida
-	 * @param elemento la ciudad desde la que se ha activado
+	 * @param elemento     la ciudad desde la que se ha activado
 	 */
 	public void gestionarHeroesAtc(DatosPartida datosPartida, String elemento) {
 		try {
@@ -209,10 +232,13 @@ public class control_de_partida {
 			System.out.println("Se ha producido un NullPointerException");
 		}
 	}
+
 	/**
 	 * Los procesos de acciónm que se ejecutan al elegir un heroe de soporte
+	 * 
 	 * @param datosPartida datos de la partida
-	 * @param elemento Se manda la ciudad origen de donde se ha activado el personaje
+	 * @param elemento     Se manda la ciudad origen de donde se ha activado el
+	 *                     personaje
 	 */
 	public void gestionarHeroeSup(DatosPartida datosPartida, String elemento) {
 		try {
@@ -237,10 +263,13 @@ public class control_de_partida {
 			System.out.println("Se ha producido un NullPointerException");
 		}
 	}
+
 	/**
 	 * Función para quitar números de infección en la ciudad seleccionada
+	 * 
 	 * @param datosPartida Datos de la partida
-	 * @param Ciudad ciudad String  que se manda para quitar contadores de la ciudad
+	 * @param Ciudad       ciudad String que se manda para quitar contadores de la
+	 *                     ciudad
 	 * @return Devuelve true false
 	 */
 	public boolean ciudadesCura(DatosPartida datosPartida, String Ciudad) {
@@ -278,10 +307,13 @@ public class control_de_partida {
 		Panel_Partida.GuardarDatos(datos);
 		return false;
 	}
+
 	/**
 	 * Función para aumentar el porcentaje de las vacunas
+	 * 
 	 * @param datosPartida Datos de la partida
-	 * @param nVacuna nVacuna es la variable que referencia a una de las cuatro Vacunas
+	 * @param nVacuna      nVacuna es la variable que referencia a una de las cuatro
+	 *                     Vacunas
 	 * @return Devuelve true/false
 	 */
 	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
@@ -313,11 +345,13 @@ public class control_de_partida {
 		}
 		return false;
 	}
+
 	/**
 	 * Aumenta los contadores de infeccion
+	 * 
 	 * @param datosPartida datos de la partida
-	 * @param nCiudad Nombre de la ciudad
-	 * @param f es el valor que aumenta de infecció nde la ciudad
+	 * @param nCiudad      Nombre de la ciudad
+	 * @param f            es el valor que aumenta de infecció nde la ciudad
 	 */
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int f) {
 		contadorInfeccions++;
@@ -327,8 +361,11 @@ public class control_de_partida {
 			}
 		}
 	}
+
 	/**
-	 * Se aumenta el número de brotes si sse cumplen las condiciones ys i es así las ciudades colindantes aumentan sus infecciones en 1
+	 * Se aumenta el número de brotes si sse cumplen las condiciones ys i es así las
+	 * ciudades colindantes aumentan sus infecciones en 1
+	 * 
 	 * @param datosPartida Datos de la partida
 	 */
 	public void gestionarBrote(DatosPartida datosPartida) {
@@ -343,8 +380,11 @@ public class control_de_partida {
 			}
 		}
 	}
+
 	/**
-	 * Se resuelve el cooldown (Se restan 1 a menos que sea 0) y el estado de las ciudades a false
+	 * Se resuelve el cooldown (Se restan 1 a menos que sea 0) y el estado de las
+	 * ciudades a false
+	 * 
 	 * @param datosPartida datos partida
 	 */
 	public void actualizarEstado(DatosPartida datosPartida) {
@@ -359,8 +399,10 @@ public class control_de_partida {
 			}
 		}
 	}
+
 	/**
-	 *Condición de derrota
+	 * Condición de derrota
+	 * 
 	 * @param datosPartida datos partida
 	 * @return true/false
 	 */
@@ -370,8 +412,11 @@ public class control_de_partida {
 		}
 		return false;
 	}
+
 	/**
-	 * SI hay una vacuna con porcentaje 100 se le pone el estado en true, está completada
+	 * SI hay una vacuna con porcentaje 100 se le pone el estado en true, está
+	 * completada
+	 * 
 	 * @param datosPartida
 	 */
 	public void gestionarCura(DatosPartida datosPartida) {

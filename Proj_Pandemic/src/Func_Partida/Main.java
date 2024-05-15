@@ -3,6 +3,8 @@ package Func_Partida;
 import java.sql.Connection;
 import java.util.Iterator;
 
+import Swing.Panel_Login;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -13,11 +15,13 @@ public class Main {
 //				+ password + ")");
 //		
 //		System.out.println("si");
-//		control_de_partida c = new control_de_partida();
+		Panel_Login pl = new Panel_Login();
+		pl.setUser("Ardui");
+		control_de_partida c = new control_de_partida();
 	    DatosPartida datosPartida = new DatosPartida();
 	    datosPartida.cargarDatos("Facil");
 //	    c.guardarPartida(datosPartida);
-//	    c.iniciarPartidaGuardada("hola");
+	    c.iniciarPartidaGuardada(datosPartida);
 	    System.out.println(datosPartida.toString());
 		
 
