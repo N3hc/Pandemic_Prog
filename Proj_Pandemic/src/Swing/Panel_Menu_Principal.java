@@ -221,7 +221,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		
 		Connection con = bbdd.conectarBaseDatos();
 		String[] listaElementosSeleccionados = { "COUNT(*)" };
-		String[] Select = bbdd.select(con, "SELECT count(*) FROM datospartidatabla GROUP BY Jugador", listaElementosSeleccionados);
+		String[] Select = bbdd.select(con, "Select count(*) from (Select Jugador, MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador) ORDER BY puntuacion DESC", listaElementosSeleccionados);
 		System.out.println(Select[0]);
 		int num = Integer.parseInt(Select[0]);
 		String[] listaElementosSeleccionados1 = { "Jugador" };
@@ -255,6 +255,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 			String[] Select2 = bbdd.select(con, "SELECT puntuacion FROM (SELECT puntuacion FROM (SELECT MAX(puntuacion) AS puntuacion FROM datospartidatabla GROUP BY Jugador)ORDER BY puntuacion DESC) WHERE ROWNUM <= 5", listaElementosSeleccionados2);
 			data[4][1] = Select1[0];
 			data[4][2] = Select2[0];
+			System.out.println("1");
 		}
 
 

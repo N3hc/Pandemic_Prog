@@ -318,6 +318,7 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 			if (cPartida.ganarPartida(partida)) {
 				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!\n" +
 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Ganaste", JOptionPane.INFORMATION_MESSAGE);
+				cPartida.guardarPartida(partida);
 				volverMenuPrincipal();
 			}else{
 				cPartida.gestionarTurno(partida, 1);
@@ -326,6 +327,7 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 					JOptionPane.showMessageDialog(this, "Has perdidon\n"
 							+ 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Perdiste", JOptionPane.INFORMATION_MESSAGE);
 					volverMenuPrincipal();
+					cPartida.guardarPartida(partida);
 				}
 			}
 			;
