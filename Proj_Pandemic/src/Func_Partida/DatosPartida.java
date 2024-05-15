@@ -18,14 +18,8 @@ public class DatosPartida {
 	 * 
 	 * @param dific El string para obtener lso parametros de dificultad
 	 */
-	public void cargarDatos(String dific) {
+	public void cargarDatos() {
 		try {
-			String[] valoresDif = control_de_datos.Leer_Xml(dific);
-			int[] valoresInt = new int[valoresDif.length];
-			for (int i = 0; i < valoresDif.length; i++) {
-				valoresInt[i] = Integer.parseInt(valoresDif[i]);
-			}
-			this.setDerCon(valoresInt);
 			this.setCiudades(control_de_datos.cargarCiudades());
 			this.setVacunas(control_de_datos.cargarVacunas());
 			this.setVirus(control_de_datos.cargarVirus());
