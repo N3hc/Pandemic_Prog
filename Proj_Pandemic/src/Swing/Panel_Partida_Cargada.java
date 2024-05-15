@@ -29,7 +29,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 			"Glish", "Bosque Tungrad", "Tarif", "Altinova", "Asparkan", "Ruinas de Waragon", "Ruinas de Kadry",
 			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
 			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
-
+	/**
+	 * Núcleo para cargar la partida que define el orden de aparcición de los elementos.
+	 */
 	public Panel_Partida_Cargada() {
 		setLayout(null);
         setBounds(0, 0, 1550, 775);
@@ -42,7 +44,10 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
         generarIcono();
         generarVariables();
 	}
-
+	/**
+	 * Ventana que muestra las opciones dentro de la ciudad como matar y ayudar
+	 * @param nombre El nombre de la ciudad
+	 */
 	private void panelCiudad(String nombre) {
 		btnAccCiudades = new JButton[2];
 
@@ -98,7 +103,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 
 		dialog.setVisible(true);
 	}
-	
+	/**
+	 * Botón que devuelbve al jugador al menu principal
+	 */
 	public void volverMenuPrincipal() {
 		JFrame partidaInit = (JFrame) SwingUtilities.getWindowAncestor(this);
 		partidaInit.getContentPane().removeAll();
@@ -106,7 +113,10 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		partidaInit.revalidate();
 		partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
-	
+	/**
+	 * Panel que se usa para enseñar los héroes disponibles
+	 * @param nombre 
+	 */
 	public void PanelHeroes(String nombre) {
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
@@ -195,7 +205,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 
 		selector.setVisible(true);
 	}
-
+	/**
+	 * Boton para desplegar Salir juego y Guardar Partida
+	 */
 	public void panelAjustes() {
 
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -235,7 +247,10 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		dialog.setVisible(true);
 	
 	}
-	
+	/**
+	 * Boton que despliega menú de investigación
+	 * @return El arma seleccionada
+	 */
 	public String Craftear() {
 		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione la cual quiera investigar:",
 				"Seleccione la cual quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
@@ -244,12 +259,17 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		}
 		return armaSeleccionada;
 	}
-
+	/**
+	 * Pop up que muestra las acciones restantes
+	 */
 	public void popUpAcciones() {
 		JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes", "Acciones Restantes",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
-
+	/**
+	 * Botón para guardar datos
+	 * @param datos Elementos a cargar
+	 */
 	public static void GuardarDatos(String datos) {
 		try {
 		consola.append(datos + "\n");
@@ -257,7 +277,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 			System.out.println("NullPointer");
 		}
 	}
-
+	/**
+	 * Actualzia los parametros en pantalla
+	 */
 	public void actualizarDatos() {
 		diferenciarInfeccion();
 		Paneltxt[3].setText("Turno: " + partida.getRondas());
@@ -269,7 +291,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		}
 		i = 0;
 	}
-
+	/**
+	 * Diferentes pop ups que aparecen según se aprietan los botons
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnComponentes[1]) {
 			// Craftear
@@ -314,7 +338,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 			}
 		}
 	}
-
+	/**
+	 * Imagen de las ciudades
+	 */
 	private void diferenciarInfeccion() {// Crea un ImageIcon con la imagen
 		ImageIcon icono = new ImageIcon("img/gateway_0.png");
 		ImageIcon icono1 = new ImageIcon("img/gateway_1.png");
@@ -357,7 +383,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		    }
 		}
 }
-	
+	/**
+	 * Genera botones
+	 */
 	private void generarIcono() {
 		diferenciarInfeccion();
 		ImageIcon icono4 = new ImageIcon("img/Ajustes.png");
@@ -416,7 +444,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 
 
 	}
-
+	/**
+	 * Inicia los datos dentro de los botones
+	 */
 	private void InitCiudadesBtn() {
 
 		btnCiudad = new JButton[48];
@@ -618,7 +648,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		}
 	
 	}
-
+	/**
+	 * Hace aparecer el fondo
+	 */
 	private void InitFondo() {
 		setOpaque(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -638,7 +670,9 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 		setVisible(true);
 	}
 
-
+	/**
+	 * Se inician las barras de progreso de la partida entre otros elementos
+	 */
 	private void InitComponentes() {
 		btnComponentes = new JButton[4];
 		Paneltxt = new JLabel[4];
