@@ -26,18 +26,6 @@ import Swing.Panel_Login;
 	
 public class control_de_datos {
 	
-	static String[] nombres = { "Puerto Rath", "Isla Kuix", "Isla Danton", "Isla Paxid", "Isla Khan", "Isla Hiwua",
-			"Isla Lemma", "Isla Lisz", "Isla Narvo", "Ojo de Odquilla", "Cresta del Cuervo", "Rosevan",
-			"Puerto Epheria", "Finistella", "Calpheon", "Bosque Ceniza", "Grana", "Trent", "Tunkuta", "Duvencrue",
-			"Odyllita", "Cubil Escarlata", "Keplan", "Florin", "Olvia", "Velia", "Castillo Cron", "Kusha", "Heidel",
-			"Glish", "Bosque Tungrad", "Tarif", "Altinova", "Asparkan", "Ruinas de Waragon", "Ruinas de Kadry",
-			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
-			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
-	static String[] vacunas = {"Corazon de vell","Dandelion","Kzarka","Kutum"};
-	static Panel_Login user = new Panel_Login();
-	static control_de_partida cPartida = new control_de_partida();
-	static DatosPartida partida = new DatosPartida();
-	
 	private String url;
 	
 	private String password;
@@ -79,7 +67,11 @@ public class control_de_datos {
 	public void setFicheroXML(String ficheroXML) {
 		this.ficheroXML = ficheroXML;
 	}
-	
+	/**
+	 * Lee el archivo xml para obtener la dificultad del juego
+	 * @param dific Una string con el nivel de dificultad
+	 * @return devuelve una cadena de Strings
+	 */
 	public static String [] Leer_Xml (String dific) {
 		String filePath = "parametros.xml";
 		String [] val = new String [5];
@@ -129,7 +121,10 @@ public class control_de_datos {
 		return val;
 
 	}
-	
+	/**
+	 * Se crean los personajes
+	 * @return Se devuelve un array de objetos personaje
+	 */
 	public static ArrayList<Personaje> cargarPersonajes(){
 		ArrayList<Personaje> personajes = new ArrayList<>();
 		for (int i = 0; i < 2; i++) {
@@ -138,7 +133,10 @@ public class control_de_datos {
 		}		
 		return personajes;
 	}
-	
+	/**
+	 * Se crfean y se guardan en una array los objetos ciudad
+	 * @return Devuelvo la array de ciudades
+	 */
 	public static ArrayList<Ciudad> cargarCiudades() {
 		        String Fit = "ciudades.txt";
 		        String s = "";
@@ -179,6 +177,10 @@ public class control_de_datos {
 		        }
 				return ciudades;   
 		    }
+	/**
+	 * Se cargan y crean las vacunas
+	 * @return Se devuelve un array list de vacunas
+	 */
 	public static ArrayList<Vacuna> cargarVacunas() {
 	    String[] Enf_y_Col = {"Azul", "Corazon de Vell", "Verde", "Dandelion", "Rojo", "Kzarka", "Negro", "Kutum"};
 	    ArrayList<Vacuna> Vacunas = new ArrayList<>();
@@ -188,6 +190,10 @@ public class control_de_datos {
 	    }
 	    return Vacunas;
 	}
+	/**
+	 * Se creay carga una array list de virus
+	 * @return Devuelve array lis de virus
+	 */
 	public static ArrayList<Virus> cargarVirus() {
 		ArrayList<Virus>Viruses = new ArrayList<>();
 		String [] Idn_Nom_Col = {"0","Tritones","Azul","1","Antarboles","Verde","2","Goblos","Rojo","3","Momias","Negro"};

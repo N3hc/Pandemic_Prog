@@ -3,12 +3,15 @@ package Func_Partida;
 public class Personaje {
 	private int rol;
 	private int cooldown;
-
+	/**
+	 * Constructor
+	 * @param i id de personaje
+	 */
 	public Personaje (int i) {
 		this.setRol(i);
 		this.setCooldown(0);
 	}
-
+	//Getters y Setters
 	public int getRol() {
 		return rol;
 	}

@@ -1,4 +1,4 @@
-	package Func_Partida;
+package Func_Partida;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,27 +13,36 @@ public class DatosPartida {
 	private int acciones;
 	private int[] DerCon;
 
-	public void cargarDatos(String dific) {		
+	/**
+	 * Se cargan todos los datos de la partida mediante control de datos
+	 * 
+	 * @param dific El string para obtener lso parametros de dificultad
+	 */
+	public void cargarDatos(String dific) {
 		try {
-		 String[] valoresDif = control_de_datos.Leer_Xml(dific);
-		    int[] valoresInt = new int[valoresDif.length];
-		    for (int i = 0; i < valoresDif.length; i++) {
-		        valoresInt[i] = Integer.parseInt(valoresDif[i]);
-		    }
-		this.setDerCon(valoresInt);
-		this.setCiudades(control_de_datos.cargarCiudades());
-		this.setVacunas(control_de_datos.cargarVacunas());
-		this.setVirus(control_de_datos.cargarVirus());
-		this.setPersonajes(control_de_datos.cargarPersonajes());
-		this.setBrotes(0);
-		this.setRondas(0);
-		this.setAcciones(4);
-	} catch (NullPointerException e) {
-		// Manejo de la excepción
-		System.out.println("Se ha producido un NullPointerException");
+			String[] valoresDif = control_de_datos.Leer_Xml(dific);
+			int[] valoresInt = new int[valoresDif.length];
+			for (int i = 0; i < valoresDif.length; i++) {
+				valoresInt[i] = Integer.parseInt(valoresDif[i]);
+			}
+			this.setDerCon(valoresInt);
+			this.setCiudades(control_de_datos.cargarCiudades());
+			this.setVacunas(control_de_datos.cargarVacunas());
+			this.setVirus(control_de_datos.cargarVirus());
+			this.setPersonajes(control_de_datos.cargarPersonajes());
+			this.setBrotes(0);
+			this.setRondas(0);
+			this.setAcciones(4);
+		} catch (NullPointerException e) {
+			// Manejo de la excepción
+			System.out.println("Se ha producido un NullPointerException");
+		}
 	}
-	}
-
+/**
+ * Se obtiene el nonbre de la enfermedad de una ciudad
+ * @param ciudadReq la ciudad
+ * @return devuelve el nombre de la enfermedad
+ */
 	public String getVirusCiudad(String ciudadReq) {
 		String virus = "";
 		for (Ciudad ciudad : this.ciudades) {
@@ -43,7 +52,11 @@ public class DatosPartida {
 		}
 		return virus;
 	}
-	
+/**
+ * Se obtiene el número de infección de una ciudad
+ * @param ciudadReq el nombre de la ciudad
+ * @return devuelve el número de infecciones
+ */
 	public int getNivelInfeccionCiudad(String ciudadReq) {
 		int nivel = 0;
 		for (Ciudad ciudad : this.ciudades) {
@@ -53,7 +66,11 @@ public class DatosPartida {
 		}
 		return nivel;
 	}
-	
+/**
+ * Obtener el porcentage de una vacuna
+ * @param infeccion el nombre de la vacuna
+ * @return devuelve el porcentaje
+ */
 	public int getNivelVacuna(String infeccion) {
 		int nivel = 0;
 		for (Vacuna vacuna : this.vacunas) {
@@ -63,7 +80,8 @@ public class DatosPartida {
 		}
 		return nivel;
 	}
-	
+
+	// Getters y Setters
 	public ArrayList<Ciudad> getCiudades() {
 		return ciudades;
 	}

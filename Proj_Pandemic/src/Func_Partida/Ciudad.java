@@ -10,6 +10,13 @@ public class Ciudad {
 	private String[] CiudadesColindantes;
 	private boolean activado ;
 
+	/**
+	 * Contructor de la clase ciudad para la generación de ciudades
+	 * @param nombre Nombre del lugar
+	 * @param Coordenadas Coordenadas donde se situan
+	 * @param Enfermedad
+	 * @param CiudadesColindantes
+	 */
 	public Ciudad(String nombre, int[] Coordenadas, String Enfermedad, String[] CiudadesColindantes) {
 		setEnfermedad(Enfermedad);
 		setCoordenadas(Coordenadas);
@@ -18,7 +25,7 @@ public class Ciudad {
 		setCiudadesColindantes(CiudadesColindantes);
 		setActivado(false);
 	}
-
+//Getters y Setters
 	public String getNombre() {
 		return nombre;
 	}
@@ -59,7 +66,10 @@ public class Ciudad {
 		CiudadesColindantes = ciudadesColindantes;
 	}
 	
-
+	/**
+	 * Comprobación de las infecciones de la ciudad si hay más de tres devuelve true
+	 * @return Devuelve un boolean
+	 */
 	public boolean propagarInfeccion () {		
 		if (this.infeccion > 3) {
 			setInfeccion(3);

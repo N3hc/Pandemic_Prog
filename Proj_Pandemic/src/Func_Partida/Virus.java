@@ -4,13 +4,18 @@ public class Virus {
 	private String Identificador;
 	private String Nombre;
 	private String Color;
-	
+	/**
+	 * Constructor de Virus
+	 * @param Identificador Número associado
+	 * @param Nombre Nombre
+	 * @param Color Color del virus
+	 */
 	public Virus (String Identificador, String Nombre, String Color){
 		this.setIdentificador(Identificador);
 		this.setNombre(Nombre);
 		this.setColor(Color);
 	}
-	
+	//Getters y Setters
 	public String getIdentificador() {
 		return Identificador;
 	}

@@ -33,7 +33,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 	private static String user;
 	
 	JButton[] Boton;
-	
+	//Getter y Setter
 	public static String getUser() {
 		return user;
 	}
@@ -41,7 +41,9 @@ public class Panel_Login extends JPanel implements ActionListener{
 	public void setUser(String nombre) {
 		user = nombre;
 	}
-	
+	/**
+	 * Cajas de texto y elementos del panel de Login en Swing
+	 */
 	public Panel_Login(){
 		Boton = new JButton[3];
 		setBorder(new TitledBorder(null, "Login", TitledBorder.LEADING, TitledBorder.TOP, null, null));

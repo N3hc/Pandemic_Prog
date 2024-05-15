@@ -23,9 +23,6 @@ public class control_de_partida {
 			"Bazar GranArena", "Shakatu", "Valle Bambu", "Minas de Sulfuro", "Ibellab Oasis", "Valencia Ciudad",
 			"Arehaza", "Templo Medialuna", "Valle de Titum", "Miuquu", "Cantusa", "Pila Ku" };
 	String[] vacunas = {"Corazon de Vell","Dandelion","Kzarka","Kutum"};
-	public void iniciarPartida() {
-
-	}
 
 	public void iniciarPartidaGuardada(String id) {
 		Connection con = bbdd.conectarBaseDatos();
@@ -52,122 +49,49 @@ public class control_de_partida {
 		String[] Select3 = bbdd.select(con, "SELECT d.datos.Acciones FROM DatosPartidaTabla d WHERE d.jugador = 'a' and d.id = 14", listaElementosSeleccionados3);
 		System.out.println("Acciones = " + Select3[0]);
 	}
-
+	/**
+	 * Se guardan todos los parametros de la partida en una base de datos mediante la clase bbdd
+	 * @param datosPartida Se le pasa los datos del juego 
+	 */
 	public void guardarPartida(DatosPartida datosPartida) {
+		int i = 0;
+		String ciudad1 = "";
+		String vacuna1 = "";
+		for (Ciudad ciudad : datosPartida.getCiudades() ) {
+			if (i == 47) {
+				ciudad1 += "Ciudad('"+ciudad.getNombre()+"',"+ciudad.getInfeccion()+")";
+				i = 0;
+			} else {
+				ciudad1 += "Ciudad('"+ciudad.getNombre()+"',"+ciudad.getInfeccion()+"),";
+				i++;
+			}
+		}
+		
+		for (Vacuna vacuna :datosPartida.getVacunas()) {
+			if (i == 3 ) {
+				vacuna1 += "Vacuna('"+vacuna.getArma()+"',"+vacuna.getPorcentaje()+")";
+			} else {
+				vacuna1 += "Vacuna('"+vacuna.getArma()+"',"+vacuna.getPorcentaje()+"),";
+				i++;
+			}
+		}
+		System.out.println("INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos) Values ('Ardui',"+calcularPuntuajeFinal()+","
+				+ " DatosPartida(CiudadTabla("+ciudad1+","+vacuna1+")))");
 		Panel_Login pl = new Panel_Login();
 		Connection con = bbdd.conectarBaseDatos();
-		String a = "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos)" + "VALUES ('"+Panel_Login.getUser()+"',"
-				+ calcularPuntuajeFinal() + ", DatosPartida(CiudadTabla(Ciudad('"
-				+ datosPartida.getCiudades().get(0).getNombre() + "',"
-				+ datosPartida.getCiudades().get(0).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(1).getNombre() + "',"
-				+ datosPartida.getCiudades().get(1).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(2).getNombre() + "',"
-				+ datosPartida.getCiudades().get(2).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(3).getNombre() + "',"
-				+ datosPartida.getCiudades().get(3).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(4).getNombre() + "',"
-				+ datosPartida.getCiudades().get(4).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(5).getNombre() + "',"
-				+ datosPartida.getCiudades().get(5).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(6).getNombre() + "',"
-				+ datosPartida.getCiudades().get(6).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(7).getNombre() + "',"
-				+ datosPartida.getCiudades().get(7).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(8).getNombre() + "',"
-				+ datosPartida.getCiudades().get(8).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(9).getNombre() + "',"
-				+ datosPartida.getCiudades().get(9).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(10).getNombre() + "',"
-				+ datosPartida.getCiudades().get(10).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(11).getNombre() + "',"
-				+ datosPartida.getCiudades().get(11).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(12).getNombre() + "',"
-				+ datosPartida.getCiudades().get(12).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(13).getNombre() + "',"
-				+ datosPartida.getCiudades().get(13).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(14).getNombre() + "',"
-				+ datosPartida.getCiudades().get(14).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(15).getNombre() + "',"
-				+ datosPartida.getCiudades().get(15).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(16).getNombre() + "',"
-				+ datosPartida.getCiudades().get(16).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(17).getNombre() + "',"
-				+ datosPartida.getCiudades().get(17).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(18).getNombre() + "',"
-				+ datosPartida.getCiudades().get(18).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(19).getNombre() + "',"
-				+ datosPartida.getCiudades().get(19).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(20).getNombre() + "',"
-				+ datosPartida.getCiudades().get(20).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(21).getNombre() + "',"
-				+ datosPartida.getCiudades().get(21).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(22).getNombre() + "',"
-				+ datosPartida.getCiudades().get(22).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(23).getNombre() + "',"
-				+ datosPartida.getCiudades().get(23).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(24).getNombre() + "',"
-				+ datosPartida.getCiudades().get(24).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(25).getNombre() + "',"
-				+ datosPartida.getCiudades().get(25).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(26).getNombre() + "',"
-				+ datosPartida.getCiudades().get(26).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(27).getNombre() + "',"
-				+ datosPartida.getCiudades().get(27).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(28).getNombre() + "',"
-				+ datosPartida.getCiudades().get(28).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(29).getNombre() + "',"
-				+ datosPartida.getCiudades().get(29).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(30).getNombre() + "',"
-				+ datosPartida.getCiudades().get(30).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(31).getNombre() + "',"
-				+ datosPartida.getCiudades().get(31).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(32).getNombre() + "',"
-				+ datosPartida.getCiudades().get(32).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(33).getNombre() + "',"
-				+ datosPartida.getCiudades().get(33).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(34).getNombre() + "',"
-				+ datosPartida.getCiudades().get(34).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(35).getNombre() + "',"
-				+ datosPartida.getCiudades().get(35).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(36).getNombre() + "',"
-				+ datosPartida.getCiudades().get(36).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(37).getNombre() + "',"
-				+ datosPartida.getCiudades().get(37).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(38).getNombre() + "',"
-				+ datosPartida.getCiudades().get(38).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(39).getNombre() + "',"
-				+ datosPartida.getCiudades().get(39).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(40).getNombre() + "',"
-				+ datosPartida.getCiudades().get(40).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(41).getNombre() + "',"
-				+ datosPartida.getCiudades().get(41).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(42).getNombre() + "',"
-				+ datosPartida.getCiudades().get(42).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(43).getNombre() + "',"
-				+ datosPartida.getCiudades().get(43).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(44).getNombre() + "',"
-				+ datosPartida.getCiudades().get(44).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(45).getNombre() + "',"
-				+ datosPartida.getCiudades().get(45).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(46).getNombre() + "',"
-				+ datosPartida.getCiudades().get(46).getInfeccion() + "),Ciudad('"
-				+ datosPartida.getCiudades().get(47).getNombre() + "',"
-				+ datosPartida.getCiudades().get(47).getInfeccion() + ")" 
-				+ "),VacunaTabla(Vacuna('"
-				+ datosPartida.getVacunas().get(0).getArma() + "'," + datosPartida.getVacunas().get(0).getPorcentaje()
-				+ "),Vacuna('" + datosPartida.getVacunas().get(1).getArma() + "',"
-				+ datosPartida.getVacunas().get(1).getPorcentaje() + "),Vacuna('"
-				+ datosPartida.getVacunas().get(2).getArma() + "'," + datosPartida.getVacunas().get(2).getPorcentaje()
-				+ "),Vacuna('"+datosPartida.getVacunas().get(3).getArma()+"',"+datosPartida.getVacunas().get(3).getPorcentaje()+"))," + datosPartida.getBrotes() + "," + datosPartida.getRondas() + "," + datosPartida.getAcciones()
+		String b = "INSERT INTO DatosPartidaTabla (Jugador, Puntuacion, Datos) Values ('"+pl.getUser()+"',"+calcularPuntuajeFinal()+","
+				+ " DatosPartida(CiudadTabla("+ciudad1+"),VacunaTabla("+vacuna1+")," + datosPartida.getBrotes() + "," + datosPartida.getRondas() + "," + datosPartida.getAcciones()
 				+ ", SYS.ODCINUMBERLIST(" + datosPartida.getDerCon(0) + "," + datosPartida.getDerCon(1) + ","
 				+ datosPartida.getDerCon(2) + "," + datosPartida.getDerCon(3) + "," + datosPartida.getDerCon(4)
 				+ ")))";
-		bbdd.insert(con, a);
-		System.out.println(a);
-
+		System.out.println(ciudad1);
+		System.out.println(vacuna1);
+		bbdd.insert(con, b);
 	}
-
+	/**
+	 * Se devuelve el total de la suma de las diferentes variables de puntuación de la partida
+	 * @return
+	 */
 	public int calcularPuntuajeFinal() {
 		total = contadorInfeccions * 2;
 		total = total + contadorPartida * 1000;
@@ -178,7 +102,11 @@ public class control_de_partida {
 
 		return total;
 	};
-
+	/**
+	 * Se comprueba la condición de victoria que es que todas las vacunas tengan su estado en true
+	 * @param datosPartida
+	 * @return Devuelve un true/false para saber si se gana o no
+	 */
 	public boolean ganarPartida(DatosPartida datosPartida) {
 		int i = 0;
 		for (Vacuna vacuna : datosPartida.getVacunas()) {
@@ -194,7 +122,12 @@ public class control_de_partida {
 		return false;
 
 	}
-
+	/**
+	 * Se comprueba que le personaje tenga su cooldown en 0
+	 * @param datosPartida la información de la partida
+	 * @param i i es el identifdicador del personaje
+	 * @return Devuelve true/false
+	 */
 	public boolean estadoPej(DatosPartida datosPartida, int i) {
 		for (Personaje personaje : datosPartida.getPersonajes()) {
 			if (personaje.getCooldown() == 0 && personaje.getRol() == i) {
@@ -203,7 +136,11 @@ public class control_de_partida {
 		}
 		return false;
 	}
-
+	/**
+	 * Los diferentes procesos de paso de turno se ejecutan
+	 * @param datosPartida informació nde la partida
+	 * @param valor_momento valor por el cual se decide si es una cantidad u otra de ciudades infectadas
+	 */
 	public void gestionarTurno(DatosPartida datosPartida, int valor_momento) {
 		contadorTurnos++;
 		actualizarEstado(datosPartida);
@@ -228,7 +165,13 @@ public class control_de_partida {
 		}
 		gestionarBrote(datosPartida);
 	}
-
+	/**
+	 * Se comprueba si ya se ha elegido para no repetir
+	 * @param ciudades_ya la arra yde las posiciones ya elegidas
+	 * @param indiceAleatorio número aleatorio a comprobar
+	 * @param indiceActual Posición del array que se comprueba
+	 * @return Devuelve true false
+	 */
 	private boolean esCiudadYaSeleccionada(int[] ciudades_ya, int indiceAleatorio, int indiceActual) {
 		for (int j = 0; j < indiceActual; j++) {
 			if (ciudades_ya[j] == indiceAleatorio) {
@@ -237,7 +180,11 @@ public class control_de_partida {
 		}
 		return false;
 	}
-
+	/**
+	 * Los procesos de acciónm que se ejecutan al elegir un heroe de ataque
+	 * @param datosPartida daTOS de la partida
+	 * @param elemento la ciudad desde la que se ha activado
+	 */
 	public void gestionarHeroesAtc(DatosPartida datosPartida, String elemento) {
 		try {
 			boolean comp = false;
@@ -262,7 +209,11 @@ public class control_de_partida {
 			System.out.println("Se ha producido un NullPointerException");
 		}
 	}
-
+	/**
+	 * Los procesos de acciónm que se ejecutan al elegir un heroe de soporte
+	 * @param datosPartida datos de la partida
+	 * @param elemento Se manda la ciudad origen de donde se ha activado el personaje
+	 */
 	public void gestionarHeroeSup(DatosPartida datosPartida, String elemento) {
 		try {
 			boolean comp = false;
@@ -286,7 +237,12 @@ public class control_de_partida {
 			System.out.println("Se ha producido un NullPointerException");
 		}
 	}
-
+	/**
+	 * Función para quitar números de infección en la ciudad seleccionada
+	 * @param datosPartida Datos de la partida
+	 * @param Ciudad ciudad String  que se manda para quitar contadores de la ciudad
+	 * @return Devuelve true false
+	 */
 	public boolean ciudadesCura(DatosPartida datosPartida, String Ciudad) {
 		contadorMatar++;
 		String datos = null;
@@ -322,7 +278,12 @@ public class control_de_partida {
 		Panel_Partida.GuardarDatos(datos);
 		return false;
 	}
-
+	/**
+	 * Función para aumentar el porcentaje de las vacunas
+	 * @param datosPartida Datos de la partida
+	 * @param nVacuna nVacuna es la variable que referencia a una de las cuatro Vacunas
+	 * @return Devuelve true/false
+	 */
 	public boolean gestionarVacuna(DatosPartida datosPartida, String nVacuna) {
 		contadorInvestigacions++;
 		try {
@@ -352,7 +313,12 @@ public class control_de_partida {
 		}
 		return false;
 	}
-
+	/**
+	 * Aumenta los contadores de infeccion
+	 * @param datosPartida datos de la partida
+	 * @param nCiudad Nombre de la ciudad
+	 * @param f es el valor que aumenta de infecció nde la ciudad
+	 */
 	public void gestionarInfeccion(DatosPartida datosPartida, String nCiudad, int f) {
 		contadorInfeccions++;
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
@@ -361,7 +327,10 @@ public class control_de_partida {
 			}
 		}
 	}
-
+	/**
+	 * Se aumenta el número de brotes si sse cumplen las condiciones ys i es así las ciudades colindantes aumentan sus infecciones en 1
+	 * @param datosPartida Datos de la partida
+	 */
 	public void gestionarBrote(DatosPartida datosPartida) {
 		contadorBrotes++;
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
@@ -369,12 +338,15 @@ public class control_de_partida {
 				ciudad.setActivado(true);
 				datosPartida.setBrotes(datosPartida.getBrotes() + 1);
 				for (String ciudadColindante : ciudad.getCiudadesColindantes()) {
-					gestionarInfeccion(datosPartida, ciudadColindante, datosPartida.getDerCon(4));
+					gestionarInfeccion(datosPartida, ciudadColindante, 1);
 				}
 			}
 		}
 	}
-
+	/**
+	 * Se resuelve el cooldown (Se restan 1 a menos que sea 0) y el estado de las ciudades a false
+	 * @param datosPartida datos partida
+	 */
 	public void actualizarEstado(DatosPartida datosPartida) {
 		for (Ciudad ciudad : datosPartida.getCiudades()) {
 			if (ciudad.isActivado()) {
@@ -387,14 +359,21 @@ public class control_de_partida {
 			}
 		}
 	}
-
+	/**
+	 *Condición de derrota
+	 * @param datosPartida datos partida
+	 * @return true/false
+	 */
 	public boolean gestionarFinPartida(DatosPartida datosPartida) {
 		if (datosPartida.getBrotes() >= datosPartida.getDerCon(2)) {
 			return true;
 		}
 		return false;
 	}
-
+	/**
+	 * SI hay una vacuna con porcentaje 100 se le pone el estado en true, está completada
+	 * @param datosPartida
+	 */
 	public void gestionarCura(DatosPartida datosPartida) {
 		for (Vacuna vacuna : datosPartida.getVacunas()) {
 			if (vacuna.getPorcentaje() >= 100 && !vacuna.isEstado()) {
