@@ -6,6 +6,7 @@ import java.util.Random;
 import Swing.Panel_Login;
 import Swing.Panel_Menu_Principal;
 import Swing.Panel_Partida;
+import Swing.Panel_Partida_Cargada;
 
 public class control_de_partida {
 	int contadorInfeccions = 0;
@@ -183,7 +184,11 @@ public class control_de_partida {
 			Ciudad ciudadAleatoria = datosPartida.getCiudades().get(indiceAleatorio);
 			gestionarInfeccion(datosPartida, ciudadAleatoria.getNombre(), datosPartida.getDerCon(4));
 			String datos = "Se ha infectado " + ciudadAleatoria.getNombre() + " " + ciudadAleatoria.getInfeccion();
-			Panel_Partida.GuardarDatos(datos);
+			if(Panel_Partida.getIniciada() == 1) {
+				Panel_Partida.GuardarDatos(datos);	
+			}else {
+				Panel_Partida_Cargada.GuardarDatos(datos);	
+			}
 
 		}
 		gestionarBrote(datosPartida);
@@ -298,7 +303,11 @@ public class control_de_partida {
 									ciudad.setInfeccion(ciudad.getInfeccion() - 1);
 								}
 
-								Panel_Partida.GuardarDatos(datos);
+								if(Panel_Partida.getIniciada() == 1) {
+									Panel_Partida.GuardarDatos(datos);	
+								}else {
+									Panel_Partida_Cargada.GuardarDatos(datos);	
+								}
 								com = true;
 							}
 						}
@@ -308,7 +317,11 @@ public class control_de_partida {
 			return true;
 		}
 		datos = "Acciones insuficientes";
-		Panel_Partida.GuardarDatos(datos);
+		if(Panel_Partida.getIniciada() == 1) {
+			Panel_Partida.GuardarDatos(datos);	
+		}else {
+			Panel_Partida_Cargada.GuardarDatos(datos);	
+		}
 		return false;
 	}
 
@@ -331,11 +344,19 @@ public class control_de_partida {
 							if (!vacuna.isEstado()) {
 								datosPartida.setAcciones(0);
 								datos = "El arma " + vacuna.getArma() + " está siendo creada! \n Resiste!";
-								Panel_Partida.GuardarDatos(datos);
+								if(Panel_Partida.getIniciada() == 1) {
+									Panel_Partida.GuardarDatos(datos);	
+								}else {
+									Panel_Partida_Cargada.GuardarDatos(datos);	
+								}
 								vacuna.setPorcentaje(vacuna.getPorcentaje() + datosPartida.getDerCon(3));
 							} else {
 								datos = "El arma " + vacuna.getArma() + " Ya está creada! \n Úsala!";
-								Panel_Partida.GuardarDatos(datos);
+								if(Panel_Partida.getIniciada() == 1) {
+									Panel_Partida.GuardarDatos(datos);	
+								}else {
+									Panel_Partida_Cargada.GuardarDatos(datos);	
+								}
 								return false;
 							}
 						}

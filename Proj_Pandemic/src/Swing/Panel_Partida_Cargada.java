@@ -35,12 +35,12 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 	public Panel_Partida_Cargada() {
 		setLayout(null);
         setBounds(0, 0, 1550, 775);
-        InitComponentes();
-        InitCiudadesBtn();
-        InitFondo();
         partida.cargarDatos();
         cPartida.iniciarPartidaGuardada(partida);
         cPartida.gestionarTurno(partida, 1);
+        InitComponentes();
+        InitCiudadesBtn();
+        InitFondo();
         generarIcono();
         generarVariables();
 	}
@@ -272,10 +272,11 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 	 */
 	public static void GuardarDatos(String datos) {
 		try {
-		consola.append(datos + "\n");
-		}catch (NullPointerException e) {
-			System.out.println("NullPointer");
+			consola.append(datos + "\n");
+		} catch (NullPointerException e) {
+			System.out.println("Null");
 		}
+
 	}
 	/**
 	 * Actualzia los parametros en pantalla
