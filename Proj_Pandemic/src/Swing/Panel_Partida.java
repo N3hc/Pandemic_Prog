@@ -19,6 +19,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	JProgressBar[] ProgressBar;
 	String[] Vacunas;
 	JTextField txtProgresoInvasiones;
+	private static int Iniciada;
 	static JTextArea consola;
 	DatosPartida partida = new DatosPartida();
 	control_de_partida cPartida = new control_de_partida();
@@ -33,6 +34,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
+		setIniciada(1);
 		InitComponentes();
 		InitCiudadesBtn();
 		InitFondo();
@@ -213,6 +215,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
+				setIniciada(0);
 				cPartida.guardarPartida(partida);
 				volverMenuPrincipal();
 				dialog.dispose();
@@ -748,5 +751,13 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			i++;
 		}
 
+	}
+
+	public static int getIniciada() {
+		return Iniciada;
+	}
+
+	public void setIniciada(int iniciada) {
+		Iniciada = iniciada;
 	}
 }
