@@ -33,16 +33,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	public Panel_Partida() {
 		setLayout(null);
 		setBounds(0, 0, 1550, 775);
-		consola = new JTextArea();
-        consola.setBackground(Color.DARK_GRAY);
-        consola.setText("Bienvenidos al juego\r\n");
-        consola.setFont(new Font("Courier New", Font.PLAIN, 12));
-        consola.setForeground(Color.GREEN);
-        JScrollPane scrollPane = new JScrollPane(consola);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setBounds(1167, 613, 369, 162);
-		add(scrollPane);
 		InitComponentes();
 		InitCiudadesBtn();
 		InitFondo();
@@ -262,11 +252,18 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	public static void GuardarDatos(String datos) {
-		try {
 		consola.append(datos + "\n");
-		}catch (NullPointerException e) {
-			System.out.println("NullPointer");
-		}
+//		int maxLines = 12; // Set the maximum number of lines you want to display
+//		int lineCount = consola.getLineCount();
+//		if (lineCount > maxLines) {
+//			try {
+//				int startOffset = consola.getLineStartOffset(0);
+//				int endOffset = consola.getLineEndOffset(lineCount - maxLines);
+//				consola.replaceRange("", startOffset, endOffset);
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//			}
+//		}
 	}
 
 	public void actualizarDatos() {
@@ -733,7 +730,19 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		Paneltxt[3].setBounds(1316, 61, 260, 56);
 		Paneltxt[3].setText(("Turno: " + partida.getRondas()));
 		add(Paneltxt[3]);
-		
+
+		consola = new JTextArea();
+        consola.setBackground(Color.DARK_GRAY);
+        consola.setText("Bienvenidos al juego\r\n");
+        consola.setFont(new Font("Courier New", Font.PLAIN, 12));
+        consola.setForeground(Color.GREEN);
+        JScrollPane scrollPane = new JScrollPane(consola);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setBounds(1167, 613, 369, 162);
+        
+//		consola.setBounds(1167, 613, 369, 162);
+		add(scrollPane);
 	}
 	
 	private void generarVariables() {
