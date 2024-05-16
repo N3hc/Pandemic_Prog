@@ -324,7 +324,7 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 				cPartida.gestionarTurno(partida, 1);
 				actualizarDatos();
 				if (cPartida.gestionarFinPartida(partida)) {
-					JOptionPane.showMessageDialog(this, "Has perdidon\n"
+					JOptionPane.showMessageDialog(this, "Has perdido\n"
 							+ 						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Perdiste", JOptionPane.INFORMATION_MESSAGE);
 					volverMenuPrincipal();
 					cPartida.guardarPartida(partida);

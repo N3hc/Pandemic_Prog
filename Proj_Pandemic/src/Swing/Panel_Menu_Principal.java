@@ -66,11 +66,11 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 		if (e.getSource() == Boton[0]) {
 			showDifficultyButtons();
 		} else if (e.getSource() == Boton[1]) {
-			if (!Panel_Login.ComprobarPartida(Panel_Login.getUser())) {
+			if (Panel_Login.ComprobarPartida(Panel_Login.getUser())) {
 				JOptionPane.showMessageDialog(this, "No puedes iniciar una partida guardada sin guardar una ", "Error", JOptionPane.INFORMATION_MESSAGE);
 			}else {
 				if(Panel_Login.ComprobarPartida(Panel_Login.getUser())) {
-					System.out.println("picha");
+					System.out.println("Has entrado");
 				} else {
 				JFrame partida = (JFrame) SwingUtilities.getWindowAncestor(this);
 				partida.getContentPane().removeAll();
