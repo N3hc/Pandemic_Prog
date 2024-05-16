@@ -173,7 +173,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 		Connection con = bbdd.conectarBaseDatos();
 		String[] listaElementosSeleccionados = { "COUNT(*)" };
 		Select = bbdd.select(con, "SELECT COUNT(*) FROM jugador WHERE NICKNAME = '" + NICKNAME +"'", listaElementosSeleccionados);
-		if (Select[0].equals("1")) {
+		if (Select[0].length()== 1) {
 		    return true;
 		} else {
 		    return false;
@@ -202,7 +202,7 @@ public class Panel_Login extends JPanel implements ActionListener{
 		Connection con = bbdd.conectarBaseDatos();
 		String[] listaElementosSeleccionados = { "COUNT(*)" };
 		Select = bbdd.select(con, "SELECT COUNT(*) FROM DatosPartidaTabla WHERE jugador = '"+ NICKNAME +"'", listaElementosSeleccionados);
-		if (Select[0].equals("1")) {
+		if (Select.length ==  1) {
 		    return false;
 		} else {
 		    return true;
