@@ -89,7 +89,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		btnAccCiudades[1] = new JButton("Ayudar");
 		btnAccCiudades[1].setBounds(140, 200, 120, 50);
-		btnAccCiudades[1].setToolTipText("Ayudar pide ayuda a nuestros dos heroes, nos ayudan con sus funciones especiales");
+		btnAccCiudades[1]
+				.setToolTipText("Ayudar pide ayuda a nuestros dos heroes, nos ayudan con sus funciones especiales");
 		dialog.getContentPane().add(btnAccCiudades[1]);
 		btnAccCiudades[1].addActionListener(new ActionListener() {
 			@Override
@@ -101,7 +102,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		dialog.setVisible(true);
 	}
-	
+
 	public void volverMenuPrincipal() {
 		JFrame partidaInit = (JFrame) SwingUtilities.getWindowAncestor(this);
 		partidaInit.getContentPane().removeAll();
@@ -109,7 +110,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		partidaInit.revalidate();
 		partidaInit.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
-	
+
 	public void PanelHeroes(String nombre) {
 		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
@@ -145,7 +146,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton guerrero = new JButton("Botón 1");
 		guerrero.setBounds(300, 0, 300, 300);
 		guerrero.setContentAreaFilled(false);
-		guerrero.setToolTipText("El guerrero ayuda a eliminar la infección en 1 en la ciudad seleccionada y sus colindantes, tiene un cooldown de 3 turnos y consume una acción cuando se usa");
+		guerrero.setToolTipText(
+				"El guerrero ayuda a eliminar la infección en 1 en la ciudad seleccionada y sus colindantes, tiene un cooldown de 3 turnos y consume una acción cuando se usa");
 
 		if (cPartida.estadoPej(partida, 0)) {
 			guerrero.setIcon(Guerrero);
@@ -159,7 +161,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				if(cPartida.estadoPej(partida, 0) && partida.getAcciones() > 0) {
+				if (cPartida.estadoPej(partida, 0) && partida.getAcciones() > 0) {
 					cPartida.gestionarHeroesAtc(partida, nombre);
 					partida.setAcciones(partida.getAcciones() - 1);
 				}
@@ -172,7 +174,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		JButton support = new JButton("Botón 2");
 		support.setBounds(0, 0, 300, 300);
 		support.setContentAreaFilled(false);
-		support.setToolTipText("El support ayuda a aumentar un 5% el progresso de cada arma, tiene un cooldown de 5 turnos y consume una acción cuando se usa");
+		support.setToolTipText(
+				"El support ayuda a aumentar un 5% el progresso de cada arma, tiene un cooldown de 5 turnos y consume una acción cuando se usa");
 
 		if (cPartida.estadoPej(partida, 1)) {
 			support.setIcon(Support);
@@ -186,7 +189,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Acción a realizar cuando se hace clic en el botón
-				if(cPartida.estadoPej(partida, 1) && partida.getAcciones() > 0) {
+				if (cPartida.estadoPej(partida, 1) && partida.getAcciones() > 0) {
 					cPartida.gestionarHeroeSup(partida, nombre);
 					partida.setAcciones(partida.getAcciones() - 1);
 				}
@@ -207,10 +210,11 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		dialog.getContentPane().setLayout(null);
 		dialog.setSize(164, 157);
 		dialog.setLocationRelativeTo(null);
-		
+
 		JButton guardar = new JButton("Guardar Partida");
 		guardar.setBounds(0, 0, 150, 60);
-		guardar.setToolTipText("Guardar Partida dentro de la base de datos con el usuario con el cual entraste al juego");
+		guardar.setToolTipText(
+				"Guardar Partida dentro de la base de datos con el usuario con el cual entraste al juego");
 		guardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -222,7 +226,7 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			}
 		});
 		dialog.getContentPane().add(guardar);
-		
+
 		JButton salir = new JButton("Salir del juego");
 		salir.setBounds(0, 60, 150, 60);
 		salir.setToolTipText("Salir del juego");
@@ -235,14 +239,15 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			}
 		});
 		dialog.getContentPane().add(salir);
-		
+
 		dialog.setVisible(true);
-	
+
 	}
-	
+
 	public String Craftear() {
-		String armaSeleccionada = (String) JOptionPane.showInputDialog(this, "Seleccione el arma que quiera investigar:",
-				"Seleccione el arma que quiera investigar:", JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
+		String armaSeleccionada = (String) JOptionPane.showInputDialog(this,
+				"Seleccione el arma que quiera investigar:", "Seleccione el arma que quiera investigar:",
+				JOptionPane.QUESTION_MESSAGE, null, Vacunas, Vacunas[0]);
 		if (armaSeleccionada != null) {
 			System.out.println("Arma seleccionada: " + armaSeleccionada);
 		}
@@ -250,14 +255,21 @@ public class Panel_Partida extends JPanel implements ActionListener {
 	}
 
 	public void popUpAcciones() {
-		JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes", "Acciones Restantes",
-				JOptionPane.INFORMATION_MESSAGE);
+		if (partida.getAcciones() == -1) {
+			partida.setAcciones(0);
+			JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes",
+					"Acciones Restantes", JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes",
+					"Acciones Restantes", JOptionPane.INFORMATION_MESSAGE);
+		}
+
 	}
 
 	public static void GuardarDatos(String datos) {
 		try {
-		consola.append(datos + "\n");
-		}catch (NullPointerException e) {
+			consola.append(datos + "\n");
+		} catch (NullPointerException e) {
 			System.out.println("NullPointer");
 		}
 	}
@@ -295,11 +307,12 @@ public class Panel_Partida extends JPanel implements ActionListener {
 			// siguiente turno
 			cPartida.gestionarCura(partida);
 			if (cPartida.ganarPartida(partida)) {
-				JOptionPane.showMessageDialog(this, "Has GANADO!!!!!\n" +
-						"Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(), "Ganaste", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this,
+						"Has GANADO!!!!!\n" + "Tu puntuaje total ha sido " + cPartida.calcularPuntuajeFinal(),
+						"Ganaste", JOptionPane.INFORMATION_MESSAGE);
 				volverMenuPrincipal();
 				cPartida.guardarPartida(partida);
-			}else{
+			} else {
 				cPartida.gestionarTurno(partida, 1);
 				actualizarDatos();
 				if (cPartida.gestionarFinPartida(partida)) {
@@ -328,46 +341,45 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		ImageIcon icono3 = new ImageIcon("img/gateway_3.png");
 
 		for (int i = 0; i < btnCiudad.length; i++) {
-		    int nivelInfeccion = partida.getNivelInfeccionCiudad(nombres[i]);
-		    ImageIcon iconoActual;
-		    
-		    if (i < 12) {
-		        iconoActual = icono;
-		    } else if (i < 24) {
-		        iconoActual = icono1;
-		    } else if (i < 36) {
-		        iconoActual = icono2;
-		    } else if (i < 48) {
-		        iconoActual = icono3;
-		    } else {
-		        continue; // Si el índice es mayor o igual a 47, no hacer nada
-		    }
+			int nivelInfeccion = partida.getNivelInfeccionCiudad(nombres[i]);
+			ImageIcon iconoActual;
 
-		    if (nivelInfeccion == 0) {
-		        // Escala el ImageIcon al tamaño del botón
-		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(15,15, Image.SCALE_SMOOTH);
-		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-		        btnCiudad[i].setIcon(iconoEscalado);
-		    } else if (nivelInfeccion == 1) {
-		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-		        btnCiudad[i].setIcon(iconoEscalado);
-		    } else if (nivelInfeccion == 2) {
-		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-		        btnCiudad[i].setIcon(iconoEscalado);
-		    } else if (nivelInfeccion >= 3) {
-		        Image imagenEscalada = iconoActual.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-		        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-		        btnCiudad[i].setIcon(iconoEscalado);
-		    }
+			if (i < 12) {
+				iconoActual = icono;
+			} else if (i < 24) {
+				iconoActual = icono1;
+			} else if (i < 36) {
+				iconoActual = icono2;
+			} else if (i < 48) {
+				iconoActual = icono3;
+			} else {
+				continue; // Si el índice es mayor o igual a 47, no hacer nada
+			}
+
+			if (nivelInfeccion == 0) {
+				// Escala el ImageIcon al tamaño del botón
+				Image imagenEscalada = iconoActual.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+				ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+				btnCiudad[i].setIcon(iconoEscalado);
+			} else if (nivelInfeccion == 1) {
+				Image imagenEscalada = iconoActual.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+				ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+				btnCiudad[i].setIcon(iconoEscalado);
+			} else if (nivelInfeccion == 2) {
+				Image imagenEscalada = iconoActual.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+				ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+				btnCiudad[i].setIcon(iconoEscalado);
+			} else if (nivelInfeccion >= 3) {
+				Image imagenEscalada = iconoActual.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+				btnCiudad[i].setIcon(iconoEscalado);
+			}
 		}
-}
-	
+	}
+
 	private void generarIcono() {
 		diferenciarInfeccion();
 		ImageIcon icono4 = new ImageIcon("img/Ajustes.png");
-
 
 		btnComponentes[2].setIcon(icono4);
 		btnComponentes[2].setText(null);
@@ -419,7 +431,6 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		btnCiudad[45].setText(null);
 		btnCiudad[46].setText(null);
 		btnCiudad[47].setText(null);
-
 
 	}
 
@@ -620,9 +631,9 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		add(btnCiudad[47]);
 
 		for (int i = 0; i < 47; i++) {
-		    btnCiudad[i].addActionListener(this);
+			btnCiudad[i].addActionListener(this);
 		}
-	
+
 	}
 
 	private void InitFondo() {
@@ -674,7 +685,8 @@ public class Panel_Partida extends JPanel implements ActionListener {
 
 		btnComponentes[3] = new JButton("Siguiente Turno");
 		btnComponentes[3].setBounds(1009, 691, 144, 56);
-		btnComponentes[3].setToolTipText("Saltamos el turno actual y passamos al siguiente, se descubren nuevas infeccioens y se nos renuevan las acciones");
+		btnComponentes[3].setToolTipText(
+				"Saltamos el turno actual y passamos al siguiente, se descubren nuevas infeccioens y se nos renuevan las acciones");
 		add(btnComponentes[3]);
 		btnComponentes[3].addActionListener(this);
 
@@ -730,19 +742,19 @@ public class Panel_Partida extends JPanel implements ActionListener {
 		add(Paneltxt[3]);
 
 		consola = new JTextArea();
-        consola.setBackground(Color.DARK_GRAY);
-        consola.setText("Bienvenidos al juego\r\n");
-        consola.setFont(new Font("Courier New", Font.PLAIN, 12));
-        consola.setForeground(Color.GREEN);
-        JScrollPane scrollPane = new JScrollPane(consola);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setBounds(1167, 613, 369, 162);
-        
+		consola.setBackground(Color.DARK_GRAY);
+		consola.setText("Bienvenidos al juego\r\n");
+		consola.setFont(new Font("Courier New", Font.PLAIN, 12));
+		consola.setForeground(Color.GREEN);
+		JScrollPane scrollPane = new JScrollPane(consola);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setBounds(1167, 613, 369, 162);
+
 //		consola.setBounds(1167, 613, 369, 162);
 		add(scrollPane);
 	}
-	
+
 	private void generarVariables() {
 		Vacunas = new String[4];
 		int i = 0;

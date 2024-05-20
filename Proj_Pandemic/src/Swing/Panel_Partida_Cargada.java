@@ -263,8 +263,14 @@ public class Panel_Partida_Cargada extends JPanel implements ActionListener {
 	 * Pop up que muestra las acciones restantes
 	 */
 	public void popUpAcciones() {
-		JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes", "Acciones Restantes",
-				JOptionPane.INFORMATION_MESSAGE);
+		if (partida.getAcciones() == -1) {
+			partida.setAcciones(0);
+			JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes", "Acciones Restantes",
+					JOptionPane.INFORMATION_MESSAGE);
+		}else {
+			JOptionPane.showMessageDialog(this, "Te queda " + partida.getAcciones() + " restantes", "Acciones Restantes",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 	/**
 	 * Botón para guardar datos
