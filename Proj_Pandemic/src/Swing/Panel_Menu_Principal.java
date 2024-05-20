@@ -343,6 +343,7 @@ public class Panel_Menu_Principal extends JPanel implements ActionListener {
 	 */
 	private void reproducirMusica() {
 		String filePath = "img/SoundTrack.wav";
+		
 		try {
 			File file = new File(filePath);
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
